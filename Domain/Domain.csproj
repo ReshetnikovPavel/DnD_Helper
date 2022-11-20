@@ -17,4 +17,9 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="FluentAssertions" Version="6.8.0" />
+	  <PackageReference Include="NUnit" Version="3.13.3" />
+	</ItemGroup>
+
 </Project>
