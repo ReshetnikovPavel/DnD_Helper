@@ -17,11 +17,11 @@ public class XmlRaceRepository_should
 	[Test]
 	public void TestGetNames()
 	{
-		var expected = new List<string> {"Эльф (Дроу)", "Драконорождённый", "Гном (Лесной)",
-			"Полу-эльф", "Полу-орк", "Эльф(Высший)", "Дварф (Холмовой)", "Человек", 
-			"Человек (Альтернатива)", "Полурослик (Легконогий)", "Дварф (Горный)",
-			"Гном (Скальный)", "Полурослик (Коренастый)", "Тифлинг", "Эльф (Лесной)"};
-		var actual = repository.GetNames();
-		actual.Should().Equal(expected);
+		var expected = new HashSet<string> {"Эльф", "Драконорождённый", "Гном",
+			"Полуэльф", "Полуорк", "Эльф", "Дварф", "Человек", 
+			"Полурослик",
+			"Тифлинг",};
+        var actual = repository.GetNames().ToHashSet();
+        actual.Should().Equal(expected);
 	}
 }
