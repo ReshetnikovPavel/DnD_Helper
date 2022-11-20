@@ -1,6 +1,4 @@
-﻿using Domain
-
-namespace DnD_Helper;
+﻿namespace DnD_Helper;
 
 public partial class MainPage : ContentPage
 {
@@ -13,8 +11,6 @@ public partial class MainPage : ContentPage
 
 	private void OnCounterClicked(object sender, EventArgs e)
     {
-        var race = new Race();
-
 		count++;
 
 		if (count == 1)
