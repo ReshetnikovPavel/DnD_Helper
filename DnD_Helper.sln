@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DnD_Helper", "DnD_Helper\DnD_Helper.csproj", "{D721D556-32EC-4DC4-8865-0FE19572D547}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{DCB8B20B-4B30-431E-A188-7750B663C7F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{74AE8A59-4917-487E-8683-038BFF62BF40}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +21,14 @@ Global
 		{D721D556-32EC-4DC4-8865-0FE19572D547}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D721D556-32EC-4DC4-8865-0FE19572D547}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D721D556-32EC-4DC4-8865-0FE19572D547}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{DCB8B20B-4B30-431E-A188-7750B663C7F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCB8B20B-4B30-431E-A188-7750B663C7F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCB8B20B-4B30-431E-A188-7750B663C7F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCB8B20B-4B30-431E-A188-7750B663C7F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74AE8A59-4917-487E-8683-038BFF62BF40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74AE8A59-4917-487E-8683-038BFF62BF40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74AE8A59-4917-487E-8683-038BFF62BF40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74AE8A59-4917-487E-8683-038BFF62BF40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
