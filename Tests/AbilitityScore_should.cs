@@ -1,7 +1,6 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
+﻿using Domain;
 
-namespace Domain.Tests;
+namespace Tests;
 
 [TestFixture]
 public class AbilitityScore_should
