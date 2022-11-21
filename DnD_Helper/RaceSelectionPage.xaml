@@ -5,7 +5,8 @@
              Title="Выбор расы"
              BackgroundColor="#d8d7e5">
     <VerticalStackLayout>
-        <Label 
+        <Label FontAttributes="Bold"
+            TextColor="#5c79a1"
             Text="Однажды здесь будет выбор расы..."
             VerticalOptions="Center" 
             HorizontalOptions="Center" />

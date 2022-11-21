@@ -10,6 +10,6 @@
 
     <ShellContent
         ContentTemplate="{DataTemplate local:MenuPage}"
-        Route="MenuPage"/>
+        Route="menu"/>
 
 </Shell>
