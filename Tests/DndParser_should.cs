@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel;
 using Domain.Repositories;
+using Domain;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Domain.Tests;
+namespace Tests;
 
 [TestFixture]
 public class DndParser_should

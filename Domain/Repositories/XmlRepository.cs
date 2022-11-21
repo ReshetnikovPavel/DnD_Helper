@@ -20,7 +20,7 @@ public abstract class XmlRepository : IRepository
 	private static XDocument Load(string name)
 	{
 		var assembly = typeof(XmlRepository).GetTypeInfo().Assembly;
-		var stream = assembly.GetManifestResourceStream($"Domain.{name}.xml");
+		var stream = assembly.GetManifestResourceStream($"Domain.Repositories.Xmls.{name}.xml");
 		if (stream == null)
 			throw new NullReferenceException($"Cannot find xml document {name}.xml");
 		return XDocument.Load(stream);

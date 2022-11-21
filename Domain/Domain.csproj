@@ -18,9 +18,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="FluentAssertions" Version="6.8.0" />
-	  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
-	  <PackageReference Include="NUnit" Version="3.13.3" />
+	  <None Remove="Repositories\Xmls\Background.xml" />
+	  <None Remove="Repositories\Xmls\Classes.xml" />
+	  <None Remove="Repositories\Xmls\Races.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Repositories\Xmls\Background.xml" />
+	  <EmbeddedResource Include="Repositories\Xmls\Classes.xml" />
+	  <EmbeddedResource Include="Repositories\Xmls\Races.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
