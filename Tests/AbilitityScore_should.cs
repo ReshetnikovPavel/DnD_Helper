@@ -21,4 +21,26 @@ public class AbilitityScore_should
 		var score = new AbilityScore(AbilityName.Strength, baseValue);
 		score.Modifier.Should().Be(expectedModifier);
 	} 
+    
+    [Test]
+    [TestCase(1, 2)]
+    [TestCase(20, 20)]
+    [TestCase(15, 16)]
+    public void TestIncreaseValue(int value, int answer)
+    {
+        var score = new AbilityScore(AbilityName.Strength, value);
+        score.IncreaseValue();
+        score.Value.Should().Be(answer);
+    }
+
+    [Test]
+    [TestCase(1, 1)]
+    [TestCase(20, 19)]
+    [TestCase(15, 14)]
+    public void TestDecreaseValue(int value, int answer)
+    {
+        var score = new AbilityScore(AbilityName.Strength, value);
+        score.DecreaseValue();
+        score.Value.Should().Be(answer);
+    }
 }
