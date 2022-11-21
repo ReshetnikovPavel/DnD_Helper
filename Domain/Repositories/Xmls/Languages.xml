@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<compendium version="5">
+<language>
+    <name>Великаний</name>
+    <typicalMan>Великан, Огр</typicalMan>
+    <writing>Дварфская</writing>
+</language>
+
+<language>
+    <name>Гномий</name>
+    <typicalMan>Гном</typicalMan>
+    <writing>Дварфская</writing>
+</language>
+
+<language>
+    <name>Гоблинский</name>
+    <typicalMan>Гоблиноид</typicalMan>
+    <writing>Дварфская</writing>
+</language>
+
+<language>
+    <name>Дварфский</name>
+    <typicalMan>Дварф</typicalMan>
+    <writing>Дварфская</writing>
+</language>
+
+<language>
+    <name>Общий</name>
+    <typicalMan>Человек</typicalMan>
+    <writing>Общая</writing>
+</language>
+
+<language>
+    <name>Орочий</name>
+    <typicalMan>Орк</typicalMan>
+    <writing>Дварфская</writing>
+</language>
+
+<language>
+    <name>Полуросликов</name>
+    <typicalMan>Полурослик</typicalMan>
+    <writing>Общая</writing>
+</language>
+
+<language>
+    <name>Эльфийский</name>
+    <typicalMan>Эльф</typicalMan>
+    <writing>Эльфийская</writing>
+</language>
+
+<language>
+    <name>Бездны</name>
+    <typicalMan>Демон</typicalMan>
+    <writing>Инфернальная</writing>
+</language>
+
+<language>
+    <name>Глубинная речь</name>
+    <typicalMan>Иллитид, Злобоглаз</typicalMan>
+    <writing>-</writing>
+</language>
+
+<language>
+    <name>Драконий</name>
+    <typicalMan>Дракон, Драконорожденный</typicalMan>
+    <writing>Драконья</writing>
+</language>
+
+<language>
+    <name>Инфернальный</name>
+    <typicalMan>Дьявол</typicalMan>
+    <writing>Инфернальная</writing>
+</language>
+
+<language>
+    <name>Небесный</name>
+    <typicalMan>Небожитель</typicalMan>
+    <writing>Небесная</writing>
+</language>
+
+<language>
+    <name>Первичный</name>
+    <typicalMan>Элементаль</typicalMan>
+    <writing>Дварфская</writing>
+</language>
+
+<language>
+    <name>Подземный</name>
+    <typicalMan>Купец Подземья</typicalMan>
+    <writing>Эльфийская</writing>
+</language>
+
+<language>
+    <name>Сильван</name>
+    <typicalMan>Фейское существо</typicalMan>
+    <writing>Эльфийская</writing>
+</language>
+</compendium>

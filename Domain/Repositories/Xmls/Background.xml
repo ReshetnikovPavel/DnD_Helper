@@ -132,12 +132,12 @@
 	</background>
 
 	<background>
-		<name>Благородный</name>
-		<proficiency>История, Убеждение</proficiency>
-		<possessionInstrumentFree>1: набор травника</possessionInstrumentFree>
-		<languageFree>1</languageFree>
-		<money>5</money>
-		<equipment>комплект отличной одежды, кольцо-печатка, свиток с генеалогическим древом</equipment>
+		<name>Преступник</name>
+		<proficiency>Обман, Скрытность</proficiency>
+		<possessionInstrumentFree>1: игровой</possessionInstrumentFree>
+		<possessionInstrument>воровские</possessionInstrument>
+		<money>15</money>
+		<equipment>ломик, комплект обычной тёмной одежды с капюшоном</equipment>
 		<description>
 			<text></text>
 			<text></text>
@@ -148,12 +148,11 @@
 	</background>
 
 	<background>
-		<name>Благородный</name>
-		<proficiency>История, Убеждение</proficiency>
-		<possessionInstrumentFree>1: игровой</possessionInstrumentFree>
-		<languageFree>1</languageFree>
-		<money>25</money>
-		<equipment>комплект отличной одежды, кольцо-печатка, свиток с генеалогическим древом</equipment>
+		<name>Прислужник</name>
+		<proficiency>Проницательность, Религия</proficiency>
+		<languageFree>2</languageFree>
+		<money>15</money>
+		<equipment>священный символ (подаренный вам в момент принятия священного сана), молитвенник или молитвенный барабан, 5 палочек благовоний, ряса, комплект обычной одежды</equipment>
 		<description>
 			<text></text>
 			<text></text>
@@ -164,12 +163,12 @@
 	</background>
 
 	<background>
-		<name>Благородный</name>
-		<proficiency>История, Убеждение</proficiency>
+		<name>Солдат</name>
+		<proficiency>Атлетика, Запугивание</proficiency>
 		<possessionInstrumentFree>1: игровой</possessionInstrumentFree>
-		<languageFree>1</languageFree>
-		<money>25</money>
-		<equipment>комплект отличной одежды, кольцо-печатка, свиток с генеалогическим древом</equipment>
+		<possessionInstrument>транспорт (сухопутный)</possessionInstrument>
+		<money>10</money>
+		<equipment>знак отличия, трофей с убитого врага, набор игровых костей или колода карт, комплект обычной одежды</equipment>
 		<description>
 			<text></text>
 			<text></text>
@@ -180,12 +179,12 @@
 	</background>
 
 	<background>
-		<name>Благородный</name>
-		<proficiency>История, Убеждение</proficiency>
-		<possessionInstrumentFree>1: игровой</possessionInstrumentFree>
+		<name>Чужеземец</name>
+		<proficiency>Атлетика, Выживание</proficiency>
+		<possessionInstrumentFree>1: музыкальный</possessionInstrumentFree>
 		<languageFree>1</languageFree>
-		<money>25</money>
-		<equipment>комплект отличной одежды, кольцо-печатка, свиток с генеалогическим древом</equipment>
+		<money>10</money>
+		<equipment>посох, капкан, трофей с убитого животного, комплект дорожной одежды</equipment>
 		<description>
 			<text></text>
 			<text></text>
@@ -196,12 +195,13 @@
 	</background>
 
 	<background>
-		<name>Благородный</name>
-		<proficiency>История, Убеждение</proficiency>
+		<name>Шарлатан</name>
+		<proficiency>Ловкость рук, Обман</proficiency>
 		<possessionInstrumentFree>1: игровой</possessionInstrumentFree>
-		<languageFree>1</languageFree>
-		<money>25</money>
-		<equipment>комплект отличной одежды, кольцо-печатка, свиток с генеалогическим древом</equipment>
+		<posessionInstrument>набор для грима, набор для фальсификации</posessionInstrument>
+		<money>15</money>
+		<Instrument>набор для грима</Instrument>
+		<equipment>комплект отличной одежды, приспособление для жульничества</equipment>
 		<description>
 			<text></text>
 			<text></text>
