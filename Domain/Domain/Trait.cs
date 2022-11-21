@@ -2,7 +2,7 @@
 
 namespace Domain;
 
-public class Trait : ValueType<Trait>
+public class Trait : ValueType<Trait>, IDndObject
 {
 	public string Name { get; }
 	public string Description { get; }

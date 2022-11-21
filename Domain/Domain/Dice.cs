@@ -2,7 +2,7 @@
 
 namespace Domain;
 
-public class Dice : ValueType<Dice>
+public class Dice : ValueType<Dice>, IDndObject
 {
 	public int Quantity { get; }
 	public DiceName Sides { get; }

@@ -2,7 +2,7 @@
 
 namespace Domain;
 
-public class ProficiencyBonus : ValueType<ProficiencyBonus>, IHaveValue
+public class ProficiencyBonus : ValueType<ProficiencyBonus>, IHaveValue, IDndObject
 {
 	public int Value { get; }
 }

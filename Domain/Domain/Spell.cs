@@ -2,7 +2,7 @@
 
 namespace Domain;
 
-public class Spell : ValueType<Spell>
+public class Spell : ValueType<Spell>, IDndObject
 {
 	public Spell(string name, int level)
 	{

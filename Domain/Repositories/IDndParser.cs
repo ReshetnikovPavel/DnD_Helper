@@ -14,4 +14,11 @@ public interface IDndParser
 	(int howMany, IEnumerable<string> entries) ParseChoiceFrom(string choiceOption);
 	Armor ParseArmor(string armor);
 	Instrument ParseInstrument(string instrument);
+	Feat ParseFeat(string feat);
+
+    IEnumerable<T> ParseMany<T>(string from, Func<string, T> applyParse)
+		where T : IDndObject;
+
+    IEnumerable<T> ParseManyToGetEnums<T>(string from, Func<string, T> applyParse)
+        where T : Enum;
 }

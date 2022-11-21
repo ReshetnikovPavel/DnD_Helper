@@ -2,7 +2,7 @@
 
 namespace Domain;
 
-public class Skill : ValueType<Skill>, IBasedOnAbility<SkillName>
+public class Skill : ValueType<Skill>, IBasedOnAbility<SkillName>, IDndObject
 {
 	public AbilityScore Ability { get; }
 	public bool IsProficient { get; }

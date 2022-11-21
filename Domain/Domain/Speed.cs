@@ -2,7 +2,7 @@
 
 namespace Domain;
 
-public class Speed : ValueType<Speed>, IHaveValue
+public class Speed : ValueType<Speed>, IHaveValue, IDndObject
 {
 	public Speed(int value)
 	{

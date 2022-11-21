@@ -2,7 +2,7 @@
 
 namespace Domain;
 
-public class HitPoints : ValueType<HitDice>
+public class HitPoints : ValueType<HitDice>, IDndObject
 {
 	public int Current { get; }
 	public int Maximum { get; }

@@ -115,4 +115,26 @@ public class DndCompendiumParser : IDndParser
 	{
 		return new Instrument(instrument);
 	}
+
+    public Feat ParseFeat(string feat)
+    {
+        return new Feat(feat);
+    }
+
+    public IEnumerable<T> ParseMany<T>(string from, Func<string, T> applyParse) where T : IDndObject
+    {
+        return ParseManyAnyType(from, applyParse);
+    }
+
+    public IEnumerable<T> ParseManyToGetEnums<T>(string from, Func<string, T> applyParse) where T : Enum
+    {
+        return ParseManyAnyType(from, applyParse);
+    }
+
+    private IEnumerable<T> ParseManyAnyType<T>(string from, Func<string, T> applyParse)
+    {
+        if (from == null)
+            return Enumerable.Empty<T>();
+        return Split(from).Select(applyParse);
+    }
 }

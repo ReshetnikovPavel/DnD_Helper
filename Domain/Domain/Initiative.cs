@@ -2,7 +2,7 @@
 
 namespace Domain;
 
-public class Initiative : ValueType<Initiative>, IHaveValue
+public class Initiative : ValueType<Initiative>, IHaveValue, IDndObject
 {
 	public int Value { get; }
 }

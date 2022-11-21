@@ -2,8 +2,13 @@
 
 namespace Domain;
 
-public class Feat : ValueType<Feat>
+public class Feat : ValueType<Feat>, IDndObject
 {
-	public string Name { get; }
+    public Feat(string name)
+    {
+        Name = name;
+    }
+
+    public string Name { get; }
 	public string Description { get; }
 }

@@ -2,7 +2,7 @@
 
 namespace Domain;
 
-public class Abilities : ValueType<Abilities>
+public class Abilities : ValueType<Abilities>, IDndObject
 {
 	public AbilityScore Strength { get; }
 	public AbilityScore Dexterity { get; }

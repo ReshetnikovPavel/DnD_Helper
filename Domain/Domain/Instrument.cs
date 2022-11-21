@@ -2,7 +2,7 @@
 
 namespace Domain;
 
-public class Instrument : ValueType<Instrument>
+public class Instrument : ValueType<Instrument>, IDndObject
 {
 	public Instrument(string name)
 	{

@@ -2,7 +2,7 @@
 
 namespace Domain;
 
-public class Weapon : ValueType<Weapon>
+public class Weapon : ValueType<Weapon>, IDndObject
 {
 	public Weapon(string name)
 	{

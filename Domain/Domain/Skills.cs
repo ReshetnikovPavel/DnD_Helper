@@ -2,7 +2,7 @@
 
 namespace Domain;
 
-public class Skills : ValueType<Skills>
+public class Skills : ValueType<Skills>, IDndObject
 {
 	public Skill Acrobatics { get; }
 	public Skill AnimalHandling { get; }

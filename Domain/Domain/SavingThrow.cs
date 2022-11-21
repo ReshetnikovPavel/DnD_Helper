@@ -2,7 +2,7 @@
 
 namespace Domain;
 
-public class SavingThrow : ValueType<SavingThrow>
+public class SavingThrow : ValueType<SavingThrow>, IDndObject
 {
 	private AbilityScore Ability { get; }
 	private int ProficiencyBonus { get; }

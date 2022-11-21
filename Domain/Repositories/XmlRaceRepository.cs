@@ -12,43 +12,81 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
         this.parser = parser;
     }
 
-
 	public Race GetRaceByName(string raceName, string subraceName)
 	{
-		var raceElement = GetElementWithNameFrom(Compendium.Elements("race"), raceName);
-		var subraceElement = GetElementWithNameFrom(raceElement.Elements("subrace"), subraceName);
+		var raceElement = Compendium.Elements("race").GetElementWithName(raceName);
+		var subraceElement = raceElement.Elements("subrace").GetElementWithName(subraceName);
 
         return CreateRaceFromXElement(subraceElement, raceName, subraceName);
     }
+    public IEnumerable<string> GetSubraceNames(string raceName)
+    {
+        var race = Compendium.Elements("race").GetElementWithName(raceName);
 
-	private Race CreateRaceFromXElement(XElement xElement, string raceName, string subraceName)
-	{
-        return new Race()
+        return race.Elements("subrace")
+            .Select(x => x.GetName());
+    }
+    private Race CreateRaceFromXElement(XElement xElement, string raceName, string subraceName)
+    {
+        var race = new Race()
         {
             Name = raceName,
             SubraceName = subraceName,
-            Size = parser.ParseSize(xElement.Element("size").Value),
-            Speed = parser.ParseSpeed(xElement.Element("speed").Value)
+            Size = GetSize(xElement),
+            Speed = GetSpeed(xElement),
+            Languages = GetLanguages(xElement),
+            AbilityScoreBonuses = GetAbilityScoreBonuses(xElement),
+            Spells = GetSpells(xElement),
+            WeaponsProficiencies = GetWeaponProficiencies(xElement),
+            SkillProficiencies = GetSkillProficiencies(xElement),
+            InstrumentProfieciencies = GetInstrumentProficiencies(xElement),
+            Feats = GetFeats(xElement)
         };
+        return race;
     }
 
-    public IEnumerable<string> GetSubraceNames(string raceName)
+    private Size GetSize(XElement xElement)
     {
-		var race = GetElementWithNameFrom(Compendium.Elements("race"), raceName);
-
-		return race.Elements("subrace")
-			.Select(x => GetName(x));
+        return parser.ParseSize(xElement.GetContentWithTag("size"));
     }
 
-	private static XElement GetElementWithNameFrom(IEnumerable<XElement> xElements, string name)
-	{
-		return xElements
-			.Where(x => GetName(x) == name)
-            .First();
+    private Speed GetSpeed(XElement xElement)
+    {
+        return parser.ParseSpeed(xElement.GetContentWithTag("speed"));
     }
 
-	private static string GetName(XElement xElement)
-	{
-		return xElement.Element("name").Value;
+    private IEnumerable<Language> GetLanguages(XElement xElement)
+    {
+        return parser.ParseMany(xElement.GetContentWithTag("language"), parser.ParseLanguage);
+    }
+
+    private IEnumerable<AbilityScoreBonus> GetAbilityScoreBonuses(XElement xElement)
+    {
+        return parser.ParseMany(xElement.GetContentWithTag("ability"), parser.ParseAbilityScoreBonus);
+    }
+
+    private IEnumerable<Spell> GetSpells(XElement xElement)
+    {
+        return parser.ParseMany(xElement.GetContentWithTag("spell"), parser.ParseSpell);
+    }
+
+    private IEnumerable<Weapon> GetWeaponProficiencies(XElement xElement)
+    {
+        return parser.ParseMany(xElement.GetContentWithTag("possessionWeapons"), parser.ParseWeapon);
+    }
+
+    private IEnumerable<SkillName> GetSkillProficiencies(XElement xElement)
+    {
+        return parser.ParseManyToGetEnums(xElement.GetContentWithTag("skill"), parser.ParseSkillName);
+    }
+
+    private IEnumerable<Instrument> GetInstrumentProficiencies(XElement xElement)
+    {
+        return parser.ParseMany(xElement.GetContentWithTag("instrument"), parser.ParseInstrument);
+    }
+
+    private IEnumerable<Feat> GetFeats(XElement xElement)
+    {
+        return parser.ParseMany(xElement.GetContentWithTag("feat"), parser.ParseFeat);
     }
 }

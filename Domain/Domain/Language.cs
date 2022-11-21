@@ -2,7 +2,7 @@
 
 namespace Domain;
 
-public class Language : ValueType<Language>
+public class Language : ValueType<Language>, IDndObject
 {
 	public Language(string name)
 	{

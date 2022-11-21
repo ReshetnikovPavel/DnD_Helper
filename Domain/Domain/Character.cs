@@ -2,7 +2,7 @@
 
 namespace Domain;
 
-public class Character : Entity<Guid>
+public class Character : Entity<Guid>, IDndObject
 {
 	public Character(Guid id) : base(id)
 	{

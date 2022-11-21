@@ -2,7 +2,7 @@
 
 namespace Domain;
 
-public class AbilityScoreBonus : ValueType<AbilityScoreBonus>
+public class AbilityScoreBonus : ValueType<AbilityScoreBonus>, IDndObject
 {
 	public AbilityScoreBonus(AbilityName name, int value)
 	{

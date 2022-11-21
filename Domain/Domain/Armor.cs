@@ -1,6 +1,6 @@
 ﻿namespace Domain;
 
-public class Armor
+public class Armor : IDndObject
 {
 	public Armor(string name)
 	{
