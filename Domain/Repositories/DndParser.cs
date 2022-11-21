@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using Infrastructure;
 
 namespace Domain.Repositories;
 
@@ -97,14 +98,14 @@ public class DndCompendiumParser : IDndParser
 		};
 	}
 
-	public (int howMany, IEnumerable<string> entries) ParseChoiceFrom(string choiceOption)
+	public Optional<T> ParseChoiceFrom<T>(string choiceOption, Func<string, T> parse)
 	{
 		var elements = choiceOption.Split(": ");
 		var howMany = int.Parse(elements[0]);
-		var entries = Split(elements[1]);
-		
-		return (howMany, entries);
-	}
+		var entries = ParseManyAnyType(elements[1], parse);
+
+        return new Optional<T>(entries, howMany);
+    }
 
 	public Armor ParseArmor(string armor)
 	{

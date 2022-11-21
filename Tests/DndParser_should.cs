@@ -119,9 +119,9 @@ public class DndParser_should
 	[Test]
 	public void TestParseChoiceFrom()
 	{
-		var (howMany, entries) = parser.ParseChoiceFrom("1: инструменты кузнеца, инструменты пивовара, инструменты каменщинка");
-		howMany.Should().Be(1);
-		entries.Should().BeEquivalentTo("инструменты кузнеца", "инструменты пивовара", "инструменты каменщинка");
+		var optional = parser.ParseChoiceFrom("1: инструменты кузнеца, инструменты пивовара, инструменты каменщинка", parser.ParseInstrument);
+		optional.HowManyToChoose.Should().Be(1);
+		optional.Options.Should().BeEquivalentTo(new []{new Instrument("инструменты кузнеца"), new Instrument("инструменты пивовара"), new Instrument("инструменты каменщинка")});
 	}
 
 	[Test]

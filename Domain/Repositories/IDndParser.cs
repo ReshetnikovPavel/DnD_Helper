@@ -1,4 +1,6 @@
-﻿namespace Domain.Repositories;
+﻿using Infrastructure;
+
+namespace Domain.Repositories;
 
 public interface IDndParser
 {
@@ -11,8 +13,9 @@ public interface IDndParser
 	Spell ParseSpell(string spell);
 	Weapon ParseWeapon(string weapon);
 	SkillName ParseSkillName(string skillName);
-	(int howMany, IEnumerable<string> entries) ParseChoiceFrom(string choiceOption);
-	Armor ParseArmor(string armor);
+    Optional<T> ParseChoiceFrom<T>(string choiceOption, Func<string, T> parse);
+
+    Armor ParseArmor(string armor);
 	Instrument ParseInstrument(string instrument);
 	Feat ParseFeat(string feat);
 

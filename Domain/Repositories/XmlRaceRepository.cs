@@ -6,10 +6,12 @@ namespace Domain.Repositories;
 public class XmlRaceRepository : XmlRepository, IRaceRepository
 {
     private readonly IDndParser parser;
+    private readonly ILanguageRepository languageRepository;
 
-    public XmlRaceRepository(IDndParser parser) : base("Races", "race")
-	{
+    public XmlRaceRepository(IDndParser parser, ILanguageRepository languageRepository) : base("Races", "race")
+    {
         this.parser = parser;
+        this.languageRepository = languageRepository;
     }
 
 	public Race GetRaceByName(string raceName, string subraceName)
@@ -43,6 +45,15 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
             Feats = GetFeats(xElement)
         };
         return race;
+    }
+
+    private RaceOptionals CreateRaceOptionals(XElement xElement)
+    {
+        var optionals = new RaceOptionals()
+        {
+            Languages = new Optional<Language>(languageRepository.GetNames().Select(x => new Language(x)), int.Parse(xElement.GetContentWithTag("LanguageFree"))),
+        };
+        return optionals;
     }
 
     private Size GetSize(XElement xElement)
