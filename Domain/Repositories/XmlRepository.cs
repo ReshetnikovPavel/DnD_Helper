@@ -30,8 +30,7 @@ public abstract class XmlRepository : IRepository
 	public IEnumerable<string> GetNames()
 	{
 		return Compendium
-			       .Elements(ElementName)
-			       .Select(x => x.Element("name")!.Value)
-		       ?? throw new NullReferenceException($"Cannot get names from xml file {Document.BaseUri}");
+            .Elements(ElementName)
+            .Select(x => x.Element("name")!.Value);
 	}
 }
