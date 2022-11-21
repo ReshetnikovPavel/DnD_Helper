@@ -9,6 +9,6 @@ public partial class MenuPage : ContentPage
 
     private async void StartButton_Clicked(object sender, EventArgs e)
     {
-		await Navigation.PushAsync(new CharacterCreationPage());
+		await Navigation.PushAsync(new AppShell());
     }
 }

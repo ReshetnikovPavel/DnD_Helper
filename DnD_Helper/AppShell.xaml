@@ -5,11 +5,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:DnD_Helper"
     Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="True"
     BackgroundColor="#d8d7e5">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MenuPage}"
-        Route="MenuPage" />
+        ContentTemplate="{DataTemplate local:ClassSelectionPage}"
+        Route="ClassSelectionPage"/>
+
+    <ShellContent
+        ContentTemplate="{DataTemplate local:RaceSelectionPage}"
+        Route="RaceSelectionPage"/>
 
 </Shell>
