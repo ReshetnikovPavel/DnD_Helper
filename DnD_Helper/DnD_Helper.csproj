@@ -53,12 +53,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="MenuShell.xaml.cs">
+	    <DependentUpon>MenuShell.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="RaceSelectionPage.xaml.cs">
 	    <DependentUpon>RaceSelectionPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="MenuShell.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="RaceSelectionPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
