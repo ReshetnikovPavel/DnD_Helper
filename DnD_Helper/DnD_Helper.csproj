@@ -49,8 +49,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Domain\Domain.csproj" />
-	  <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+	  <None Remove="Resources\Images\start_button.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="CharacterCreationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MenuPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
