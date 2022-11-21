@@ -5,15 +5,20 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:DnD_Helper"
     Shell.FlyoutBehavior="Flyout"
-    Shell.NavBarIsVisible="True"
     BackgroundColor="#d8d7e5">
 
-    <ShellContent Title="Класс"
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Класс"
         ContentTemplate="{DataTemplate local:ClassSelectionPage}"
         Route="ClassSelectionPage"/>
 
-    <ShellContent Title="Раса"
+        <ShellContent Title="Раса"
         ContentTemplate="{DataTemplate local:RaceSelectionPage}"
         Route="RaceSelectionPage"/>
+    </FlyoutItem>
+
+    <MenuItem Text="Назад в меню"
+              Clicked="BackToMenu_Clicked">
+    </MenuItem>
 
 </Shell>

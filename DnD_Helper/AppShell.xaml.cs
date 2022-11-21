@@ -6,4 +6,9 @@ public partial class AppShell : Shell
 	{
 		InitializeComponent();
 	}
+
+    private void BackToMenu_Clicked(object sender, EventArgs e)
+    {
+		App.Current.MainPage = new MenuShell();
+    }
 }
