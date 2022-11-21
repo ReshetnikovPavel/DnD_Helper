@@ -6,15 +6,15 @@
     xmlns:local="clr-namespace:DnD_Helper"
     Shell.FlyoutBehavior="Flyout"
     Shell.TabBarIsVisible="False"
-    BackgroundColor="#d8d7e5"
+    BackgroundColor="{StaticResource ShellBackGroundColor}"
     ForegroundColor="#5c79a1"
     TitleColor="#5c79a1"
-    FlyoutBackgroundColor="#5c79a1">
+    FlyoutBackgroundColor="{StaticResource FlyoutBackgroundColor}">
 
     <Shell.ItemTemplate>
         <DataTemplate>
             <Grid Margin="20, 10">
-                <Label Text="{Binding Title}" FontAttributes="Bold" TextColor="White"></Label>
+                <Label Text="{Binding Title}" FontAttributes="Bold" TextColor="{StaticResource FlyoutTextColor}"></Label>
             </Grid>
         </DataTemplate>
     </Shell.ItemTemplate>
@@ -22,7 +22,7 @@
     <Shell.MenuItemTemplate>
         <DataTemplate>
             <Grid Margin="20, 10">
-                <Label Text="{Binding Title}" FontAttributes="Bold" TextColor="White"></Label>
+                <Label Text="{Binding Title}" FontAttributes="Bold" TextColor="{StaticResource FlyoutTextColor}"></Label>
             </Grid>
         </DataTemplate>
     </Shell.MenuItemTemplate>
