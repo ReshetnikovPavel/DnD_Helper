@@ -14,13 +14,9 @@ public class Dice : ValueType<Dice>
         Sides = sides;
     }
 
-    public int[] GetRandomValues()
+    public IEnumerable<int> GetRandomValues()
     {
-        var casts = new List<int>();
         var random = new Random();
-        for (int i = 0; i < Quantity; i++)
-            casts.Add(random.Next(1, (int)Sides + 1));
-
-        return casts.ToArray();
+        return Enumerable.Range(1, Quantity).Select(_ => random.Next(1, (int)Sides + 1));
     }
 }

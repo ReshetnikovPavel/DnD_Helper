@@ -37,28 +37,5 @@ public class DistributorAbilityScore
     private int GetPriceToSell(int value)
         => value > 13 ? 2 : 1;
 
-    public int GetTotalPoints() => TotalPoints;
-
     public void ResetTotalPoints() => TotalPoints = 27;
-
-    public int[] GetRandomAbilityScoresValues()
-    {
-        var values = new List<int>();
-        for (int i = 0; i < 6; i++)
-            values.Add(GetRandomValueAbility());
-
-        return values.ToArray();
-    }
-
-    private int GetRandomValueAbility()
-    {
-        var dice = new Dice(4, DiceName.D6);
-        var values = dice.GetRandomValues().ToList();
-        values.Remove(values.Min());
-        var sum = 0;
-        for (var i = 0; i < values.Count; i++)
-            sum += values[i];
-
-        return sum;
-    }
 }

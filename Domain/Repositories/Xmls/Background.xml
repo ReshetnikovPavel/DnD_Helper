@@ -48,4 +48,165 @@
             <text></text>
         </description>
     </background>
+
+	<background>
+		<name>Гильдейский ремесленник</name>
+		<proficiency>Проницательность, Убеждение</proficiency>
+		<possessionInstrumentFree>1: ремесленные</possessionInstrumentFree>
+		<languageFree>1</languageFree>
+		<money>15</money>
+		<InstrumentFree>1: ремесленные инструменты</InstrumentFree>
+		<equipment>рекомендательное письмо из гильдии, комплект дорожной одежды</equipment>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
+
+	<background>
+		<name>Моряк</name>
+		<proficiency>Атлетика, Восприятие</proficiency>
+		<possessionInstrument>инструменты навигатора, транспорт (водный)</possessionInstrument>
+		<money>10</money>
+		<equipment>кофель-нагель (дубинка), 50 футов шёлковой верёвки, талисман, комплект обычной одежды</equipment>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
+
+	<background>
+		<name>Мудрец</name>
+		<proficiency>История, Магия</proficiency>
+		<possessionInstrumentFree>1: игровой</possessionInstrumentFree>
+		<languageFree>2</languageFree>
+		<money>10</money>
+		<equipment>бутылочка чернил, писчее перо, небольшой нож, письмо от мёртвого коллеги с вопросом, комплект обычной одежды</equipment>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
+
+	<background>
+		<name>Народный герой</name>
+		<proficiency>Выживание, Уход за животными</proficiency>
+		<possessionInstrumentFree>1: ремесленные</possessionInstrumentFree>
+		<Instrument
+		<languageFree>1</languageFree>
+		<money>25</money>
+		<equipment>комплект отличной одежды, кольцо-печатка, свиток с генеалогическим древом</equipment>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
+
+	<background>
+		<name>Благородный</name>
+		<proficiency>История, Убеждение</proficiency>
+		<possessionInstrumentFree>1: игровой</possessionInstrumentFree>
+		<languageFree>1</languageFree>
+		<money>25</money>
+		<equipment>комплект отличной одежды, кольцо-печатка, свиток с генеалогическим древом</equipment>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
+
+	<background>
+		<name>Благородный</name>
+		<proficiency>История, Убеждение</proficiency>
+		<possessionInstrumentFree>1: игровой</possessionInstrumentFree>
+		<languageFree>1</languageFree>
+		<money>25</money>
+		<equipment>комплект отличной одежды, кольцо-печатка, свиток с генеалогическим древом</equipment>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
+
+	<background>
+		<name>Благородный</name>
+		<proficiency>История, Убеждение</proficiency>
+		<possessionInstrumentFree>1: игровой</possessionInstrumentFree>
+		<languageFree>1</languageFree>
+		<money>25</money>
+		<equipment>комплект отличной одежды, кольцо-печатка, свиток с генеалогическим древом</equipment>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
+
+	<background>
+		<name>Благородный</name>
+		<proficiency>История, Убеждение</proficiency>
+		<possessionInstrumentFree>1: игровой</possessionInstrumentFree>
+		<languageFree>1</languageFree>
+		<money>25</money>
+		<equipment>комплект отличной одежды, кольцо-печатка, свиток с генеалогическим древом</equipment>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
+
+	<background>
+		<name>Благородный</name>
+		<proficiency>История, Убеждение</proficiency>
+		<possessionInstrumentFree>1: игровой</possessionInstrumentFree>
+		<languageFree>1</languageFree>
+		<money>25</money>
+		<equipment>комплект отличной одежды, кольцо-печатка, свиток с генеалогическим древом</equipment>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
+
+	<background>
+		<name>Благородный</name>
+		<proficiency>История, Убеждение</proficiency>
+		<possessionInstrumentFree>1: игровой</possessionInstrumentFree>
+		<languageFree>1</languageFree>
+		<money>25</money>
+		<equipment>комплект отличной одежды, кольцо-печатка, свиток с генеалогическим древом</equipment>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
 </compendium>
