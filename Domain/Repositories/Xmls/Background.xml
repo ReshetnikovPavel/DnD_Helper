@@ -101,10 +101,27 @@
 		<name>Народный герой</name>
 		<proficiency>Выживание, Уход за животными</proficiency>
 		<possessionInstrumentFree>1: ремесленные</possessionInstrumentFree>
-		<Instrument
+		<possessionInstrument>транспорт (наземный)</possessionInstrument>
+		<InstrumentFree>1: ремесленные</InstrumentFree>
+		<money>10</money>
+		<equipment>лопата, железный горшок, комплект обычной одежды</equipment>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
+
+	<background>
+		<name>Отшельник</name>
+		<proficiency>Медицина, Религия</proficiency>
+		<possessionInstrument>набор травника</possessionInstrument>
 		<languageFree>1</languageFree>
-		<money>25</money>
-		<equipment>комплект отличной одежды, кольцо-печатка, свиток с генеалогическим древом</equipment>
+		<money>5</money>
+		<equipment>контейнер для свитков, битком набитый вашими молитвами и изысканиями, тёплое одеяло, комплект обычной одежды</equipment>
+		<Instrument>набор травника</Instrument>
 		<description>
 			<text></text>
 			<text></text>
@@ -117,25 +134,9 @@
 	<background>
 		<name>Благородный</name>
 		<proficiency>История, Убеждение</proficiency>
-		<possessionInstrumentFree>1: игровой</possessionInstrumentFree>
+		<possessionInstrumentFree>1: набор травника</possessionInstrumentFree>
 		<languageFree>1</languageFree>
-		<money>25</money>
-		<equipment>комплект отличной одежды, кольцо-печатка, свиток с генеалогическим древом</equipment>
-		<description>
-			<text></text>
-			<text></text>
-			<text></text>
-			<text></text>
-			<text></text>
-		</description>
-	</background>
-
-	<background>
-		<name>Благородный</name>
-		<proficiency>История, Убеждение</proficiency>
-		<possessionInstrumentFree>1: игровой</possessionInstrumentFree>
-		<languageFree>1</languageFree>
-		<money>25</money>
+		<money>5</money>
 		<equipment>комплект отличной одежды, кольцо-печатка, свиток с генеалогическим древом</equipment>
 		<description>
 			<text></text>
