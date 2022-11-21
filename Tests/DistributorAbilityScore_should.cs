@@ -5,6 +5,14 @@ namespace Tests;
 [TestFixture]
 public class DistributorAbilityScore_should
 {
+    private DistributorAbilityScore distributor;
+
+    [SetUp]
+    public void SetUp()
+    {
+        distributor = new DistributorAbilityScore();
+    }
+
     [Test]
     [TestCase(8, 9, 26)]
     [TestCase(13, 14, 25)]
@@ -12,10 +20,10 @@ public class DistributorAbilityScore_should
     public void TestBuyAbilityScoreValue(int value, int answerScore, int answerTotalPoints)
     {
         var score = new AbilityScore(AbilityName.Strength, value);
-        DistributorAbilityScore.BuyAbilityScoreValue(score);
+        distributor.BuyAbilityScoreValue(score);
         score.Value.Should().Be(answerScore);
-        DistributorAbilityScore.GetTotalPoints().Should().Be(answerTotalPoints);
-        DistributorAbilityScore.ResetTotalPoints();
+        distributor.GetTotalPoints().Should().Be(answerTotalPoints);
+        distributor.ResetTotalPoints();
     }
 
     [Test]
@@ -27,10 +35,10 @@ public class DistributorAbilityScore_should
     public void TestSellAbilityScoreValue(int value, int valueTotalPoints, int answerScore, int answerTotalPoints)
     {
         var score = new AbilityScore(AbilityName.Strength, value);
-        DistributorAbilityScore.totalPoints = valueTotalPoints;
-        DistributorAbilityScore.SellAbilityScoreValue(score);
+        distributor.TotalPoints = valueTotalPoints;
+        distributor.SellAbilityScoreValue(score);
         score.Value.Should().Be(answerScore);
-        DistributorAbilityScore.GetTotalPoints().Should().Be(answerTotalPoints);
-        DistributorAbilityScore.ResetTotalPoints();
+        distributor.GetTotalPoints().Should().Be(answerTotalPoints);
+        distributor.ResetTotalPoints();
     }
 }

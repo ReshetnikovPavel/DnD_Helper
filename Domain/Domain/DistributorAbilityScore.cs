@@ -3,47 +3,41 @@ using Infrastructure;
 
 namespace Domain;
 
-public static class DistributorAbilityScore
+public class DistributorAbilityScore
 {
-    public static int totalPoints = 27;
-    public static void BuyAbilityScoreValue(AbilityScore abilityScore)
+    public int TotalPoints { get; set; } = 27;
+
+    public void BuyAbilityScoreValue(AbilityScore abilityScore)
     {
-        if (totalPoints > 0 && abilityScore.Value < 15)
+        if (CanBuy(abilityScore))
         {
-            if (abilityScore.Value > 12)
-            {
-                if (totalPoints > 1)
-                {
-                    abilityScore.IncreaseValue();
-                    totalPoints -= 2;
-                }
-            }
-            else
-            {
-                abilityScore.IncreaseValue();
-                totalPoints--;
-            }
+            TotalPoints -= GetPriceToBuy(abilityScore.Value);
+            abilityScore.IncreaseValue();
+        }
+    }
+    
+    private int GetPriceToBuy(int value)
+        => value > 12 ? 2 : 1;
+
+    private bool CanBuy(AbilityScore abilityScore)
+        => TotalPoints > 0 && abilityScore.Value < 15 && GetPriceToBuy(abilityScore.Value) <= TotalPoints;
+
+    public void SellAbilityScoreValue(AbilityScore abilityScore)
+    {
+        if (CanSell(abilityScore))
+        {
+            TotalPoints += GetPriceToSell(abilityScore.Value);
+            abilityScore.DecreaseValue();
         }
     }
 
-    public static void SellAbilityScoreValue(AbilityScore abilityScore)
-    {
-        if (abilityScore.Value > 8 && totalPoints < 27)
-        {
-            if (abilityScore.Value > 13)
-            {
-                abilityScore.DecreaseValue();
-                totalPoints += 2;
-            }
-            else
-            {
-                abilityScore.DecreaseValue();
-                totalPoints++;
-            }
-        }
-    }
+    private bool CanSell(AbilityScore abilityScore)
+        => abilityScore.Value > 8 && TotalPoints < 27;
 
-    public static int GetTotalPoints() => totalPoints;
+    private int GetPriceToSell(int value)
+        => value > 13 ? 2 : 1;
 
-    public static void ResetTotalPoints() => totalPoints = 27;
+    public int GetTotalPoints() => TotalPoints;
+
+    public void ResetTotalPoints() => TotalPoints = 27;
 }
