@@ -2,13 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DnD_Helper.ClassSelectionPage"
-             Title="Выбор класса"
+             Title="Выберите класс"
              BackgroundColor="{StaticResource PageBackground}">
     <VerticalStackLayout>
-        <Label FontAttributes="Bold"
-            TextColor="{StaticResource PageText}"
-            Text="Однажды здесь будет выбор класса..."
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        
     </VerticalStackLayout>
 </ContentPage>

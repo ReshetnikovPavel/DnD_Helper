@@ -28,13 +28,25 @@
     </Shell.MenuItemTemplate>
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Раса"
+        ContentTemplate="{DataTemplate local:RaceSelectionPage}"
+        Route="race"/>
+
         <ShellContent Title="Класс"
         ContentTemplate="{DataTemplate local:ClassSelectionPage}"
         Route="class"/>
 
-        <ShellContent Title="Раса"
-        ContentTemplate="{DataTemplate local:RaceSelectionPage}"
-        Route="race"/>
+        <ShellContent Title="Характеристики"
+        ContentTemplate="{DataTemplate local:AbilityScoresSelectionPage}"
+        Route="ability_score"/>
+
+        <ShellContent Title="Личность и предыстория"
+        ContentTemplate="{DataTemplate local:BackgroundSelectionPage}"
+        Route="background"/>
+
+        <ShellContent Title="Снаряжение"
+        ContentTemplate="{DataTemplate local:EquipmentSelectionPage}"
+        Route="equipment"/>
     </FlyoutItem>
 
     <MenuItem Text="Назад в меню"

@@ -62,6 +62,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="AbilityScoresSelectionPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="BackgroundSelectionPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="EquipmentSelectionPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="MenuShell.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
