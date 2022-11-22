@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DnD_Helper.RaceSelectionPage"
              Title="Выбор расы"
-             BackgroundColor="#d8d7e5">
+             BackgroundColor="{StaticResource PageBackground}">
     <VerticalStackLayout>
         <Label FontAttributes="Bold"
             TextColor="#5c79a1"
