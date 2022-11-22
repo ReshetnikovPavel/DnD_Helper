@@ -6,7 +6,7 @@
              BackgroundColor="{StaticResource PageBackground}">
     <VerticalStackLayout>
         <Label FontAttributes="Bold"
-            TextColor="#5c79a1"
+            TextColor="{StaticResource PageText}"
             Text="Однажды здесь будет выбор расы..."
             VerticalOptions="Center" 
             HorizontalOptions="Center" />

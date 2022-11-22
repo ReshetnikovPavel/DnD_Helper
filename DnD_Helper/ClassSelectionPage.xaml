@@ -5,7 +5,8 @@
              Title="Выбор класса"
              BackgroundColor="{StaticResource PageBackground}">
     <VerticalStackLayout>
-        <Label 
+        <Label FontAttributes="Bold"
+            TextColor="{StaticResource PageText}"
             Text="Однажды здесь будет выбор класса..."
             VerticalOptions="Center" 
             HorizontalOptions="Center" />

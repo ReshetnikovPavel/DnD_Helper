@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:DnD_Helper"
     Shell.FlyoutBehavior="Disabled"
     Shell.NavBarIsVisible="True"
-    BackgroundColor="#d8d7e5">
+    BackgroundColor="{StaticResource ShellBackground}">
 
     <ShellContent
         ContentTemplate="{DataTemplate local:MenuPage}"

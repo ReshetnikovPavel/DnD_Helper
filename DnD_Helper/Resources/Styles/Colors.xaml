@@ -5,6 +5,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <Color x:Key="PageBackground">#d8d7e5</Color>
+    <Color x:Key="PageText">#5c79a1</Color>
+    <Color x:Key="ShellBackground">#d8d7e5</Color>
+    <Color x:Key="ShellText">#5c79a1</Color>
+    <Color x:Key="FlyoutBackground">#5c79a1</Color>
+    <Color x:Key="FlyoutText">White</Color>
     
     <Color x:Key="Primary">#512BD4</Color>
     <Color x:Key="Secondary">#DFD8F7</Color>
