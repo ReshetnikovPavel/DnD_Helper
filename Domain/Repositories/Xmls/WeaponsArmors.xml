@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<compendium version="5">
+    <armors>
+        <lightArmors>
+            <armor>
+                <name>Стеганый</name>
+                <price>5 зм</price>
+                <AC>11 + DEX</AC>
+                <strength>-</strength>
+                <stealth>Да</stealth>
+                <weight>8</weight>
+            </armor>
+
+            <armor>
+                <name>Кожаный</name>
+                <price>10 зм</price>
+                <AC>11 + DEX</AC>
+                <strength>-</strength>
+                <stealth>Нет</stealth>
+                <weight>10</weight>
+            </armor>
+
+            <armor>
+                <name>Проклепанная кожа</name>
+                <price>45 зм</price>
+                <AC>12 + DEX</AC>
+                <strength>-</strength>
+                <stealth>Нет</stealth>
+                <weight>13</weight>
+            </armor>
+        </lightArmors>
+        <mediumArmors>
+            <armor>
+                <name>Шкурный</name>
+                <price>10 зм</price>
+                <AC>12 + DEX (2)</AC>
+                <strength>-</strength>
+                <stealth>Нет</stealth>
+                <weight>12</weight>
+            </armor>
+
+            <armor>
+                <name>Кольчужная рубаха</name>
+                <price>50 зм</price>
+                <AC>13 + DEX (2)</AC>
+                <strength>-</strength>
+                <stealth>Нет</stealth>
+                <weight>20</weight>
+            </armor>
+
+            <armor>
+                <name>Чешуйчатый</name>
+                <price>50 зм</price>
+                <AC>14 + DEX (2)</AC>
+                <strength>-</strength>
+                <stealth>Да</stealth>
+                <weight>45</weight>
+            </armor>
+
+            <armor>
+                <name>Кираса</name>
+                <price>400 зм</price>
+                <AC>14 + DEX (2)</AC>
+                <strength>-</strength>
+                <stealth>Нет</stealth>
+                <weight>20</weight>
+            </armor>
+
+            <armor>
+                <name>Полулаты</name>
+                <price>750 зм</price>
+                <AC>15 + DEX (2)</AC>
+                <strength>-</strength>
+                <stealth>Да</stealth>
+                <weight>40</weight>
+            </armor>
+        </mediumArmors>
+        <heavyArmors>
+            <armor>
+                <name>Колечный</name>
+                <price>50 зм</price>
+                <AC>14</AC>
+                <strength>-</strength>
+                <stealth>Да</stealth>
+                <weight>40</weight>
+            </armor>
+
+            <armor>
+                <name>Кольчуга</name>
+                <price>75 зм</price>
+                <AC>16</AC>
+                <strength>13</strength>
+                <stealth>Да</stealth>
+                <weight>55</weight>
+            </armor>
+
+            <armor>
+                <name>Наборный</name>
+                <price>200 зм</price>
+                <AC>17</AC>
+                <strength>15</strength>
+                <stealth>Да</stealth>
+                <weight>60</weight>
+            </armor>
+
+            <armor>
+                <name>Латы</name>
+                <price>1500 зм</price>
+                <AC>18</AC>
+                <strength>15</strength>
+                <stealth>Да</stealth>
+                <weight>65</weight>
+            </armor>
+        </heavyArmors>
+        <shields>
+            <shield>
+                <name>Щит</name>
+                <price>10 зм</price>
+                <AC>2</AC>
+                <strength>-</strength>
+                <stealth>Нет</stealth>
+                <weight>6</weight>
+            </shield>
+        </shields>
+    </armors>
+
+    <weapons>
+        <simpleWeapons>
+            <meleeWeapons>
+                <weapon>
+                    <name>Боевой посох</name>
+                    <price>2 см</price>
+                    <damage>1к6</damage>
+                    <damageType>дробящий</damageType>
+                    <weight>4</weight>
+                    <properties>универсальное (1к8)</properties>
+                </weapon>
+
+                <weapon>
+                    <name>Булава</name>
+                    <price>5 зм</price>
+                    <damage>1к6</damage>
+                    <damageType>дробящий</damageType>
+                    <weight>4</weight>
+                    <properties>-</properties>
+                </weapon>
+
+                <weapon>
+                    <name>Дубинка</name>
+                    <price>1 см</price>
+                    <damage>1к4</damage>
+                    <damageType>дробящий</damageType>
+                    <weight>2</weight>
+                    <properties>легкое</properties>
+                </weapon>
+
+                <weapon>
+                    <name>Кинжал</name>
+                    <price>2 зм</price>
+                    <damage>1к4</damage>
+                    <damageType>колющий</damageType>
+                    <weight>1</weight>
+                    <properties>легкое, метательное, фехтовальное</properties>
+                    <range>20/60</range>
+                </weapon>
+
+                <weapon>
+                    <name>Копье</name>
+                    <price>1 зм</price>
+                    <damage>1к6</damage>
+                    <damageType>колющий</damageType>
+                    <weight>3</weight>
+                    <properties>метательное, универсальное (1к8)</properties>
+                    <range>20/60</range>
+                </weapon>
+
+                <weapon>
+                    <name>Легкий молот</name>
+                    <price>2 зм</price>
+                    <damage>1к4</damage>
+                    <damageType>дробящий</damageType>
+                    <weight>2</weight>
+                    <properties>легкое, метательное</properties>
+                    <range>20/60</range>
+                </weapon>
+
+                <weapon>
+                    <name>Метательное копье</name>
+                    <price>5 см</price>
+                    <damage>1к6</damage>
+                    <damageType>колющий</damageType>
+                    <weight>2</weight>
+                    <properties>метательное</properties>
+                    <range>30/120</range>
+                </weapon>
+
+                <weapon>
+                    <name>Палица</name>
+                    <price>2 зм</price>
+                    <damage>1к8</damage>
+                    <damageType>дробящий</damageType>
+                    <weight>10</weight>
+                    <properties>двуручное</properties>
+                </weapon>
+
+                <weapon>
+                    <name>Ручной топор</name>
+                    <price>5 зм</price>
+                    <damage>1к6</damage>
+                    <damageType>рубящий</damageType>
+                    <weight>2</weight>
+                    <properties>легкое, метательное</properties>
+                    <range>20/60</range>
+                </weapon>
+
+                <weapon>
+                    <name>Серп</name>
+                    <price>1 зм</price>
+                    <damage>1к4</damage>
+                    <damageType>рубящий</damageType>
+                    <weight>2</weight>
+                    <properties>легкое</properties>
+                </weapon>
+            </meleeWeapons>
+
+            <rangedWeapons>
+                <weapon>
+                    <name>Легкий арбалет</name>
+                    <price>25 зм</price>
+                    <damage>1к8</damage>
+                    <damageType>колющий</damageType>
+                    <weight>5</weight>
+                    <properties>боеприпас, двуручное, перезарядка</properties>
+                    <range>80/320</range>
+                </weapon>
+
+                <weapon>
+                    <name>Дротик</name>
+                    <price>5 мм</price>
+                    <damage>1к4</damage>
+                    <damageType>колющий</damageType>
+                    <weight>0,25</weight>
+                    <properties>метательное, фехтовальное</properties>
+                    <range>20/60</range>
+                </weapon>
+
+                <weapon>
+                    <name>Короткий лук</name>
+                    <price>25 зм</price>
+                    <damage>1к6</damage>
+                    <damageType>колющий</damageType>
+                    <weight>2</weight>
+                    <properties>боеприпас, двуручное</properties>
+                    <range>80/320</range>
+                </weapon>
+
+                <weapon>
+                    <name>Праща</name>
+                    <price>1 см</price>
+                    <damage>1к4</damage>
+                    <damageType>дробящий</damageType>
+                    <weight>-</weight>
+                    <properties>боеприпас</properties>
+                    <range>30/120</range>
+                </weapon>
+            </rangedWeapons>
+        </simpleWeapons>
+
+        <martialWeapons>
+            <meleeWeapons>
+                <weapon>
+                    <name>Алебарда</name>
+                    <price>20 зм</price>
+                    <damage>1к10</damage>
+                    <damageType>рубящий</damageType>
+                    <weight>6</weight>
+                    <properties>двуручное, досягаемость, тяжелое</properties>
+                </weapon>
+
+                <weapon>
+                    <name>Боевая кирка</name>
+                    <price>5 зм</price>
+                    <damage>1к8</damage>
+                    <damageType>колющий</damageType>
+                    <weight>2</weight>
+                    <properties>-</properties>
+                </weapon>
+
+                <weapon>
+                    <name>Боевой молот</name>
+                    <price>15 зм</price>
+                    <damage>1к8</damage>
+                    <damageType>дробящий</damageType>
+                    <weight>2</weight>
+                    <properties>универсальное (1к10)</properties>
+                </weapon>
+
+                <weapon>
+                    <name>Боевой топор</name>
+                    <price>10 зм</price>
+                    <damage>1к8</damage>
+                    <damageType>рубящий</damageType>
+                    <weight>4</weight>
+                    <properties>универсальное (1к10)</properties>
+                </weapon>
+
+                <weapon>
+                    <name>Глефа</name>
+                    <price>20 зм</price>
+                    <damage>1к10</damage>
+                    <damageType>рубящий</damageType>
+                    <weight>6</weight>
+                    <properties>двуручное, досягаемость, тяжелое</properties>
+                </weapon>
+
+                <weapon>
+                    <name>Двуручный меч</name>
+                    <price>50 зм</price>
+                    <damage>2к6</damage>
+                    <damageType>рубящий</damageType>
+                    <weight>6</weight>
+                    <properties>двуручное, тяжелое</properties>
+                </weapon>
+
+                <weapon>
+                    <name>Длинное копье</name>
+                    <price>10 зм</price>
+                    <damage>1к12</damage>
+                    <damageType>колющий</damageType>
+                    <weight>6</weight>
+                    <properties>досягаемость, особое</properties>
+                </weapon>
+
+                <weapon>
+                    <name>Длинный меч</name>
+                    <price>15 зм</price>
+                    <damage>1к8</damage>
+                    <damageType>рубящий</damageType>
+                    <weight>3</weight>
+                    <properties>универсальное (1к10)</properties>
+                </weapon>
+
+                <weapon>
+                    <name>Кнут</name>
+                    <price>2 зм</price>
+                    <damage>1к4</damage>
+                    <damageType>рубящий</damageType>
+                    <weight>3</weight>
+                    <properties>досягаемость, фехтовальное</properties>
+                </weapon>
+
+                <weapon>
+                    <name>Короткий меч</name>
+                    <price>10 зм</price>
+                    <damage>1к6</damage>
+                    <damageType>колющий</damageType>
+                    <weight>2</weight>
+                    <properties>легкое, фехтовальное</properties>
+                </weapon>
+
+                <weapon>
+                    <name>Молот</name>
+                    <price>10 зм</price>
+                    <damage>2к6</damage>
+                    <damageType>дробящий</damageType>
+                    <weight>10</weight>
+                    <properties>двуручное, тяжелое</properties>
+                </weapon>
+
+                <weapon>
+                    <name>Моргенштерн</name>
+                    <price>15 зм</price>
+                    <damage>1к8</damage>
+                    <damageType>колющий</damageType>
+                    <weight>4</weight>
+                    <properties>-</properties>
+                </weapon>
+
+                <weapon>
+                    <name>Пика</name>
+                    <price>5 зм</price>
+                    <damage>1к10</damage>
+                    <damageType>колющий</damageType>
+                    <weight>18</weight>
+                    <properties>двуручное, тяжелое, досягаемость</properties>
+                </weapon>
+
+                <weapon>
+                    <name>Рапира</name>
+                    <price>25 зм</price>
+                    <damage>1к8</damage>
+                    <damageType>колющий</damageType>
+                    <weight>2</weight>
+                    <properties>фехтовальное</properties>
+                </weapon>
+
+                <weapon>
+                    <name>Секира</name>
+                    <price>30 зм</price>
+                    <damage>1к12</damage>
+                    <damageType>рубящий</damageType>
+                    <weight>7</weight>
+                    <properties>двуручное, тяжелое</properties>
+                </weapon>
+
+                <weapon>
+                    <name>Скимитар</name>
+                    <price>25 зм</price>
+                    <damage>1к6</damage>
+                    <damageType>рубящий</damageType>
+                    <weight>3</weight>
+                    <properties>легкое, фехтовальное</properties>
+                </weapon>
+
+                <weapon>
+                    <name>Трезубец</name>
+                    <price>5 зм</price>
+                    <damage>1к6</damage>
+                    <damageType>колющий</damageType>
+                    <weight>4</weight>
+                    <properties>метательное, универсальное (1к8)</properties>
+                    <range>20/60</range>
+                </weapon>
+
+                <weapon>
+                    <name>Цеп</name>
+                    <price>10 зм</price>
+                    <damage>1к8</damage>
+                    <damageType>дробящий</damageType>
+                    <weight>2</weight>
+                    <properties>-</properties>
+                </weapon>
+            </meleeWeapons>
+
+            <rangedWeapons>
+                <weapon>
+                    <name>Ручной арбалет</name>
+                    <price>75 зм</price>
+                    <damage>1к6</damage>
+                    <damageType>колющий</damageType>
+                    <weight>3</weight>
+                    <properties>боеприпас, легкое, перезарядка</properties>
+                    <range>30/120</range>
+                </weapon>
+
+                <weapon>
+                    <name>Тяжелый арбалет</name>
+                    <price>50 зм</price>
+                    <damage>1к10</damage>
+                    <damageType>колющий</damageType>
+                    <weight>18</weight>
+                    <properties>боеприпас, двуручное, перезарядка, тяжелое</properties>
+                    <range>100/400</range>
+                </weapon>
+
+                <weapon>
+                    <name>Длинный лук</name>
+                    <price>50 зм</price>
+                    <damage>1к8</damage>
+                    <damageType>колющий</damageType>
+                    <weight>2</weight>
+                    <properties>боеприпас, двуручное, тяжелое</properties>
+                    <range>150/600</range>
+                </weapon>
+
+                <weapon>
+                    <name>Духовая трубка</name>
+                    <price>10 зм</price>
+                    <damage>1</damage>
+                    <damageType>колющий</damageType>
+                    <weight>1</weight>
+                    <properties>боеприпас, перезарядка</properties>
+                    <range>25/100</range>
+                </weapon>
+
+                <weapon>
+                    <name>Сеть</name>
+                    <price>1 зм</price>
+                    <damage>-</damage>
+                    <damageType>-</damageType>
+                    <weight>3</weight>
+                    <properties>метательное, особое</properties>
+                    <range>5/15</range>
+                </weapon>
+            </rangedWeapons>
+        </martialWeapons>
+    </weapons>
+</compendium>
