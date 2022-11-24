@@ -370,6 +370,132 @@
     </spell>
 
     <spell>
+        <name>Доспехи мага</name>
+        <level>1</level>
+        <school>Ограждение</school>
+        <time>1 действие</time>
+        <components>ВСМ</components>
+        <classes>Волшебник, Чародей</classes>
+    </spell>
+
+    <spell>
+        <name>Дружба с животными</name>
+        <level>1</level>
+        <school>Очарование</school>
+        <time>1 действие</time>
+        <components>ВСМ</components>
+        <classes>Бард, Друид, Следопыт</classes>
+    </spell>
+
+    <spell>
+        <name>Жуткий смех Таши</name>
+        <level>1</level>
+        <school>Очарование</school>
+        <time>1 действие</time>
+        <components>ВСМ</components>
+        <classes>Бард, Волшебник</classes>
+    </spell>
+
+    <spell>
+        <name>Защита от добра и зла</name>
+        <level>1</level>
+        <school>Ограждение</school>
+        <time>1 действие</time>
+        <components>ВСМ</components>
+        <classes>Паладин, Волшебник, Жрец, Колдун</classes>
+    </spell>
+
+    <spell>
+        <name>Лечащее слово</name>
+        <level>1</level>
+        <school>Воплощение</school>
+        <time>1 бонусное действие</time>
+        <components>В</components>
+        <classes>Бард, Жрец, Друид</classes>
+    </spell>
+
+    <spell>
+        <name>Лечение ран</name>
+        <level>1</level>
+        <school>Воплощение</school>
+        <time>1 действие</time>
+        <components>ВС</components>
+        <classes>Бард, Паладин, Жрец, Друид, Следопыт, Изобретатель</classes>
+    </spell>
+
+    <spell>
+        <name>Луч болезни</name>
+        <level>1</level>
+        <school>Некромантия</school>
+        <time>1 действие</time>
+        <components>ВС</components>
+        <classes>Волшебник, Чародей</classes>
+    </spell>
+
+    <spell>
+        <name>Маскировка</name>
+        <level>1</level>
+        <school>Иллюзия</school>
+        <time>1 действие</time>
+        <components>ВС</components>
+        <classes>Бард, Волшебник, Чародей, Изобретатель</classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
         <name></name>
         <level>1</level>
         <school></school>
@@ -441,4 +567,237 @@
         <classes></classes>
     </spell>
 
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name></name>
+        <level>1</level>
+        <school></school>
+        <time></time>
+        <components></components>
+        <classes></classes>
+    </spell>
+
+    <spell>
+        <name>Сотворение или уничтожение воды</name>
+        <level>1</level>
+        <school>Преобразование</school>
+        <time>1 действие</time>
+        <components>ВСМ</components>
+        <classes>Жрец, Друид</classes>
+    </spell>
+
+    <spell>
+        <name>Тензеров парящий диск</name>
+        <level>1</level>
+        <school>Призыв</school>
+        <time>1 действие</time>
+        <components>ВСМ</components>
+        <classes>Волшебник</classes>
+    </spell>
+
+    <spell>
+        <name>Туманное облако</name>
+        <level>1</level>
+        <school>Призыв</school>
+        <time>1 действие</time>
+        <components>ВС</components>
+        <classes>Волшебник, Друид, Следопыт, Чародей</classes>
+    </spell>
+
+    <spell>
+        <name>Убежище</name>
+        <level>1</level>
+        <school>Ограждение</school>
+        <time>1 бонусное действие</time>
+        <components>ВСМ</components>
+        <classes>Жрец, Изобретатель</classes>
+    </spell>
+
+    <spell>
+        <name>Усыпление</name>
+        <level>1</level>
+        <school>Очарование</school>
+        <time>1 действие</time>
+        <components>ВСМ</components>
+        <classes>Бард, Волшебник, Чародей</classes>
+    </spell>
+
+    <spell>
+        <name>Цветной шарик</name>
+        <level>1</level>
+        <school>Воплощение</school>
+        <time>1 действие</time>
+        <components>ВСМ</components>
+        <classes>Волшебник, Чародей</classes>
+    </spell>
+
+    <spell>
+        <name>Чудо-ягоды</name>
+        <level>1</level>
+        <school>Преобразование</school>
+        <time>1 действие</time>
+        <components>ВСМ</components>
+        <classes>Друид, Следопыт</classes>
+    </spell>
+
+    <spell>
+        <name>Щит</name>
+        <level>1</level>
+        <school>Ограждение</school>
+        <time>1 реакция</time>
+        <components>ВС</components>
+        <classes>Волшебник, Чародей</classes>
+    </spell>
+
+    <spell>
+        <name>Щит веры</name>
+        <level>1</level>
+        <school>Ограждение</school>
+        <time>1 бонусное действие</time>
+        <components>ВСМ</components>
+        <classes>Паладин, Жрец</classes>
+    </spell>
 </compendium>
