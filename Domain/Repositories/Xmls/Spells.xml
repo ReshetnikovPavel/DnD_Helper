@@ -559,165 +559,165 @@
     </spell>
 
     <spell>
-        <name></name>
+        <name>Очарование личности</name>
         <level>1</level>
-        <school></school>
-        <time></time>
-        <components></components>
-        <classes></classes>
+        <school>Очарование</school>
+        <time>1 действие</time>
+        <components>ВС</components>
+        <classes>Бард, Волшебник, Друид, Чародей, Колдун</classes>
     </spell>
 
     <spell>
-        <name></name>
+        <name>Очищение пищи и питья</name>
         <level>1</level>
-        <school></school>
-        <time></time>
-        <components></components>
-        <classes></classes>
+        <school>Преобразование</school>
+        <time>1 действие</time>
+        <components>ВС</components>
+        <classes>Паладин, Жрец, Друид, Изобретатель</classes>
     </spell>
 
     <spell>
-        <name></name>
+        <name>Падение перышком</name>
         <level>1</level>
-        <school></school>
-        <time></time>
-        <components></components>
-        <classes></classes>
+        <school>Преобразование</school>
+        <time>1 реакция</time>
+        <components>ВМ</components>
+        <classes>Бард, Волшебник, Чародей, Изобретатель</classes>
     </spell>
 
     <spell>
-        <name></name>
+        <name>Палящая кара</name>
         <level>1</level>
-        <school></school>
-        <time></time>
-        <components></components>
-        <classes></classes>
+        <school>Воплощение</school>
+        <time>1 бонусное действие</time>
+        <components>ВСМ</components>
+        <classes>Паладин</classes>
     </spell>
 
     <spell>
-        <name></name>
+        <name>Поиск фамильяра</name>
         <level>1</level>
-        <school></school>
-        <time></time>
-        <components></components>
-        <classes></classes>
+        <school>Призыв</school>
+        <time>1 час</time>
+        <components>ВСМ</components>
+        <classes>Волшебник</classes>
     </spell>
 
     <spell>
-        <name></name>
+        <name>Понимание языков</name>
         <level>1</level>
-        <school></school>
-        <time></time>
-        <components></components>
-        <classes></classes>
+        <school>Прорицание</school>
+        <time>1 действие</time>
+        <components>ВСМ</components>
+        <classes>Бард, Волшебник, Чародей, Колдун</classes>
     </spell>
 
     <spell>
-        <name></name>
+        <name>Порча</name>
         <level>1</level>
-        <school></school>
-        <time></time>
-        <components></components>
-        <classes></classes>
+        <school>Очарование</school>
+        <time>1 действие</time>
+        <components>ВСМ</components>
+        <classes>Бард, Жрец</classes>
     </spell>
 
     <spell>
-        <name></name>
+        <name>Поспешное отступление</name>
         <level>1</level>
-        <school></school>
-        <time></time>
-        <components></components>
-        <classes></classes>
+        <school>Преобразование</school>
+        <time>1 бонусное действие</time>
+        <components>ВС</components>
+        <classes>Волшебник, Чародей, Колдун, Изобретатель</classes>
     </spell>
 
     <spell>
-        <name></name>
+        <name>Приказ</name>
         <level>1</level>
-        <school></school>
-        <time></time>
-        <components></components>
-        <classes></classes>
+        <school>Очарование</school>
+        <time>1 действие</time>
+        <components>В</components>
+        <classes>Паладин, Жрец</classes>
     </spell>
 
     <spell>
-        <name></name>
+        <name>Прыжок</name>
         <level>1</level>
-        <school></school>
-        <time></time>
-        <components></components>
-        <classes></classes>
+        <school>Преобразование</school>
+        <time>1 действие</time>
+        <components>ВСМ</components>
+        <classes>Волшебник, Друид, Следопыт, Чародей, Изобретатель</classes>
     </spell>
 
     <spell>
-        <name></name>
+        <name>Псевдожизнь</name>
         <level>1</level>
-        <school></school>
-        <time></time>
-        <components></components>
-        <classes></classes>
+        <school>Некромантия</school>
+        <time>1 действие</time>
+        <components>ВСМ</components>
+        <classes>Волшебник, Чародей, Изобретатель</classes>
     </spell>
 
     <spell>
-        <name></name>
+        <name>Разговор с животными</name>
         <level>1</level>
-        <school></school>
-        <time></time>
-        <components></components>
-        <classes></classes>
+        <school>Прорицание</school>
+        <time>1 действие</time>
+        <components>ВС</components>
+        <classes>Бард, Друид, Следопыт</classes>
     </spell>
 
     <spell>
-        <name></name>
+        <name>Руки хадара</name>
         <level>1</level>
-        <school></school>
-        <time></time>
-        <components></components>
-        <classes></classes>
+        <school>Призыв</school>
+        <time>1 действие</time>
+        <components>ВС</components>
+        <classes>Колдун</classes>
     </spell>
 
     <spell>
-        <name></name>
+        <name>Сверкающие брызги</name>
         <level>1</level>
-        <school></school>
-        <time></time>
-        <components></components>
-        <classes></classes>
+        <school>Иллюзия</school>
+        <time>1 действие</time>
+        <components>ВСМ</components>
+        <classes>Волшебник, Чародей</classes>
     </spell>
 
     <spell>
-        <name></name>
+        <name>Сглаз</name>
         <level>1</level>
-        <school></school>
-        <time></time>
-        <components></components>
-        <classes></classes>
+        <school>Очарование</school>
+        <time>1 бонусное действие</time>
+        <components>ВСМ</components>
+        <classes>Колдун</classes>
     </spell>
 
     <spell>
-        <name></name>
+        <name>Сигнал тревоги</name>
         <level>1</level>
-        <school></school>
-        <time></time>
-        <components></components>
-        <classes></classes>
+        <school>Ограждение</school>
+        <time>1 минута</time>
+        <components>ВСМ</components>
+        <classes>Волшебник, Следопыт, Изобретатель</classes>
     </spell>
 
     <spell>
-        <name></name>
+        <name>Скольжение</name>
         <level>1</level>
-        <school></school>
-        <time></time>
-        <components></components>
-        <classes></classes>
+        <school>Призыв</school>
+        <time>1 действие</time>
+        <components>ВСМ</components>
+        <classes>Волшебник, Изобретатель</classes>
     </spell>
 
     <spell>
-        <name></name>
+        <name>Скороход</name>
         <level>1</level>
-        <school></school>
-        <time></time>
-        <components></components>
-        <classes></classes>
+        <school>Преобразование</school>
+        <time>1 действие</time>
+        <components>ВСМ</components>
+        <classes>Бард, Волшебник, Друид, Следопыт, Изобретатель</classes>
     </spell>
 
     <spell>
