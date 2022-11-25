@@ -4,6 +4,7 @@
              x:Class="DnD_Helper.RaceSelectionPage"
              Title="Выберите расу"
              BackgroundColor="{StaticResource PageBackground}">
+
     <VerticalStackLayout>
         
     </VerticalStackLayout>
