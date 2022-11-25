@@ -7,7 +7,6 @@
              Style="{StaticResource ContentPage}">
 
     <VerticalStackLayout>
-        <controls:AbilityScoreTemplate V>
-        </controls:AbilityScoreTemplate>
+        <controls:AbilityScoreTemplate />
     </VerticalStackLayout>
 </ContentPage>

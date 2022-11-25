@@ -150,6 +150,7 @@
     </Style>
 
     <Style TargetType="Label">
+        <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="TextColor" Value="{StaticResource PageText}" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />
         <Setter Property="FontSize" Value="14" />
