@@ -3,8 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DnD_Helper.AbilityScoresSelectionPage"
              Title="Распределите характеристики"
-             BackgroundColor="{StaticResource PageBackground}">
-    <VerticalStackLayout>
+             Style="{StaticResource ContentPage}">
 
+    <ContentPage.Resources>
+        <ControlTemplate x:Key="AbilityScoreTemplate">
+            <HorizontalStackLayout>
+                <Label Text="{TemplateBinding Value}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center">
+                </Label>
+            </HorizontalStackLayout>
+        </ControlTemplate>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout>
+        <ContentView ControlTemplate="{StaticResource AbilityScoreTemplate}">
+        </ContentView>
     </VerticalStackLayout>
 </ContentPage>

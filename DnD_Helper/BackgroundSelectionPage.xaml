@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DnD_Helper.BackgroundSelectionPage"
              Title="Опишите вашего персонажа"
-             BackgroundColor="{StaticResource PageBackground}">
+             Style="{StaticResource ContentPage}">
     <VerticalStackLayout>
         
     </VerticalStackLayout>
