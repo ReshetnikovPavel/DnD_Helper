@@ -8,6 +8,5 @@ public class Class : ValueType<Class>, IDndObject
     public HitDice HitDice { get; set; }
     public IEnumerable<SavingThrow> SavingThrow { get; set; }
     public AbilityName SpellAbility { get; set; }
-
-
+    public IDictionary<int, IEnumerable<ClassFeature>> LevelToFeatures { get; set; }
 }

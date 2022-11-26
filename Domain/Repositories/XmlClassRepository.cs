@@ -2,7 +2,7 @@
 
 public class XmlClassRepository : XmlRepository, IClassRepository
 {
-    public XmlClassRepository() : base("Classes", "")
+    public XmlClassRepository() : base("Classes", "class")
     {
     }
 }
