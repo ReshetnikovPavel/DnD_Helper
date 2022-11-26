@@ -48,4 +48,166 @@
             <text></text>
         </description>
     </background>
+
+	<background>
+		<name>Гильдейский ремесленник</name>
+		<proficiency>Проницательность, Убеждение</proficiency>
+		<possessionInstrumentFree>1: ремесленные</possessionInstrumentFree>
+		<languageFree>1</languageFree>
+		<money>15</money>
+		<InstrumentFree>1: ремесленные инструменты</InstrumentFree>
+		<equipment>рекомендательное письмо из гильдии, комплект дорожной одежды</equipment>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
+
+	<background>
+		<name>Моряк</name>
+		<proficiency>Атлетика, Восприятие</proficiency>
+		<possessionInstrument>инструменты навигатора, транспорт (водный)</possessionInstrument>
+		<money>10</money>
+		<equipment>кофель-нагель (дубинка), 50 футов шёлковой верёвки, талисман, комплект обычной одежды</equipment>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
+
+	<background>
+		<name>Мудрец</name>
+		<proficiency>История, Магия</proficiency>
+		<possessionInstrumentFree>1: игровой</possessionInstrumentFree>
+		<languageFree>2</languageFree>
+		<money>10</money>
+		<equipment>бутылочка чернил, писчее перо, небольшой нож, письмо от мёртвого коллеги с вопросом, комплект обычной одежды</equipment>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
+
+	<background>
+		<name>Народный герой</name>
+		<proficiency>Выживание, Уход за животными</proficiency>
+		<possessionInstrumentFree>1: ремесленные</possessionInstrumentFree>
+		<possessionInstrument>транспорт (наземный)</possessionInstrument>
+		<InstrumentFree>1: ремесленные</InstrumentFree>
+		<money>10</money>
+		<equipment>лопата, железный горшок, комплект обычной одежды</equipment>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
+
+	<background>
+		<name>Отшельник</name>
+		<proficiency>Медицина, Религия</proficiency>
+		<possessionInstrument>набор травника</possessionInstrument>
+		<languageFree>1</languageFree>
+		<money>5</money>
+		<equipment>контейнер для свитков, битком набитый вашими молитвами и изысканиями, тёплое одеяло, комплект обычной одежды</equipment>
+		<Instrument>набор травника</Instrument>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
+
+	<background>
+		<name>Преступник</name>
+		<proficiency>Обман, Скрытность</proficiency>
+		<possessionInstrumentFree>1: игровой</possessionInstrumentFree>
+		<possessionInstrument>воровские</possessionInstrument>
+		<money>15</money>
+		<equipment>ломик, комплект обычной тёмной одежды с капюшоном</equipment>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
+
+	<background>
+		<name>Прислужник</name>
+		<proficiency>Проницательность, Религия</proficiency>
+		<languageFree>2</languageFree>
+		<money>15</money>
+		<equipment>священный символ (подаренный вам в момент принятия священного сана), молитвенник или молитвенный барабан, 5 палочек благовоний, ряса, комплект обычной одежды</equipment>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
+
+	<background>
+		<name>Солдат</name>
+		<proficiency>Атлетика, Запугивание</proficiency>
+		<possessionInstrumentFree>1: игровой</possessionInstrumentFree>
+		<possessionInstrument>транспорт (сухопутный)</possessionInstrument>
+		<money>10</money>
+		<equipment>знак отличия, трофей с убитого врага, набор игровых костей или колода карт, комплект обычной одежды</equipment>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
+
+	<background>
+		<name>Чужеземец</name>
+		<proficiency>Атлетика, Выживание</proficiency>
+		<possessionInstrumentFree>1: музыкальный</possessionInstrumentFree>
+		<languageFree>1</languageFree>
+		<money>10</money>
+		<equipment>посох, капкан, трофей с убитого животного, комплект дорожной одежды</equipment>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
+
+	<background>
+		<name>Шарлатан</name>
+		<proficiency>Ловкость рук, Обман</proficiency>
+		<possessionInstrumentFree>1: игровой</possessionInstrumentFree>
+		<posessionInstrument>набор для грима, набор для фальсификации</posessionInstrument>
+		<money>15</money>
+		<Instrument>набор для грима</Instrument>
+		<equipment>комплект отличной одежды, приспособление для жульничества</equipment>
+		<description>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</description>
+	</background>
 </compendium>
