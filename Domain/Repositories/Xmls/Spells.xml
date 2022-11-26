@@ -800,4 +800,13 @@
         <components>ВСМ</components>
         <classes>Паладин, Жрец</classes>
     </spell>
+
+    <spell>
+        <name>Тьма</name>
+        <level>2</level>
+        <school>Воплощение</school>
+        <time>1 действие</time>
+        <components>ВМ</components>
+        <classes>Волшебник, Чародей, Колдун</classes>
+    </spell>
 </compendium>
