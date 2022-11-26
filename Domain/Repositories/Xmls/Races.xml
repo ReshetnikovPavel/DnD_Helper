@@ -467,7 +467,7 @@
 		<size>M</size>
 		<speed>30</speed>
 		<ability>Cha 2, Int 1</ability>
-		<spell>1: Чудотворство, 3: Адское возмездие,5: Тьма</spell>
+		<spell>1: Чудотворство, 3: Адское возмездие, 5: Тьма</spell>
 		<language>Общий, Инфернальный</language>
 		<trait>
 			<name>Тёмное зрение</name>
