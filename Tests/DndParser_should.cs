@@ -111,15 +111,15 @@ public class DndParser_should
 	public void ParseSpell()
 	{
 		var entry = "1: Пляшущие огоньки";
-		var spell = parser.ParseSpell(entry);
-		spell.Name.Should().Be("Пляшущие огоньки");
-		spell.Level.Should().Be(1);
+		var (level, spell) = parser.ParseSpell(entry);
+		spell.Should().Be("Пляшущие огоньки");
+		level.Should().Be(1);
 	}
 	
 	[Test]
 	public void TestParseChoiceFrom()
 	{
-		var optional = parser.ParseChoiceFrom("1: инструменты кузнеца, инструменты пивовара, инструменты каменщинка", parser.ParseInstrument);
+		var optional = parser.ParseChooseMany("1: инструменты кузнеца, инструменты пивовара, инструменты каменщинка", parser.ParseInstrument);
 		optional.HowManyToChoose.Should().Be(1);
 		optional.Options.Should().BeEquivalentTo(new []{new Instrument("инструменты кузнеца"), new Instrument("инструменты пивовара"), new Instrument("инструменты каменщинка")});
 	}
