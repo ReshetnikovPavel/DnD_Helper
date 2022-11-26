@@ -30,7 +30,7 @@
     <spell>
         <name>Дубинка</name>
         <level>0</level>
-        <school>преобразование</school>
+        <school>Преобразование</school>
         <time>1 бонусное действие</time>
         <components>ВСМ</components>
         <classes>Друид</classes>
