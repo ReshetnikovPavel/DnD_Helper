@@ -7,12 +7,9 @@
       ColumnDefinitions="*"
       ColumnSpacing="-60">
 
-    <Grid Grid.Column="1">
-        <Image Source="{Binding CounterSource}" />
-        <Label Text="{Binding ValueDisplay}"
+    <Label Text="{Binding ValueDisplay}"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand"
                    FontSize="56"/>
-    </Grid>
 
 </Grid>

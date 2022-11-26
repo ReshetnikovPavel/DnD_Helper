@@ -9,8 +9,7 @@
              Style="{StaticResource ContentPage}">
 
     <Grid RowDefinitions="*">
-        <controls:AbilityScoreControl AbilityScore="{Binding Intelligence}" 
-                                      CounterSource="intelligence_counter.png"/>
+        <controls:AbilityScoreControl ValueDisplay="Hello darkness my old friend" />
     </Grid>
     
 </ContentPage>
