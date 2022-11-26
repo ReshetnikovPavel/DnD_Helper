@@ -5,7 +5,11 @@
         <proficiency>Акробатика, Выступление</proficiency>
         <possessionInstrument>Набор для грима</possessionInstrument>
         <possessionInstrumentFree>1: музыкальный</possessionInstrumentFree>
-        <instrumentFree>1: музыкальный</instrumentFree>
+        <equipmentFree>
+			<option>
+				<instrument>музыкальный</instrument>
+			</option>
+		</equipmentFree>
         <money>15</money>
         <equipment>подарок от поклонницы, костюм</equipment>
         <description>
@@ -55,7 +59,11 @@
 		<possessionInstrumentFree>1: ремесленные</possessionInstrumentFree>
 		<languageFree>1</languageFree>
 		<money>15</money>
-		<InstrumentFree>1: ремесленные инструменты</InstrumentFree>
+		<equipmentFree>
+			<option>
+				<instrument>ремесленные</instrument>
+			</option>
+		</equipmentFree>
 		<equipment>рекомендательное письмо из гильдии, комплект дорожной одежды</equipment>
 		<description>
 			<text></text>
@@ -102,7 +110,11 @@
 		<proficiency>Выживание, Уход за животными</proficiency>
 		<possessionInstrumentFree>1: ремесленные</possessionInstrumentFree>
 		<possessionInstrument>транспорт (наземный)</possessionInstrument>
-		<InstrumentFree>1: ремесленные</InstrumentFree>
+		<equipmentFree>
+			<option>
+				<instrument>ремесленные</instrument>
+			</option>
+		</equipmentFree>
 		<money>10</money>
 		<equipment>лопата, железный горшок, комплект обычной одежды</equipment>
 		<description>
