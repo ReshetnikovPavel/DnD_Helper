@@ -7,7 +7,7 @@
       ColumnDefinitions="*"
       ColumnSpacing="-60">
 
-    <Label Text="{Binding ValueDisplay}"
+    <Label x:Name="TestLabel"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand"
                    FontSize="56"/>

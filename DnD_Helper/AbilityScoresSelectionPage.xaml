@@ -4,12 +4,18 @@
              x:Class="DnD_Helper.AbilityScoresSelectionPage"
              xmlns:controls="clr-namespace:DnD_Helper.Resources.Controls"
              xmlns:app="clr-namespace:DnD_Helper"
-             x:DataType="app:AbilityScoresSelectionPage"
              Title="Распределите характеристики"
+             x:DataType="app:AbilityScoresSelectionPage"
              Style="{StaticResource ContentPage}">
 
-    <Grid RowDefinitions="*">
-        <controls:AbilityScoreControl ValueDisplay="Hello darkness my old friend" />
+    <Grid RowDefinitions="*, *, *">
+        <Label Text="{Binding TestString}"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontSize="50" />
+        <controls:AbilityScoreControl x:Name="counter"
+            Grid.Row="1" ValueDisplay="{Binding TestString}"/>
+        <Button Grid.Row="2" Clicked="Button_Clicked" />
     </Grid>
     
 </ContentPage>

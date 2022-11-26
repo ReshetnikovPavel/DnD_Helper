@@ -11,13 +11,19 @@ public partial class AbilityScoreControl : Grid
 	public AbilityScoreControl()
 	{
 		InitializeComponent();
-
-		BindingContext = this;
 	}
 
 	public string ValueDisplay
 	{
 		get => GetValue(ValueDisplayProperty).ToString();
 		set => SetValue(ValueDisplayProperty, value);
+	}
+
+	protected override void OnPropertyChanged(string propertyName)
+	{
+		base.OnPropertyChanged(propertyName);
+
+		if(propertyName == ValueDisplayProperty.PropertyName)
+			TestLabel.Text = ValueDisplay;
 	}
 }
