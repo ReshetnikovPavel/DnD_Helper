@@ -44,7 +44,8 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
             WeaponsProficiencies = GetWeaponProficiencies(xElement),
             SkillProficiencies = GetSkillProficiencies(xElement),
             InstrumentProfieciencies = GetInstrumentProficiencies(xElement),
-            Feats = GetFeats(xElement)
+            Feats = GetFeats(xElement),
+            Optionals = CreateRaceOptionals(xElement)
         };
         return race;
     }
@@ -57,13 +58,22 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
             AbilityScoreBonuses = GetOptionalAbilityScoreBonuses(xElement),
             SkillProficiencies = GetOptionalSkillProficiencies(xElement),
             Spells = GetOptionalSpell(xElement),
-
+            InstrumentProficiencies = GetOptionalInstruments(xElement)
         };
         return optionals;
     }
 
+    private ChooseMany<Instrument> GetOptionalInstruments(XElement xElement)
+    {
+        if (!xElement.HasElement("possessionInstrumentFree"))
+            return null;
+        return parser.ParseChooseMany(xElement.GetContentWithTag("possessionInstrumentFree"), x => new Instrument(x));
+    }
+
     private ChooseMany<Language> GetOptionalLanguage(XElement xElement)
     {
+        if (!xElement.HasElement("LanguageFree"))
+            return null;
         var options = languageRepository.GetNames().Select(x => new Language(x));
         var amount = int.Parse(xElement.GetContentWithTag("LanguageFree"));
         return new ChooseMany<Language>(options, amount);
@@ -71,6 +81,8 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
 
     private IEnumerable<ChooseRelational<AbilityName, int>> GetOptionalAbilityScoreBonuses(XElement xElement)
     {
+        if (!xElement.HasElement("abilityFree"))
+            return null;
         return parser.ParseChooseRelational(
             xElement.GetContentWithTag("abilityFree"),
             Enum.GetValues<AbilityName>(),
@@ -79,6 +91,8 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
 
     private static ChooseMany<SkillName> GetOptionalSkillProficiencies(XElement xElement)
     {
+        if (!xElement.HasElement("proficiencyFree"))
+            return null;
         return new ChooseMany<SkillName>(
             Enum.GetValues<SkillName>(),
             int.Parse(xElement.GetContentWithTag("proficiencyFree")));
@@ -86,6 +100,8 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
 
     private ChooseMany<Spell> GetOptionalSpell(XElement xElement)
     {
+        if (!xElement.HasElement("spellFree"))
+            return null;
         var (className, howMany, level) = ParseOptionalSpell(xElement);
 
         var options = spellRepository

@@ -17,4 +17,5 @@ public class Race : ValueType<Race>, IDndObject
 	public IEnumerable<Trait> Traits { get; init; }
 	public IEnumerable<Instrument> InstrumentProfieciencies { get; init; }
 	public IEnumerable<Feat> Feats { get; init; }
+	public RaceOptionals Optionals { get; init; }
 }

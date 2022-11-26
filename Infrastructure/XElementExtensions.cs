@@ -18,4 +18,9 @@ public static class XElementExtensions
     {
         return xElement.Element(tagName)?.Value;
     }
+
+    public static bool HasElement(this XElement xElement, string tagName)
+    {
+        return xElement.Element(tagName) != null;
+    }
 }

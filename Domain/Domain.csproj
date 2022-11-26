@@ -23,6 +23,7 @@
 	  <None Remove="Repositories\Xmls\Languages.xml" />
 	  <None Remove="Repositories\Xmls\Races.xml" />
 	  <None Remove="Repositories\Xmls\Spells.xml" />
+	  <None Remove="Repositories\Xmls\Weapons.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -31,6 +32,7 @@
 	  <EmbeddedResource Include="Repositories\Xmls\Languages.xml" />
 	  <EmbeddedResource Include="Repositories\Xmls\Races.xml" />
 	  <EmbeddedResource Include="Repositories\Xmls\Spells.xml" />
+	  <EmbeddedResource Include="Repositories\Xmls\Weapons.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
