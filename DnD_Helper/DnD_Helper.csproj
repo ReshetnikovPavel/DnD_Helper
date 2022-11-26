@@ -53,6 +53,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\Domain\Domain.csproj" />
+	  <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Update="MenuShell.xaml.cs">
 	    <DependentUpon>MenuShell.xaml</DependentUpon>
 	  </Compile>
@@ -83,10 +88,7 @@
 	  <MauiXaml Update="MenuPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Resources\Controls\AbilityScoreTemplate.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Resources\Controls\ControlTemplates.xaml">
+	  <MauiXaml Update="Resources\Controls\AbilityScoreControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
