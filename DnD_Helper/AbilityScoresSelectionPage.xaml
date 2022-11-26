@@ -4,7 +4,7 @@
              x:Class="DnD_Helper.AbilityScoresSelectionPage"
              xmlns:controls="clr-namespace:DnD_Helper.Resources.Controls"
              xmlns:app="clr-namespace:DnD_Helper"
-             x:DataType="controls:AbilityScoreControl"
+             x:DataType="app:AbilityScoresSelectionPage"
              Title="Распределите характеристики"
              Style="{StaticResource ContentPage}">
 
