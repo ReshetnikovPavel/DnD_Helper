@@ -13,6 +13,7 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
     {
         this.parser = parser;
         this.languageRepository = languageRepository;
+        this.spellRepository = spellRepository;
     }
 
 	public Race GetRaceByName(string raceName, string subraceName)
@@ -52,13 +53,57 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
     {
         var optionals = new RaceOptionals()
         {
-            Languages = new ChooseMany<Language>(languageRepository.GetNames().Select(x => new Language(x)), int.Parse(xElement.GetContentWithTag("LanguageFree"))),
-            AbilityScoreBonuses = parser.ParseChooseRelational(xElement.GetContentWithTag("abilityFree"), Enum.GetValues<AbilityName>(), int.Parse),
-            SkillProficiencies = new ChooseMany<SkillName>(Enum.GetValues<SkillName>(), int.Parse(xElement.GetContentWithTag("proficiencyFree"))),
-            
+            Languages = GetOptionalLanguage(xElement),
+            AbilityScoreBonuses = GetOptionalAbilityScoreBonuses(xElement),
+            SkillProficiencies = GetOptionalSkillProficiencies(xElement),
+            Spells = GetOptionalSpell(xElement),
+
         };
         return optionals;
     }
+
+    private ChooseMany<Language> GetOptionalLanguage(XElement xElement)
+    {
+        var options = languageRepository.GetNames().Select(x => new Language(x));
+        var amount = int.Parse(xElement.GetContentWithTag("LanguageFree"));
+        return new ChooseMany<Language>(options, amount);
+    }
+
+    private IEnumerable<ChooseRelational<AbilityName, int>> GetOptionalAbilityScoreBonuses(XElement xElement)
+    {
+        return parser.ParseChooseRelational(
+            xElement.GetContentWithTag("abilityFree"),
+            Enum.GetValues<AbilityName>(),
+            int.Parse);
+    }
+
+    private static ChooseMany<SkillName> GetOptionalSkillProficiencies(XElement xElement)
+    {
+        return new ChooseMany<SkillName>(
+            Enum.GetValues<SkillName>(),
+            int.Parse(xElement.GetContentWithTag("proficiencyFree")));
+    }
+
+    private ChooseMany<Spell> GetOptionalSpell(XElement xElement)
+    {
+        var parsed = xElement
+            .GetContentWithTag("spellFree")
+            .Split(':')
+            .Select(x => x.Trim())
+            .ToArray();
+        var className = parsed[0];
+        var howMany = int.Parse(parsed[1]);
+        var level = int.Parse(parsed[2]);
+
+        var options = spellRepository
+            .GetNamesForClass(className)
+            .Select(x => spellRepository.GetSpell(x))
+            .Where(x => x.Level == level);
+
+        return new ChooseMany<Spell>(options, howMany);
+    }
+
+    private (string className, int howMany, int level) Parse
     private Size GetSize(XElement xElement)
     {
         return parser.ParseSize(xElement.GetContentWithTag("size"));

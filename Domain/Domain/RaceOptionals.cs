@@ -9,6 +9,6 @@ public class RaceOptionals
     public ChooseMany<Spell> Spells { get; init; }
     public ChooseMany<Weapon> WeaponsProficiencies { get; init; }
     public ChooseMany<SkillName> SkillProficiencies { get; init; }
-    public ChooseMany<Instrument> InstrumentProfieciencies { get; init; }
+    public ChooseMany<Instrument> InstrumentProficiencies { get; init; }
     public ChooseMany<Feat> Feats { get; init; }
 }

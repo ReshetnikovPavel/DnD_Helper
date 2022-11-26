@@ -50,7 +50,7 @@
 				<size>M</size>
 				<speed>30</speed>
 				<ability>Dex 2, Int 1</ability>
-				<spellFree>0: 1</spellFree>
+				<spellFree>Волшебник: 0: 1</spellFree>
 				<language>Общий, Эльфийский</language>
 				<languageFree>1</languageFree>
 				<possessionWeapons>длинный меч, короткий меч, короткий лук, длинный лук</possessionWeapons>
