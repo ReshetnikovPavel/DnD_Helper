@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<compendium version="5">
+    <armors>
+        <lightArmors>
+            <armor>
+                <name>Стеганый</name>
+                <price>5 зм</price>
+                <AC>11 + DEX</AC>
+                <strength>-</strength>
+                <stealth>Да</stealth>
+                <weight>8</weight>
+            </armor>
+
+            <armor>
+                <name>Кожаный</name>
+                <price>10 зм</price>
+                <AC>11 + DEX</AC>
+                <strength>-</strength>
+                <stealth>Нет</stealth>
+                <weight>10</weight>
+            </armor>
+
+            <armor>
+                <name>Проклепанная кожа</name>
+                <price>45 зм</price>
+                <AC>12 + DEX</AC>
+                <strength>-</strength>
+                <stealth>Нет</stealth>
+                <weight>13</weight>
+            </armor>
+        </lightArmors>
+        <mediumArmors>
+            <armor>
+                <name>Шкурный</name>
+                <price>10 зм</price>
+                <AC>12 + DEX (2)</AC>
+                <strength>-</strength>
+                <stealth>Нет</stealth>
+                <weight>12</weight>
+            </armor>
+
+            <armor>
+                <name>Кольчужная рубаха</name>
+                <price>50 зм</price>
+                <AC>13 + DEX (2)</AC>
+                <strength>-</strength>
+                <stealth>Нет</stealth>
+                <weight>20</weight>
+            </armor>
+
+            <armor>
+                <name>Чешуйчатый</name>
+                <price>50 зм</price>
+                <AC>14 + DEX (2)</AC>
+                <strength>-</strength>
+                <stealth>Да</stealth>
+                <weight>45</weight>
+            </armor>
+
+            <armor>
+                <name>Кираса</name>
+                <price>400 зм</price>
+                <AC>14 + DEX (2)</AC>
+                <strength>-</strength>
+                <stealth>Нет</stealth>
+                <weight>20</weight>
+            </armor>
+
+            <armor>
+                <name>Полулаты</name>
+                <price>750 зм</price>
+                <AC>15 + DEX (2)</AC>
+                <strength>-</strength>
+                <stealth>Да</stealth>
+                <weight>40</weight>
+            </armor>
+        </mediumArmors>
+        <heavyArmors>
+            <armor>
+                <name>Колечный</name>
+                <price>50 зм</price>
+                <AC>14</AC>
+                <strength>-</strength>
+                <stealth>Да</stealth>
+                <weight>40</weight>
+            </armor>
+
+            <armor>
+                <name>Кольчуга</name>
+                <price>75 зм</price>
+                <AC>16</AC>
+                <strength>13</strength>
+                <stealth>Да</stealth>
+                <weight>55</weight>
+            </armor>
+
+            <armor>
+                <name>Наборный</name>
+                <price>200 зм</price>
+                <AC>17</AC>
+                <strength>15</strength>
+                <stealth>Да</stealth>
+                <weight>60</weight>
+            </armor>
+
+            <armor>
+                <name>Латы</name>
+                <price>1500 зм</price>
+                <AC>18</AC>
+                <strength>15</strength>
+                <stealth>Да</stealth>
+                <weight>65</weight>
+            </armor>
+        </heavyArmors>
+        <shields>
+            <shield>
+                <name>Щит</name>
+                <price>10 зм</price>
+                <AC>2</AC>
+                <strength>-</strength>
+                <stealth>Нет</stealth>
+                <weight>6</weight>
+            </shield>
+        </shields>
+    </armors>
+</compendium>
