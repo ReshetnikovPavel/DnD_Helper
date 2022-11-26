@@ -3,7 +3,7 @@
     <spell>
         <name>Брызги кислоты</name>
         <level>0</level>
-        <school>Призык</school>
+        <school>Призыв</school>
         <time>1 действие</time>
         <components>ВС</components>
         <classes>Волшебник, Изобретатель, Чародей</classes>
