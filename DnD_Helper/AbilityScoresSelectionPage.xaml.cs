@@ -11,7 +11,10 @@ public partial class AbilityScoresSelectionPage : ContentPage
 		InitializeComponent();
 	}
 
-	public AbilityScore Intelligence
+    public AbilityScore Strength
+        => abilities.Strength;
+
+    public AbilityScore Intelligence
 		=> abilities.Intelligence;
 
 }

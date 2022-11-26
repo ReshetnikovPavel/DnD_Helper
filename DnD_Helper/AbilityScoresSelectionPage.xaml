@@ -8,9 +8,9 @@
              Title="Распределите характеристики"
              Style="{StaticResource ContentPage}">
 
-    <Grid RowDefinitions="*, *">
-        <controls:AbilityScoreControl AbilityScore="{Binding Intelligence}"/>
-        <controls:AbilityScoreControl Grid.Row="1"/>
+    <Grid RowDefinitions="*">
+        <controls:AbilityScoreControl AbilityScore="{Binding Intelligence}" 
+                                      CounterSource="intelligence_counter.png"/>
     </Grid>
     
 </ContentPage>
