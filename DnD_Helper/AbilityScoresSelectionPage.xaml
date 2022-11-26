@@ -10,7 +10,7 @@
 
     <Grid RowDefinitions="*"
           ColumnDefinitions="*">
-        <controls:AbilityScoreControl />
+        <controls:AbilityScoreControl CounterSource="charisma_counter.png"/>
     </Grid>
     
 </ContentPage>
