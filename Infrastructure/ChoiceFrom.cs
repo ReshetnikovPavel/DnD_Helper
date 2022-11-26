@@ -1,11 +1,11 @@
 ﻿namespace Infrastructure;
 
-public class Optional<T> : ValueType<Optional<T>> 
+public class ChooseMany<T> : ValueType<ChooseMany<T>> 
 {
     public IEnumerable<T> Options { get; }
     public int HowManyToChoose { get; }
 
-    public Optional(IEnumerable<T> options, int howManyToChoose)
+    public ChooseMany(IEnumerable<T> options, int howManyToChoose)
     {
         Options = options;
         HowManyToChoose = howManyToChoose;

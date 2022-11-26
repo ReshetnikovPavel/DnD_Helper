@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using System.Runtime.CompilerServices;
+using Domain;
 using Domain.Repositories;
 using FluentAssertions;
 using NUnit.Framework;
@@ -11,8 +12,10 @@ public class XmlRaceRepository_should
 	XmlRaceRepository repository;
 	[SetUp]
 	public void SetUp()
-	{
-		repository = new XmlRaceRepository(new DndCompendiumParser());
+    {
+        var parser = new DndCompendiumParser();
+
+        repository = new XmlRaceRepository(parser, new XmlLanguageRepository(), new XmlSpellRepository(parser));
 	}
 
 	[Test]
@@ -50,7 +53,7 @@ public class XmlRaceRepository_should
             new AbilityScoreBonus(AbilityName.Charisma, 1)
         });
         actual.Feats.Should().BeEmpty();
-        actual.Spells.Should().BeEquivalentTo(new []{new Spell("Пляшущие огоньки", 1), new Spell("Огонь фей", 3), new Spell("Тьма", 5)});
+        actual.Spells.Select(x => (x.spells.Name, x.level)).Should().BeEquivalentTo(new []{("Пляшущие огоньки", 1), ("Огонь фей", 3), ("Тьма", 5)});
         actual.WeaponsProficiencies.Should().BeEquivalentTo(new []{new Weapon("рапира"), new Weapon("короткий меч"), new Weapon("ручной арбалет")});
     }
 }

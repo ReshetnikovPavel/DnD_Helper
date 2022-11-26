@@ -7,8 +7,9 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
 {
     private readonly IDndParser parser;
     private readonly ILanguageRepository languageRepository;
+    private readonly ISpellRepository spellRepository;
 
-    public XmlRaceRepository(IDndParser parser, ILanguageRepository languageRepository) : base("Races", "race")
+    public XmlRaceRepository(IDndParser parser, ILanguageRepository languageRepository, ISpellRepository spellRepository) : base("Races", "race")
     {
         this.parser = parser;
         this.languageRepository = languageRepository;
@@ -51,11 +52,13 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
     {
         var optionals = new RaceOptionals()
         {
-            Languages = new Optional<Language>(languageRepository.GetNames().Select(x => new Language(x)), int.Parse(xElement.GetContentWithTag("LanguageFree"))),
+            Languages = new ChooseMany<Language>(languageRepository.GetNames().Select(x => new Language(x)), int.Parse(xElement.GetContentWithTag("LanguageFree"))),
+            AbilityScoreBonuses = parser.ParseChooseRelational(xElement.GetContentWithTag("abilityFree"), Enum.GetValues<AbilityName>(), int.Parse),
+            SkillProficiencies = new ChooseMany<SkillName>(Enum.GetValues<SkillName>(), int.Parse(xElement.GetContentWithTag("proficiencyFree"))),
+            
         };
         return optionals;
     }
-
     private Size GetSize(XElement xElement)
     {
         return parser.ParseSize(xElement.GetContentWithTag("size"));
@@ -76,9 +79,15 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
         return parser.ParseMany(xElement.GetContentWithTag("ability"), parser.ParseAbilityScoreBonus);
     }
 
-    private IEnumerable<Spell> GetSpells(XElement xElement)
+    private IEnumerable<(int level, Spell spell)> GetSpells(XElement xElement)
     {
-        return parser.ParseMany(xElement.GetContentWithTag("spell"), parser.ParseSpell);
+        (int level, Spell spell) ApplyParse(string x)
+        {
+            var (level, spell) = parser.ParseSpell(x);
+            return (level, spellRepository.GetSpell(spell));
+        }
+
+        return parser.ParseMany(xElement.GetContentWithTag("spell"), ApplyParse);
     }
 
     private IEnumerable<Weapon> GetWeaponProficiencies(XElement xElement)

@@ -22,6 +22,7 @@
 	  <None Remove="Repositories\Xmls\Classes.xml" />
 	  <None Remove="Repositories\Xmls\Languages.xml" />
 	  <None Remove="Repositories\Xmls\Races.xml" />
+	  <None Remove="Repositories\Xmls\Spells.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -29,6 +30,7 @@
 	  <EmbeddedResource Include="Repositories\Xmls\Classes.xml" />
 	  <EmbeddedResource Include="Repositories\Xmls\Languages.xml" />
 	  <EmbeddedResource Include="Repositories\Xmls\Races.xml" />
+	  <EmbeddedResource Include="Repositories\Xmls\Spells.xml" />
 	</ItemGroup>
 
 	<ItemGroup>

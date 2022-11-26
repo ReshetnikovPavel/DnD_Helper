@@ -386,7 +386,7 @@
 				<languageFree>1</languageFree>
 				<abilityFree>2: 1</abilityFree>
 				<proficiencyFree>1</proficiencyFree>
-				<traitFree>1</traitFree>
+				<featFree>1</featFree>
 				<trait>
 					<name>Увеличение характеристик</name>
 					<text>Значение двух характеристик на ваш выбор увеличивается на 1.</text>

@@ -11,7 +11,7 @@ public class Race : ValueType<Race>, IDndObject
 	public Speed Speed { get; init; }
 	public IEnumerable<AbilityScoreBonus> AbilityScoreBonuses { get; init; }
 	public IEnumerable<Language> Languages { get; init; }
-	public IEnumerable<Spell> Spells { get; init; }
+	public IEnumerable<(int level, Spell spells)> Spells { get; init; }
 	public IEnumerable<Weapon> WeaponsProficiencies { get; init; }
 	public IEnumerable<SkillName> SkillProficiencies { get; init; }
 	public IEnumerable<Trait> Traits { get; init; }

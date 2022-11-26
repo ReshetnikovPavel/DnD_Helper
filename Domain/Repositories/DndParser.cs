@@ -5,7 +5,7 @@ namespace Domain.Repositories;
 
 public class DndCompendiumParser : IDndParser
 {
-	public Size ParseSize(string size)
+    public Size ParseSize(string size)
 	{
 		return size switch
 		{
@@ -58,14 +58,14 @@ public class DndCompendiumParser : IDndParser
 		return new Language(language);
 	}
 
-	public Spell ParseSpell(string spell)
+	public (int level, string spell) ParseSpell(string spell)
 	{
 		var elements = spell.Split(": ");
 		var level = int.Parse(elements[0]);
 		var name = elements[1];
-		
-		return new Spell(name, level);
-	}
+
+        return (level, name);
+    }
 
 	public Weapon ParseWeapon(string weapon)
 	{
@@ -98,16 +98,32 @@ public class DndCompendiumParser : IDndParser
 		};
 	}
 
-	public Optional<T> ParseChoiceFrom<T>(string choiceOption, Func<string, T> parse)
+	public ChooseMany<T> ParseChooseMany<T>(string choiceOption, Func<string, T> parse)
 	{
-		var elements = choiceOption.Split(": ");
-		var howMany = int.Parse(elements[0]);
-		var entries = ParseManyAnyType(elements[1], parse);
+		var split = choiceOption.Split(": ");
+		var howMany = int.Parse(split[0]);
+		var entries = ParseManyAnyType(split[1], parse);
 
-        return new Optional<T>(entries, howMany);
+        return new ChooseMany<T>(entries, howMany);
     }
 
-	public Armor ParseArmor(string armor)
+    public IEnumerable<ChooseRelational<T1, T2>> ParseChooseRelational<T1, T2>(string choiceOption, IEnumerable<T1> from, Func<string, T2> parse)
+    {
+        var split = choiceOption.Split(": ");
+        var howMany = int.Parse(split[0]);
+		var entry = parse(split[1]);
+
+        for (var i = 0; i < howMany; i++)
+        {
+            yield return new ChooseRelational<T1, T2>()
+            {
+                Options = from,
+                Value = entry
+            };
+        }
+    }
+
+    public Armor ParseArmor(string armor)
 	{
 		return new Armor(armor);
 	}
@@ -122,7 +138,7 @@ public class DndCompendiumParser : IDndParser
         return new Feat(feat);
     }
 
-    public IEnumerable<T> ParseMany<T>(string from, Func<string, T> applyParse) where T : IDndObject
+    public IEnumerable<T> ParseMany<T>(string from, Func<string, T> applyParse)
     {
         return ParseManyAnyType(from, applyParse);
     }
@@ -130,6 +146,24 @@ public class DndCompendiumParser : IDndParser
     public IEnumerable<T> ParseManyToGetEnums<T>(string from, Func<string, T> applyParse) where T : Enum
     {
         return ParseManyAnyType(from, applyParse);
+    }
+
+    private SpellComponent ParseSpellComponent(char spellComponent)
+    {
+        return spellComponent switch
+        {
+            'В' => SpellComponent.Verbal,
+            'С' => SpellComponent.Somatic,
+            'М' => SpellComponent.Material,
+            _ => throw new ArgumentException()
+        };
+    }
+
+    public IEnumerable<SpellComponent> ParseSpellComponents(string spellComponents)
+    {
+        return spellComponents
+            .ToCharArray()
+			.Select(ParseSpellComponent);
     }
 
     private IEnumerable<T> ParseManyAnyType<T>(string from, Func<string, T> applyParse)

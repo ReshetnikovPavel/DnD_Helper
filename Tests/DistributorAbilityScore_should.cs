@@ -22,7 +22,7 @@ public class DistributorAbilityScore_should
         var score = new AbilityScore(AbilityName.Strength, value);
         distributor.BuyAbilityScoreValue(score);
         score.Value.Should().Be(answerScore);
-        distributor.GetTotalPoints().Should().Be(answerTotalPoints);
+        distributor.TotalPoints.Should().Be(answerTotalPoints);
         distributor.ResetTotalPoints();
     }
 
@@ -38,7 +38,7 @@ public class DistributorAbilityScore_should
         distributor.TotalPoints = valueTotalPoints;
         distributor.SellAbilityScoreValue(score);
         score.Value.Should().Be(answerScore);
-        distributor.GetTotalPoints().Should().Be(answerTotalPoints);
+        distributor.TotalPoints.Should().Be(answerTotalPoints);
         distributor.ResetTotalPoints();
     }
 }
