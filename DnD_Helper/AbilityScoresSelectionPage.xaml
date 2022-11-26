@@ -8,14 +8,9 @@
              x:DataType="app:AbilityScoresSelectionPage"
              Style="{StaticResource ContentPage}">
 
-    <Grid RowDefinitions="*, *, *">
-        <Label Text="{Binding TestString}"
-               VerticalOptions="Center"
-               HorizontalOptions="Center"
-               FontSize="50" />
-        <controls:AbilityScoreControl x:Name="counter"
-            Grid.Row="1" ValueDisplay="{Binding TestString}"/>
-        <Button Grid.Row="2" Clicked="Button_Clicked" />
+    <Grid RowDefinitions="*"
+          ColumnDefinitions="*">
+        <controls:AbilityScoreControl />
     </Grid>
     
 </ContentPage>

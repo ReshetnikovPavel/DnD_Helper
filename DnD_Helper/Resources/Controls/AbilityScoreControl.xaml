@@ -4,12 +4,18 @@
       x:Class="DnD_Helper.Resources.Controls.AbilityScoreControl"
       xmlns:controls="clr-namespace:DnD_Helper.Resources.Controls"
       x:DataType="controls:AbilityScoreControl"
-      ColumnDefinitions="*"
-      ColumnSpacing="-60">
+      ColumnDefinitions="*, 3*, *">
 
-    <Label x:Name="TestLabel"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand"
-                   FontSize="56"/>
-
+    <ImageButton Source="minus_button.png"
+                 Aspect="AspectFit" />
+    <Grid Grid.Column="1">
+        <Image Source="intelligence_counter.png" />
+        <Label Text="0"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               FontSize="56" />
+    </Grid>
+    <ImageButton Grid.Column="2"
+                 Source="plus_button.png"
+                 Aspect="AspectFit"/>
 </Grid>
