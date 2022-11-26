@@ -7,8 +7,8 @@ public partial class MenuPage : ContentPage
 		InitializeComponent();
 	}
 
-    private async void StartButton_Clicked(object sender, EventArgs e)
+    private void StartButton_Clicked(object sender, EventArgs e)
     {
-		await Navigation.PushAsync(new CharacterCreationPage());
+		App.Current.MainPage = new AppShell();
     }
 }
