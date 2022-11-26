@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DnD_Helper.Resources.Controls.AbilityScoreControl"
-             xmlns:controls="clr-namespace:DnD_Helper.Resources.Controls"
-             x:DataType="controls:AbilityScoreControl">
-    
-    <VerticalStackLayout>
-        <Label 
-            Text="{Binding ValueDisplay}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
-</ContentView>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="DnD_Helper.Resources.Controls.AbilityScoreControl"
+      xmlns:controls="clr-namespace:DnD_Helper.Resources.Controls"
+      x:DataType="controls:AbilityScoreControl"
+      ColumnDefinitions="*, 2*, *"
+      ColumnSpacing="-60">
+
+    <ImageButton Source="minus_button.png"
+                     Aspect="AspectFit"/>
+    <Grid Grid.Column="1">
+        <Image Source="intelligence_counter.png" />
+        <Label Text="0"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="56"/>
+    </Grid>
+    <ImageButton Grid.Column="2"
+                     Source="plus_button.png" 
+                     Aspect="AspectFit" />
+
+</Grid>

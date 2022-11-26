@@ -49,7 +49,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\charisma_counter.png" />
+	  <None Remove="Resources\Images\constitution_counter.png" />
+	  <None Remove="Resources\Images\dexterity_counter.png" />
+	  <None Remove="Resources\Images\intelligence_counter.png" />
+	  <None Remove="Resources\Images\minus_button.png" />
+	  <None Remove="Resources\Images\plus_button.png" />
 	  <None Remove="Resources\Images\start_button.png" />
+	  <None Remove="Resources\Images\strength_counter.png" />
+	  <None Remove="Resources\Images\wisdom_counter.png" />
 	</ItemGroup>
 
 	<ItemGroup>

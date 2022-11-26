@@ -3,10 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DnD_Helper.AbilityScoresSelectionPage"
              xmlns:controls="clr-namespace:DnD_Helper.Resources.Controls"
+             xmlns:app="clr-namespace:DnD_Helper"
+             x:DataType="controls:AbilityScoreControl"
              Title="Распределите характеристики"
              Style="{StaticResource ContentPage}">
 
-    <VerticalStackLayout>
+    <Grid RowDefinitions="*, *">
         <controls:AbilityScoreControl />
-    </VerticalStackLayout>
+        <controls:AbilityScoreControl Grid.Row="1"/>
+    </Grid>
+    
 </ContentPage>

@@ -2,19 +2,26 @@ using Domain;
 
 namespace DnD_Helper.Resources.Controls;
 
-public partial class AbilityScoreControl : ContentView
+public partial class AbilityScoreControl : Grid
 {
-	private int value = 0;
-	private AbilityName abilityName;
+	private AbilityScore abilityScore;
 
 	public AbilityScoreControl()
 	{
 		InitializeComponent();
 	}
 
-	public string ValueDisplay
-		=> value.ToString();
-
     public AbilityScore AbilityScore
-		=> new(abilityName, value);
+	{
+		get => abilityScore;
+		set => abilityScore = value;
+	}
+
+	public ImageSource CounterSource { get; set; }
+
+	public string ValueDisplay
+		=> AbilityScore.Value.ToString();
+
+	public string ModifierDisplay
+		=> AbilityScore.Modifier.ToString();
 }
