@@ -9,7 +9,7 @@
              Style="{StaticResource ContentPage}">
 
     <Grid RowDefinitions="*, *">
-        <controls:AbilityScoreControl />
+        <controls:AbilityScoreControl AbilityScore="{Binding Intelligence}"/>
         <controls:AbilityScoreControl Grid.Row="1"/>
     </Grid>
     

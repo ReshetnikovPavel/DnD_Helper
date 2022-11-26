@@ -10,8 +10,8 @@
     <ImageButton Source="minus_button.png"
                      Aspect="AspectFit"/>
     <Grid Grid.Column="1">
-        <Image Source="intelligence_counter.png" />
-        <Label Text="0"
+        <Image Source="{Binding CounterSource}" />
+        <Label Text="{Binding ValueDisplay}"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand"
                    FontSize="56"/>

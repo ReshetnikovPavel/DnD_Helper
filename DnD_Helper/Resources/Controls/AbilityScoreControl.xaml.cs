@@ -4,7 +4,7 @@ namespace DnD_Helper.Resources.Controls;
 
 public partial class AbilityScoreControl : Grid
 {
-	private AbilityScore abilityScore;
+	private AbilityScore abilityScore = new AbilityScore(AbilityName.Strength, 0);
 
 	public AbilityScoreControl()
 	{
