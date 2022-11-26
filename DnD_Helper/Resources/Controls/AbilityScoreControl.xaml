@@ -4,13 +4,14 @@
       x:Class="DnD_Helper.Resources.Controls.AbilityScoreControl"
       xmlns:controls="clr-namespace:DnD_Helper.Resources.Controls"
       x:DataType="controls:AbilityScoreControl"
-      ColumnDefinitions="*, 2*, *">
+      ColumnDefinitions="*, 2.5*, *"
+      ColumnSpacing="5">
 
     <ImageButton Source="minus_button.png"
                  Aspect="AspectFit" />
     <Grid Grid.Column="1">
         <Image x:Name="CounterImage"/>
-        <Label Text="0"
+        <Label x:Name="ValueLabel"
                HorizontalOptions="Center"
                VerticalOptions="Center"
                FontSize="56" />

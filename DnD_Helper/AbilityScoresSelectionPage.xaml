@@ -8,9 +8,34 @@
              x:DataType="app:AbilityScoresSelectionPage"
              Style="{StaticResource ContentPage}">
 
-    <Grid RowDefinitions="*"
-          ColumnDefinitions="*">
-        <controls:AbilityScoreControl CounterSource="charisma_counter.png"/>
+    <Grid Margin="10, 0, 10, 0"
+          ColumnSpacing="25"
+        ColumnDefinitions="*, *"
+        RowDefinitions="*, *, *">
+        <controls:AbilityScoreControl Grid.Column="0"
+                                      Grid.Row="0"
+                                      CounterSource="strength_counter.png"
+                                      Ability="{Binding Strength}" />
+        <controls:AbilityScoreControl Grid.Column="0"
+                                      Grid.Row="1"
+                                      CounterSource="dexterity_counter.png"
+                                      Ability="{Binding Dexterity}" />
+        <controls:AbilityScoreControl Grid.Column="0"
+                                      Grid.Row="2"
+                                      CounterSource="constitution_counter.png"
+                                      Ability="{Binding Constitution}" />
+        <controls:AbilityScoreControl Grid.Column="1"
+                                      Grid.Row="0"
+                                      CounterSource="intelligence_counter.png"
+                                      Ability="{Binding Intelligence}" />
+        <controls:AbilityScoreControl Grid.Column="1"
+                                      Grid.Row="1"
+                                      CounterSource="wisdom_counter.png"
+                                      Ability="{Binding Wisdom}" />
+        <controls:AbilityScoreControl Grid.Column="1"
+                                      Grid.Row="2"
+                                      CounterSource="charisma_counter.png"
+                                      Ability="{Binding Charisma}" />
     </Grid>
     
 </ContentPage>

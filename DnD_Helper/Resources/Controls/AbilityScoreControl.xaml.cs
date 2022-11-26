@@ -8,6 +8,9 @@ public partial class AbilityScoreControl : Grid
 	public static readonly BindableProperty CounterSourceProperty = BindableProperty.Create(
 		nameof(CounterSource), typeof(ImageSource), typeof(AbilityScoreControl));
 
+	public static readonly BindableProperty AbilityProperty = BindableProperty.Create(
+		nameof(Ability), typeof(AbilityScore), typeof(AbilityScoreControl));
+
 	public AbilityScoreControl()
 	{
 		InitializeComponent();
@@ -19,11 +22,19 @@ public partial class AbilityScoreControl : Grid
 		set => SetValue(CounterSourceProperty, value);
 	}
 
+	public AbilityScore Ability
+	{
+		get => (AbilityScore)GetValue(AbilityProperty);
+		set => SetValue(AbilityProperty, value);
+	}
+
     protected override void OnPropertyChanged(string propertyName)
     {
         base.OnPropertyChanged(propertyName);
 
-		if(propertyName == CounterSourceProperty.PropertyName)
+		if(propertyName == nameof(CounterSource))
 			CounterImage.Source = CounterSource;
+		if (propertyName == nameof(Ability))
+			ValueLabel.Text = Ability.Value.ToString();
     }
 }
