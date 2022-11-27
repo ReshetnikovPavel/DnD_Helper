@@ -37,8 +37,8 @@
             <ShellContent x:Name="SubRacePage" 
                           Title="Подраса"
                       ContentTemplate="{DataTemplate local:SubraceSelectionPage}"
-                      Route="SubraceSelectionPage"  
-                         IsEnabled="False" />
+                      Route="SubraceSelectionPage"
+                          IsVisible="{Binding IsRaceSelected}" />
         </Tab>
 
         <ShellContent Title="Класс"

@@ -6,24 +6,35 @@ namespace DnD_Helper;
 
 public partial class AppShell : Shell
 {
-    public static IRaceRepository RaceRepository { get; private set; }
+    public static AppShell Singleton { get; private set; }
 
-    private static bool isRaceSelected = false;
+    public IRaceRepository RaceRepository { get; private set; }
+
+    private bool isRaceSelected = false;
 
     public AppShell()
 	{
 		InitializeComponent();
+        BindingContext = this;
+        Singleton = this;
 
         var parser = new DndCompendiumParser();
-
         RaceRepository = new XmlRaceRepository(
             parser,
             new XmlLanguageRepository(),
             new XmlSpellRepository(parser));
 	}
 
-    public static string SelectedRaceName { get; set; }
-    public static bool IsRaceSelected { get; set; }
+    public string SelectedRaceName { get; set; }
+    public bool IsRaceSelected
+    {
+        get => isRaceSelected;
+        set
+        {
+            isRaceSelected = value;
+            OnPropertyChanged();
+        }
+    }
 
     private void BackToMenu_Clicked(object sender, EventArgs e)
     {

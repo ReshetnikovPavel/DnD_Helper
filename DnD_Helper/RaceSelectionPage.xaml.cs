@@ -13,12 +13,12 @@ public partial class RaceSelectionPage : ContentPage
 	}
 
 	public IEnumerable<string> RaceNames
-		=> AppShell.RaceRepository.GetNames();
+		=> AppShell.Singleton.RaceRepository.GetNames();
 
     private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
     {
-		AppShell.SelectedRaceName = e.Item.ToString();
-		AppShell.IsRaceSelected = true;
+		AppShell.Singleton.SelectedRaceName = e.Item.ToString();
+		AppShell.Singleton.IsRaceSelected = true;
 		//await Shell.Current.GoToAsync($"///{nameof(SubraceSelectionPage)}");
     }
 }
