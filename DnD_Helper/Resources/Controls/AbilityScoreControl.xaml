@@ -7,8 +7,10 @@
       ColumnDefinitions="*, 2.5*, *"
       ColumnSpacing="5">
 
-    <ImageButton Source="minus_button.png"
-                 Aspect="AspectFit" />
+    <ImageButton x:Name="MinusButton"
+        Source="minus_button.png"
+                 Aspect="AspectFit" 
+                 Clicked="MinusButton_Clicked" />
     <Grid Grid.Column="1">
         <Image x:Name="CounterImage"/>
         <Label x:Name="ValueLabel"
@@ -16,7 +18,9 @@
                VerticalOptions="Center"
                FontSize="56" />
     </Grid>
-    <ImageButton Grid.Column="2"
+    <ImageButton x:Name="PlusButton"
+        Grid.Column="2"
                  Source="plus_button.png"
-                 Aspect="AspectFit"/>
+                 Aspect="AspectFit"
+                 Clicked="PlusButton_Clicked" />
 </Grid>

@@ -11,7 +11,10 @@ public partial class AbilityScoreControl : Grid
 	public static readonly BindableProperty AbilityProperty = BindableProperty.Create(
 		nameof(Ability), typeof(AbilityScore), typeof(AbilityScoreControl));
 
-	public AbilityScoreControl()
+    public static readonly BindableProperty DistributorProperty = BindableProperty.Create(
+        nameof(Distributor), typeof(IAbilityScoreDistributor), typeof(AbilityScoreControl));
+
+    public AbilityScoreControl()
 	{
 		InitializeComponent();
 	}
@@ -28,6 +31,12 @@ public partial class AbilityScoreControl : Grid
 		set => SetValue(AbilityProperty, value);
 	}
 
+    public IAbilityScoreDistributor Distributor
+    {
+        get => (IAbilityScoreDistributor)GetValue(DistributorProperty);
+		set => SetValue(DistributorProperty, value);
+    }
+
     protected override void OnPropertyChanged(string propertyName)
     {
         base.OnPropertyChanged(propertyName);
@@ -36,5 +45,30 @@ public partial class AbilityScoreControl : Grid
 			CounterImage.Source = CounterSource;
 		if (propertyName == nameof(Ability))
 			ValueLabel.Text = Ability.Value.ToString();
+		if (propertyName == nameof(Distributor))
+		{
+			Distributor.TotalPointsUpdated += OnPointsUpdated;
+            OnPointsUpdated(this, EventArgs.Empty);
+        }
+    }
+
+    private void PlusButton_Clicked(object sender, EventArgs e)
+    {
+		Distributor.BuyAbilityScoreValue(Ability);
+		OnPropertyChanged(nameof(Ability));
+		OnPointsUpdated(this, EventArgs.Empty);
+    }
+
+    private void MinusButton_Clicked(object sender, EventArgs e)
+    {
+		Distributor.SellAbilityScoreValue(Ability);
+        OnPropertyChanged(nameof(Ability));
+        OnPointsUpdated(this, EventArgs.Empty);
+    }
+
+	private void OnPointsUpdated(object sender, EventArgs e)
+	{
+        PlusButton.IsVisible = Distributor.CanBuy(Ability);
+        MinusButton.IsVisible = Distributor.CanSell(Ability);
     }
 }

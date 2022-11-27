@@ -10,7 +10,7 @@
 
     <Grid Margin="15"
         RowDefinitions="Auto, *">
-        <Label Text="Очков осталось:"
+        <Label Text="{Binding PointsLeft}"
                HorizontalOptions="Center"/>
         <Grid Grid.Row="1"
           ColumnSpacing="25"
@@ -19,27 +19,33 @@
             <controls:AbilityScoreControl Grid.Column="0"
                                       Grid.Row="0"
                                       CounterSource="strength_counter.png"
-                                      Ability="{Binding Strength}" />
+                                      Ability="{Binding Strength}" 
+                                          Distributor="{Binding Distributor}"/>
             <controls:AbilityScoreControl Grid.Column="0"
                                       Grid.Row="1"
                                       CounterSource="dexterity_counter.png"
-                                      Ability="{Binding Dexterity}" />
+                                      Ability="{Binding Dexterity}" 
+                                          Distributor="{Binding Distributor}"/>
             <controls:AbilityScoreControl Grid.Column="0"
                                       Grid.Row="2"
                                       CounterSource="constitution_counter.png"
-                                      Ability="{Binding Constitution}" />
+                                      Ability="{Binding Constitution}" 
+                                          Distributor="{Binding Distributor}"/>
             <controls:AbilityScoreControl Grid.Column="1"
                                       Grid.Row="0"
                                       CounterSource="intelligence_counter.png"
-                                      Ability="{Binding Intelligence}" />
+                                      Ability="{Binding Intelligence}" 
+                                          Distributor="{Binding Distributor}"/>
             <controls:AbilityScoreControl Grid.Column="1"
                                       Grid.Row="1"
                                       CounterSource="wisdom_counter.png"
-                                      Ability="{Binding Wisdom}" />
+                                      Ability="{Binding Wisdom}" 
+                                          Distributor="{Binding Distributor}"/>
             <controls:AbilityScoreControl Grid.Column="1"
                                       Grid.Row="2"
                                       CounterSource="charisma_counter.png"
-                                      Ability="{Binding Charisma}" />
+                                      Ability="{Binding Charisma}" 
+                                          Distributor="{Binding Distributor}"/>
         </Grid>
     </Grid>
 

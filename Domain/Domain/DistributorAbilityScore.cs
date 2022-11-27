@@ -3,9 +3,18 @@ using Infrastructure;
 
 namespace Domain;
 
-public class DistributorAbilityScore
+public class DistributorAbilityScore : IAbilityScoreDistributor
 {
-    public int TotalPoints { get; set; } = 27;
+    private int totalPoints = 27;
+    public int TotalPoints
+    {
+        get => totalPoints;
+        set
+        {
+            totalPoints = value;
+            TotalPointsUpdated?.Invoke(this, EventArgs.Empty);
+        }
+    }
 
     public void BuyAbilityScoreValue(AbilityScore abilityScore)
     {
@@ -16,10 +25,10 @@ public class DistributorAbilityScore
         }
     }
     
-    private int GetPriceToBuy(int value)
+    public int GetPriceToBuy(int value)
         => value > 12 ? 2 : 1;
 
-    private bool CanBuy(AbilityScore abilityScore)
+    public bool CanBuy(AbilityScore abilityScore)
         => TotalPoints > 0 && abilityScore.Value < 15 && GetPriceToBuy(abilityScore.Value) <= TotalPoints;
 
     public void SellAbilityScoreValue(AbilityScore abilityScore)
@@ -31,11 +40,13 @@ public class DistributorAbilityScore
         }
     }
 
-    private bool CanSell(AbilityScore abilityScore)
+    public bool CanSell(AbilityScore abilityScore)
         => abilityScore.Value > 8 && TotalPoints < 27;
 
-    private int GetPriceToSell(int value)
+    public int GetPriceToSell(int value)
         => value > 13 ? 2 : 1;
 
     public void ResetTotalPoints() => TotalPoints = 27;
+
+    public event EventHandler TotalPointsUpdated;
 }
