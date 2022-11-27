@@ -8,34 +8,45 @@
              x:DataType="app:AbilityScoresSelectionPage"
              Style="{StaticResource ContentPage}">
 
-    <Grid Margin="10, 0, 10, 0"
+    <Grid Margin="15, 15, 15, 15"
+        RowDefinitions="Auto, *, 65">
+        <Label Text="Очков осталось:"
+               FontSize="20"
+               HorizontalOptions="Center"/>
+        <Grid Grid.Row="1"
           ColumnSpacing="25"
         ColumnDefinitions="*, *"
         RowDefinitions="*, *, *">
-        <controls:AbilityScoreControl Grid.Column="0"
+            <controls:AbilityScoreControl Grid.Column="0"
                                       Grid.Row="0"
                                       CounterSource="strength_counter.png"
                                       Ability="{Binding Strength}" />
-        <controls:AbilityScoreControl Grid.Column="0"
+            <controls:AbilityScoreControl Grid.Column="0"
                                       Grid.Row="1"
                                       CounterSource="dexterity_counter.png"
                                       Ability="{Binding Dexterity}" />
-        <controls:AbilityScoreControl Grid.Column="0"
+            <controls:AbilityScoreControl Grid.Column="0"
                                       Grid.Row="2"
                                       CounterSource="constitution_counter.png"
                                       Ability="{Binding Constitution}" />
-        <controls:AbilityScoreControl Grid.Column="1"
+            <controls:AbilityScoreControl Grid.Column="1"
                                       Grid.Row="0"
                                       CounterSource="intelligence_counter.png"
                                       Ability="{Binding Intelligence}" />
-        <controls:AbilityScoreControl Grid.Column="1"
+            <controls:AbilityScoreControl Grid.Column="1"
                                       Grid.Row="1"
                                       CounterSource="wisdom_counter.png"
                                       Ability="{Binding Wisdom}" />
-        <controls:AbilityScoreControl Grid.Column="1"
+            <controls:AbilityScoreControl Grid.Column="1"
                                       Grid.Row="2"
                                       CounterSource="charisma_counter.png"
                                       Ability="{Binding Charisma}" />
+        </Grid>
+        <ImageButton Grid.Row="2"
+                     Source="plus_button.png"
+                     HorizontalOptions="EndAndExpand"
+                     Aspect="AspectFit" 
+                     WidthRequest="90"/>
     </Grid>
-    
+
 </ContentPage>
