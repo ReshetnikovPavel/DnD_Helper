@@ -3,15 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DnD_Helper.AbilityScoresSelectionPage"
              xmlns:controls="clr-namespace:DnD_Helper.Resources.Controls"
-             xmlns:app="clr-namespace:DnD_Helper"
+             xmlns:local="clr-namespace:DnD_Helper"
              Title="Распределите характеристики"
-             x:DataType="app:AbilityScoresSelectionPage"
+             x:DataType="local:AbilityScoresSelectionPage"
              Style="{StaticResource ContentPage}">
 
     <Grid Margin="15"
-        RowDefinitions="Auto, *, 65">
+        RowDefinitions="Auto, *">
         <Label Text="Очков осталось:"
-               FontSize="20"
                HorizontalOptions="Center"/>
         <Grid Grid.Row="1"
           ColumnSpacing="25"
@@ -42,11 +41,6 @@
                                       CounterSource="charisma_counter.png"
                                       Ability="{Binding Charisma}" />
         </Grid>
-        <ImageButton Grid.Row="2"
-                     Source="forward_button.png"
-                     HorizontalOptions="EndAndExpand"
-                     Aspect="AspectFit" 
-                     WidthRequest="90"/>
     </Grid>
 
 </ContentPage>

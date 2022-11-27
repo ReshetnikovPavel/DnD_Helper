@@ -3,9 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DnD_Helper.RaceSelectionPage"
              Title="Выберите расу"
-             Style="{StaticResource ContentPage}">
+             xmlns:local="clr-namespace:DnD_Helper"
+             x:DataType="local:RaceSelectionPage"
+             Style="{StaticResource ContentPage}" >
 
-    <VerticalStackLayout>
-        
-    </VerticalStackLayout>
+    <ListView ItemsSource="{Binding RaceNames}"
+              Margin="10">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid Padding="10">
+                        <Frame>
+                            <Label Text="{Binding .}" />
+                        </Frame>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>

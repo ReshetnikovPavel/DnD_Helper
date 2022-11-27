@@ -10,7 +10,7 @@
     BackgroundColor="{StaticResource ShellBackground}"
     ForegroundColor="{DynamicResource ShellText}"
     TitleColor="{DynamicResource ShellText}"
-    FlyoutBackgroundColor="{StaticResource FlyoutBackground}">
+    FlyoutBackgroundColor="{StaticResource FlyoutBackground}" >
 
     <Shell.ItemTemplate>
         <DataTemplate>
@@ -30,7 +30,7 @@
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <Tab Title="Раса"
-             Route="RaceTab">
+             Route="RaceTab" >
             <ShellContent x:Name ="RacePage" 
                       Title="Раса"
                       ContentTemplate="{DataTemplate local:RaceSelectionPage}"
