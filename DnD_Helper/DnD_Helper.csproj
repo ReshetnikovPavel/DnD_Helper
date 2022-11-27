@@ -51,6 +51,7 @@
 	  <None Remove="Resources\Images\charisma_counter.png" />
 	  <None Remove="Resources\Images\constitution_counter.png" />
 	  <None Remove="Resources\Images\dexterity_counter.png" />
+	  <None Remove="Resources\Images\forward_button.png" />
 	  <None Remove="Resources\Images\intelligence_counter.png" />
 	  <None Remove="Resources\Images\minus_button.png" />
 	  <None Remove="Resources\Images\plus_button.png" />

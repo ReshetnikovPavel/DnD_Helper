@@ -43,7 +43,7 @@
                                       Ability="{Binding Charisma}" />
         </Grid>
         <ImageButton Grid.Row="2"
-                     Source="plus_button.png"
+                     Source="forward_button.png"
                      HorizontalOptions="EndAndExpand"
                      Aspect="AspectFit" 
                      WidthRequest="90"/>
