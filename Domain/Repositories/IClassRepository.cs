@@ -2,5 +2,5 @@
 
 public interface IClassRepository : IRepository
 {
-    
+    Class GetClass(string name);
 }
