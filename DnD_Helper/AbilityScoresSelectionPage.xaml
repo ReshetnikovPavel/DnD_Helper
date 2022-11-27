@@ -8,7 +8,7 @@
              x:DataType="app:AbilityScoresSelectionPage"
              Style="{StaticResource ContentPage}">
 
-    <Grid Margin="15, 15, 15, 15"
+    <Grid Margin="15"
         RowDefinitions="Auto, *, 65">
         <Label Text="Очков осталось:"
                FontSize="20"
