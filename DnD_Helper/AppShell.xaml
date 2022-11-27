@@ -30,36 +30,32 @@
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <Tab Title="Раса"
-             Route="RaceTab" >
-            <ShellContent x:Name ="RacePage" 
-                      Title="Раса"
+             Route="RaceTab">
+            <ShellContent Title="Раса"
                       ContentTemplate="{DataTemplate local:RaceSelectionPage}"
                       Route="RaceSelectionPage" />
-            <ShellContent x:Name ="SubracePage" 
-                      Title="Подраса"
+            <ShellContent x:Name="SubRacePage" 
+                          Title="Подраса"
                       ContentTemplate="{DataTemplate local:SubraceSelectionPage}"
-                      Route="SubraceSelectionPage" />
+                      Route="SubraceSelectionPage"  
+                         IsEnabled="False" />
         </Tab>
 
-        <ShellContent x:Name ="ClassPage"
-                      Title="Класс"
+        <ShellContent Title="Класс"
         ContentTemplate="{DataTemplate local:ClassSelectionPage}" 
                       Route="ClassSelectionPage"/>
 
-        <ShellContent x:Name="AbilityScorePage" 
-                      Title="Характеристики"
+        <ShellContent Title="Характеристики"
         ContentTemplate="{DataTemplate local:AbilityScoresSelectionPage}"
                       Route="AbilityScoresSelectionPage"/>
 
-        <ShellContent x:Name="BackgroundPage" 
-                      Title="Личность и предыстория"
+        <ShellContent Title="Личность и предыстория"
         ContentTemplate="{DataTemplate local:BackgroundSelectionPage}" 
                       Route="BackgroundSelectionPage"/>
 
-        <ShellContent x:Name="EquipmentPage" 
-                      Title="Снаряжение"
+        <ShellContent Title="Снаряжение"
         ContentTemplate="{DataTemplate local:EquipmentSelectionPage}"
-                      Route="EquipmentSelectionPage"/>
+                      Route="EquipmentSelectionPage" />
     </FlyoutItem>
 
     <MenuItem Text="Назад в меню"

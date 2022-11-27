@@ -1,4 +1,5 @@
 ﻿using Domain.Repositories;
+using System.Diagnostics.Contracts;
 using System.Windows.Input;
 
 namespace DnD_Helper;
@@ -6,6 +7,8 @@ namespace DnD_Helper;
 public partial class AppShell : Shell
 {
     public static IRaceRepository RaceRepository { get; private set; }
+
+    private static bool isRaceSelected = false;
 
     public AppShell()
 	{
@@ -18,6 +21,9 @@ public partial class AppShell : Shell
             new XmlLanguageRepository(),
             new XmlSpellRepository(parser));
 	}
+
+    public static string SelectedRaceName { get; set; }
+    public static bool IsRaceSelected { get; set; }
 
     private void BackToMenu_Clicked(object sender, EventArgs e)
     {
