@@ -29,20 +29,37 @@
     </Shell.MenuItemTemplate>
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
-        <ShellContent Title="Раса"
-        ContentTemplate="{DataTemplate local:RaceSelectionPage}" />
+        <Tab Title="Раса"
+             Route="RaceTab">
+            <ShellContent x:Name ="RacePage" 
+                      Title="Раса"
+                      ContentTemplate="{DataTemplate local:RaceSelectionPage}"
+                      Route="RaceSelectionPage" />
+            <ShellContent x:Name ="SubracePage" 
+                      Title="Подраса"
+                      ContentTemplate="{DataTemplate local:SubraceSelectionPage}"
+                      Route="SubraceSelectionPage" />
+        </Tab>
 
-        <ShellContent Title="Класс"
-        ContentTemplate="{DataTemplate local:ClassSelectionPage}" />
+        <ShellContent x:Name ="ClassPage"
+                      Title="Класс"
+        ContentTemplate="{DataTemplate local:ClassSelectionPage}" 
+                      Route="ClassSelectionPage"/>
 
-        <ShellContent Title="Характеристики"
-        ContentTemplate="{DataTemplate local:AbilityScoresSelectionPage}" />
+        <ShellContent x:Name="AbilityScorePage" 
+                      Title="Характеристики"
+        ContentTemplate="{DataTemplate local:AbilityScoresSelectionPage}"
+                      Route="AbilityScoresSelectionPage"/>
 
-        <ShellContent Title="Личность и предыстория"
-        ContentTemplate="{DataTemplate local:BackgroundSelectionPage}" />
+        <ShellContent x:Name="BackgroundPage" 
+                      Title="Личность и предыстория"
+        ContentTemplate="{DataTemplate local:BackgroundSelectionPage}" 
+                      Route="BackgroundSelectionPage"/>
 
-        <ShellContent Title="Снаряжение"
-        ContentTemplate="{DataTemplate local:EquipmentSelectionPage}" />
+        <ShellContent x:Name="EquipmentPage" 
+                      Title="Снаряжение"
+        ContentTemplate="{DataTemplate local:EquipmentSelectionPage}"
+                      Route="EquipmentSelectionPage"/>
     </FlyoutItem>
 
     <MenuItem Text="Назад в меню"
