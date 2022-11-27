@@ -19,6 +19,6 @@ public partial class RaceSelectionPage : ContentPage
     {
 		AppShell.Singleton.SelectedRaceName = e.Item.ToString();
 		AppShell.Singleton.IsRaceSelected = true;
-		//await Shell.Current.GoToAsync($"///{nameof(SubraceSelectionPage)}");
+		await Shell.Current.GoToAsync($"///{nameof(SubraceSelectionPage)}");
     }
 }

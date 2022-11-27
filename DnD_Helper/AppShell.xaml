@@ -58,8 +58,8 @@
                       Route="EquipmentSelectionPage" />
     </FlyoutItem>
 
-    <MenuItem Text="Назад в меню"
-              Clicked="BackToMenu_Clicked">
+    <MenuItem Text="Выйти в меню"
+              Clicked="BackToMenu_Clicked" >
     </MenuItem>
-    
+
 </Shell>
