@@ -17,7 +17,27 @@
 				<text>Навыки: Выберите два навыка из следующих: Уход за животными, Атлетика, Запугивание, Природа, Внимательность, и Выживание</text>
 			</feature>
 			<feature>
-				<weaponsFree>секира, 1* воинское рукопашное оружие # два ручных топора, 1* простое оружие</weaponsFree>
+				<equipmentFree>
+					<option>
+						<weapons>секира</weapons>
+					</option>
+
+					<option>
+						<weapons>воинское оружие</weapons>
+					</option>
+				</equipmentFree>
+
+				<equipmentFree>
+					<option>
+						<weapons>топор</weapons>
+						<weapons>топор</weapons>
+					</option>
+
+					<option>
+						<weapons>простое оружие</weapons>
+					</option>
+				</equipmentFree>
+
 				<instrument>Набор путешественника</instrument>
 				<weapons>четыре метательных копья</weapons>
 				<alternative>2d4 x 10 зм</alternative>
@@ -345,8 +365,33 @@
 				<text>Навыки: Выберите три любых.</text>
 			</feature>
 			<feature>
-				<weaponsFree>рапира, длинный меч, 1* простое оружие</weaponsFree>
-				<instrumentFree>набор дипломата, набор артиста # лютня, 1* музыкальный инструмент</instrumentFree>
+				<equipmentFree>
+					<option>
+						<weapons>рапира</weapons>
+					</option>
+					<option>
+						<weapons>длинный меч</weapons>
+					</option>
+					<option>
+						<weapons>простое оружие</weapons>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<instrument>набор дипломата</instrument>
+					</option>
+					<option>
+						<instrument>набор артиста</instrument>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<instrument>лютня</instrument>
+					</option>
+					<option>
+						<instrument>музыкальный инструмент</instrument>
+					</option>
+				</equipmentFree>
 				<weapons>кинжал</weapons>
 				<armor>кожаный доспех</armor>
 				<alternative>5d4 x 10 зм</alternative>
@@ -635,9 +680,41 @@
 				<text>Навыки: Выберите два навыка из следующих: История, Проницательность, Медицина, Убеждение и Религия</text>
 			</feature>
 			<feature>
-				<weaponsFree>булава, боевой молот # легкий арбалет и 20 болтов, 1* простое оружие</weaponsFree>
-				<armorFree>чешуйчатый доспех, кожаный доспех, кольчуга</armorFree>
-				<instrumentFree>набор священника, набор путешественника</instrumentFree>
+				<equipmentFree>
+					<option>
+						<weapons>булава</weapons>
+					</option>
+					<option>
+						<weapons>боевой молот</weapons>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<weapons>легкий арбалет</weapons>
+					</option>
+					<option>
+						<weapons>простое оружие</weapons>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<armor>кольчуга</armor>
+					</option>
+					<option>
+						<armor>кожаный доспех</armor>
+					</option>
+					<option>
+						<armor>чешуйчатый доспех</armor>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<instrument>набор священника</instrument>
+					</option>
+					<option>
+						<instrument>набор путешественника</instrument>
+					</option>
+				</equipmentFree>
 				<weapons>щит</weapons>
 				<instrument>священный символ</instrument>
 				<alternative>5d4 x 10 зм</alternative>
@@ -1140,7 +1217,22 @@
 			</feature>
 			<feature>
 				<name>Снаряжение</name>
-				<weaponsFree>деревянный щит, 1* простое оружие # скимитар, 1* простое рукопашное оружие</weaponsFree>
+				<equipmentFree>
+					<option>
+						<weapons>скимитар</weapons>
+					</option>
+					<option>
+						<weapons>простое рукопашное оружие</weapons>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<weapons>щит</weapons>
+					</option>
+					<option>
+						<weapons>простое оружие</weapons>
+					</option>
+				</equipmentFree>
 				<armor>кожаный доспех</armor>
 				<instrument>набор путешественника, фокусировка друидов</instrument>
 				<alternative> 2d4 x 10 зм</alternative>
@@ -1377,9 +1469,42 @@
 				<text>Навыки: Выберите два навыка из следующих: Акробатика, Уход за животными, Атлетика, История, Проницательность, Запугивание, Внимательность, и Выживание</text>
 			</feature>
 			<feature>
-				<weaponsFree>1* воинское оружие и щит, 2* воинское оружие # легкий арбалет и 20 болтов, два ручных топора</weaponsFree> 
-				<instrumentFree>набор исследователя подземелий, набор путешественника</instrumentFree>
-				<armorFree>кольчуга, кожаный доспех + длинный лук и 20 стрел</armorFree>
+				<equipmentFree>
+					<option>
+						<weapons>воинское оружие</weapons>
+						<weapons>щит</weapons>
+					</option>
+					<option>
+						<weapons>воинское оружие</weapons>
+						<weapons>воинское оружие</weapons>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<weapons>легкий арбалет</weapons>
+					</option>
+					<option>
+						<weapons>топор</weapons>
+						<weapons>топор</weapons>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<instrument>набор исследователя подземелий</instrument>
+					</option>
+					<option>
+						<instrument>набор путешественника</instrument>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<armor>кольчуга</armor>
+					</option>
+					<option>
+						<armor>кожаный доспех</armor>
+						<weapons>длинный лук</weapons>
+					</option>
+				</equipmentFree>
 				<alternative>5d4 x 10 зм</alternative>
 				<name>Снаряжение</name>
 				<text>Вы начинаете со следующим снаряжением в дополнение к снаряжению, полученному за вашу предысторию:</text>
@@ -1915,8 +2040,22 @@
 				<text>Навыки: Выберите два навыка из следующих: Акробатика, Атлетика, История, Проницательность, Религия и Скрытность</text>
 			</feature>
 			<feature>
-				<weaponsFree>короткий меч, 1* простое оружие</weaponsFree>
-				<instrumentFree>набор исследователя подземелий, набор путешественника</instrumentFree>
+				<equipmentFree>
+					<option>
+						<weapons>короткий меч</weapons>
+					</option>
+					<option>
+						<weapons>простое оружие</weapons>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<instrument>набор исследователя подземелий</instrument>
+					</option>
+					<option>
+						<instrument>набор путешественника</instrument>
+					</option>
+				</equipmentFree>
 				<weapons>10 дротиков</weapons>
 				<alternative>5d4 зм</alternative>
 				<name>Снаряжение</name>
@@ -2576,8 +2715,36 @@
 			<feature>
 				<armor>кольчуга</armor>
 				<instrument>священный символ</instrument>
-				<weaponsFree>1* воинское оружие и щит, 2* воинское оружие # пять метательных копий, 1* простое рукопашное оружие</weaponsFree>
-				<instrumentFree>набор священника, набор путешественника</instrumentFree>
+				<equipmentFree>
+					<option>
+						<weapons>воинское оружие</weapons>
+						<weapons>щит</weapons>
+					</option>
+					<option>
+						<weapons>воинское оружие</weapons>
+						<weapons>воинское оружие</weapons>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<weapons>метательное копьё</weapons>
+						<weapons>метательное копьё</weapons>
+						<weapons>метательное копьё</weapons>
+						<weapons>метательное копьё</weapons>
+						<weapons>метательное копьё</weapons>
+					</option>
+					<option>
+						<weapons>простое рукопашное оружие</weapons>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<instrument>набор священника</instrument>
+					</option>
+					<option>
+						<instrument>набор путешественника</instrument>
+					</option>
+				</equipmentFree>
 				<alternative>5d4 x 10 зм</alternative>
 				<name>Снаряжение</name>
 				<text>Вы начинаете со следующим снаряжением в дополнение к снаряжению, полученному за вашу предысторию:</text>
@@ -2951,9 +3118,32 @@
 				<text>Навыки: Выберите три навыка из следующих: Анализ, Атлетика, Внимательность, Выживание, Природа, Проницательность, Скрытность, Уход за животными.</text>
 			</feature>
 			<feature>
-				<armorFree>чешуйчатый доспех, кожаный доспех</armorFree>
-				<weaponsFree>два коротких меча, 2* простое рукопашное оружие</weaponsFree>
-				<instrumentFree>набор исследователя подземелий, набор путешественника</instrumentFree>
+				<equipmentFree>
+					<option>
+						<armor>кожаный доспех</armor>
+					</option>
+					<option>
+						<armor>чешуйчатый доспех</armor>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<weapons>короткий меч</weapons>
+						<weapons>короткий меч</weapons>
+					</option>
+					<option>
+						<weapons>простое рукопашное оружие</weapons>
+						<weapons>простое рукопашное оружие</weapons>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<instrument>набор исследователя подземелий</instrument>
+					</option>
+					<option>
+						<instrument>набор путешественника</instrument>
+					</option>
+				</equipmentFree>
 				<weapons>длинный лук, 20 стрел</weapons>
 				<alternative>5d4 x 10 зм</alternative>
 				<name>Снаряжение</name>
@@ -3281,8 +3471,33 @@
 				<text>Навыки: Выберите четыре навыка из следующих: Акробатика, Атлетика, Обман, Проницательность, Запугивание, Анализ, Внимательность, Выступление, Убеждение, Ловкость рук и Скрытность</text>
 			</feature>
 			<feature>
-				<weaponsFree>рапира, короткий меч # короткий лук и 20 стрел, короткий меч</weaponsFree>
-				<instrumentFree>набор взломщика, набор исследователя подземелий, набор путешественника</instrumentFree>
+				<equipmentFree>
+					<option>
+						<weapons>рапира</weapons>
+					</option>
+					<option>
+						<weapons>короткий меч</weapons>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<weapons>короткий лук</weapons>
+					</option>
+					<option>
+						<weapons>короткий меч</weapons>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<instrument>набор взломщика</instrument>
+					</option>
+					<option>
+						<instrument>набор исследователя подземелий</instrument>
+					</option>
+					<option>
+						<instrument>набор путешественника</instrument>
+					</option>
+				</equipmentFree>
 				<armor>кожаный доспех</armor>
 				<weapons>два кинжала</weapons>
 				<instrument>воровские инструменты</instrument>
@@ -3585,8 +3800,30 @@
 				<text>Навыки: Выберите два навыка из следующих: Магия, Обман, Проницательность, Запугивание, Убеждение и Религия</text>
 			</feature>
 			<feature>
-				<weaponsFree>легкий арбалет и 20 болтов, 1* простое оружие</weaponsFree>
-				<instrumentFree>мешочек с компонентами, магическая фокусировка # набор исследователя подземелий, набор путешественника</instrumentFree>
+				<equipmentFree>
+					<option>
+						<weapons>легкий арбалет</weapons>
+					</option>
+					<option>
+						<weapons>простое оружие</weapons>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<instrument>мешочек с компонентами</instrument>
+					</option>
+					<option>
+						<instrument>магическая фокусировка</instrument>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<instrument>набор исследователя подземелий</instrument>
+					</option>
+					<option>
+						<instrument>набор путешественника</instrument>
+					</option>
+				</equipmentFree>
 				<weapons>два кинжала</weapons>
 				<alternative>3d4 x 10 зм</alternative>
 				<name>Снаряжение</name>
@@ -4022,8 +4259,30 @@
 				<text>Навыки: Выберите два навыка из следующих: Магия, Обман, История, Запугивание, Анализ, Природа и Религия</text>
 			</feature>
 			<feature>
-				<instrumentFree>мешочек с компонентами, магическая фокусировка # набор ученого, набор исследователя подземелий</instrumentFree>
-				<weaponsFree>легкий арбалет и 20 болтов, 1* простое оружие</weaponsFree>
+				<equipmentFree>
+					<option>
+						<instrument>мешочек с компонентами</instrument>
+					</option>
+					<option>
+						<instrument>магическая фокусировка</instrument>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<instrument>набор ученого</instrument>
+					</option>
+					<option>
+						<instrument>набор исследователя подземелий</instrument>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<weapons>легкий арбалет</weapons>
+					</option>
+					<option>
+						<weapons>простое оружие</weapons>
+					</option>
+				</equipmentFree>
 				<armor>кожаный доспех</armor>
 				<weapons>1* простое оружие, два кинжала</weapons>
 				<alternative>4d4 x 10 зм</alternative>
@@ -5309,8 +5568,30 @@
 				<text>Навыки: Выберите два навыка из следующих: Магия, История, Проницательность, Анализ, Медицина и Религия</text>
 			</feature>
 			<feature>
-				<weaponsFree>боевой посох, кинжал</weaponsFree>
-				<instrumentFree>мешочек с компонентами, магическая фокусировка # набор учёного, набор путешественника</instrumentFree>
+				<equipmentFree>
+					<option>
+						<weapons>боевой посох</weapons>
+					</option>
+					<option>
+						<weapons>кинжал</weapons>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<instrument>мешочек с компонентами</instrument>
+					</option>
+					<option>
+						<instrument>магическая фокусировка</instrument>
+					</option>
+				</equipmentFree>
+				<equipmentFree>
+					<option>
+						<instrument>набор учёного</instrument>
+					</option>
+					<option>
+						<instrument>набор путешественника</instrument>
+					</option>
+				</equipmentFree>
 				<instrument>книга заклинаний</instrument>
 				<alternative>4d4 x 10 зм</alternative>
 				<name>Снаряжение</name>
