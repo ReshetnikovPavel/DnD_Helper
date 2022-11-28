@@ -7,7 +7,7 @@ namespace Tests;
 [TestFixture]
 public class CharacterShould
 {
-    [Test]
+    /*[Test]
     public void TestApplyRace()
     {
         var race = new Race();
@@ -27,5 +27,5 @@ public class CharacterShould
     }
 
     [Test]
-    public void TestApplyRace_Should
+    public void TestApplyRace_Should*/
 }

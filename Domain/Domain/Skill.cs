@@ -17,13 +17,13 @@ public class Skill : ValueType<Skill>, IBasedOnAbility<SkillName>, IDndObject
 		ProficiencyBonus = proficiencyBonus;
 	}
 
-    public static IReadOnlyDictionary<SkillName, Skill> CreateFrom(IReadOnlyDictionary<AbilityName, AbilityScore> scores)
+    public static IReadOnlyDictionary<SkillName, Skill> CreateFrom(IReadOnlyDictionary<AbilityName, AbilityScore> scores, ProficiencyBonus proficiencyBonus)
     {
 		var skills = new Dictionary<SkillName, Skill>();
         foreach (var skillName in Enum.GetValues<SkillName>())
         {
             var abilityName = AbilityScore.GetNameFromSkillName(skillName);
-            skills[skillName] = new Skill(skillName, scores[abilityName], new ProficiencyBonus());
+            skills[skillName] = new Skill(skillName, scores[abilityName], proficiencyBonus);
         }
 		return skills;
     }
