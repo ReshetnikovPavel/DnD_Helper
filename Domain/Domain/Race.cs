@@ -4,18 +4,18 @@ namespace Domain;
 
 public class Race : ValueType<Race>, IDndObject
 {
-	public string Name { get; init; }
-    public string SubraceName { get; init; }
-    public string Description { get; init; }
-	public Size Size { get; init; }
-	public Speed Speed { get; init; }
-	public IEnumerable<AbilityScoreBonus> AbilityScoreBonuses { get; init; }
-	public IEnumerable<Language> Languages { get; init; }
-	public IEnumerable<(int level, Spell spells)> Spells { get; init; }
-	public IEnumerable<Weapon> WeaponsProficiencies { get; init; }
-	public IEnumerable<SkillName> SkillProficiencies { get; init; }
-	public IEnumerable<Trait> Traits { get; init; }
-	public IEnumerable<Instrument> InstrumentProfieciencies { get; init; }
-	public IEnumerable<Feat> Feats { get; init; }
-	public RaceOptionals Optionals { get; init; }
+	public string Name { get; set; }
+    public string SubraceName { get; set; }
+    public string Description { get; set; }
+	public Size Size { get; set; }
+	public Speed Speed { get; set; }
+	public IEnumerable<AbilityScoreBonus> AbilityScoreBonuses { get; set; }
+	public IEnumerable<Language> Languages { get; set; }
+	public IEnumerable<(int level, Spell spells)> Spells { get; set; }
+	public IEnumerable<Weapon> WeaponsProficiencies { get; set; }
+	public IEnumerable<SkillName> SkillProficiencies { get; set; }
+	public IEnumerable<Trait> Traits { get; set; }
+	public IEnumerable<Instrument> InstrumentProfieciencies { get; set; }
+	public IEnumerable<Feat> Feats { get; set; }
+	public RaceOptionals Optionals { get; set; }
 }
