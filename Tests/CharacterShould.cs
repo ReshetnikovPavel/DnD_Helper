@@ -8,7 +8,7 @@ namespace Tests;
 public class CharacterShould
 {
     [Test]
-    public void TestAplayRace()
+    public void TestApplyRace()
     {
         var race = new Race();
         var character = new Character(new Guid(18, 0, 0, new byte[8]));
@@ -19,10 +19,13 @@ public class CharacterShould
         race.Languages = new List<Language>(){new Language("Драконий"), new Language("Общий")};
 
         character.Race = race;
-        character.AplayRace();
+        character.ApplyRace();
         character.Size.Should().Be(race.Size);
         character.Speed.Should().Be(race.Speed);
         character.AbilityScoreBonuses.Should().BeEquivalentTo(race.AbilityScoreBonuses);
         character.Languages.Should().BeEquivalentTo(race.Languages);    
     }
+
+    [Test]
+    public void TestApplyRace_Should
 }
