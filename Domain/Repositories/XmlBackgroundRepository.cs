@@ -30,12 +30,12 @@ public class XmlBackgroundRepository : XmlRepository, IBackgroundRepository
     private Background CreateBackground(XElement xElement)
     {
         var name = xElement.GetName();
-        var skill = parser.ParseMany(xElement.GetContentWithTag("proficiency"), parser.ParseSkillName);
+        var skill = factory.GetSkillProficiencies(xElement);
         var money = int.Parse(xElement.GetElementContentWithName("money"));
-        var equipment = parser.ParseMany(xElement.GetContentWithTag("equipment"), parser.ParseEquipment);
-        var instrument = parser.ParseMany(xElement.GetContentWithTag("instrument"), parser.ParseInstrument);
-        var posessionInstrument = parser.ParseMany(xElement.GetContentWithTag("posessionInstrument"), parser.ParseInstrument);
-        var posessionInstrumentFree = parser.ParseChooseMany(xElement.GetContentWithTag("possessionInstrumentFree"), x => new Instrument(x));
+        var equipment = parser.ParseMany(xElement.GetElementContentWithName("equipment"), parser.ParseEquipment);
+        var instrument = factory.GetInstrumentProficiencies(xElement);
+        var posessionInstrument = factory.GetInstrumentProficiencies(xElement);
+        var posessionInstrumentFree = factory.GetOptionalInstruments(xElement);
         var languageFree = factory.GetOptionalLanguage(xElement);
         return new Background(name, skill, money, equipment, instrument, posessionInstrument, posessionInstrumentFree, languageFree);
     }

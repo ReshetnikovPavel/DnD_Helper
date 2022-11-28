@@ -53,11 +53,18 @@ public class DndCompendiumFactory : IDndFactory<XElement>
             int.Parse(xElement.GetElementContentWithName("proficiencyFree")));
     }
 
+    public ChooseMany<Spell> GetOptionalSpell(XElement xElement, string className)
+    {
+        var howMany = int.Parse(xElement.GetElementContentWithName("spellFree"));
+        var spells = spellRepository.GetNamesForClass(className).Select(spellRepository.GetSpell);
+        return new ChooseMany<Spell>(spells, howMany);
+    }
+
     public ChooseMany<Spell> GetOptionalSpell(XElement xElement)
     {
         if (!xElement.HasElement("spellFree"))
             return null;
-        var (className, howMany, level) = ParseOptionalSpell(xElement);
+        var (className, howMany, level) = ParseOptionalSpellIfStringContainsClassName(xElement);
 
         var options = spellRepository
             .GetNamesForClass(className)
@@ -67,7 +74,7 @@ public class DndCompendiumFactory : IDndFactory<XElement>
         return new ChooseMany<Spell>(options, howMany);
     }
 
-    private static (string className, int howMany, int level) ParseOptionalSpell(XElement xElement)
+    private static (string className, int howMany, int level) ParseOptionalSpellIfStringContainsClassName(XElement xElement)
     {
         var parsed = xElement
             .GetElementContentWithName("spellFree")

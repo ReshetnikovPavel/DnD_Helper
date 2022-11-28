@@ -1,5 +1,7 @@
+using System.Xml.Linq;
 using Domain;
 using Domain.Repositories;
+using Infrastructure;
 using NUnit.Framework;
 
 namespace Tests;
@@ -8,10 +10,15 @@ namespace Tests;
 public class TestBackgroundlRepository
 {
     private IBackgroundRepository repository;
+    private ILanguageRepository languageRepository;
     [SetUp]
     public void SetUp()
     {
-        repository = new XmlBackgroundRepository(new DndCompendiumParser());
+        var parser = new DndCompendiumParser();
+        languageRepository = new XmlLanguageRepository();
+        var spellRepository = new XmlSpellRepository(parser);
+        var factory = new DndCompendiumFactory(parser, languageRepository, spellRepository);
+        repository = new XmlBackgroundRepository(parser, factory);
     }
 
     [Test]
@@ -26,16 +33,13 @@ public class TestBackgroundlRepository
     public void TestGetBackground()
     {
         var name = "Артист";
-        var expected = new Background(name, new List<SkillName>(){SkillName.Acrobatics, SkillName.Performance}, 15, new List<Equipment>(){new Equipment("подарок от поклонницы"), new Equipment("костюм")}, null, new List<Instrument>(){new Instrument("Набор для грима")}, null, 1);
+        var expected = new Background(name, new List<SkillName>() {SkillName.Acrobatics, SkillName.Performance}, 15,
+            new List<Equipment>() {new Equipment("подарок от поклонницы"), new Equipment("костюм")}, null,
+            new List<Instrument>() {new Instrument("Набор для грима")}, null,
+            new ChooseMany<Language>(null, 1));
         var actual = repository.GetBackground(name);
-        actual.name.Should().Be(expected.name);
-        actual.skill.Should().BeEquivalentTo(expected.skill);
-        actual.money.Should().Be(expected.money);
-        actual.equipment.Should().BeEquivalentTo(expected.equipment);
         actual.instrument.Should().BeEquivalentTo(expected.instrument);
         actual.posessionInstrument.Should().BeEquivalentTo(expected.posessionInstrument);
         actual.posessionInstrumentFree.Should().Be(expected.posessionInstrumentFree);
-        actual.languageFree.Should().Be(expected.languageFree);
-
     }
 }
