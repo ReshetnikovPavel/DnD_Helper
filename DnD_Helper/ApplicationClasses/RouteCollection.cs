@@ -21,7 +21,7 @@ namespace DnD_Helper.ApplicationClasses
         {
             var index = routes.FirstOrDefault(pair => pair.Key.Route == route).Value;
             return routes.Skip(index + 1)
-                .FirstOrDefault(pair => pair.Key.CheckCondition())
+                .FirstOrDefault(pair => pair.Key.TryGo())
                 .Key;
         }
     }

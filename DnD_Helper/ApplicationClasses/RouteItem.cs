@@ -23,11 +23,20 @@ namespace DnD_Helper.ApplicationClasses
             CheckCondition = () => true;
         }
 
-        public async void Go()
+        public bool TryGo()
         {
+            TriedToGo?.Invoke(this, EventArgs.Empty);
             if (!CheckCondition())
-                return;
-            await Shell.Current.GoToAsync($"///{Route}");
+                return false;
+            Go();
+            return true;
         }
+
+        private async void Go()
+        {
+            await Shell.Current.GoToAsync(Route);
+        }
+
+        public event EventHandler TriedToGo;
     }
 }

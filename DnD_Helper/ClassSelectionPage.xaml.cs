@@ -15,6 +15,6 @@ public partial class ClassSelectionPage : ContentPage
     private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
     {
         AppShell.Singleton.SelectedClassName = e.Item.ToString();
-        AppShell.Singleton.GoToNextPage(nameof(ClassSelectionPage));
+        AppShell.Singleton.GoToNextPage($"///{nameof(ClassSelectionPage)}");
     }
 }

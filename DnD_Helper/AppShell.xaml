@@ -67,4 +67,9 @@
               Clicked="BackToMenu_Clicked" >
     </MenuItem>
 
+    <MenuItem Text="Лист персонажа"
+              Clicked="BackToMenu_Clicked" >
+    </MenuItem>
+
+
 </Shell>

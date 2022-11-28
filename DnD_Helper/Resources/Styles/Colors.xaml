@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
+    <Color x:Key="EntryBackground">#bec7d9</Color>
     <Color x:Key="PageBackground">#d8d7e5</Color>
     <Color x:Key="PageText">#5c79a1</Color>
     <Color x:Key="ShellBackground">#d8d7e5</Color>

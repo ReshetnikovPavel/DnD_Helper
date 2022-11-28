@@ -14,6 +14,7 @@ public partial class AppShell : Shell
     public IBackgroundRepository BackgroundRepository { get; private set; }
 
     private RouteCollection routes;
+    private RouteItem characterSheetRoute;
 
     public AppShell()
 	{
@@ -31,6 +32,7 @@ public partial class AppShell : Shell
     public string SelectedSubRaceName { get; set; }
     public string SelectedClassName { get; set; }
     public string SelectedBackgroundName { get; set; }
+    public string SelectedName { get; set; }
 
     public IEnumerable<string> GetSubraceNames()
         => RaceRepository.GetSubraceNames(SelectedRaceName);
@@ -38,18 +40,22 @@ public partial class AppShell : Shell
     public void GoToNextPage(string currentRoute)
     {
         var nextRoute = routes.GetNext(currentRoute);
-        nextRoute?.Go();
+        nextRoute?.TryGo();
     }
 
     private void InitRoutes()
     {
+        Routing.RegisterRoute(nameof(CharacterSheetPage), typeof(CharacterSheetPage));
+        characterSheetRoute = new RouteItem($"/{nameof(CharacterSheetPage)}");
+
         var routesArr = new IHasRoute[]
         {
-            new RouteItem(nameof(RaceSelectionPage)),
-            new RouteItem(nameof(SubraceSelectionPage), ShouldSubraceBeVisible),
-            new RouteItem(nameof(ClassSelectionPage)),
-            new RouteItem(nameof(AbilityScoresSelectionPage)),
-            new RouteItem(nameof(BackgroundSelectionPage))
+            new RouteItem($"///{nameof(RaceSelectionPage)}"),
+            new RouteItem($"///{nameof(SubraceSelectionPage)}", ShouldSubraceBeVisible),
+            new RouteItem($"///{nameof(ClassSelectionPage)}"),
+            new RouteItem($"///{nameof(AbilityScoresSelectionPage)}"),
+            new RouteItem($"///{nameof(BackgroundSelectionPage)}"),
+            characterSheetRoute
         };
         routes = new RouteCollection(routesArr);
     }
@@ -81,6 +87,11 @@ public partial class AppShell : Shell
             "Весь прогресс будет утерян", "Да", "Нет");
         if (choice)
             App.Current.MainPage = new MenuShell();
+    }
+
+    private void CharacterSheet_Clicked(object sender, EventArgs e)
+    {
+        characterSheetRoute.TryGo();
     }
 
     protected override bool OnBackButtonPressed()

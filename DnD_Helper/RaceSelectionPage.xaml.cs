@@ -19,6 +19,6 @@ public partial class RaceSelectionPage : ContentPage
     {
         AppShell.Singleton.SelectedRaceName = e.Item.ToString();
         MessagingCenter.Send<RaceSelectionPage>(this, "SelectedRaceName");
-        AppShell.Singleton.GoToNextPage(nameof(RaceSelectionPage));
+		AppShell.Singleton.GoToNextPage($"///{nameof(RaceSelectionPage)}");
     }
 }

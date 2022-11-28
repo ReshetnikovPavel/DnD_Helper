@@ -11,6 +11,8 @@ namespace DnD_Helper.ApplicationClasses
         string Route { get; }
         Func<bool> CheckCondition { get; }
 
-        void Go();
+        bool TryGo();
+
+        public event EventHandler TriedToGo;
     }
 }

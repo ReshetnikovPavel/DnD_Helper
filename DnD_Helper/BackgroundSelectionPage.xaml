@@ -7,20 +7,37 @@
              x:DataType="local:BackgroundSelectionPage"
              Style="{StaticResource ContentPage}">
 
-    <ListView ItemsSource="{Binding BackgroundNames}"
-              Margin="10"
+    <Grid Margin="15"
+        RowDefinitions="Auto, Auto, Auto, *, Auto">
+        <Label Text="Имя" />
+        <Entry Grid.Row="1"
+            Margin="0, 5, 0, 15" 
+               TextChanged="Entry_TextChanged" />
+        <Label Grid.Row="2"
+            Text="Предыстория" />
+        <ListView Grid.Row="3"
+            ItemsSource="{Binding BackgroundNames}"
+              Margin="10, 5, 10, 10"
               ItemTapped="ListView_ItemTapped">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <Grid Padding="10">
-                        <Frame>
-                            <Label Text="{Binding .}" />
-                        </Frame>
-                    </Grid>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Frame>
+                                <Label Text="{Binding .}" />
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ImageButton Grid.Row="4"
+                     HorizontalOptions="EndAndExpand"
+                     Source="forward_button.png"
+                     Aspect="AspectFit"
+                     Clicked="NextButton_Clicked"
+                     HeightRequest="80"
+                     WidthRequest="80"/>
+    </Grid>
 
 </ContentPage>

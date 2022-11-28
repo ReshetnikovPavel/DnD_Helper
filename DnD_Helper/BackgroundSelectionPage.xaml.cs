@@ -15,6 +15,15 @@ public partial class BackgroundSelectionPage : ContentPage
     private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
     {
         AppShell.Singleton.SelectedBackgroundName = e.Item.ToString();
-        AppShell.Singleton.GoToNextPage(nameof(BackgroundSelectionPage));
+    }
+
+    private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        AppShell.Singleton.SelectedName = e.NewTextValue;
+    }
+
+    private void NextButton_Clicked(object sender, EventArgs e)
+    {
+        AppShell.Singleton.GoToNextPage($"///{nameof(BackgroundSelectionPage)}");
     }
 }
