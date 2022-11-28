@@ -10,6 +10,8 @@
     <Color x:Key="ShellText">#5c79a1</Color>
     <Color x:Key="FlyoutBackground">#5c79a1</Color>
     <Color x:Key="FlyoutText">White</Color>
+    <Color x:Key="ListFrameBackground">#bec7d9</Color>
+    <Color x:Key="UnselectedTab">#bec7d9</Color>
     
     <Color x:Key="Primary">#512BD4</Color>
     <Color x:Key="Secondary">#DFD8F7</Color>

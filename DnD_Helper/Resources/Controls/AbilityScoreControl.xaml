@@ -4,15 +4,23 @@
       x:Class="DnD_Helper.Resources.Controls.AbilityScoreControl"
       xmlns:controls="clr-namespace:DnD_Helper.Resources.Controls"
       x:DataType="controls:AbilityScoreControl"
-      ColumnDefinitions="*"
-      ColumnSpacing="-60">
+      ColumnDefinitions="*, 2.5*, *"
+      ColumnSpacing="5">
 
+    <ImageButton x:Name="MinusButton"
+        Source="minus_button.png"
+                 Aspect="AspectFit" 
+                 Clicked="MinusButton_Clicked" />
     <Grid Grid.Column="1">
-        <Image Source="{Binding CounterSource}" />
-        <Label Text="{Binding ValueDisplay}"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand"
-                   FontSize="56"/>
+        <Image x:Name="CounterImage"/>
+        <Label x:Name="ValueLabel"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               FontSize="56" />
     </Grid>
-
+    <ImageButton x:Name="PlusButton"
+        Grid.Column="2"
+                 Source="plus_button.png"
+                 Aspect="AspectFit"
+                 Clicked="PlusButton_Clicked" />
 </Grid>

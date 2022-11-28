@@ -1,3 +1,6 @@
+using Domain;
+using Domain.Repositories;
+
 namespace DnD_Helper;
 
 public partial class RaceSelectionPage : ContentPage
@@ -5,5 +8,19 @@ public partial class RaceSelectionPage : ContentPage
 	public RaceSelectionPage()
 	{
 		InitializeComponent();
+
+		BindingContext = this;
 	}
+
+	public IEnumerable<string> RaceNames
+		=> AppShell.Singleton.RaceRepository.GetNames();
+
+    private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+    {
+		var raceName = e.Item.ToString();
+		AppShell.Singleton.SelectedRaceName = raceName;
+		AppShell.Singleton.IsRaceSelected = true;
+		MessagingCenter.Send<RaceSelectionPage>(this, "SelectedRaceName");
+		await Shell.Current.GoToAsync($"///{nameof(SubraceSelectionPage)}");
+    }
 }

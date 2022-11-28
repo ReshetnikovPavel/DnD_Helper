@@ -3,14 +3,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DnD_Helper.AbilityScoresSelectionPage"
              xmlns:controls="clr-namespace:DnD_Helper.Resources.Controls"
-             xmlns:app="clr-namespace:DnD_Helper"
-             x:DataType="app:AbilityScoresSelectionPage"
+             xmlns:local="clr-namespace:DnD_Helper"
              Title="Распределите характеристики"
+             x:DataType="local:AbilityScoresSelectionPage"
              Style="{StaticResource ContentPage}">
 
-    <Grid RowDefinitions="*">
-        <controls:AbilityScoreControl AbilityScore="{Binding Intelligence}" 
-                                      CounterSource="intelligence_counter.png"/>
+    <Grid Margin="15"
+        RowDefinitions="Auto, *">
+        <Label Text="{Binding PointsLeft}"
+               HorizontalOptions="Center"/>
+        <Grid Grid.Row="1"
+          ColumnSpacing="25"
+        ColumnDefinitions="*, *"
+        RowDefinitions="*, *, *">
+            <controls:AbilityScoreControl Grid.Column="0"
+                                      Grid.Row="0"
+                                      CounterSource="strength_counter.png"
+                                      Ability="{Binding Strength}" 
+                                          Distributor="{Binding Distributor}"/>
+            <controls:AbilityScoreControl Grid.Column="0"
+                                      Grid.Row="1"
+                                      CounterSource="dexterity_counter.png"
+                                      Ability="{Binding Dexterity}" 
+                                          Distributor="{Binding Distributor}"/>
+            <controls:AbilityScoreControl Grid.Column="0"
+                                      Grid.Row="2"
+                                      CounterSource="constitution_counter.png"
+                                      Ability="{Binding Constitution}" 
+                                          Distributor="{Binding Distributor}"/>
+            <controls:AbilityScoreControl Grid.Column="1"
+                                      Grid.Row="0"
+                                      CounterSource="intelligence_counter.png"
+                                      Ability="{Binding Intelligence}" 
+                                          Distributor="{Binding Distributor}"/>
+            <controls:AbilityScoreControl Grid.Column="1"
+                                      Grid.Row="1"
+                                      CounterSource="wisdom_counter.png"
+                                      Ability="{Binding Wisdom}" 
+                                          Distributor="{Binding Distributor}"/>
+            <controls:AbilityScoreControl Grid.Column="1"
+                                      Grid.Row="2"
+                                      CounterSource="charisma_counter.png"
+                                      Ability="{Binding Charisma}" 
+                                          Distributor="{Binding Distributor}"/>
+        </Grid>
     </Grid>
-    
+
 </ContentPage>
