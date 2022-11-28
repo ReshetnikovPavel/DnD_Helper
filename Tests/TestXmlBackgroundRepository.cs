@@ -1,5 +1,6 @@
 using Domain;
 using Domain.Repositories;
+using Infrastructure;
 using NUnit.Framework;
 
 namespace Tests;
@@ -27,7 +28,7 @@ public class TestBackgroundlRepository
     public void TestGetBackground()
     {
         var name = "Артист";
-        var expected = new Background(name, new List<SkillName>(){SkillName.Acrobatics, SkillName.Performance}, 15, new List<Equipment>(){new Equipment("подарок от поклонницы"), new Equipment("костюм")}, null, new List<Instrument>(){new Instrument("Набор для грима")}, null, );
+        var expected = new Background(name, new List<SkillName>(){SkillName.Acrobatics, SkillName.Performance}, 15, new List<Equipment>(){new Equipment("подарок от поклонницы"), new Equipment("костюм")}, Enumerable.Empty<Instrument>(), new List<Instrument>(){new Instrument("Набор для грима")}, new ChooseMany<Instrument>(new []{new Instrument("музыкальный")}, 1), null);
         var actual = repository.GetBackground(name);
         actual.name.Should().Be(expected.name);
         actual.skill.Should().BeEquivalentTo(expected.skill);
@@ -37,6 +38,5 @@ public class TestBackgroundlRepository
         actual.posessionInstrument.Should().BeEquivalentTo(expected.posessionInstrument);
         actual.posessionInstrumentFree.Should().Be(expected.posessionInstrumentFree);
         actual.languageFree.Should().Be(expected.languageFree);
-
     }
 }

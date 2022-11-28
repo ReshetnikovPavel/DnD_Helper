@@ -12,7 +12,11 @@ public class ClassRepository_should
     [SetUp]
     public void SetUp()
     {
-        repository = new XmlClassRepository(new DndCompendiumParser());
+        var parser = new DndCompendiumParser();
+        var languageRepository = new XmlLanguageRepository();
+        var spellRepository = new XmlSpellRepository(parser);
+        var factory = new DndCompendiumFactory(parser, languageRepository, spellRepository);
+        repository = new XmlClassRepository(parser, factory);
     }
 
     [Test]
@@ -45,5 +49,12 @@ public class ClassRepository_should
     {
         var dndClass = repository.GetClass("Варвар");
         dndClass.SpellSlotsTable.Should().BeNull();
+    }
+
+    [Test]
+    public void GetClass_ShouldContainFeatures()
+    {
+        var dndClass = repository.GetClass("Варвар");
+        dndClass.LevelFeatures[1].Should().Contain(x => x.Name == "Ярость");
     }
 }

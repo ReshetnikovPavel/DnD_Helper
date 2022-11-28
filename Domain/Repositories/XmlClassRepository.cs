@@ -6,9 +6,12 @@ namespace Domain.Repositories;
 public class XmlClassRepository : XmlRepository, IClassRepository
 {
     private IDndParser parser;
-    public XmlClassRepository(IDndParser parser) : base("Classes", "class")
+    private readonly IDndFactory<XElement> factory;
+
+    public XmlClassRepository(IDndParser parser, IDndFactory<XElement> factory) : base("Classes", "class")
     {
         this.parser = parser;
+        this.factory = factory;
     }
 
     public Class GetClass(string name)
@@ -20,8 +23,10 @@ public class XmlClassRepository : XmlRepository, IClassRepository
             HitDice = GetHitDice(xElement),
             AbilityNamesForSavingThrows = GetAbilityNamesForSavingThrows(xElement),
             SpellAbility = GetSpellAbilityName(xElement),
-            SpellSlotsTable = GetSpellSlotsTable(xElement)
+            SpellSlotsTable = GetSpellSlotsTable(xElement),
+            LevelFeatures = new Dictionary<int, IEnumerable<ClassFeature>>()
         };
+        dndClass.LevelFeatures[1] = GetFeatures(name, 1);
         return dndClass;
     }
 
@@ -78,7 +83,7 @@ public class XmlClassRepository : XmlRepository, IClassRepository
             .Where(x => x.HasElement("feature") && int.Parse(x.GetAttributeContentWithName("level")) == level);
 
         foreach (var featureXElement in featureXElements)
-            yield return CreateFeature(featureXElement);
+            yield return CreateFeature(featureXElement.Element("feature"));
     }
 
     private ClassFeature CreateFeature(XElement featureXElement)
@@ -86,15 +91,23 @@ public class XmlClassRepository : XmlRepository, IClassRepository
         var feature = new ClassFeature
         {
             Name = featureXElement.GetElementContentWithName("name"),
-            Armor = GetArmorTypes(featureXElement)
-
+            Armor = GetArmorTypes(featureXElement),
+            Weapon = GetWeaponTypes(featureXElement),
+            SkillProficiencies = factory.GetOptionalSkillProficiencies(featureXElement),
+            Instruments = factory.GetInstrumentProficiencies(featureXElement),
+            Weapons = factory.GetWeaponProficiencies(featureXElement)
         };
-        throw new NotImplementedException();
+        return feature;
+    }
+
+    private IEnumerable<WeaponType> GetWeaponTypes(XElement xElement)
+    {
+        return parser.ParseMany(xElement.GetElementContentWithName("possessionWeapon"), parser.ParseWeaponType);
     }
 
     private IEnumerable<ArmorType> GetArmorTypes(XElement xElement)
     {
         return parser.ParseMany(xElement.GetElementContentWithName("possessionArmor"), parser.ParseArmorType);
     }
-    
+
 }
