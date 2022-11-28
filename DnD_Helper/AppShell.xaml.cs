@@ -19,8 +19,10 @@ public partial class AppShell : Shell
         BindingContext = this;
         Singleton = this;
         InitRoutes();
-        //InitMessaging();
+        InitMessaging();
         InitDomain();
+
+        SubracePage.IsVisible = false;
 	}
 
     public string SelectedRaceName { get; set; }
@@ -28,6 +30,7 @@ public partial class AppShell : Shell
 
     public IEnumerable<string> GetSubraceNames()
         => RaceRepository.GetSubraceNames(SelectedRaceName);
+
 
     public void GoToNextPage(string currentRoute)
     {
@@ -58,7 +61,7 @@ public partial class AppShell : Shell
     private void InitMessaging()
     {
         MessagingCenter.Subscribe<RaceSelectionPage>(this, "SelectedRaceName", (sender)
-            => SubRacePage.IsVisible = ShouldSubraceBeVisible());
+            => SubracePage.IsVisible = ShouldSubraceBeVisible());
     }
 
     private bool ShouldSubraceBeVisible()

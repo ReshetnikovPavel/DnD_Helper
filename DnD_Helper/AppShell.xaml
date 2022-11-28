@@ -35,11 +35,10 @@
                       ContentTemplate="{DataTemplate local:RaceSelectionPage}"
                       Route="RaceSelectionPage" >
             </ShellContent>
-            <ShellContent x:Name="SubRacePage" 
+            <ShellContent x:Name="SubracePage" 
                           Title="Подраса"
                       ContentTemplate="{DataTemplate local:SubraceSelectionPage}"
-                      Route="SubraceSelectionPage"
-                          IsVisible="False" >
+                      Route="SubraceSelectionPage" >
             </ShellContent>
         </Tab>
 
