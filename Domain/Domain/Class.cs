@@ -9,4 +9,5 @@ public class Class : ValueType<Class>, IDndObject
     public IEnumerable<AbilityName> AbilityNamesForSavingThrows { get; set; }
     public AbilityName? SpellAbility { get; set; }
     public IDictionary<int, IEnumerable<ClassFeature>> LevelFeatures { get; set; }
+    public SpellSlotsTable SpellSlotsTable { get; set; }
 }

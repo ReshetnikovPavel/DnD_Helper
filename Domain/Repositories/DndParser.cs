@@ -21,7 +21,8 @@ public class DndCompendiumParser : IDndParser
 
 	public IEnumerable<string> Split(string text)
 	{
-		return text.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
+		return text.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries)
+            .Select(x => x.Trim());
 	}
 
 	public Speed ParseSpeed(string speed)

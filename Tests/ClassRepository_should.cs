@@ -32,4 +32,18 @@ public class ClassRepository_should
         actual.AbilityNamesForSavingThrows.Should().BeEquivalentTo(expected.AbilityNamesForSavingThrows);
         actual.SpellAbility.Should().Be(expected.SpellAbility);
     }
+
+    [Test]
+    public void GetClass_ShouldContainSpellSlotsTableWhenItHasOne()
+    {
+        var dndClass = repository.GetClass("Бард");
+        dndClass.SpellSlotsTable.Should().NotBeNull();
+    }
+
+    [Test]
+    public void GetClass_ShouldNotContainSpellSlotsTableWhenItDoesNotHaveOne()
+    {
+        var dndClass = repository.GetClass("Варвар");
+        dndClass.SpellSlotsTable.Should().BeNull();
+    }
 }

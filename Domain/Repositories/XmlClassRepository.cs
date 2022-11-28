@@ -19,7 +19,8 @@ public class XmlClassRepository : XmlRepository, IClassRepository
             Name = name,
             HitDice = GetHitDice(xElement),
             AbilityNamesForSavingThrows = GetAbilityNamesForSavingThrows(xElement),
-            SpellAbility = GetSpellAbilityName(xElement)
+            SpellAbility = GetSpellAbilityName(xElement),
+            SpellSlotsTable = GetSpellSlotsTable(xElement)
         };
         return dndClass;
     }
@@ -43,5 +44,26 @@ public class XmlClassRepository : XmlRepository, IClassRepository
         if (!xElement.HasElement(tag))
             return null;
         return parser.ParseAbilityName(xElement.GetContentWithTag(tag));
+    }
+
+    private SpellSlotsTable GetSpellSlotsTable(XElement xElement)
+    {
+        var spellSlotsXElements = xElement.Elements("autolevel").Where(x => x.HasElement("slots"));
+        if (!spellSlotsXElements.Any())
+            return null;
+
+        var spellSlotsTable = new SpellSlotsTable();
+        foreach (var spellSlotsXElement in spellSlotsXElements)
+            FillSpellSlotsTableRow(spellSlotsTable, spellSlotsXElement);
+
+        return spellSlotsTable;
+    }
+
+    private void FillSpellSlotsTableRow(SpellSlotsTable spellSlotsTable, XElement spellSlotsXElement)
+    {
+        var levelXAttribute = spellSlotsXElement.Attribute("level") ?? throw new NullReferenceException("autolevel tag has no level");
+        var classLevel = int.Parse(levelXAttribute.Value);
+        var spellSlots = parser.ParseMany(spellSlotsXElement.GetContentWithTag("slots"), int.Parse).ToArray();
+        spellSlotsTable.FillClassLevelRow(classLevel, spellSlots);
     }
 }
