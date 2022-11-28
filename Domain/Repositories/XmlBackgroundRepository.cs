@@ -35,7 +35,7 @@ public class XmlBackgroundRepository : XmlRepository, IBackgroundRepository
         var equipment = parser.ParseMany(xElement.GetElementContentWithName("equipment"), parser.ParseEquipment);
         var instrument = parser.ParseMany(xElement.GetElementContentWithName("instrument"), parser.ParseInstrument);
         var posessionInstrument = parser.ParseMany(xElement.GetElementContentWithName("posessionInstrument"), parser.ParseInstrument);
-        var posessionInstrumentFree = parser.ParseChooseMany(xElement.GetElementContentWithName("possessionInstrumentFree"), x => new Instrument(x));
+        var posessionInstrumentFree = parser.ParseChooseMany(xElement.GetElementContentWithName("possessionInstrumentFree"), parser.ParseInstrument);
         var languageFree = factory.GetOptionalLanguage(xElement);
         return new Background(name, skill, money, equipment, instrument, posessionInstrument, posessionInstrumentFree, languageFree);
     }
