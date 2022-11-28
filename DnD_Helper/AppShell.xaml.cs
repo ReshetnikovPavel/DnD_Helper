@@ -26,7 +26,7 @@ public partial class AppShell : Shell
 	}
 
     public string SelectedRaceName { get; set; }
-    public bool IsRaceSelected { get; set; }
+    public string SelectedSubRaceName { get; set; }
 
     public IEnumerable<string> GetSubraceNames()
         => RaceRepository.GetSubraceNames(SelectedRaceName);
