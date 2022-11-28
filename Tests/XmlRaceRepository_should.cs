@@ -15,7 +15,7 @@ public class XmlRaceRepository_should
     {
         var parser = new DndCompendiumParser();
 
-        repository = new XmlRaceRepository(parser, new XmlLanguageRepository(), new XmlSpellRepository(parser));
+        repository = new XmlRaceRepository(new DndCompendiumFactory(parser, new XmlLanguageRepository(), new XmlSpellRepository(parser)));
 	}
 
 	[Test]
