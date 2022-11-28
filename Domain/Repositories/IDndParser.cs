@@ -19,6 +19,7 @@ public interface IDndParser
         Func<string, T2> parse);
 
     Armor ParseArmor(string armor);
+	ArmorType ParseArmorType(string armorType);
 	Instrument ParseInstrument(string instrument);
 	Feat ParseFeat(string feat);
 

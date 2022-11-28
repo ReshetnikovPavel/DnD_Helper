@@ -129,7 +129,12 @@ public class DndCompendiumParser : IDndParser
 		return new Armor(armor);
 	}
 
-	public Instrument ParseInstrument(string instrument)
+    public ArmorType ParseArmorType(string armorType)
+    {
+        return new ArmorType(armorType);
+    }
+
+    public Instrument ParseInstrument(string instrument)
 	{
 		return new Instrument(instrument);
 	}

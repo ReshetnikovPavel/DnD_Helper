@@ -27,14 +27,14 @@ public class XmlClassRepository : XmlRepository, IClassRepository
 
     private HitDice GetHitDice(XElement xElement)
     {
-        var hitDieNumber = int.Parse(xElement.GetContentWithTag("hd"));
+        var hitDieNumber = int.Parse(xElement.GetElementContentWithName("hd"));
         var hitDie = new HitDice(new Dice(1, (DiceName) hitDieNumber));
         return hitDie;
     }
 
     private IEnumerable<AbilityName> GetAbilityNamesForSavingThrows(XElement xElement)
     {
-        var abilityNames = xElement.GetContentWithTag("savingThrow");
+        var abilityNames = xElement.GetElementContentWithName("savingThrow");
         return parser.ParseMany(abilityNames, parser.ParseAbilityName);
     }
 
@@ -43,7 +43,7 @@ public class XmlClassRepository : XmlRepository, IClassRepository
         var tag = "spellAbility";
         if (!xElement.HasElement(tag))
             return null;
-        return parser.ParseAbilityName(xElement.GetContentWithTag(tag));
+        return parser.ParseAbilityName(xElement.GetElementContentWithName(tag));
     }
 
     private SpellSlotsTable GetSpellSlotsTable(XElement xElement)
@@ -61,9 +61,32 @@ public class XmlClassRepository : XmlRepository, IClassRepository
 
     private void FillSpellSlotsTableRow(SpellSlotsTable spellSlotsTable, XElement spellSlotsXElement)
     {
-        var levelXAttribute = spellSlotsXElement.Attribute("level") ?? throw new NullReferenceException("autolevel tag has no level");
-        var classLevel = int.Parse(levelXAttribute.Value);
-        var spellSlots = parser.ParseMany(spellSlotsXElement.GetContentWithTag("slots"), int.Parse).ToArray();
+        var classLevel = int.Parse(spellSlotsXElement.GetAttributeContentWithName("level"));
+        var spellSlots = parser.ParseMany(spellSlotsXElement.GetElementContentWithName("slots"), int.Parse).ToArray();
         spellSlotsTable.FillClassLevelRow(classLevel, spellSlots);
+    }
+
+    public IEnumerable<ClassFeature> GetFeatures(string className, int level)
+    {
+        var xElement = Compendium.Elements("class").GetElementWithName(className);
+        return GetFeatures(xElement, level);
+    }
+
+    private IEnumerable<ClassFeature> GetFeatures(XElement classXElement, int level)
+    {
+        var featureXElements = classXElement.Elements("autolevel")
+            .Where(x => x.HasElement("feature") && int.Parse(x.GetAttributeContentWithName("level")) == level);
+
+        foreach (var featureXElement in featureXElements)
+            yield return CreateFeature(featureXElement);
+    }
+
+    private ClassFeature CreateFeature(XElement featureXElement)
+    {
+        var feature = new ClassFeature
+        {
+            Name = featureXElement.GetElementContentWithName("name"),
+        };
+        throw new NotImplementedException();
     }
 }

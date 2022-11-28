@@ -67,7 +67,7 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
     {
         if (!xElement.HasElement("possessionInstrumentFree"))
             return null;
-        return parser.ParseChooseMany(xElement.GetContentWithTag("possessionInstrumentFree"), x => new Instrument(x));
+        return parser.ParseChooseMany(xElement.GetElementContentWithName("possessionInstrumentFree"), x => new Instrument(x));
     }
 
     private ChooseMany<Language> GetOptionalLanguage(XElement xElement)
@@ -75,7 +75,7 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
         if (!xElement.HasElement("LanguageFree"))
             return null;
         var options = languageRepository.GetNames().Select(x => new Language(x));
-        var amount = int.Parse(xElement.GetContentWithTag("LanguageFree"));
+        var amount = int.Parse(xElement.GetElementContentWithName("LanguageFree"));
         return new ChooseMany<Language>(options, amount);
     }
 
@@ -84,7 +84,7 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
         if (!xElement.HasElement("abilityFree"))
             return null;
         return parser.ParseChooseRelational(
-            xElement.GetContentWithTag("abilityFree"),
+            xElement.GetElementContentWithName("abilityFree"),
             Enum.GetValues<AbilityName>(),
             int.Parse);
     }
@@ -95,7 +95,7 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
             return null;
         return new ChooseMany<SkillName>(
             Enum.GetValues<SkillName>(),
-            int.Parse(xElement.GetContentWithTag("proficiencyFree")));
+            int.Parse(xElement.GetElementContentWithName("proficiencyFree")));
     }
 
     private ChooseMany<Spell> GetOptionalSpell(XElement xElement)
@@ -115,7 +115,7 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
     private static (string className, int howMany, int level) ParseOptionalSpell(XElement xElement)
     {
         var parsed = xElement
-            .GetContentWithTag("spellFree")
+            .GetElementContentWithName("spellFree")
             .Split(':')
             .Select(x => x.Trim())
             .ToArray();
@@ -126,22 +126,22 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
     }
     private Size GetSize(XElement xElement)
     {
-        return parser.ParseSize(xElement.GetContentWithTag("size"));
+        return parser.ParseSize(xElement.GetElementContentWithName("size"));
     }
 
     private Speed GetSpeed(XElement xElement)
     {
-        return parser.ParseSpeed(xElement.GetContentWithTag("speed"));
+        return parser.ParseSpeed(xElement.GetElementContentWithName("speed"));
     }
 
     private IEnumerable<Language> GetLanguages(XElement xElement)
     {
-        return parser.ParseMany(xElement.GetContentWithTag("language"), parser.ParseLanguage);
+        return parser.ParseMany(xElement.GetElementContentWithName("language"), parser.ParseLanguage);
     }
 
     private IEnumerable<AbilityScoreBonus> GetAbilityScoreBonuses(XElement xElement)
     {
-        return parser.ParseMany(xElement.GetContentWithTag("ability"), parser.ParseAbilityScoreBonus);
+        return parser.ParseMany(xElement.GetElementContentWithName("ability"), parser.ParseAbilityScoreBonus);
     }
 
     private IEnumerable<(int level, Spell spell)> GetSpells(XElement xElement)
@@ -152,26 +152,26 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
             return (level, spellRepository.GetSpell(spell));
         }
 
-        return parser.ParseMany(xElement.GetContentWithTag("spell"), ApplyParse);
+        return parser.ParseMany(xElement.GetElementContentWithName("spell"), ApplyParse);
     }
 
     private IEnumerable<Weapon> GetWeaponProficiencies(XElement xElement)
     {
-        return parser.ParseMany(xElement.GetContentWithTag("possessionWeapons"), parser.ParseWeapon);
+        return parser.ParseMany(xElement.GetElementContentWithName("possessionWeapons"), parser.ParseWeapon);
     }
 
     private IEnumerable<SkillName> GetSkillProficiencies(XElement xElement)
     {
-        return parser.ParseManyToGetEnums(xElement.GetContentWithTag("skill"), parser.ParseSkillName);
+        return parser.ParseManyToGetEnums(xElement.GetElementContentWithName("skill"), parser.ParseSkillName);
     }
 
     private IEnumerable<Instrument> GetInstrumentProficiencies(XElement xElement)
     {
-        return parser.ParseMany(xElement.GetContentWithTag("instrument"), parser.ParseInstrument);
+        return parser.ParseMany(xElement.GetElementContentWithName("instrument"), parser.ParseInstrument);
     }
 
     private IEnumerable<Feat> GetFeats(XElement xElement)
     {
-        return parser.ParseMany(xElement.GetContentWithTag("feat"), parser.ParseFeat);
+        return parser.ParseMany(xElement.GetElementContentWithName("feat"), parser.ParseFeat);
     }
 }

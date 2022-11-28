@@ -38,11 +38,11 @@ public class XmlSpellRepository : XmlRepository, ISpellRepository
     private Spell CreateSpell(XElement xElement)
     {
         var name = xElement.GetName();
-        var level = int.Parse(xElement.GetContentWithTag("level"));
-        var school = xElement.GetContentWithTag("school");
-        var time = xElement.GetContentWithTag("time");
-        var classes = parser.Split(xElement.GetContentWithTag("classes"));
-        var components = parser.ParseSpellComponents(xElement.GetContentWithTag("components"));
+        var level = int.Parse(xElement.GetElementContentWithName("level"));
+        var school = xElement.GetElementContentWithName("school");
+        var time = xElement.GetElementContentWithName("time");
+        var classes = parser.Split(xElement.GetElementContentWithName("classes"));
+        var components = parser.ParseSpellComponents(xElement.GetElementContentWithName("components"));
         return new Spell(name, level, components, school, time, classes);
 
     }
