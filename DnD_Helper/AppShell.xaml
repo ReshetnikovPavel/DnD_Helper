@@ -39,7 +39,7 @@
                           Title="Подраса"
                       ContentTemplate="{DataTemplate local:SubraceSelectionPage}"
                       Route="SubraceSelectionPage"
-                          IsVisible="{Binding IsRaceSelected}" >
+                          IsVisible="False" >
             </ShellContent>
         </Tab>
 

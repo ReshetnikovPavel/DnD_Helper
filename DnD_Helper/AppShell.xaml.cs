@@ -11,7 +11,6 @@ public partial class AppShell : Shell
 
     public IRaceRepository RaceRepository { get; private set; }
 
-    private bool isRaceSelected = false;
     private RouteCollection routes;
 
     public AppShell()
@@ -19,32 +18,13 @@ public partial class AppShell : Shell
 		InitializeComponent();
         BindingContext = this;
         Singleton = this;
-
-        var routesArr = new IHasRoute[]
-        {
-            new RouteItem(nameof(RaceSelectionPage)),
-            new RouteItem(nameof(SubraceSelectionPage), () => GetSubraceNames().Any()),
-        };
-        routes = new RouteCollection(routesArr);
-
-        var parser = new DndCompendiumParser();
-        var factory = new DndCompendiumFactory(
-            parser,
-            new XmlLanguageRepository(),
-            new XmlSpellRepository(parser));
-        RaceRepository = new XmlRaceRepository(factory);
+        InitRoutes();
+        //InitMessaging();
+        InitDomain();
 	}
 
     public string SelectedRaceName { get; set; }
-    public bool IsRaceSelected
-    {
-        get => isRaceSelected;
-        set
-        {
-            isRaceSelected = value;
-            OnPropertyChanged();
-        }
-    }
+    public bool IsRaceSelected { get; set; }
 
     public IEnumerable<string> GetSubraceNames()
         => RaceRepository.GetSubraceNames(SelectedRaceName);
@@ -54,6 +34,35 @@ public partial class AppShell : Shell
         var nextRoute = routes.GetNext(currentRoute);
         nextRoute?.Go();
     }
+
+    private void InitRoutes()
+    {
+        var routesArr = new IHasRoute[]
+        {
+            new RouteItem(nameof(RaceSelectionPage)),
+            //new RouteItem(nameof(SubraceSelectionPage), ShouldSubraceBeVisible)
+        };
+        routes = new RouteCollection(routesArr);
+    }
+
+    private void InitDomain()
+    {
+        var parser = new DndCompendiumParser();
+        var factory = new DndCompendiumFactory(
+            parser,
+            new XmlLanguageRepository(),
+            new XmlSpellRepository(parser));
+        RaceRepository = new XmlRaceRepository(factory);
+    }
+
+    private void InitMessaging()
+    {
+        MessagingCenter.Subscribe<RaceSelectionPage>(this, "SelectedRaceName", (sender)
+            => SubRacePage.IsVisible = ShouldSubraceBeVisible());
+    }
+
+    private bool ShouldSubraceBeVisible()
+        => GetSubraceNames().Any();
 
     private async void BackToMenu_Clicked(object sender, EventArgs e)
     {
