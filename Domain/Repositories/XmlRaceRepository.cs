@@ -7,18 +7,26 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
 {
     private readonly IDndFactory<XElement> factory;
 
-    public XmlRaceRepository(IDndFactory<XElement> chooseManyFactory) : base("Races", "race")
+    public XmlRaceRepository(IDndFactory<XElement> factory) : base("Races", "race")
     {
-        this.factory = chooseManyFactory;
+        this.factory = factory;
     }
 
 	public Race GetRaceByName(string raceName, string subraceName)
-	{
-		var raceElement = Compendium.Elements("race").GetElementWithName(raceName);
-		var subraceElement = raceElement.Elements("subrace").GetElementWithName(subraceName);
-
-        return CreateRaceFromXElement(subraceElement, raceName, subraceName);
+    {
+        var raceElement = Compendium.Elements("race").GetElementWithName(raceName);
+        var subraceElement = raceElement?.Elements("subrace").GetElementWithName(subraceName);
+        if (AreNamesNotValid(raceName, raceElement, subraceName, subraceElement))
+            return null;
+        var xElement = subraceElement ?? raceElement;
+        return CreateRaceFromXElement(xElement, raceName, subraceName);
     }
+
+    private bool AreNamesNotValid(string raceName, XElement raceElement, string subraceName, XElement subraceElement)
+    {
+        return raceName == null || raceElement == null || subraceName != null && subraceElement == null || raceElement.HasElement("subrace") && subraceElement == null;
+    }
+
     public IEnumerable<string> GetSubraceNames(string raceName)
     {
         var race = Compendium.Elements("race").GetElementWithName(raceName);
@@ -28,7 +36,7 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
     }
     private Race CreateRaceFromXElement(XElement xElement, string raceName, string subraceName)
     {
-        var race = new Race
+        return new Race
         {
             Name = raceName,
             SubraceName = subraceName,
@@ -43,7 +51,6 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
             Feats = factory.GetFeats(xElement),
             Optionals = CreateRaceOptionals(xElement)
         };
-        return race;
     }
 
     private RaceOptionals CreateRaceOptionals(XElement xElement)

@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace Tests;
 
 [TestFixture]
-public class XmlRaceRepository_should
+public class RaceRepositoryShould
 {
 	XmlRaceRepository repository;
 	[SetUp]
@@ -55,5 +55,36 @@ public class XmlRaceRepository_should
         actual.Feats.Should().BeEmpty();
         actual.Spells.Select(x => (x.spells.Name, x.level)).Should().BeEquivalentTo(new []{("Пляшущие огоньки", 1), ("Огонь фей", 3), ("Тьма", 5)});
         actual.WeaponsProficiencies.Should().BeEquivalentTo(new []{new Weapon("рапира"), new Weapon("короткий меч"), new Weapon("ручной арбалет")});
+    }
+
+    [Test]
+    [TestCase("Эльф", "Дроу")]
+    [TestCase("Эльф", "Лесной")]
+    [TestCase("Полурослик", "Легконогий")]
+    [TestCase("Человек", "Стандартный")]
+    [TestCase("Человек", "Альтернативный")]
+    [TestCase("Полуорк", null)]
+    [TestCase("Полуэльф", null)]
+    public void TestGetRaceByName_ShouldHaveSameRaceAndSubraceName(string raceName, string subraceName)
+    {
+        var actual = repository.GetRaceByName(raceName, subraceName);
+
+        actual.Name.Should().Be(raceName);
+        actual.SubraceName.Should().Be(subraceName);
+    }
+
+    [Test]
+    [TestCase("Эльф", "Легконогий")]
+    [TestCase("Дроу", "Эльф")]
+    [TestCase("Полуэльф", "Дроу")]
+    [TestCase("Wrong", "Wrong")]
+    [TestCase("Эльф", null)]
+    [TestCase(null, null)]
+    [TestCase(null, "Альтернативный")]
+    public void TestGetRaceByName_ShouldReturnNullWhenIncorrectNameOrSubraceName(string raceName, string subraceName)
+    {
+        var actual = repository.GetRaceByName(raceName, subraceName);
+
+        actual.Should().BeNull();
     }
 }

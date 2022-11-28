@@ -6,7 +6,7 @@ public static class XElementExtensions
 {
     public static XElement GetElementWithName(this IEnumerable<XElement> xElements, string name)
     {
-        return xElements.First(x => GetName(x) == name);
+        return xElements.FirstOrDefault(x => GetName(x) == name);
     }
 
     public static string GetName(this XContainer xElement)

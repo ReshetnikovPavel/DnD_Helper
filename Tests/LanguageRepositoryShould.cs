@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-public class LanguageRepository_should
+public class LanguageRepositoryShould
 {
     XmlLanguageRepository repository;
     [SetUp]
