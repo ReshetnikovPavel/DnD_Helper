@@ -38,10 +38,7 @@ public partial class AppShell : Shell
         => RaceRepository.GetSubraceNames(SelectedRaceName);
 
     public void GoToNextPage(string currentRoute)
-    {
-        var nextRoute = routes.GetNext(currentRoute);
-        nextRoute?.TryGo();
-    }
+        => routes.GoToNext(currentRoute);
 
     private void InitRoutes()
     {
@@ -92,6 +89,7 @@ public partial class AppShell : Shell
     private void CharacterSheet_Clicked(object sender, EventArgs e)
     {
         characterSheetRoute.TryGo();
+        Shell.Current.FlyoutIsPresented = false;
     }
 
     protected override bool OnBackButtonPressed()

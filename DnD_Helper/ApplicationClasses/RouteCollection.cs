@@ -17,12 +17,11 @@ namespace DnD_Helper.ApplicationClasses
                 .ToDictionary(pair => pair.route, pair => pair.index);
         }
 
-        public IHasRoute GetNext(string route)
+        public void GoToNext(string route)
         {
             var index = routes.FirstOrDefault(pair => pair.Key.Route == route).Value;
-            return routes.Skip(index + 1)
-                .FirstOrDefault(pair => pair.Key.TryGo())
-                .Key;
+            routes.Skip(index + 1)
+                .FirstOrDefault(pair => pair.Key.TryGo());
         }
     }
 }

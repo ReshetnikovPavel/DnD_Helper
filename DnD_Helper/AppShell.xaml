@@ -28,7 +28,8 @@
         </DataTemplate>
     </Shell.MenuItemTemplate>
 
-    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+    <FlyoutItem x:Name="MainFlyout"
+        FlyoutDisplayOptions="AsMultipleItems">
         <Tab Title="Раса"
              Route="RaceTab">
             <ShellContent Title="Раса"
@@ -63,13 +64,11 @@
                       IsVisible="False" />
     </FlyoutItem>
 
+    <MenuItem Text="Лист персонажа"
+              Clicked="CharacterSheet_Clicked" >
+    </MenuItem>
+
     <MenuItem Text="Выйти в меню"
               Clicked="BackToMenu_Clicked" >
     </MenuItem>
-
-    <MenuItem Text="Лист персонажа"
-              Clicked="BackToMenu_Clicked" >
-    </MenuItem>
-
-
 </Shell>
