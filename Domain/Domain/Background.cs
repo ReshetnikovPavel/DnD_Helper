@@ -11,12 +11,12 @@ public class Background : ValueType<Background>, IDndObject
     public IEnumerable<Instrument> instrument;
     public IEnumerable<Instrument> posessionInstrument;
     public ChooseMany<Instrument> posessionInstrumentFree;
-    public int languageFree;
+    public ChooseMany<Language> languageFree;
 
     public Background(string name, IEnumerable<SkillName> skill, int money,
                         IEnumerable<Equipment> equipment, IEnumerable<Instrument> instrument,
                         IEnumerable<Instrument> posessionInstrument, ChooseMany<Instrument> posessionInstrumentFree,
-                        int languageFree)
+                        ChooseMany<Language> languageFree)
     {
         this.name = name;
         this.skill = skill;
