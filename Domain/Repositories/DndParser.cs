@@ -21,7 +21,8 @@ public class DndCompendiumParser : IDndParser
 
 	public IEnumerable<string> Split(string text)
 	{
-		return text.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
+		return text.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries)
+            .Select(x => x.Trim());
 	}
 
 	public Speed ParseSpeed(string speed)
@@ -128,7 +129,12 @@ public class DndCompendiumParser : IDndParser
 		return new Armor(armor);
 	}
 
-	public Instrument ParseInstrument(string instrument)
+    public ArmorType ParseArmorType(string armorType)
+    {
+        return new ArmorType(armorType);
+    }
+
+    public Instrument ParseInstrument(string instrument)
 	{
 		return new Instrument(instrument);
 	}
