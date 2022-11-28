@@ -5,5 +5,16 @@ public partial class ClassSelectionPage : ContentPage
 	public ClassSelectionPage()
 	{
 		InitializeComponent();
+
+		BindingContext = this;
 	}
+
+	public IEnumerable<string> ClassNames
+		=> AppShell.Singleton.ClassRepository.GetNames();
+
+    private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+    {
+        AppShell.Singleton.SelectedClassName = e.Item.ToString();
+        AppShell.Singleton.GoToNextPage(nameof(ClassSelectionPage));
+    }
 }

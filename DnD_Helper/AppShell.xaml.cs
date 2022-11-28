@@ -10,6 +10,7 @@ public partial class AppShell : Shell
     public static AppShell Singleton { get; private set; }
 
     public IRaceRepository RaceRepository { get; private set; }
+    public IClassRepository ClassRepository { get; private set; }
 
     private RouteCollection routes;
 
@@ -27,10 +28,10 @@ public partial class AppShell : Shell
 
     public string SelectedRaceName { get; set; }
     public string SelectedSubRaceName { get; set; }
+    public string SelectedClassName { get; set; }
 
     public IEnumerable<string> GetSubraceNames()
         => RaceRepository.GetSubraceNames(SelectedRaceName);
-
 
     public void GoToNextPage(string currentRoute)
     {
@@ -44,7 +45,9 @@ public partial class AppShell : Shell
         {
             new RouteItem(nameof(RaceSelectionPage)),
             new RouteItem(nameof(SubraceSelectionPage), ShouldSubraceBeVisible),
-            new RouteItem(nameof(ClassSelectionPage))
+            new RouteItem(nameof(ClassSelectionPage)),
+            new RouteItem(nameof(AbilityScoresSelectionPage)),
+            new RouteItem(nameof(BackgroundSelectionPage))
         };
         routes = new RouteCollection(routesArr);
     }
@@ -57,6 +60,7 @@ public partial class AppShell : Shell
             new XmlLanguageRepository(),
             new XmlSpellRepository(parser));
         RaceRepository = new XmlRaceRepository(factory);
+        ClassRepository = new XmlClassRepository(parser, factory);
     }
 
     private void InitMessaging()
