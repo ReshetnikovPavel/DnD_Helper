@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Tests;
 
 [TestFixture]
-public class TestCharacter
+public class CharacterShould
 {
     [Test]
     public void TestAplayRace()

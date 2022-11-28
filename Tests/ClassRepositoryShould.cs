@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Tests;
 
 [TestFixture]
-public class ClassRepository_should
+public class ClassRepositoryShould
 {
     private IClassRepository repository;
 

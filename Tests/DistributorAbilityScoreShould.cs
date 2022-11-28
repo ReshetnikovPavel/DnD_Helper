@@ -3,7 +3,7 @@
 namespace Tests;
 
 [TestFixture]
-public class DistributorAbilityScore_should
+public class DistributorAbilityScoreShould
 {
     private DistributorAbilityScore distributor;
 
