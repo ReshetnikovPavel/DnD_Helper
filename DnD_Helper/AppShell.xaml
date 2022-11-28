@@ -33,29 +33,35 @@
              Route="RaceTab">
             <ShellContent Title="Раса"
                       ContentTemplate="{DataTemplate local:RaceSelectionPage}"
-                      Route="RaceSelectionPage" />
+                      Route="RaceSelectionPage" >
+            </ShellContent>
             <ShellContent x:Name="SubRacePage" 
                           Title="Подраса"
                       ContentTemplate="{DataTemplate local:SubraceSelectionPage}"
                       Route="SubraceSelectionPage"
-                          IsVisible="{Binding IsRaceSelected}" />
+                          IsVisible="{Binding IsRaceSelected}" >
+            </ShellContent>
         </Tab>
 
         <ShellContent Title="Класс"
         ContentTemplate="{DataTemplate local:ClassSelectionPage}" 
-                      Route="ClassSelectionPage"/>
+                      Route="ClassSelectionPage" >
+        </ShellContent>
 
         <ShellContent Title="Характеристики"
         ContentTemplate="{DataTemplate local:AbilityScoresSelectionPage}"
-                      Route="AbilityScoresSelectionPage"/>
+                      Route="AbilityScoresSelectionPage" >
+        </ShellContent>
 
         <ShellContent Title="Личность и предыстория"
         ContentTemplate="{DataTemplate local:BackgroundSelectionPage}" 
-                      Route="BackgroundSelectionPage"/>
+                      Route="BackgroundSelectionPage" >
+        </ShellContent>
 
         <ShellContent Title="Снаряжение"
         ContentTemplate="{DataTemplate local:EquipmentSelectionPage}"
-                      Route="EquipmentSelectionPage" />
+                      Route="EquipmentSelectionPage"
+                      IsVisible="False" />
     </FlyoutItem>
 
     <MenuItem Text="Выйти в меню"

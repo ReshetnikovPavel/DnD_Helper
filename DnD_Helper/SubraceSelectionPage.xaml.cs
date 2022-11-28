@@ -7,6 +7,7 @@ public partial class SubraceSelectionPage : ContentPage
 		InitializeComponent();
 		BindingContext = this;
 
+		UpdateItemSource(this);
 		MessagingCenter.Subscribe<RaceSelectionPage>(this, "SelectedRaceName", UpdateItemSource);
 	}
 
