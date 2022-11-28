@@ -29,7 +29,7 @@ public class XmlBackgroundRepository : XmlRepository, IBackgroundRepository
         var name = xElement.GetName();
         var skill = parser.ParseMany(xElement.GetContentWithTag("proficiency"), parser.ParseSkillName);
         var money = int.Parse(xElement.GetContentWithTag("money"));
-        var equipment = parser.ParseMany(xElement.GetContentWithTag("equipment"), parser.ParseInstrument); //???
+        var equipment = parser.ParseMany(xElement.GetContentWithTag("equipment"), parser.ParseEquipment);
         var instrument = parser.ParseMany(xElement.GetContentWithTag("instrument"), parser.ParseInstrument);
         var posessionInstrument = parser.ParseMany(xElement.GetContentWithTag("posessionInstrument"), parser.ParseInstrument);
         var posessionInstrumentFree = parser.ParseChooseMany(xElement.GetContentWithTag("possessionInstrumentFree"), x => new Instrument(x));

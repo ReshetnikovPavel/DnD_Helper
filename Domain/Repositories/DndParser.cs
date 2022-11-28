@@ -133,6 +133,11 @@ public class DndCompendiumParser : IDndParser
 		return new Instrument(instrument);
 	}
 
+	public Equipment ParseEquipment(string equipment)
+	{
+		return new Equipment(equipment);
+	}
+
     public Feat ParseFeat(string feat)
     {
         return new Feat(feat);

@@ -20,7 +20,9 @@ public interface IDndParser
 
     Armor ParseArmor(string armor);
 	Instrument ParseInstrument(string instrument);
-	Feat ParseFeat(string feat);
+
+    Equipment ParseEquipment(string equipment);
+    Feat ParseFeat(string feat);
 
     IEnumerable<T> ParseMany<T>(string from, Func<string, T> applyParse);
 
