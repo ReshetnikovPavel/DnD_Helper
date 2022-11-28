@@ -17,8 +17,10 @@ public partial class RaceSelectionPage : ContentPage
 
     private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
     {
-		AppShell.Singleton.SelectedRaceName = e.Item.ToString();
+		var raceName = e.Item.ToString();
+		AppShell.Singleton.SelectedRaceName = raceName;
 		AppShell.Singleton.IsRaceSelected = true;
+		MessagingCenter.Send<RaceSelectionPage>(this, "SelectedRaceName");
 		await Shell.Current.GoToAsync($"///{nameof(SubraceSelectionPage)}");
     }
 }

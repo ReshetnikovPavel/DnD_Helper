@@ -36,6 +36,9 @@ public partial class AppShell : Shell
         }
     }
 
+    public IEnumerable<string> GetSubraceNames()
+        => RaceRepository.GetSubraceNames(SelectedRaceName);
+
     private async void BackToMenu_Clicked(object sender, EventArgs e)
     {
         var choice = await DisplayAlert("Вернуться в меню?",

@@ -3,11 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DnD_Helper.SubraceSelectionPage"
              Title="Выберите подрасу"
+             xmlns:local="clr-namespace:DnD_Helper"
+             x:DataType="local:SubraceSelectionPage"
              Style="{StaticResource ContentPage}">
-    <VerticalStackLayout>
-        <Label 
-            Text="Какой кошмар"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <ListView x:Name="SubraceListView"
+              Margin="10">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid Padding="10">
+                        <Frame>
+                            <Label Text="{Binding .}" />
+                        </Frame>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+    
 </ContentPage>
