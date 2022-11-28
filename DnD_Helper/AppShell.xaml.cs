@@ -1,4 +1,5 @@
-﻿using Domain.Repositories;
+﻿using DnD_Helper.ApplicationClasses;
+using Domain.Repositories;
 using System.Diagnostics.Contracts;
 using System.Windows.Input;
 
@@ -11,6 +12,7 @@ public partial class AppShell : Shell
     public IRaceRepository RaceRepository { get; private set; }
 
     private bool isRaceSelected = false;
+    private RouteCollection routes;
 
     public AppShell()
 	{
@@ -18,11 +20,20 @@ public partial class AppShell : Shell
         BindingContext = this;
         Singleton = this;
 
+        var routesArr = new IHasRoute[]
+        {
+            new RouteItem(nameof(RaceSelectionPage)),
+            new RouteItem(nameof(SubraceSelectionPage)),
+            new RouteItem(nameof(RaceSelectionPage))
+        };
+        routes = new RouteCollection(routesArr);
+
         var parser = new DndCompendiumParser();
-        RaceRepository = new XmlRaceRepository(
+        var factory = new DndCompendiumFactory(
             parser,
             new XmlLanguageRepository(),
             new XmlSpellRepository(parser));
+        RaceRepository = new XmlRaceRepository(factory);
 	}
 
     public string SelectedRaceName { get; set; }
@@ -38,6 +49,12 @@ public partial class AppShell : Shell
 
     public IEnumerable<string> GetSubraceNames()
         => RaceRepository.GetSubraceNames(SelectedRaceName);
+
+    public void GoToNextPage(string currentRoute)
+    {
+        var nextRoute = routes.GetNext(currentRoute);
+        nextRoute?.Go();
+    }
 
     private async void BackToMenu_Clicked(object sender, EventArgs e)
     {
