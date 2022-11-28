@@ -44,6 +44,5 @@ public class XmlSpellRepository : XmlRepository, ISpellRepository
         var classes = parser.Split(xElement.GetElementContentWithName("classes"));
         var components = parser.ParseSpellComponents(xElement.GetElementContentWithName("components"));
         return new Spell(name, level, components, school, time, classes);
-
     }
 }
