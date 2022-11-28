@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿
+using System.Runtime.CompilerServices;
 using Domain;
 using Domain.Repositories;
 using FluentAssertions;
@@ -84,7 +85,30 @@ public class RaceRepositoryShould
     public void TestGetRaceByName_ShouldReturnNullWhenIncorrectNameOrSubraceName(string raceName, string subraceName)
     {
         var actual = repository.GetRaceByName(raceName, subraceName);
-
         actual.Should().BeNull();
+    }
+
+    [Test]
+    [TestCase("Эльф", "Дроу", Size.Medium)]
+    public void TestGetRaceByName_ShouldHaveRightSize(string raceName, string subraceName, Size size)
+    {
+        var actual = repository.GetRaceByName(raceName, subraceName);
+        actual.Size.Should().Be(size);
+    }
+
+    [Test]
+    [TestCase("Эльф", "Дроу", 30)]
+    public void TestGetRaceByName_ShouldHaveRightSpeed(string raceName, string subraceName, int speed)
+    {
+        var actual = repository.GetRaceByName(raceName, subraceName);
+        actual.Speed.Value.Should().Be(speed);
+    }
+
+    [Test]
+    public void TestGetRaceByName_ShouldHaveRightLanguages()
+    {
+        var expected = new[] {new Language("Общий")};
+        var actual = repository.GetRaceByName("Человек", "Стандартный");
+        actual.Languages.Should().BeEquivalentTo(expected);
     }
 }

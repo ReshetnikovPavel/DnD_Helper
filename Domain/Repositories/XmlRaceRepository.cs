@@ -16,13 +16,15 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
     {
         var raceElement = Compendium.Elements("race").GetElementWithName(raceName);
         var subraceElement = raceElement?.Elements("subrace").GetElementWithName(subraceName);
+
         if (AreNamesNotValid(raceName, raceElement, subraceName, subraceElement))
             return null;
+
         var xElement = subraceElement ?? raceElement;
         return CreateRaceFromXElement(xElement, raceName, subraceName);
     }
 
-    private bool AreNamesNotValid(string raceName, XElement raceElement, string subraceName, XElement subraceElement)
+    private static bool AreNamesNotValid(string raceName, XElement raceElement, string subraceName, XElement subraceElement)
     {
         return raceName == null || raceElement == null || subraceName != null && subraceElement == null || raceElement.HasElement("subrace") && subraceElement == null;
     }
