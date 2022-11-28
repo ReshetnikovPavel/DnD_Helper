@@ -11,6 +11,7 @@ public partial class AppShell : Shell
 
     public IRaceRepository RaceRepository { get; private set; }
     public IClassRepository ClassRepository { get; private set; }
+    public IBackgroundRepository BackgroundRepository { get; private set; }
 
     private RouteCollection routes;
 
@@ -29,6 +30,7 @@ public partial class AppShell : Shell
     public string SelectedRaceName { get; set; }
     public string SelectedSubRaceName { get; set; }
     public string SelectedClassName { get; set; }
+    public string SelectedBackgroundName { get; set; }
 
     public IEnumerable<string> GetSubraceNames()
         => RaceRepository.GetSubraceNames(SelectedRaceName);
@@ -61,6 +63,7 @@ public partial class AppShell : Shell
             new XmlSpellRepository(parser));
         RaceRepository = new XmlRaceRepository(factory);
         ClassRepository = new XmlClassRepository(parser, factory);
+        BackgroundRepository = new XmlBackgroundRepository(parser, factory);
     }
 
     private void InitMessaging()
