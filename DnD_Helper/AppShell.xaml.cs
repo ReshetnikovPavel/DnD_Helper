@@ -23,8 +23,7 @@ public partial class AppShell : Shell
         var routesArr = new IHasRoute[]
         {
             new RouteItem(nameof(RaceSelectionPage)),
-            new RouteItem(nameof(SubraceSelectionPage)),
-            new RouteItem(nameof(RaceSelectionPage))
+            new RouteItem(nameof(SubraceSelectionPage), () => GetSubraceNames().Any()),
         };
         routes = new RouteCollection(routesArr);
 
