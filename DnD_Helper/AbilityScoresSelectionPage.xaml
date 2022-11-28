@@ -9,7 +9,7 @@
              Style="{StaticResource ContentPage}">
 
     <Grid Margin="15"
-        RowDefinitions="Auto, *">
+        RowDefinitions="Auto, *, Auto">
         <Label Text="{Binding PointsLeft}"
                HorizontalOptions="Center"/>
         <Grid Grid.Row="1"
@@ -47,6 +47,13 @@
                                       Ability="{Binding Charisma}" 
                                           Distributor="{Binding Distributor}"/>
         </Grid>
+        <ImageButton Grid.Row="2"
+                     HorizontalOptions="EndAndExpand"
+                     Source="forward_button.png"
+                     Aspect="AspectFit"
+                     Clicked="NextButton_Clicked"
+                     HeightRequest="80"
+                     WidthRequest="80"/>
     </Grid>
 
 </ContentPage>

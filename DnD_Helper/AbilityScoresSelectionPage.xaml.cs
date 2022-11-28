@@ -44,4 +44,9 @@ public partial class AbilityScoresSelectionPage : ContentPage
 	{
         OnPropertyChanged(nameof(PointsLeft));
     }
+
+    private void NextButton_Clicked(object sender, EventArgs e)
+    {
+		AppShell.Singleton.GoToNextPage(nameof(AbilityScoresSelectionPage));
+    }
 }
