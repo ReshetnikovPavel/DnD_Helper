@@ -6,9 +6,12 @@ namespace Domain.Repositories;
 public class XmlBackgroundRepository : XmlRepository, IBackgroundRepository
 {
     private readonly IDndParser parser;
-    public XmlBackgroundRepository(IDndParser parser) : base("Background", "background")
+    private readonly IDndFactory<XElement> factory;
+
+    public XmlBackgroundRepository(IDndParser parser, IDndFactory<XElement> factory) : base("Background", "background")
     {
         this.parser = parser;
+        this.factory = factory;
     }
 
     public Background GetBackground(string name)
@@ -28,12 +31,12 @@ public class XmlBackgroundRepository : XmlRepository, IBackgroundRepository
     {
         var name = xElement.GetName();
         var skill = parser.ParseMany(xElement.GetContentWithTag("proficiency"), parser.ParseSkillName);
-        var money = int.Parse(xElement.GetContentWithTag("money"));
+        var money = int.Parse(xElement.GetElementContentWithName("money"));
         var equipment = parser.ParseMany(xElement.GetContentWithTag("equipment"), parser.ParseEquipment);
         var instrument = parser.ParseMany(xElement.GetContentWithTag("instrument"), parser.ParseInstrument);
         var posessionInstrument = parser.ParseMany(xElement.GetContentWithTag("posessionInstrument"), parser.ParseInstrument);
         var posessionInstrumentFree = parser.ParseChooseMany(xElement.GetContentWithTag("possessionInstrumentFree"), x => new Instrument(x));
-        var languageFree = int.Parse(xElement.GetContentWithTag("languageFree"));
+        var languageFree = factory.GetOptionalLanguage(xElement);
         return new Background(name, skill, money, equipment, instrument, posessionInstrument, posessionInstrumentFree, languageFree);
     }
 }

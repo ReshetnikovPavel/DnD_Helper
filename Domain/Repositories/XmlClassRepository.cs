@@ -86,7 +86,15 @@ public class XmlClassRepository : XmlRepository, IClassRepository
         var feature = new ClassFeature
         {
             Name = featureXElement.GetElementContentWithName("name"),
+            Armor = GetArmorTypes(featureXElement)
+
         };
         throw new NotImplementedException();
     }
+
+    private IEnumerable<ArmorType> GetArmorTypes(XElement xElement)
+    {
+        return parser.ParseMany(xElement.GetElementContentWithName("possessionArmor"), parser.ParseArmorType);
+    }
+    
 }

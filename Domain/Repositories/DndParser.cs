@@ -177,6 +177,11 @@ public class DndCompendiumParser : IDndParser
 			.Select(ParseSpellComponent);
     }
 
+    public WeaponType ParseWeaponType(string weaponType)
+    {
+        return new WeaponType(weaponType);
+    }
+
     private IEnumerable<T> ParseManyAnyType<T>(string from, Func<string, T> applyParse)
     {
         if (from == null)

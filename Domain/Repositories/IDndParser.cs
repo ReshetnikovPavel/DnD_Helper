@@ -31,4 +31,5 @@ public interface IDndParser
         where T : Enum;
 	
 	IEnumerable<SpellComponent> ParseSpellComponents(string spellComponents);
+	WeaponType ParseWeaponType(string weaponType);
 }
