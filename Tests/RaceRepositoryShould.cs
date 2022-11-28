@@ -111,4 +111,32 @@ public class RaceRepositoryShould
         var actual = repository.GetRaceByName("Человек", "Стандартный");
         actual.Languages.Should().BeEquivalentTo(expected);
     }
+
+    [Test]
+    public void TestGetRaceByName_ShouldHaveRightAbilityScoreBonuses()
+    {
+        var expected = new[]
+        {
+            new AbilityScoreBonus(AbilityName.Strength, 2),
+            new AbilityScoreBonus(AbilityName.Constitution, 1)
+        };
+        var actual = repository.GetRaceByName("Полуорк", null);
+        actual.AbilityScoreBonuses.Should().BeEquivalentTo(expected);
+    }
+
+    [Test]
+    public void TestGetRaceByName_ShouldHaveRightSpells()
+    {
+        var expected = new[]
+        {
+            new Spell("Пляшущие огоньки", 0, new List<SpellComponent>(){SpellComponent.Verbal, SpellComponent.Somatic, SpellComponent.Material}, "Воплощение", "1 действие", new List<string>(){"Бард", "Волшебник", "Изобретатель", "Чародей"}),
+            new Spell("Огонь фей", 1, new List<SpellComponent>(){SpellComponent.Verbal}, "Воплощение", "1 действие", new List<string>(){"Бард", "Друид", "Изобретатель"}),
+            new Spell("Тьма", 2, new List<SpellComponent>(){SpellComponent.Verbal, SpellComponent.Material}, "Воплощение", "1 действие", new List<string>(){"Волшебник", "Чародей", "Колдун"})
+        };
+        var actual = repository.GetRaceByName("Эльф", "Дроу");
+
+        actual.Spells.Select(x => x.spells).Should().BeEquivalentTo(expected);
+    }
+    
+
 }
