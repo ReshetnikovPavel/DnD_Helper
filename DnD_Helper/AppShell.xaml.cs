@@ -43,7 +43,8 @@ public partial class AppShell : Shell
         var routesArr = new IHasRoute[]
         {
             new RouteItem(nameof(RaceSelectionPage)),
-            //new RouteItem(nameof(SubraceSelectionPage), ShouldSubraceBeVisible)
+            new RouteItem(nameof(SubraceSelectionPage), ShouldSubraceBeVisible),
+            new RouteItem(nameof(ClassSelectionPage))
         };
         routes = new RouteCollection(routesArr);
     }
