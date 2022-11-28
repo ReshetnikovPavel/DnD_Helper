@@ -17,8 +17,8 @@ public partial class AppShell : Shell
     private RouteItem characterSheetRoute;
 
     public AppShell()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         BindingContext = this;
         Singleton = this;
         InitRoutes();
@@ -26,7 +26,7 @@ public partial class AppShell : Shell
         InitDomain();
 
         SubracePage.IsVisible = false;
-	}
+    }
 
     public string SelectedRaceName { get; set; }
     public string SelectedSubRaceName { get; set; }
@@ -43,12 +43,12 @@ public partial class AppShell : Shell
     private void InitRoutes()
     {
         Routing.RegisterRoute(nameof(CharacterSheetPage), typeof(CharacterSheetPage));
-        characterSheetRoute = new RouteItem($"/{nameof(CharacterSheetPage)}");
+        characterSheetRoute = new RouteItem($"/{nameof(CharacterSheetPage)}", CanGoToCharacterSheet);
 
         var routesArr = new IHasRoute[]
         {
             new RouteItem($"///{nameof(RaceSelectionPage)}"),
-            new RouteItem($"///{nameof(SubraceSelectionPage)}", ShouldSubraceBeVisible),
+            new RouteItem($"///{nameof(SubraceSelectionPage)}", CanGoToSubracePage),
             new RouteItem($"///{nameof(ClassSelectionPage)}"),
             new RouteItem($"///{nameof(AbilityScoresSelectionPage)}"),
             new RouteItem($"///{nameof(BackgroundSelectionPage)}"),
@@ -72,11 +72,21 @@ public partial class AppShell : Shell
     private void InitMessaging()
     {
         MessagingCenter.Subscribe<RaceSelectionPage>(this, "SelectedRaceName", (sender)
-            => SubracePage.IsVisible = ShouldSubraceBeVisible());
+            => SubracePage.IsVisible = CanGoToSubracePage());
     }
 
-    private bool ShouldSubraceBeVisible()
+    private bool CanGoToSubracePage()
         => GetSubraceNames().Any();
+
+    private bool CanGoToCharacterSheet()
+    {
+        return SelectedRaceName != null
+        && (!CanGoToSubracePage() || SelectedSubRaceName != null)
+        && SelectedClassName != null
+        && SelectedName != null
+        && SelectedBackgroundName != null;
+    }
+
 
     private async void BackToMenu_Clicked(object sender, EventArgs e)
     {
