@@ -1,4 +1,4 @@
-using Domain;
+﻿using Domain;
 
 namespace DnD_Helper;
 
@@ -12,7 +12,7 @@ public partial class CharacterSheetPage : ContentPage
 	}
 
 	public string NameDisplay
-		=> AppShell.Singleton.Character.Name;
+		=> $"Имя: {AppShell.Singleton.Character.Name}";
 
     public string MainInfoDisplay
 	{
@@ -20,10 +20,16 @@ public partial class CharacterSheetPage : ContentPage
 		{
 			var ch = AppShell.Singleton.Character;
 			var race = ch.Race.SubraceName == null ? ch.Race.Name : ch.Race.SubraceName;
-			return $"{race}, {ch.Class.Name}, {ch.Background}";
+			return $"{race}, {ch.Class.Name}, {ch.Background.Name}";
 		}
 	}
 
 	public string SpeedDisplay
-		=> AppShell.Singleton.Character.Speed.Value.ToString();
+		=> $"Скорость: {AppShell.Singleton.Character.Speed.Value}";
+
+
+
+	//public string ArmourClassDisplay
+	//	=> $"КД: {10 + AppShell.Singleton.Character.Abilities}";
+
 }

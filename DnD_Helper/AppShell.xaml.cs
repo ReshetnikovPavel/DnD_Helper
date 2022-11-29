@@ -14,6 +14,7 @@ public partial class AppShell : Shell
     public IClassRepository ClassRepository { get; private set; }
     public IBackgroundRepository BackgroundRepository { get; private set; }
     public Character Character { get; private set; }
+    public Abilities Abilities { get; private set; }
 
     private RouteCollection routes;
     private RouteItem characterSheetRoute;
@@ -71,6 +72,7 @@ public partial class AppShell : Shell
         RaceRepository = new XmlRaceRepository(factory);
         ClassRepository = new XmlClassRepository(parser, factory);
         BackgroundRepository = new XmlBackgroundRepository(parser, factory);
+        Abilities = new Abilities(8, 8, 8, 8, 8, 8);
     }
 
     private void InitMessaging()
