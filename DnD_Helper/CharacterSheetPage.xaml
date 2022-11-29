@@ -35,6 +35,19 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <ListView ItemsSource="{Binding ProfficienciesDisplay}"
+                  SelectionMode="None">
+                <ListView.Header>
+                    <Label Text="Владения:" />
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding .}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </VerticalStackLayout>
     </ScrollView>
 

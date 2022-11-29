@@ -64,4 +64,16 @@ public partial class CharacterSheetPage : ContentPage
 		}
 	}
 
+	public IEnumerable<string> ProfficienciesDisplay
+	{
+		get
+		{
+			var prof1 = AppShell.Singleton.Character.WeaponsProficiencies.Select(x => x.Name);
+			var prof2 = AppShell.Singleton.Character.InstrumentProficiencies.Select(x => x.Name);
+			var prof3 = AppShell.Singleton.Character.Languages.Select(x => x.Name);
+			return prof1.Concat(prof2).Concat(prof3);
+
+		}
+	}
+
 }
