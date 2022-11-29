@@ -44,6 +44,7 @@ public partial class AppShell : Shell
     {
         Routing.RegisterRoute(nameof(CharacterSheetPage), typeof(CharacterSheetPage));
         characterSheetRoute = new RouteItem($"/{nameof(CharacterSheetPage)}", CanGoToCharacterSheet);
+        characterSheetRoute.TriedToGo += OnTryGoToCharacterSheet;
 
         var routesArr = new IHasRoute[]
         {
@@ -100,6 +101,13 @@ public partial class AppShell : Shell
     {
         characterSheetRoute.TryGo();
         Shell.Current.FlyoutIsPresented = false;
+    }
+
+    private async void OnTryGoToCharacterSheet(object sender, EventArgs e)
+    {
+        if (CanGoToCharacterSheet())
+            return;
+        await DisplayAlert("Невозможно перейти в лист персонажа", "Не все поля заполнены", "Эх");
     }
 
     protected override bool OnBackButtonPressed()
