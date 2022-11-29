@@ -47,8 +47,9 @@ public partial class CharacterSheetPage : ContentPage
         get
         {
             var abilities = AppShell.Singleton.Character.Abilities;
+			var parser = AppShell.Singleton.Parser;
             return abilities
-                .Select(pair => $"{pair.Key}: {pair.Value.Modifier}");
+                .Select(pair => $"{parser.ParseAbilityNameBack(pair.Key)}: {pair.Value.Modifier}");
         }
     }
 
@@ -57,8 +58,9 @@ public partial class CharacterSheetPage : ContentPage
 		get
 		{
 			var skills = AppShell.Singleton.Character.Skills;
-			return skills
-				.Select(pair => $"{pair.Key}: {pair.Value.Modifier}");
+            var parser = AppShell.Singleton.Parser;
+            return skills
+				.Select(pair => $"{parser.ParseSkillNameBack(pair.Key)}: {pair.Value.Modifier}");
 		}
 	}
 

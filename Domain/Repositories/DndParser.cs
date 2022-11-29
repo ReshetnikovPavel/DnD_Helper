@@ -108,7 +108,47 @@ public class DndCompendiumParser : IDndParser
 		};
 	}
 
-	public ChooseMany<T> ParseChooseMany<T>(string choiceOption, Func<string, T> parse)
+    public string ParseSkillNameBack(SkillName skill)
+    {
+        return skill switch
+        {
+            SkillName.Acrobatics => "Акробатика",
+            SkillName.AnimalHandling => "Уход за животными",
+            SkillName.Arcana => "Магия",
+            SkillName.Athletics => "Атлетика",
+            SkillName.Deception => "Обман",
+            SkillName.History => "История",
+            SkillName.Insight => "Проницательность",
+            SkillName.Intimidation => "Запугивание",
+            SkillName.Investigation => "Анализ",
+            SkillName.Medicine => "Медицина",
+            SkillName.Nature => "Природа",
+            SkillName.Perception => "Внимательность",
+            SkillName.Performance => "Выступление",
+            SkillName.Persuasion => "Убеждение",
+            SkillName.Religion => "Религия",
+            SkillName.SleightOfHand => "Ловкость рук",
+            SkillName.Stealth => "Скрытность",
+            SkillName.Survival => "Выживание",
+            _ => throw new InvalidEnumArgumentException("Invalid skill name")
+        };
+    }
+
+    public string ParseAbilityNameBack(AbilityName ability)
+    {
+        return ability switch
+        {
+            AbilityName.Strength => "Сила",
+            AbilityName.Dexterity => "Ловкость",
+            AbilityName.Constitution => "Телосложение",
+            AbilityName.Intelligence => "Интеллект",
+            AbilityName.Wisdom => "Мудрость",
+            AbilityName.Charisma => "Харизма",
+            _ => throw new InvalidEnumArgumentException("Invalid ability name")
+        };
+    }
+
+    public ChooseMany<T> ParseChooseMany<T>(string choiceOption, Func<string, T> parse)
 	{
         if (choiceOption == null)
             return null;

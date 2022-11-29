@@ -15,6 +15,7 @@ public partial class AppShell : Shell
     public IBackgroundRepository BackgroundRepository { get; private set; }
     public Character Character { get; private set; }
     public Abilities Abilities { get; private set; }
+    public DndCompendiumParser Parser { get; private set; }  
 
     private RouteCollection routes;
     private RouteItem characterSheetRoute;
@@ -64,14 +65,14 @@ public partial class AppShell : Shell
 
     private void InitDomain()
     {
-        var parser = new DndCompendiumParser();
+        Parser = new DndCompendiumParser();
         var factory = new DndCompendiumFactory(
-            parser,
+            Parser,
             new XmlLanguageRepository(),
-            new XmlSpellRepository(parser));
+            new XmlSpellRepository(Parser));
         RaceRepository = new XmlRaceRepository(factory);
-        ClassRepository = new XmlClassRepository(parser, factory);
-        BackgroundRepository = new XmlBackgroundRepository(parser, factory);
+        ClassRepository = new XmlClassRepository(Parser, factory);
+        BackgroundRepository = new XmlBackgroundRepository(Parser, factory);
         Abilities = new Abilities(8, 8, 8, 8, 8, 8);
     }
 
