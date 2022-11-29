@@ -12,7 +12,7 @@ public partial class CharacterSheetPage : ContentPage
 	}
 
 	public string NameDisplay
-		=> $"Имя: {AppShell.Singleton.Character.Name}";
+		=> $"Имя: {AppShell.Singleton.SelectedName}";
 
     public string MainInfoDisplay
 	{
