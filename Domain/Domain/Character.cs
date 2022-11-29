@@ -4,14 +4,15 @@ namespace Domain;
 
 public class Character : IDndObject
 {
-	public Character()
+	public Character(Abilities abilities)
     {
         ProficiencyBonus = new ProficiencyBonus(2);
-        Abilities = AbilityScore.Create();
+        Abilities = 
         Skills = Skill.CreateFrom(Abilities, ProficiencyBonus);
         Speed = new Speed(0);
         SavingThrows = SavingThrow.CreateFrom(Abilities, ProficiencyBonus);
     }
+
 	
 	public string Name { get; }
 	//public string PlayerName { get; }
