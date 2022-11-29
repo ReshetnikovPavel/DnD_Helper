@@ -27,9 +27,23 @@ public partial class CharacterSheetPage : ContentPage
 	public string SpeedDisplay
 		=> $"Скорость: {AppShell.Singleton.Character.Speed.Value}";
 
+	public string StrengthDisplay
+		=> $"Сила: {AppShell.Singleton.Character.Abilities[AbilityName.Strength]}";
 
+	public string ArmourClassDisplay
+		=> $"КД: {10 + AppShell.Singleton.Character.Abilities[AbilityName.Dexterity].Modifier}";
 
-	//public string ArmourClassDisplay
-	//	=> $"КД: {10 + AppShell.Singleton.Character.Abilities}";
+	public string InitiativeDisplay
+		=> $"Инициатива: +{AppShell.Singleton.Character.Abilities[AbilityName.Dexterity].Modifier}";
+
+	public string HpDisplay
+	{
+		get
+		{
+			var ch = AppShell.Singleton.Character;
+			return $"Хитпоинты: {Convert.ToInt32(ch.HitDice.Total.Sides) + ch.Abilities[AbilityName.Constitution].Modifier}";
+		}
+
+    }
 
 }

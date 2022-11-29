@@ -10,7 +10,12 @@
     <VerticalStackLayout>
         <Label Text="{Binding NameDisplay}" />
         <Label Text="{Binding MainInfoDisplay}" />
+        <Label Text="{Binding ArmourClassDisplay}" />
         <Label Text="{Binding SpeedDisplay}" />
+        <Label Text="{Binding HpDisplay}" />
+        <Label Text="{Binding InitiativeDisplay}" />
+        <Label Text="{Binding StrengthDisplay}" />
+        
     </VerticalStackLayout>
 
 </ContentPage>

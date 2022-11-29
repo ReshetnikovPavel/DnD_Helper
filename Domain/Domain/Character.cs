@@ -7,7 +7,7 @@ public class Character : IDndObject
 	public Character(Abilities abilities)
     {
         ProficiencyBonus = new ProficiencyBonus(2);
-        Abilities = 
+        Abilities = abilities.GetDictionary();
         Skills = Skill.CreateFrom(Abilities, ProficiencyBonus);
         Speed = new Speed(0);
         SavingThrows = SavingThrow.CreateFrom(Abilities, ProficiencyBonus);

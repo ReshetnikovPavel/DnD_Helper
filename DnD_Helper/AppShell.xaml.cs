@@ -118,7 +118,7 @@ public partial class AppShell : Shell
             await DisplayAlert("Невозможно перейти в лист персонажа", "Не все поля заполнены", "Эх");
             return;
         }
-        Character = new Character();
+        Character = new Character(Abilities);
         Character.Race = RaceRepository.GetRaceByName(SelectedRaceName, SelectedSubRaceName);
         Character.ApplyRace();
         Character.Class = ClassRepository.GetClass(SelectedClassName);
