@@ -4,14 +4,15 @@ namespace Domain;
 
 public class Character : IDndObject
 {
-	public Character()
+	public Character(Abilities abilities)
     {
         ProficiencyBonus = new ProficiencyBonus(2);
-        Abilities = AbilityScore.Create();
+        Abilities = 
         Skills = Skill.CreateFrom(Abilities, ProficiencyBonus);
         Speed = new Speed(0);
         SavingThrows = SavingThrow.CreateFrom(Abilities, ProficiencyBonus);
     }
+
 	
 	public string Name { get; }
 	//public string PlayerName { get; }
@@ -36,6 +37,7 @@ public class Character : IDndObject
     public HashSet<Spell> Spells { get; set; } = new();
     public AbilityName? SpellAbility { get; set; }
     public int Initiative => Abilities[AbilityName.Dexterity].Modifier;
+    public int AC => 10;
 
     public SpellSlotsTable SpellSlotsTable { get; set; }
 
