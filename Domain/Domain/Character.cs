@@ -36,6 +36,7 @@ public class Character : IDndObject
     public HashSet<Spell> Spells { get; set; } = new();
     public AbilityName? SpellAbility { get; set; }
     public int Initiative => Abilities[AbilityName.Dexterity].Modifier;
+    public int AC => 10;
 
     public SpellSlotsTable SpellSlotsTable { get; set; }
 
