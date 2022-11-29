@@ -75,21 +75,6 @@
 	</background>
 
 	<background>
-		<name>Моряк</name>
-		<proficiency>Атлетика, Восприятие</proficiency>
-		<possessionInstrument>инструменты навигатора, транспорт (водный)</possessionInstrument>
-		<money>10</money>
-		<equipment>кофель-нагель (дубинка), 50 футов шёлковой верёвки, талисман, комплект обычной одежды</equipment>
-		<description>
-			<text></text>
-			<text></text>
-			<text></text>
-			<text></text>
-			<text></text>
-		</description>
-	</background>
-
-	<background>
 		<name>Мудрец</name>
 		<proficiency>История, Магия</proficiency>
 		<possessionInstrumentFree>1: игровой</possessionInstrumentFree>

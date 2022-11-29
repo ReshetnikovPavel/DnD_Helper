@@ -1,4 +1,4 @@
-/*
+
 using System.Xml.Linq;
 using Domain;
 using Domain.Repositories;
@@ -30,15 +30,14 @@ public class TestBackgroundlRepository
     }
 
     [Test]
-    public void TestGetBackground()
+    public void TestGet()
     {
-        var name = "Артист";
-        var expected = new Background(name, new List<SkillName>(){SkillName.Acrobatics, SkillName.Performance}, 15, new List<Equipment>(){new Equipment("подарок от поклонницы"), new Equipment("костюм")}, null, new List<Instrument>(){new Instrument("Набор для грима")}, null, null);
-        var actual = repository.GetBackground(name);
-        actual.instrument.Should().BeEquivalentTo(expected.instrument);
-        actual.posessionInstrument.Should().BeEquivalentTo(expected.posessionInstrument);
-        actual.posessionInstrumentFree.Should().Be(expected.posessionInstrumentFree);
-        //actual.languageFree.Should().Be(expected.languageFree);
+        var names = repository.GetNames();
+        var list = new List<Background>();
+        foreach (var name in names)
+        {
+            list.Add(repository.GetBackground(name));
+        }
+        list.Should().BeNull();
     }
 }
-*/

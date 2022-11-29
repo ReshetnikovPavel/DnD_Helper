@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using Infrastructure;
+using static Microsoft.Maui.ApplicationModel.Permissions;
 
 namespace Domain.Repositories;
 
@@ -27,13 +28,19 @@ public class DndCompendiumParser : IDndParser
 
 	public Speed ParseSpeed(string speed)
 	{
+		if (speed == null)
+			return null;
+		
 		var speedValue = int.Parse(speed);
 		return new Speed(speedValue);
 	}
 
 	public AbilityScoreBonus ParseAbilityScoreBonus(string abilityScoreBonus)
 	{
-		var elements = abilityScoreBonus.Split(" ");
+        if (abilityScoreBonus == null)
+            return null;
+
+        var elements = abilityScoreBonus.Split(" ");
 		var abilityName = ParseAbilityName(elements[0]);
 		var bonus = int.Parse(elements[1]);
 		
@@ -70,7 +77,9 @@ public class DndCompendiumParser : IDndParser
 
 	public Weapon ParseWeapon(string weapon)
 	{
-		return new Weapon(weapon);
+        if (weapon == null)
+            return null;
+        return new Weapon(weapon);
 	}
 
 	public SkillName ParseSkillName(string skillName)
@@ -101,7 +110,9 @@ public class DndCompendiumParser : IDndParser
 
 	public ChooseMany<T> ParseChooseMany<T>(string choiceOption, Func<string, T> parse)
 	{
-		var split = choiceOption.Split(": ");
+        if (choiceOption == null)
+            return null;
+        var split = choiceOption.Split(": ");
 		var howMany = int.Parse(split[0]);
 		var entries = ParseManyAnyType(split[1], parse);
 
