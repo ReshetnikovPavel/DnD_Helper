@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace Tests;
 
 [TestFixture]
-public class DndParser_should
+public class DndParserShould
 {
 	private IDndParser parser;
 	

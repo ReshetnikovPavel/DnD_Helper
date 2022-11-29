@@ -3,7 +3,7 @@
 namespace Tests;
 
 [TestFixture]
-public class AbilitityScore_should
+public class AbilitityScoreShould
 {
 	[Test]
 	[TestCase(1, -5)]
