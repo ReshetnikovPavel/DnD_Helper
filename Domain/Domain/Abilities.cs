@@ -20,4 +20,16 @@ public class Abilities : ValueType<Abilities>, IDndObject
         Wisdom = new AbilityScore(AbilityName.Wisdom, wisdom);
         Charisma = new AbilityScore(AbilityName.Charisma, charisma);
     }
+
+    public Dictionary<AbilityName, AbilityScore> GetDictionary()
+    {
+        var dictionary = new Dictionary<AbilityName, AbilityScore>();
+        dictionary[AbilityName.Strength] = Strength;
+        dictionary[AbilityName.Dexterity] = Dexterity;
+        dictionary[AbilityName.Constitution] = Constitution;
+        dictionary[AbilityName.Intelligence] = Intelligence;
+        dictionary[AbilityName.Wisdom] = Wisdom;
+        dictionary[AbilityName.Charisma] = Charisma;
+        return dictionary;
+    }
 }
