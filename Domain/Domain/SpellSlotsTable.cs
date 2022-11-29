@@ -20,7 +20,7 @@ public class SpellSlotsTable : IDndObject
 
     public void FillClassLevelRow(int classLevel, int[] values)
     {
-        for (var spellLevel = 0; spellLevel < MaxSpellLevel; spellLevel++)
+        for (var spellLevel = 0; spellLevel < values.Length; spellLevel++)
         {
             this[spellLevel, classLevel] = values[spellLevel];
         }

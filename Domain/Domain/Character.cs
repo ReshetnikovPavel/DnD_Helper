@@ -58,7 +58,7 @@ public class Character : IDndObject
         WeaponsProficiencies.UnionWith(Race.WeaponsProficiencies);
 
         Feats.UnionWith(Race.Feats);
-
+        
         Traits.UnionWith(Race.Traits);
 
         InstrumentProficiencies.UnionWith(Race.InstrumentProfieciencies);
