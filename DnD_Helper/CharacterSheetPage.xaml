@@ -7,6 +7,48 @@
              Style="{StaticResource ContentPage}"
              Shell.NavBarIsVisible="False">
 
-    
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label Text="{Binding NameDisplay}" />
+            <Label Text="{Binding MainInfoDisplay}" />
+            <Label Text="{Binding ArmourClassDisplay}" />
+            <Label Text="{Binding SpeedDisplay}" />
+            <Label Text="{Binding HpDisplay}" />
+            <Label Text="{Binding InitiativeDisplay}" />
+            <ListView ItemsSource="{Binding AbilitiesDisplay}"
+                  SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding .}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ListView ItemsSource="{Binding SkillsDisplay}"
+                  SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding .}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ListView ItemsSource="{Binding ProfficienciesDisplay}"
+                  SelectionMode="None">
+                <ListView.Header>
+                    <Label Text="Владения:" />
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding .}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
 
 </ContentPage>

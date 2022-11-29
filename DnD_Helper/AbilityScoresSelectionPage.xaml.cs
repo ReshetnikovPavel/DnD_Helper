@@ -5,7 +5,6 @@ namespace DnD_Helper;
 
 public partial class AbilityScoresSelectionPage : ContentPage
 {
-	private Abilities abilities = new Abilities(8, 8, 8, 8, 8, 8);
 	private DistributorAbilityScore distributor = new DistributorAbilityScore();
 
 	public AbilityScoresSelectionPage()
@@ -23,22 +22,22 @@ public partial class AbilityScoresSelectionPage : ContentPage
 		=> distributor;
 
 	public AbilityScore Charisma
-		=> abilities.Charisma;
+		=> AppShell.Singleton.Abilities.Charisma;
 
 	public AbilityScore Constitution
-		=> abilities.Constitution;
+		=> AppShell.Singleton.Abilities.Constitution;
 
 	public AbilityScore Dexterity
-		=> abilities.Dexterity;
+		=> AppShell.Singleton.Abilities.Dexterity;
 
 	public AbilityScore Intelligence
-		=> abilities.Intelligence;
+		=> AppShell.Singleton.Abilities.Intelligence;
 
 	public AbilityScore Strength
-		=> abilities.Strength;
+		=> AppShell.Singleton.Abilities.Strength;
 
 	public AbilityScore Wisdom
-		=> abilities.Wisdom;
+		=> AppShell.Singleton.Abilities.Wisdom;
 
 	private void OnPointsUpdated(object sender, EventArgs e)
 	{
