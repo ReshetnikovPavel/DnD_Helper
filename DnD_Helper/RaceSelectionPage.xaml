@@ -9,7 +9,7 @@
 
     <ListView ItemsSource="{Binding RaceNames}"
               Margin="10"
-              ItemTapped="ListView_ItemTapped">
+              ItemSelected="ListView_ItemSelected">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>

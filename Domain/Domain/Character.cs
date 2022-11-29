@@ -2,9 +2,9 @@
 
 namespace Domain;
 
-public class Character : Entity<Guid>, IDndObject
+public class Character : IDndObject
 {
-	public Character(Guid id) : base(id)
+	public Character()
     {
         ProficiencyBonus = new ProficiencyBonus(2);
         Abilities = AbilityScore.Create();
@@ -19,7 +19,7 @@ public class Character : Entity<Guid>, IDndObject
     public IReadOnlyDictionary<AbilityName, SavingThrow> SavingThrows { get; }
     public IReadOnlyDictionary<SkillName, Skill> Skills { get; }
     public Race Race { get; set; }
-	public Class Class { get; }
+	public Class Class { get; set;  }
 	public Background Background { get; set; }
 	public ProficiencyBonus ProficiencyBonus { get; }
     public Size Size { get; set; }

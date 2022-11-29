@@ -15,10 +15,11 @@ public partial class RaceSelectionPage : ContentPage
 	public IEnumerable<string> RaceNames
 		=> AppShell.Singleton.RaceRepository.GetNames();
 
-    private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+
+    private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
-        AppShell.Singleton.SelectedRaceName = e.Item.ToString();
+        AppShell.Singleton.SelectedRaceName = e.SelectedItem.ToString();
         MessagingCenter.Send<RaceSelectionPage>(this, "SelectedRaceName");
-		AppShell.Singleton.GoToNextPage($"///{nameof(RaceSelectionPage)}");
+        AppShell.Singleton.GoToNextPage($"///{nameof(RaceSelectionPage)}");
     }
 }

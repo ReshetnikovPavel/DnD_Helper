@@ -48,15 +48,23 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\ac_icon.png" />
+	  <None Remove="Resources\Images\armor_icon.png" />
 	  <None Remove="Resources\Images\charisma_counter.png" />
 	  <None Remove="Resources\Images\constitution_counter.png" />
 	  <None Remove="Resources\Images\dexterity_counter.png" />
 	  <None Remove="Resources\Images\forward_button.png" />
+	  <None Remove="Resources\Images\hp_icon.png" />
+	  <None Remove="Resources\Images\initiative_slot.png" />
 	  <None Remove="Resources\Images\intelligence_counter.png" />
+	  <None Remove="Resources\Images\inventory_icon.png" />
 	  <None Remove="Resources\Images\minus_button.png" />
 	  <None Remove="Resources\Images\plus_button.png" />
+	  <None Remove="Resources\Images\speed_slot.png" />
 	  <None Remove="Resources\Images\start_button.png" />
 	  <None Remove="Resources\Images\strength_counter.png" />
+	  <None Remove="Resources\Images\tools_icon.png" />
+	  <None Remove="Resources\Images\weapon_icon.png" />
 	  <None Remove="Resources\Images\wisdom_counter.png" />
 	</ItemGroup>
 

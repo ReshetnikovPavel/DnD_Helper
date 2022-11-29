@@ -2,6 +2,7 @@
 using Domain.Repositories;
 using System.Diagnostics.Contracts;
 using System.Windows.Input;
+using Domain;
 
 namespace DnD_Helper;
 
@@ -12,9 +13,11 @@ public partial class AppShell : Shell
     public IRaceRepository RaceRepository { get; private set; }
     public IClassRepository ClassRepository { get; private set; }
     public IBackgroundRepository BackgroundRepository { get; private set; }
+    public Character Character { get; private set; }
 
     private RouteCollection routes;
     private RouteItem characterSheetRoute;
+    
 
     public AppShell()
     {
@@ -72,8 +75,11 @@ public partial class AppShell : Shell
 
     private void InitMessaging()
     {
-        MessagingCenter.Subscribe<RaceSelectionPage>(this, "SelectedRaceName", (sender)
-            => SubracePage.IsVisible = CanGoToSubracePage());
+        MessagingCenter.Subscribe<RaceSelectionPage>(this, "SelectedRaceName", (sender) =>
+        {
+            SubracePage.IsVisible = CanGoToSubracePage();
+            SelectedSubRaceName = null;
+        });
     }
 
     private bool CanGoToSubracePage()
@@ -105,9 +111,18 @@ public partial class AppShell : Shell
 
     private async void OnTryGoToCharacterSheet(object sender, EventArgs e)
     {
-        if (CanGoToCharacterSheet())
+        if (!CanGoToCharacterSheet())
+        {
+            await DisplayAlert("Невозможно перейти в лист персонажа", "Не все поля заполнены", "Эх");
             return;
-        await DisplayAlert("Невозможно перейти в лист персонажа", "Не все поля заполнены", "Эх");
+        }
+        Character = new Character();
+        Character.Race = RaceRepository.GetRaceByName(SelectedRaceName, SelectedSubRaceName);
+        Character.ApplyRace();
+        Character.Class = ClassRepository.GetClass(SelectedClassName);
+        Character.ApplyClass();
+        Character.Background = BackgroundRepository.GetBackground(SelectedBackgroundName);
+        Character.ApplyBackground();
     }
 
     protected override bool OnBackButtonPressed()
