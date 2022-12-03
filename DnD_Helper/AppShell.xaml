@@ -7,7 +7,7 @@
     x:DataType="local:AppShell"
     Shell.FlyoutBehavior="Flyout"
     Shell.TabBarIsVisible="False"
-    BackgroundColor="{StaticResource ShellBackground}"
+    BackgroundColor="#d8d7e5"
     ForegroundColor="{DynamicResource ShellText}"
     TitleColor="{DynamicResource ShellText}"
     FlyoutBackgroundColor="{StaticResource FlyoutBackground}" >
