@@ -9,8 +9,16 @@ public class Skill : ValueType<Skill>, IBasedOnAbility<SkillName>, IDndObject
 	public SkillName Name { get; }
 	public int Modifier => Ability.Modifier + (IsProficient ? ProficiencyBonus.Value : 0);
 	public ProficiencyBonus ProficiencyBonus { get; }
-	
-	private Skill(SkillName name, AbilityScore ability, ProficiencyBonus proficiencyBonus)
+
+    public Skill(SkillName name, AbilityScore ability, ProficiencyBonus proficiencyBonus, bool isProficient)
+    {
+        Name = name;
+        Ability = ability;
+        ProficiencyBonus = proficiencyBonus;
+        IsProficient = isProficient;
+    }
+
+    private Skill(SkillName name, AbilityScore ability, ProficiencyBonus proficiencyBonus)
 	{
 		Name = name;
 		Ability = ability;
