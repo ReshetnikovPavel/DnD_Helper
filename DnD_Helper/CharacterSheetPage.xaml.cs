@@ -7,6 +7,16 @@ public partial class CharacterSheetPage : ContentPage
 	public CharacterSheetPage()
 	{
 		InitializeComponent();
+
+		NameLabel.BindingContext = this;
+		MainInfoLabel.BindingContext = this;
+		ArmourClassLabel.BindingContext = this;
+		SpeedLabel.BindingContext = this;
+		HpLabel.BindingContext = this;
+		InitiativeLabel.BindingContext = this;
+		AbilitiesList.BindingContext = this;
+		ProfficienciesList.BindingContext = this;
+		SkillsList.BindingContext = this;
 	}
 
 	public string NameDisplay

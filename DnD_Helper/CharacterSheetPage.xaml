@@ -8,19 +8,19 @@
 
     <ScrollView>
         <VerticalStackLayout>
-            <Label x:DataType="local:CharacterSheetPage"
+            <Label x:Name="NameLabel"
                 Text="{Binding NameDisplay}" />
-            <Label x:DataType="local:CharacterSheetPage"
+            <Label x:Name="MainInfoLabel"
                 Text="{Binding MainInfoDisplay}" />
-            <Label x:DataType="local:CharacterSheetPage"
+            <Label x:Name="ArmourClassLabel"
                 Text="{Binding ArmourClassDisplay}" />
-            <Label x:DataType="local:CharacterSheetPage"
+            <Label x:Name="SpeedLabel"
                 Text="{Binding SpeedDisplay}" />
-            <Label x:DataType="local:CharacterSheetPage"
+            <Label x:Name="HpLabel"
                 Text="{Binding HpDisplay}" />
-            <Label x:DataType="local:CharacterSheetPage"
+            <Label x:Name="InitiativeLabel"
                 Text="{Binding InitiativeDisplay}" />
-            <ListView x:DataType="local:CharacterSheetPage"
+            <ListView x:Name="AbilitiesList"
                 ItemsSource="{Binding AbilitiesDisplay}"
                   SelectionMode="None">
                 <ListView.ItemTemplate>
@@ -31,7 +31,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <ListView x:DataType="local:CharacterSheetPage"
+            <ListView x:Name="SkillsList"
                 ItemsSource="{Binding SkillsDisplay}"
                   SelectionMode="None">
                 <ListView.ItemTemplate>
@@ -42,7 +42,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <ListView x:DataType="local:CharacterSheetPage"
+            <ListView x:Name="ProfficienciesList"
                 ItemsSource="{Binding ProfficienciesDisplay}"
                   SelectionMode="None">
                 <ListView.Header>
