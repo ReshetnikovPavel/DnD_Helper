@@ -9,7 +9,7 @@ public partial class RaceSelectionPage : ContentPage
 	{
 		InitializeComponent();
 
-		BindingContext = this;
+        RaceList.BindingContext = this;
 	}
 
 	public IEnumerable<string> RaceNames

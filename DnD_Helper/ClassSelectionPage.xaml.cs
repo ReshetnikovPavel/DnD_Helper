@@ -6,7 +6,7 @@ public partial class ClassSelectionPage : ContentPage
 	{
 		InitializeComponent();
 
-		BindingContext = this;
+		ClassList.BindingContext = this;
 	}
 
 	public IEnumerable<string> ClassNames

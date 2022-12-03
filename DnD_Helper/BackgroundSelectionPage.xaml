@@ -4,7 +4,6 @@
              x:Class="DnD_Helper.BackgroundSelectionPage"
              Title="Опишите вашего персонажа"
              xmlns:local="clr-namespace:DnD_Helper"
-             x:DataType="local:BackgroundSelectionPage"
              Style="{StaticResource ContentPage}">
 
     <Grid Margin="15"
@@ -15,7 +14,8 @@
                TextChanged="Entry_TextChanged" />
         <Label Grid.Row="2"
             Text="Предыстория" />
-        <ListView Grid.Row="3"
+        <ListView x:Name="BackgroundList"
+            Grid.Row="3"
             ItemsSource="{Binding BackgroundNames}"
               Margin="10, 5, 10, 10"
               ItemTapped="ListView_ItemTapped">

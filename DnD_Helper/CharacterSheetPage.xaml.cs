@@ -7,8 +7,6 @@ public partial class CharacterSheetPage : ContentPage
 	public CharacterSheetPage()
 	{
 		InitializeComponent();
-
-		BindingContext = this;
 	}
 
 	public string NameDisplay

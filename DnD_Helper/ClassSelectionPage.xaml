@@ -4,10 +4,10 @@
              x:Class="DnD_Helper.ClassSelectionPage"
              Title="Выберите класс"
              xmlns:local="clr-namespace:DnD_Helper"
-             x:DataType="local:ClassSelectionPage"
              Style="{StaticResource ContentPage}">
     
-    <ListView ItemsSource="{Binding ClassNames}"
+    <ListView x:Name="ClassList"
+        ItemsSource="{Binding ClassNames}"
               Margin="10"
               ItemTapped="ListView_ItemTapped">
         <ListView.ItemTemplate>

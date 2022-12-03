@@ -6,7 +6,7 @@ public partial class BackgroundSelectionPage : ContentPage
 	{
 		InitializeComponent();
 
-        BindingContext = this;
+        Background.BindingContext = this;
 	}
 
     public IEnumerable<string> BackgroundNames

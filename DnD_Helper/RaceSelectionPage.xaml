@@ -4,10 +4,10 @@
              x:Class="DnD_Helper.RaceSelectionPage"
              Title="Выберите расу"
              xmlns:local="clr-namespace:DnD_Helper"
-             x:DataType="local:RaceSelectionPage"
              Style="{StaticResource ContentPage}" >
 
-    <ListView ItemsSource="{Binding RaceNames}"
+    <ListView x:Name="RaceList"
+        ItemsSource="{Binding RaceNames}"
               Margin="10"
               ItemSelected="ListView_ItemSelected">
         <ListView.ItemTemplate>
