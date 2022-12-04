@@ -24,6 +24,7 @@ public partial class BackgroundSelectionPage : ContentPage
 
     private void NextButton_Clicked(object sender, EventArgs e)
     {
-        AppShell.Singleton.GoToNextPage(nameof(BackgroundSelectionPage));
+        MessagingCenter.Send<ContentPage, string>(this, AppActions.CompletedPage.ToString(), 
+            nameof(BackgroundSelectionPage));
     }
 }

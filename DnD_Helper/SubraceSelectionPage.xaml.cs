@@ -20,6 +20,7 @@ public partial class SubraceSelectionPage : ContentPage
 	private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
 	{
 		AppShell.Singleton.SelectedSubRaceName = e.Item.ToString();
-		AppShell.Singleton.GoToNextPage(nameof(SubraceSelectionPage));
-	}
+        MessagingCenter.Send<ContentPage, string>(this, AppActions.CompletedPage.ToString(),
+            nameof(SubraceSelectionPage));
+    }
 }
