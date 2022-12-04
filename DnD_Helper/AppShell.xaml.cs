@@ -6,6 +6,11 @@ using Domain;
 
 namespace DnD_Helper;
 
+public enum AppActions
+{
+    SelectedRaceName
+};
+
 public partial class AppShell : Shell
 {
     public static AppShell Singleton { get; private set; }
@@ -78,8 +83,10 @@ public partial class AppShell : Shell
 
     private void InitMessaging()
     {
-        MessagingCenter.Subscribe<RaceSelectionPage>(this, "SelectedRaceName", (sender) =>
+        MessagingCenter.Subscribe<RaceSelectionPage, string>(this, AppActions.SelectedRaceName.ToString(), 
+            (sender, name) =>
         {
+            SelectedRaceName = name;
             SubracePage.IsVisible = CanGoToSubracePage();
             SelectedSubRaceName = null;
         });

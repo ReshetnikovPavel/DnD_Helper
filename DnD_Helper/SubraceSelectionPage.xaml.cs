@@ -7,11 +7,12 @@ public partial class SubraceSelectionPage : ContentPage
 		InitializeComponent();
 		BindingContext = this;
 
-		UpdateItemSource(this);
-		MessagingCenter.Subscribe<RaceSelectionPage>(this, "SelectedRaceName", UpdateItemSource);
+		UpdateItemSource(this, "");
+		MessagingCenter.Subscribe<RaceSelectionPage, string>(this, AppActions.SelectedRaceName.ToString(), 
+			UpdateItemSource);
 	}
 
-	private void UpdateItemSource(object sender)
+	private void UpdateItemSource(object sender, string raceName)
 	{
 		SubraceListView.ItemsSource = AppShell.Singleton.GetSubraceNames();
     }
