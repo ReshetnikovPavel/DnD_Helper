@@ -17,9 +17,9 @@ public partial class SubraceSelectionPage : ContentPage
 		SubraceListView.ItemsSource = AppShell.Singleton.GetSubraceNames();
     }
 
-    private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
-    {
-        AppShell.Singleton.SelectedSubRaceName = e.Item.ToString();
-        AppShell.Singleton.GoToNextPage($"///{nameof(SubraceSelectionPage)}");
-    }
+	private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+	{
+		AppShell.Singleton.SelectedSubRaceName = e.Item.ToString();
+		AppShell.Singleton.GoToNextPage(nameof(SubraceSelectionPage));
+	}
 }

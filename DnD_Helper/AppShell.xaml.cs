@@ -53,16 +53,16 @@ public partial class AppShell : Shell
     private void InitRoutes()
     {
         Routing.RegisterRoute(nameof(CharacterSheetPage), typeof(CharacterSheetPage));
-        characterSheetRoute = new RouteItem($"/{nameof(CharacterSheetPage)}", CanGoToCharacterSheet);
+        characterSheetRoute = new RouteItem("/", nameof(CharacterSheetPage), CanGoToCharacterSheet);
         characterSheetRoute.TriedToGo += OnTryGoToCharacterSheet;
 
         var routesArr = new IHasRoute[]
         {
-            new RouteItem($"///{nameof(RaceSelectionPage)}"),
-            new RouteItem($"///{nameof(SubraceSelectionPage)}", CanGoToSubracePage),
-            new RouteItem($"///{nameof(ClassSelectionPage)}"),
-            new RouteItem($"///{nameof(AbilityScoresSelectionPage)}"),
-            new RouteItem($"///{nameof(BackgroundSelectionPage)}"),
+            new RouteItem("///", nameof(RaceSelectionPage)),
+            new RouteItem("///", nameof(SubraceSelectionPage), CanGoToSubracePage),
+            new RouteItem("///", nameof(ClassSelectionPage)),
+            new RouteItem("///", nameof(AbilityScoresSelectionPage)),
+            new RouteItem("///", nameof(BackgroundSelectionPage)),
             characterSheetRoute
         };
         routes = new RouteCollection(routesArr);

@@ -8,20 +8,19 @@ namespace DnD_Helper.ApplicationClasses
 {
     internal class RouteItem : IHasRoute
     {
+        private string prefix;
         public string Route { get; }
         public Func<bool> CheckCondition { get; }
-        
-        public RouteItem(string route, Func<bool> condition)
+
+        public RouteItem(string prefix, string route, Func<bool> condition)
         {
             Route = route;
+            this.prefix = prefix;
             CheckCondition = condition;
         }
 
-        public RouteItem(string route)
-        {
-            Route = route;
-            CheckCondition = () => true;
-        }
+        public RouteItem(string prefix, string route)
+            : this(prefix, route, () => true) { }
 
         public bool TryGo()
         {
@@ -34,7 +33,7 @@ namespace DnD_Helper.ApplicationClasses
 
         private async void Go()
         {
-            await Shell.Current.GoToAsync(Route);
+            await Shell.Current.GoToAsync($"{prefix}{Route}");
         }
 
         public event EventHandler TriedToGo;
