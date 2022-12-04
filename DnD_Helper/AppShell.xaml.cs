@@ -8,7 +8,8 @@ namespace DnD_Helper;
 
 public enum AppActions
 {
-    SelectedRaceName
+    SelectedRaceName,
+    CompletedPage
 };
 
 public partial class AppShell : Shell
@@ -83,13 +84,10 @@ public partial class AppShell : Shell
 
     private void InitMessaging()
     {
-        MessagingCenter.Subscribe<RaceSelectionPage, string>(this, AppActions.SelectedRaceName.ToString(), 
-            (sender, name) =>
-        {
-            SelectedRaceName = name;
-            SubracePage.IsVisible = CanGoToSubracePage();
-            SelectedSubRaceName = null;
-        });
+        MessagingCenter.Subscribe<ContentPage, string>(this, AppActions.CompletedPage.ToString(),
+            OnPageCompleted);
+        MessagingCenter.Subscribe<RaceSelectionPage, string>(this, AppActions.SelectedRaceName.ToString(),
+            OnRaceNameSelected);
     }
 
     private bool CanGoToSubracePage()
@@ -104,7 +102,6 @@ public partial class AppShell : Shell
         && SelectedBackgroundName != null;
     }
 
-
     private async void BackToMenu_Clicked(object sender, EventArgs e)
     {
         var choice = await DisplayAlert("Вернуться в меню?",
@@ -117,6 +114,18 @@ public partial class AppShell : Shell
     {
         characterSheetRoute.TryGo();
         Shell.Current.FlyoutIsPresented = false;
+    }
+
+    private void OnPageCompleted(object sender, string page)
+    {
+        GoToNextPage(page);
+    }
+
+    private void OnRaceNameSelected(object sender, string name)
+    {
+        SelectedRaceName = name;
+        SubracePage.IsVisible = CanGoToSubracePage();
+        SelectedSubRaceName = null;
     }
 
     private async void OnTryGoToCharacterSheet(object sender, EventArgs e)
