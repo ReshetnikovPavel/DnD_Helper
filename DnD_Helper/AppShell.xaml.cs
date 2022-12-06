@@ -6,10 +6,10 @@ using Domain;
 
 namespace DnD_Helper;
 
-public enum AppActions
+public enum Messages
 {
-    SelectedRaceName,
-    CompletedPage
+    AttributeSelected,
+    PageCompleted
 };
 
 public partial class AppShell : Shell
@@ -84,9 +84,9 @@ public partial class AppShell : Shell
 
     private void InitMessaging()
     {
-        MessagingCenter.Subscribe<ContentPage, string>(this, AppActions.CompletedPage.ToString(),
+        MessagingCenter.Subscribe<ContentPage, string>(this, Messages.PageCompleted.ToString(),
             OnPageCompleted);
-        MessagingCenter.Subscribe<RaceSelectionPage, string>(this, AppActions.SelectedRaceName.ToString(),
+        MessagingCenter.Subscribe<RaceSelectionPage, string>(this, Messages.AttributeSelected.ToString(),
             OnRaceNameSelected);
     }
 

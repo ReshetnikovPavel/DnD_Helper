@@ -8,7 +8,7 @@ public partial class SubraceSelectionPage : ContentPage
 		BindingContext = this;
 
 		UpdateItemSource(this, "");
-		MessagingCenter.Subscribe<RaceSelectionPage, string>(this, AppActions.SelectedRaceName.ToString(), 
+		MessagingCenter.Subscribe<RaceSelectionPage, string>(this, Messages.AttributeSelected.ToString(), 
 			UpdateItemSource);
 	}
 
@@ -20,7 +20,7 @@ public partial class SubraceSelectionPage : ContentPage
 	private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
 	{
 		AppShell.Singleton.SelectedSubRaceName = e.Item.ToString();
-        MessagingCenter.Send<ContentPage, string>(this, AppActions.CompletedPage.ToString(),
+        MessagingCenter.Send<ContentPage, string>(this, Messages.PageCompleted.ToString(),
             nameof(SubraceSelectionPage));
     }
 }

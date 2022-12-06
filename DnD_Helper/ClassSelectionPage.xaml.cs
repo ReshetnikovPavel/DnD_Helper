@@ -15,7 +15,7 @@ public partial class ClassSelectionPage : ContentPage
     private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
     {
         AppShell.Singleton.SelectedClassName = e.Item.ToString();
-        MessagingCenter.Send<ContentPage, string>(this, AppActions.CompletedPage.ToString(),
+        MessagingCenter.Send<ContentPage, string>(this, Messages.PageCompleted.ToString(),
             nameof(ClassSelectionPage));
     }
 }

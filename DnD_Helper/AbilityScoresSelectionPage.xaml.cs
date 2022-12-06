@@ -46,7 +46,7 @@ public partial class AbilityScoresSelectionPage : ContentPage
 
     private void NextButton_Clicked(object sender, EventArgs e)
     {
-		MessagingCenter.Send<ContentPage, string>(this, AppActions.CompletedPage.ToString(), 
+		MessagingCenter.Send<ContentPage, string>(this, Messages.PageCompleted.ToString(), 
 			nameof(AbilityScoresSelectionPage));
     }
 }
