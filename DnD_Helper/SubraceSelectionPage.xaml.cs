@@ -14,13 +14,13 @@ public partial class SubraceSelectionPage : ContentPage
 
 	private void UpdateItemSource(object sender, string raceName)
 	{
-		SubraceListView.ItemsSource = AppShell.Singleton.GetSubraceNames();
+		//SubraceListView.ItemsSource = AppShell.Singleton.GetSubraceNames();
     }
 
 	private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
 	{
-		AppShell.Singleton.SelectedSubRaceName = e.Item.ToString();
-        MessagingCenter.Send<ContentPage, string>(this, Messages.PageCompleted.ToString(),
-            nameof(SubraceSelectionPage));
+		//AppShell.Singleton.SelectedSubRaceName = e.Item.ToString();
+  //      MessagingCenter.Send<ContentPage, string>(this, Messages.PageCompleted.ToString(),
+  //          nameof(SubraceSelectionPage));
     }
 }

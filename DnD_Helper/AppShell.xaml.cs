@@ -25,6 +25,7 @@ public partial class AppShell : Shell
 
     private RouteCollection routes;
     private RouteItem characterSheetRoute;
+    private Dictionary<string, string> stateManager;
     
 
     public AppShell()
@@ -32,6 +33,7 @@ public partial class AppShell : Shell
         InitializeComponent();
         Singleton = this;
         MainFlyout.BindingContext = this;
+        stateManager = new Dictionary<string, string>();
         InitRoutes();
         InitMessaging();
         InitDomain();
@@ -39,14 +41,13 @@ public partial class AppShell : Shell
         SubracePage.IsVisible = false;
     }
 
-    public string SelectedRaceName { get; set; }
     public string SelectedSubRaceName { get; set; }
     public string SelectedClassName { get; set; }
     public string SelectedBackgroundName { get; set; }
     public string SelectedName { get; set; }
 
-    public IEnumerable<string> GetSubraceNames()
-        => RaceRepository.GetSubraceNames(SelectedRaceName);
+    //public IEnumerable<string> GetSubraceNames()
+    //    => RaceRepository.GetSubraceNames(SelectedRaceName);
 
     public void GoToNextPage(string currentRoute)
         => routes.GoToNext(currentRoute);
@@ -60,7 +61,7 @@ public partial class AppShell : Shell
         var routesArr = new IHasRoute[]
         {
             new RouteItem("///", nameof(RaceSelectionPage)),
-            new RouteItem("///", nameof(SubraceSelectionPage), CanGoToSubracePage),
+            //new RouteItem("///", nameof(SubraceSelectionPage), CanGoToSubracePage),
             new RouteItem("///", nameof(ClassSelectionPage)),
             new RouteItem("///", nameof(AbilityScoresSelectionPage)),
             new RouteItem("///", nameof(BackgroundSelectionPage)),
@@ -84,19 +85,19 @@ public partial class AppShell : Shell
 
     private void InitMessaging()
     {
-        MessagingCenter.Subscribe<ContentPage, string>(this, Messages.PageCompleted.ToString(),
-            OnPageCompleted);
-        MessagingCenter.Subscribe<RaceSelectionPage, string>(this, Messages.AttributeSelected.ToString(),
-            OnRaceNameSelected);
+        MessagingCenter.Subscribe<ContentPage, string>(
+            this, Messages.PageCompleted.ToString(), OnPageCompleted);
+        MessagingCenter.Subscribe<ContentPage, Selection>(
+            this, Messages.AttributeSelected.ToString(), OnAttributeSelected);
     }
 
-    private bool CanGoToSubracePage()
-        => GetSubraceNames().Any();
+    //private bool CanGoToSubracePage()
+    //    => GetSubraceNames().Any();
 
     private bool CanGoToCharacterSheet()
     {
-        return SelectedRaceName != null
-        && (!CanGoToSubracePage() || SelectedSubRaceName != null)
+        return stateManager.ContainsKey(nameof(Race))
+        //&& (!CanGoToSubracePage() || SelectedSubRaceName != null)
         && SelectedClassName != null
         && SelectedName != null
         && SelectedBackgroundName != null;
@@ -116,17 +117,24 @@ public partial class AppShell : Shell
         Shell.Current.FlyoutIsPresented = false;
     }
 
+    private void OnAttributeSelected(object sender, Selection selection)
+    {
+        if(!stateManager.ContainsKey(selection.Type))
+            stateManager.Add(selection.Type, selection.Value);
+        else
+            stateManager[selection.Type] = selection.Value;
+    }
+
     private void OnPageCompleted(object sender, string page)
     {
         GoToNextPage(page);
     }
 
-    private void OnRaceNameSelected(object sender, string name)
-    {
-        SelectedRaceName = name;
-        SubracePage.IsVisible = CanGoToSubracePage();
-        SelectedSubRaceName = null;
-    }
+    //private void OnRaceNameSelected(object sender, Selection selection)
+    //{
+    //    SubracePage.IsVisible = CanGoToSubracePage();
+    //    SelectedSubRaceName = null;
+    //}
 
     private async void OnTryGoToCharacterSheet(object sender, EventArgs e)
     {
@@ -136,7 +144,7 @@ public partial class AppShell : Shell
             return;
         }
         Character = new Character(Abilities);
-        Character.Race = RaceRepository.GetRaceByName(SelectedRaceName, SelectedSubRaceName);
+        Character.Race = RaceRepository.GetRaceByName(stateManager[nameof(Race)], null);
         Character.ApplyRace();
         Character.Class = ClassRepository.GetClass(SelectedClassName);
         Character.ApplyClass();
