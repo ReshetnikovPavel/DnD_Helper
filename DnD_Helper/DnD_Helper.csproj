@@ -69,6 +69,49 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Include=".NetMauiEmailAuthFirebase-master\Dashboard.xaml.cs" />
+	  <Compile Include=".NetMauiEmailAuthFirebase-master\Platforms\Android\MainActivity.cs" />
+	  <Compile Include=".NetMauiEmailAuthFirebase-master\Platforms\Android\MainApplication.cs" />
+	  <Compile Include=".NetMauiEmailAuthFirebase-master\Platforms\iOS\AppDelegate.cs" />
+	  <Compile Include=".NetMauiEmailAuthFirebase-master\Platforms\iOS\Program.cs" />
+	  <Compile Include=".NetMauiEmailAuthFirebase-master\Platforms\MacCatalyst\AppDelegate.cs" />
+	  <Compile Include=".NetMauiEmailAuthFirebase-master\Platforms\MacCatalyst\Program.cs" />
+	  <Compile Include=".NetMauiEmailAuthFirebase-master\Platforms\Windows\App.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include=".NetMauiEmailAuthFirebase-master\Platforms\Android\AndroidManifest.xml" />
+	  <Content Include=".NetMauiEmailAuthFirebase-master\Platforms\Android\Resources\values\colors.xml" />
+	  <Content Include=".NetMauiEmailAuthFirebase-master\Properties\launchSettings.json" />
+	  <Content Include=".NetMauiEmailAuthFirebase-master\Resources\Fonts\OpenSans-Regular.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include=".NetMauiEmailAuthFirebase-master\Platforms\iOS\Info.plist" />
+	  <None Include=".NetMauiEmailAuthFirebase-master\Platforms\MacCatalyst\Info.plist" />
+	  <None Include=".NetMauiEmailAuthFirebase-master\Platforms\Windows\app.manifest" />
+	  <None Include=".NetMauiEmailAuthFirebase-master\Platforms\Windows\Package.appxmanifest" />
+	  <None Include=".NetMauiEmailAuthFirebase-master\Resources\appicon.svg" />
+	  <None Include=".NetMauiEmailAuthFirebase-master\Resources\appiconfg.svg" />
+	  <None Include=".NetMauiEmailAuthFirebase-master\Resources\Images\dotnet_bot.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Include=".NetMauiEmailAuthFirebase-master\Dashboard.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
+	  <Page Include="LoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
+	  <Page Include=".NetMauiEmailAuthFirebase-master\Platforms\Windows\App.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
+	  <Page Include="RegisterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <ProjectReference Include="..\Domain\Domain.csproj" />
 	  <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
 	</ItemGroup>

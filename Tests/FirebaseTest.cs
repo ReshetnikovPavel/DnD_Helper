@@ -1,5 +1,6 @@
 ﻿using Domain;
 using Domain.Repositories;
+using Firebase.Database;
 using NUnit.Framework;
 using Infrastructure;
 using Newtonsoft.Json;
@@ -15,8 +16,9 @@ public class FirebaseTest
     public static void SetUp()
     {
         var url = new FirebaseUrl(@"https://dndhelper-e695e-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        var firebaseClient = new FirebaseClient(url.Url);
         character = new Character(new Abilities(0,0,0,0,0,0), Guid.Parse("cf85d53b-14ff-4a1f-9af8-594cb138d0a6"));
-        repository = new FirebaseCharacterRepository(url, new User(Guid.Parse("076afccf-72ed-40e5-bda4-d921f27caf70")));
+        repository = new FirebaseCharacterRepository(firebaseClient, new User(Guid.Parse("076afccf-72ed-40e5-bda4-d921f27caf70")));
     }
 
     [Test]
