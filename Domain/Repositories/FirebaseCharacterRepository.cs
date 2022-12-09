@@ -9,9 +9,9 @@ public class FirebaseCharacterRepository : ICharacterRepository
 {
     private readonly FirebaseClient firebaseClient;
     private readonly User user;
-    public FirebaseCharacterRepository(FirebaseUrl url, User user)
+    public FirebaseCharacterRepository(FirebaseClient client, User user)
     {
-        firebaseClient = new FirebaseClient(url.Url);
+        firebaseClient = client;
         this.user = user;
     }
 
