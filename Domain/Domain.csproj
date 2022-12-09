@@ -18,6 +18,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Repositories\Xmls\Armors.xml" />
 	  <None Remove="Repositories\Xmls\Background.xml" />
 	  <None Remove="Repositories\Xmls\Classes.xml" />
 	  <None Remove="Repositories\Xmls\Languages.xml" />
@@ -33,6 +34,14 @@
 	  <EmbeddedResource Include="Repositories\Xmls\Races.xml" />
 	  <EmbeddedResource Include="Repositories\Xmls\Spells.xml" />
 	  <EmbeddedResource Include="Repositories\Xmls\Weapons.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Repositories\Xmls\Armors.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="FirebaseDatabase.net" Version="4.1.0" />
 	</ItemGroup>
 
 	<ItemGroup>

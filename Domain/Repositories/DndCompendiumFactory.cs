@@ -126,7 +126,7 @@ public class DndCompendiumFactory : IDndFactory<XElement>
 
     public IEnumerable<SkillName> GetSkillProficiencies(XElement xElement)
     {
-        return parser.ParseManyToGetEnums(xElement.GetElementContentWithName("skill"), parser.ParseSkillName);
+        return parser.ParseMany(xElement.GetElementContentWithName("skill"), parser.ParseSkillName);
     }
 
     public IEnumerable<Instrument> GetInstrumentProficiencies(XElement xElement)
