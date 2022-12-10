@@ -154,7 +154,7 @@ public class DndCompendiumParser : IDndParser
             return null;
         var split = choiceOption.Split(": ");
 		var howMany = int.Parse(split[0]);
-		var entries = ParseManyAnyType(split[1], parse);
+		var entries = ParseMany(split[1], parse);
 
         return new ChooseMany<T>(entries, howMany);
     }
@@ -202,12 +202,9 @@ public class DndCompendiumParser : IDndParser
 
     public IEnumerable<T> ParseMany<T>(string from, Func<string, T> applyParse)
     {
-        return ParseManyAnyType(from, applyParse);
-    }
-
-    public IEnumerable<T> ParseManyToGetEnums<T>(string from, Func<string, T> applyParse) where T : Enum
-    {
-        return ParseManyAnyType(from, applyParse);
+        if (from == null)
+            return Enumerable.Empty<T>();
+        return Split(from).Select(applyParse);
     }
 
     private SpellComponent ParseSpellComponent(char spellComponent)
@@ -231,12 +228,5 @@ public class DndCompendiumParser : IDndParser
     public WeaponType ParseWeaponType(string weaponType)
     {
         return new WeaponType(weaponType);
-    }
-
-    private IEnumerable<T> ParseManyAnyType<T>(string from, Func<string, T> applyParse)
-    {
-        if (from == null)
-            return Enumerable.Empty<T>();
-        return Split(from).Select(applyParse);
     }
 }
