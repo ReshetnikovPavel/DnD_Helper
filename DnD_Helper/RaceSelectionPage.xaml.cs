@@ -18,7 +18,7 @@ public partial class RaceSelectionPage : ContentPage
 
     private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
-        MessagingCenter.Send<ContentPage, Selection>(this, Messages.AttributeSelected.ToString(),
+        MessagingCenter.Send(this, Messages.AttributeSelected.ToString(),
             new Selection(nameof(Race), e.SelectedItem.ToString()));
         MessagingCenter.Send<ContentPage, string>(this, Messages.PageCompleted.ToString(),
             nameof(RaceSelectionPage));

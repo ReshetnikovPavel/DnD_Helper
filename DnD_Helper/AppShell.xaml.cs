@@ -87,7 +87,11 @@ public partial class AppShell : Shell
     {
         MessagingCenter.Subscribe<ContentPage, string>(
             this, Messages.PageCompleted.ToString(), OnPageCompleted);
-        MessagingCenter.Subscribe<ContentPage, Selection>(
+        MessagingCenter.Subscribe<RaceSelectionPage, Selection>(
+            this, Messages.AttributeSelected.ToString(), OnAttributeSelected);
+        MessagingCenter.Subscribe<ClassSelectionPage, Selection>(
+            this, Messages.AttributeSelected.ToString(), OnAttributeSelected);
+        MessagingCenter.Subscribe<BackgroundSelectionPage, Selection>(
             this, Messages.AttributeSelected.ToString(), OnAttributeSelected);
     }
 
