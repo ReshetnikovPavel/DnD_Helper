@@ -157,7 +157,7 @@ public partial class AppShell : Shell
     //    Character.ApplyBackground();
     //}
 
-    
+
     protected override bool OnBackButtonPressed()
         => true; // Disables the Android back button 
 }

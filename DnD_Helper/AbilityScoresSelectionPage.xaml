@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DnD_Helper.AbilityScoresSelectionPage"
              xmlns:controls="clr-namespace:DnD_Helper.Resources.Controls"
-             xmlns:local="clr-namespace:DnD_Helper"
+             xmlns:models="clr-namespace:DnD_Helper.ViewModels"
              Title="Распределите характеристики"
-             x:DataType="local:AbilityScoresSelectionPage"
+             x:DataType="models:AbilityScoreSelectionModel"
              Style="{StaticResource ContentPage}">
 
     <Grid Margin="15"
@@ -51,7 +51,7 @@
                      HorizontalOptions="EndAndExpand"
                      Source="forward_button.png"
                      Aspect="AspectFit"
-                     Clicked="NextButton_Clicked"
+                     Command="{Binding GoToNextPage}"
                      HeightRequest="80"
                      WidthRequest="80"/>
     </Grid>
