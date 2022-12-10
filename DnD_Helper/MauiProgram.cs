@@ -35,7 +35,8 @@ public static class MauiProgram
 			.AddTransient<LoginViewModel>()
 			.AddTransient<RegisterViewModel>()
 			.AddTransient<AbilityScoreSelectionModel>()
-			.AddTransient<ClassSelectionModel>();
+			.AddTransient<ClassSelectionModel>()
+			.AddTransient<RaceSelectionModel>();
 		return services;
 	}
 
@@ -45,7 +46,8 @@ public static class MauiProgram
 			.AddTransient<LoginPage>()
 			.AddTransient<RegisterPage>()
 			.AddTransient<AbilityScoresSelectionPage>()
-			.AddTransient<ClassSelectionPage>();
+			.AddTransient<ClassSelectionPage>()
+			.AddTransient<RaceSelectionPage>();
 		return services;
 	}
 
