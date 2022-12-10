@@ -33,7 +33,7 @@ namespace DnD_Helper.ApplicationClasses
 
         private async void Go()
         {
-            await Shell.Current.GoToAsync($"{prefix}{Route}");
+            await Shell.Current.GoToAsync(prefix+Route);
         }
 
         public event EventHandler TriedToGo;

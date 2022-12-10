@@ -55,7 +55,7 @@ public partial class AppShell : Shell
     private void InitRoutes()
     {
         Routing.RegisterRoute(nameof(CharacterSheetPage), typeof(CharacterSheetPage));
-        characterSheetRoute = new RouteItem("/", nameof(CharacterSheetPage), CanGoToCharacterSheet);
+        characterSheetRoute = new RouteItem("///", nameof(CharacterSheetPage));
         characterSheetRoute.TriedToGo += OnTryGoToCharacterSheet;
 
         var routesArr = new IHasRoute[]
@@ -138,11 +138,11 @@ public partial class AppShell : Shell
 
     private async void OnTryGoToCharacterSheet(object sender, EventArgs e)
     {
-        if (!CanGoToCharacterSheet())
-        {
-            await DisplayAlert("Невозможно перейти в лист персонажа", "Не все поля заполнены", "Эх");
-            return;
-        }
+        //if (!CanGoToCharacterSheet())
+        //{
+        //    await DisplayAlert("Невозможно перейти в лист персонажа", "Не все поля заполнены", "Эх");
+        //    return;
+        //}
         Character = new Character(Abilities);
         Character.Race = RaceRepository.GetRaceByName(stateManager[nameof(Race)], null);
         Character.ApplyRace();
