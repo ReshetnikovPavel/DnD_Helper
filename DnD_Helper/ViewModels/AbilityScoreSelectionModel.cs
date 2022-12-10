@@ -9,10 +9,9 @@ using System.Windows.Input;
 
 namespace DnD_Helper.ViewModels
 {
-    public class AbilityScoreSelectionModel : INotifyPropertyChanged
+    public class AbilityScoreSelectionModel : BindableObject
     {
         private DistributorAbilityScore distributor;
-        public event PropertyChangedEventHandler PropertyChanged;
         public ICommand GoToNextPage { get; }
 
         public AbilityScoreSelectionModel(DistributorAbilityScore distributor)
@@ -49,12 +48,7 @@ namespace DnD_Helper.ViewModels
         
         private void OnPointsUpdated(object sender, EventArgs e)
         {
-            RaisePropertyChanged(nameof(PointsLeft));
-        }
-
-        private void RaisePropertyChanged(string v)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(v));
+            OnPropertyChanged(nameof(PointsLeft));
         }
 
         private async void OnGoToNextPage()

@@ -143,7 +143,12 @@
         <Setter Property="CornerRadius" Value="8" />
     </Style>
 
+    <Style TargetType="Image">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+    </Style>
+
     <Style TargetType="ImageButton">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
         <Setter Property="Opacity" Value="1" />
         <Setter Property="BorderColor" Value="Transparent"/>
         <Setter Property="BorderWidth" Value="0"/>
