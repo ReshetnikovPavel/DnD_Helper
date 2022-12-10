@@ -1,8 +1,10 @@
 ﻿using CommunityToolkit.Maui;
 using DnD_Helper.ViewModels;
 using Domain;
+using Domain.Repositories;
 using Firebase.Auth;
 using Infrastructure;
+using System.Xml.Linq;
 
 namespace DnD_Helper;
 
@@ -32,7 +34,8 @@ public static class MauiProgram
 		services
 			.AddTransient<LoginViewModel>()
 			.AddTransient<RegisterViewModel>()
-			.AddTransient<AbilityScoreSelectionModel>();
+			.AddTransient<AbilityScoreSelectionModel>()
+			.AddTransient<ClassSelectionModel>();
 		return services;
 	}
 
@@ -41,7 +44,8 @@ public static class MauiProgram
 		services
 			.AddTransient<LoginPage>()
 			.AddTransient<RegisterPage>()
-			.AddTransient<AbilityScoresSelectionPage>();
+			.AddTransient<AbilityScoresSelectionPage>()
+			.AddTransient<ClassSelectionPage>();
 		return services;
 	}
 
@@ -49,6 +53,7 @@ public static class MauiProgram
 	{
 		services
 			.RegisterFirebaseAuth()
+			.RegiserRepositories()
 			.AddTransient<DistributorAbilityScore>();
 
 		return services;
@@ -62,4 +67,19 @@ public static class MauiProgram
             .AddSingleton(new FirebaseConfig("AIzaSyAsyhRQKmYdtXBaH8LOgFe_tgHWGRh6wJQ"));
         return services;
     }
+
+	private static IServiceCollection RegiserRepositories(this IServiceCollection services)
+	{
+		services
+			.AddTransient<IClassRepository, XmlClassRepository>()
+			.AddTransient<ILanguageRepository, XmlLanguageRepository>()
+			.AddTransient<IRaceRepository, XmlRaceRepository>()
+			.AddTransient<IBackgroundRepository, XmlBackgroundRepository>()
+			.AddTransient<ISpellRepository, XmlSpellRepository>()
+			.AddTransient<IWeaponRepository, XmlWeaponRepository>()
+			.AddTransient<IDndParser, DndCompendiumParser>()
+			.AddTransient<IDndFactory<XElement>, DndCompendiumFactory>();
+		
+		return services;
+	}
 }
