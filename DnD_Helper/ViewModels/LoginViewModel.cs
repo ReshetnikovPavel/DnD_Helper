@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel;
 using Infrastructure;
+using Kotlin;
 
 namespace DnD_Helper.ViewModels
 {
-    public class LoginViewModel : INotifyPropertyChanged
+    internal class LoginViewModel : INotifyPropertyChanged
     {
         private INavigation _navigation;
         private string userName;

@@ -5,6 +5,7 @@ namespace DnD_Helper.ViewModels
 {
     internal class RegisterViewModel : INotifyPropertyChanged
     {
+
         private INavigation navigation;
         private IAuthProvider authProvider;
         private string email;

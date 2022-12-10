@@ -1,14 +1,14 @@
-﻿using DnD_Helper.ViewModels;
+﻿using EmailAuth.ViewModels;
 
 namespace DnD_Helper
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegisterPage : ContentPage
     {
-        public RegisterPage(RegisterViewModel viewModel)
+        public RegisterPage()
         {
             InitializeComponent();
-            BindingContext = viewModel;
+            BindingContext = new RegisterViewModel(Navigation);
         }
     }
 }
