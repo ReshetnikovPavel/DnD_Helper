@@ -27,6 +27,9 @@ public interface IDndParser
 
     IEnumerable<T> ParseMany<T>(string from, Func<string, T> applyParse);
 
-    IEnumerable<SpellComponent> ParseSpellComponents(string spellComponents);
+    IEnumerable<T> ParseManyToGetEnums<T>(string from, Func<string, T> applyParse)
+        where T : Enum;
+	
+	IEnumerable<SpellComponent> ParseSpellComponents(string spellComponents);
 	WeaponType ParseWeaponType(string weaponType);
 }
