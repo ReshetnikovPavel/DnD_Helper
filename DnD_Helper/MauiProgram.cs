@@ -1,4 +1,5 @@
-﻿using DnD_Helper.ViewModels;
+﻿using CommunityToolkit.Maui;
+using DnD_Helper.ViewModels;
 using Domain;
 using Firebase.Auth;
 using Infrastructure;
@@ -12,6 +13,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
+			.UseMauiCommunityToolkit()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

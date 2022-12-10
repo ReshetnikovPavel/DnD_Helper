@@ -3,6 +3,7 @@ using Domain.Repositories;
 using System.Diagnostics.Contracts;
 using System.Windows.Input;
 using Domain;
+using DnD_Helper.ViewModels;
 
 namespace DnD_Helper;
 
@@ -63,7 +64,7 @@ public partial class AppShell : Shell
         {
             new RouteItem("///", nameof(RaceSelectionPage)),
             //new RouteItem("///", nameof(SubraceSelectionPage), CanGoToSubracePage),
-            new RouteItem("///", nameof(ClassSelectionPage)),
+            new RouteItem("///", nameof(ClassSelectionModel)),
             new RouteItem("///", nameof(AbilityScoresSelectionPage)),
             new RouteItem("///", nameof(BackgroundSelectionPage)),
             //characterSheetRoute
@@ -88,9 +89,11 @@ public partial class AppShell : Shell
     {
         MessagingCenter.Subscribe<ContentPage, string>(
             this, Messages.PageCompleted.ToString(), OnPageCompleted);
+        MessagingCenter.Subscribe<BindableObject, string>(
+            this, Messages.PageCompleted.ToString(), OnPageCompleted);
         MessagingCenter.Subscribe<RaceSelectionPage, Selection>(
             this, Messages.AttributeSelected.ToString(), OnAttributeSelected);
-        MessagingCenter.Subscribe<ClassSelectionPage, Selection>(
+        MessagingCenter.Subscribe<ClassSelectionModel, Selection>(
             this, Messages.AttributeSelected.ToString(), OnAttributeSelected);
         MessagingCenter.Subscribe<BackgroundSelectionPage, Selection>(
             this, Messages.AttributeSelected.ToString(), OnAttributeSelected);
@@ -130,9 +133,9 @@ public partial class AppShell : Shell
             stateManager[selection.Type] = selection.Value;
     }
 
-    private void OnPageCompleted(object sender, string page)
+    private void OnPageCompleted(object sender, string currentPage)
     {
-        GoToNextPage(page);
+        GoToNextPage(currentPage);
     }
 
     //private void OnRaceNameSelected(object sender, Selection selection)

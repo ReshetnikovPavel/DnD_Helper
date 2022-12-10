@@ -1,5 +1,4 @@
-using DnD_Helper.ApplicationClasses;
-using Domain;
+using DnD_Helper.ViewModels;
 
 namespace DnD_Helper;
 
@@ -9,17 +8,6 @@ public partial class ClassSelectionPage : ContentPage
 	{
 		InitializeComponent();
 
-		ClassList.BindingContext = this;
+        BindingContext = new ClassSelectionModel();
 	}
-
-	public IEnumerable<string> ClassNames
-		=> AppShell.Singleton.ClassRepository.GetNames();
-
-    private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
-    {
-        MessagingCenter.Send(this, Messages.AttributeSelected.ToString(),
-            new Selection(nameof(Class), e.Item.ToString()));
-        MessagingCenter.Send<ContentPage, string>(this, Messages.PageCompleted.ToString(),
-            nameof(ClassSelectionPage));
-    }
 }

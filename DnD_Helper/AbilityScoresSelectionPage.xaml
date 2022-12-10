@@ -7,7 +7,7 @@
              Title="Распределите характеристики"
              x:DataType="models:AbilityScoreSelectionModel"
              Style="{StaticResource ContentPage}">
-
+    
     <Grid Margin="15"
         RowDefinitions="Auto, *, Auto">
         <Label Text="{Binding PointsLeft}"

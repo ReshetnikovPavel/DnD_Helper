@@ -44,7 +44,7 @@
 
         <ShellContent Title="Класс"
         ContentTemplate="{DataTemplate local:ClassSelectionPage}" 
-                      Route="ClassSelectionPage" >
+                      Route="ClassSelectionModel" >
         </ShellContent>
 
         <ShellContent Title="Характеристики"
