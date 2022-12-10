@@ -1,0 +1,44 @@
+﻿using DnD_Helper.ApplicationClasses;
+using Domain;
+using Domain.Repositories;
+using System.Windows.Input;
+
+namespace DnD_Helper.ViewModels
+{
+    public class BackgroundSelectionModel : BindableObject
+    {
+        public ICommand SelectBackground { get; }
+        public ICommand ChangeName { get; }
+        public ICommand ClickNextButton { get; }
+
+        private readonly IBackgroundRepository backgroundRepository;
+
+        public BackgroundSelectionModel(IBackgroundRepository backgroundRepository)
+        {
+            this.backgroundRepository = backgroundRepository;
+
+            SelectBackground = new Command<string>(OnBackgroundSelected);
+            ChangeName = new Command<TextChangedEventArgs>(OnNameChanged);
+            ClickNextButton = new Command(OnNextButtonClicked);
+        }
+
+        public IEnumerable<string> BackgroundNames => backgroundRepository.GetNames();
+
+        private void OnBackgroundSelected(string selectedName)
+        {
+            MessageSender.SendAttributeSelected<Background>(this, selectedName);
+        }
+
+        private void OnNameChanged(TextChangedEventArgs e)
+        {
+            MessagingCenter.Send<BindableObject, Selection>(this, Messages.AttributeSelected.ToString(),
+                new Selection("Name", e.NewTextValue));
+        }
+
+        private void OnNextButtonClicked()
+        {
+            MessagingCenter.Send<BindableObject, string>(this, Messages.PageCompleted.ToString(),
+                nameof(BackgroundSelectionPage));
+        }
+    }
+}

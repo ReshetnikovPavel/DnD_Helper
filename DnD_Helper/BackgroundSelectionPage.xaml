@@ -3,22 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DnD_Helper.BackgroundSelectionPage"
              Title="Опишите вашего персонажа"
+             xmlns:models="clr-namespace:DnD_Helper.ViewModels"
+             x:DataType="models:BackgroundSelectionModel"
              xmlns:local="clr-namespace:DnD_Helper"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              Style="{StaticResource ContentPage}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
 
     <Grid Margin="15"
         RowDefinitions="Auto, Auto, Auto, *, Auto">
         <Label Text="Имя" />
         <Entry Grid.Row="1"
-            Margin="0, 5, 0, 15" 
-               TextChanged="Entry_TextChanged" />
+            Margin="0, 5, 0, 15">
+            <Entry.Behaviors>
+            <toolkit:EventToCommandBehavior
+                EventName="TextChanged"
+                x:TypeArguments="TextChangedEventArgs"
+                Command="{Binding ChangeName}" />
+            </Entry.Behaviors>
+        </Entry>
         <Label Grid.Row="2"
             Text="Предыстория" />
         <ListView x:Name="BackgroundList"
             ItemsSource="{Binding BackgroundNames}"
             Grid.Row="3"
-              Margin="10, 5, 10, 10"
-              ItemTapped="ListView_ItemTapped">
+              Margin="10, 5, 10, 10">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -30,14 +45,25 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <toolkit:EventToCommandBehavior
+                EventName="ItemTapped"
+                Command="{Binding SelectBackground}"
+                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
+            </ListView.Behaviors>
         </ListView>
         <ImageButton Grid.Row="4"
                      HorizontalOptions="EndAndExpand"
                      Source="forward_button.png"
                      Aspect="AspectFit"
-                     Clicked="NextButton_Clicked"
                      HeightRequest="80"
-                     WidthRequest="80"/>
+                     WidthRequest="80">
+            <ImageButton.Behaviors>
+            <toolkit:EventToCommandBehavior
+                EventName="Clicked"
+                Command="{Binding ClickNextButton}" />
+            </ImageButton.Behaviors>
+        </ImageButton>
     </Grid>
 
 </ContentPage>
