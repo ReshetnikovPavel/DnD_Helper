@@ -9,6 +9,7 @@ namespace DnD_Helper;
 public enum Messages
 {
     AttributeSelected,
+    AbilityScoreSelected,
     PageCompleted
 };
 
@@ -24,7 +25,7 @@ public partial class AppShell : Shell
     public DndCompendiumParser Parser { get; private set; }  
 
     private RouteCollection routes;
-    private RouteItem characterSheetRoute;
+    //private RouteItem characterSheetRoute;
     private Dictionary<string, string> stateManager;
     
 
