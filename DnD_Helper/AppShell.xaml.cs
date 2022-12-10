@@ -41,10 +41,10 @@ public partial class AppShell : Shell
         SubracePage.IsVisible = false;
     }
 
-    public string SelectedSubRaceName { get; set; }
-    public string SelectedClassName { get; set; }
-    public string SelectedBackgroundName { get; set; }
-    public string SelectedName { get; set; }
+    //public string SelectedSubRaceName { get; set; }
+    //public string SelectedClassName { get; set; }
+    //public string SelectedBackgroundName { get; set; }
+    //public string SelectedName { get; set; }
 
     //public IEnumerable<string> GetSubraceNames()
     //    => RaceRepository.GetSubraceNames(SelectedRaceName);
@@ -54,9 +54,9 @@ public partial class AppShell : Shell
 
     private void InitRoutes()
     {
-        Routing.RegisterRoute(nameof(CharacterSheetPage), typeof(CharacterSheetPage));
-        characterSheetRoute = new RouteItem("///", nameof(CharacterSheetPage));
-        characterSheetRoute.TriedToGo += OnTryGoToCharacterSheet;
+        //Routing.RegisterRoute(nameof(CharacterSheetPage), typeof(CharacterSheetPage));
+        //characterSheetRoute = new RouteItem("///", nameof(CharacterSheetPage));
+        //characterSheetRoute.TriedToGo += OnTryGoToCharacterSheet;
 
         var routesArr = new IHasRoute[]
         {
@@ -65,7 +65,7 @@ public partial class AppShell : Shell
             new RouteItem("///", nameof(ClassSelectionPage)),
             new RouteItem("///", nameof(AbilityScoresSelectionPage)),
             new RouteItem("///", nameof(BackgroundSelectionPage)),
-            characterSheetRoute
+            //characterSheetRoute
         };
         routes = new RouteCollection(routesArr);
     }
@@ -94,14 +94,14 @@ public partial class AppShell : Shell
     //private bool CanGoToSubracePage()
     //    => GetSubraceNames().Any();
 
-    private bool CanGoToCharacterSheet()
-    {
-        return stateManager.ContainsKey(nameof(Race))
-        //&& (!CanGoToSubracePage() || SelectedSubRaceName != null)
-        && SelectedClassName != null
-        && SelectedName != null
-        && SelectedBackgroundName != null;
-    }
+    //private bool CanGoToCharacterSheet()
+    //{
+    //    return stateManager.ContainsKey(nameof(Race))
+    //    //&& (!CanGoToSubracePage() || SelectedSubRaceName != null)
+    //    && SelectedClassName != null
+    //    && SelectedName != null
+    //    && SelectedBackgroundName != null;
+    //}
 
     private async void BackToMenu_Clicked(object sender, EventArgs e)
     {
@@ -111,11 +111,11 @@ public partial class AppShell : Shell
             App.Current.MainPage = new MenuShell();
     }
 
-    private void CharacterSheet_Clicked(object sender, EventArgs e)
-    {
-        characterSheetRoute.TryGo();
-        Shell.Current.FlyoutIsPresented = false;
-    }
+    //private void CharacterSheet_Clicked(object sender, EventArgs e)
+    //{
+    //    characterSheetRoute.TryGo();
+    //    Shell.Current.FlyoutIsPresented = false;
+    //}
 
     private void OnAttributeSelected(object sender, Selection selection)
     {
@@ -136,22 +136,23 @@ public partial class AppShell : Shell
     //    SelectedSubRaceName = null;
     //}
 
-    private async void OnTryGoToCharacterSheet(object sender, EventArgs e)
-    {
-        //if (!CanGoToCharacterSheet())
-        //{
-        //    await DisplayAlert("Невозможно перейти в лист персонажа", "Не все поля заполнены", "Эх");
-        //    return;
-        //}
-        Character = new Character(Abilities);
-        Character.Race = RaceRepository.GetRaceByName(stateManager[nameof(Race)], null);
-        Character.ApplyRace();
-        Character.Class = ClassRepository.GetClass(SelectedClassName);
-        Character.ApplyClass();
-        Character.Background = BackgroundRepository.GetBackground(SelectedBackgroundName);
-        Character.ApplyBackground();
-    }
+    //private async void OnTryGoToCharacterSheet(object sender, EventArgs e)
+    //{
+    //    //if (!CanGoToCharacterSheet())
+    //    //{
+    //    //    await DisplayAlert("Невозможно перейти в лист персонажа", "Не все поля заполнены", "Эх");
+    //    //    return;
+    //    //}
+    //    Character = new Character(Abilities);
+    //    Character.Race = RaceRepository.GetRaceByName(stateManager[nameof(Race)], null);
+    //    Character.ApplyRace();
+    //    Character.Class = ClassRepository.GetClass(SelectedClassName);
+    //    Character.ApplyClass();
+    //    Character.Background = BackgroundRepository.GetBackground(SelectedBackgroundName);
+    //    Character.ApplyBackground();
+    //}
 
+    
     protected override bool OnBackButtonPressed()
-        => true;
+        => true; // Disables the Android back button 
 }

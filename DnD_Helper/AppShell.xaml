@@ -63,9 +63,9 @@
                       IsVisible="False" />
     </FlyoutItem>
 
-    <MenuItem Text="Лист персонажа"
+    <!--<MenuItem Text="Лист персонажа"
               Clicked="CharacterSheet_Clicked" >
-    </MenuItem>
+    </MenuItem>-->
 
     <MenuItem Text="Выйти в меню"
               Clicked="BackToMenu_Clicked" >
