@@ -4,9 +4,9 @@ namespace DnD_Helper;
 
 public partial class AbilityScoresSelectionPage : ContentPage
 {
-	public AbilityScoresSelectionPage()
+	public AbilityScoresSelectionPage(AbilityScoreSelectionModel viewModel)
 	{
 		InitializeComponent();
-		BindingContext = new AbilityScoreSelectionModel();
+		BindingContext = viewModel;
     }
 }

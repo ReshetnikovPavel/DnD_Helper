@@ -1,4 +1,5 @@
 ﻿using DnD_Helper.ViewModels;
+using Domain;
 using Firebase.Auth;
 using Infrastructure;
 
@@ -28,7 +29,8 @@ public static class MauiProgram
 	{
 		services
 			.AddTransient<LoginViewModel>()
-			.AddTransient<RegisterViewModel>();
+			.AddTransient<RegisterViewModel>()
+			.AddTransient<AbilityScoreSelectionModel>();
 		return services;
 	}
 
@@ -36,13 +38,16 @@ public static class MauiProgram
 	{
 		services
 			.AddTransient<LoginPage>()
-			.AddTransient<RegisterPage>();
+			.AddTransient<RegisterPage>()
+			.AddTransient<AbilityScoresSelectionPage>();
 		return services;
 	}
 
 	private static IServiceCollection RegisterServices(this IServiceCollection services)
 	{
-		services.RegisterFirebaseAuth();
+		services
+			.RegisterFirebaseAuth()
+			.AddTransient<DistributorAbilityScore>();
 
 		return services;
 	}

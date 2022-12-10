@@ -9,14 +9,15 @@ using System.Windows.Input;
 
 namespace DnD_Helper.ViewModels
 {
-    internal class AbilityScoreSelectionModel : INotifyPropertyChanged
+    public class AbilityScoreSelectionModel : INotifyPropertyChanged
     {
-        private DistributorAbilityScore distributor = new DistributorAbilityScore();
+        private DistributorAbilityScore distributor;
         public event PropertyChangedEventHandler PropertyChanged;
         public ICommand GoToNextPage { get; }
 
-        public AbilityScoreSelectionModel()
+        public AbilityScoreSelectionModel(DistributorAbilityScore distributor)
         {
+            this.distributor = distributor;
             distributor.TotalPointsUpdated += OnPointsUpdated;
             GoToNextPage = new Command(OnGoToNextPage);
         }
