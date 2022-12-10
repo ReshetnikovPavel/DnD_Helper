@@ -2,9 +2,9 @@
 
 namespace Domain;
 
-public class Character : IDndObject
+public class Character : Entity<Guid>, IDndObject
 {
-	public Character(Abilities abilities)
+	public Character(Abilities abilities) : base(Guid.NewGuid())
     {
         ProficiencyBonus = new ProficiencyBonus(2);
         Abilities = abilities.GetDictionary();
