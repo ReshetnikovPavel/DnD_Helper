@@ -4,10 +4,10 @@ namespace DnD_Helper;
 
 public partial class LoginPage : ContentPage
 {
-	public LoginPage()
+	public LoginPage(LoginViewModel loginViewModel)
 	{
 		InitializeComponent();
-		BindingContext = new LoginViewModel(Navigation);
+		BindingContext = loginViewModel;
 	}
 }
 
