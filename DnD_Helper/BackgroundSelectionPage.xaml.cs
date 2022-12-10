@@ -1,3 +1,6 @@
+using DnD_Helper.ApplicationClasses;
+using Domain;
+
 namespace DnD_Helper;
 
 public partial class BackgroundSelectionPage : ContentPage
@@ -14,12 +17,14 @@ public partial class BackgroundSelectionPage : ContentPage
 
     private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
     {
-        AppShell.Singleton.SelectedBackgroundName = e.Item.ToString();
+        MessagingCenter.Send<ContentPage, Selection>(this, Messages.AttributeSelected.ToString(),
+            new Selection(nameof(Background), e.Item.ToString()));
     }
 
     private void Entry_TextChanged(object sender, TextChangedEventArgs e)
     {
-        AppShell.Singleton.SelectedName = e.NewTextValue;
+        MessagingCenter.Send<ContentPage, Selection>(this, Messages.AttributeSelected.ToString(),
+            new Selection("Name", e.NewTextValue));
     }
 
     private void NextButton_Clicked(object sender, EventArgs e)
