@@ -16,7 +16,7 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
-		builder
+		builder.Services
 			.RegisterServices()
 			.RegisterViewModels()
 			.RegisterPages();
@@ -24,35 +24,35 @@ public static class MauiProgram
 		return builder.Build();
 	}
 
-	private static MauiAppBuilder RegisterViewModels(this MauiAppBuilder builder)
+	private static IServiceCollection RegisterViewModels(this IServiceCollection services)
 	{
-		builder.Services
+		services
 			.AddTransient<LoginViewModel>()
 			.AddTransient<RegisterViewModel>();
-		return builder;
+		return services;
 	}
 
-	private static MauiAppBuilder RegisterPages(this MauiAppBuilder builder)
+	private static IServiceCollection RegisterPages(this IServiceCollection services)
 	{
-		builder.Services
+		services
 			.AddTransient<LoginPage>()
 			.AddTransient<RegisterPage>();
-		return builder;
+		return services;
 	}
 
-	private static MauiAppBuilder RegisterServices(this MauiAppBuilder builder)
+	private static IServiceCollection RegisterServices(this IServiceCollection services)
 	{
-		builder.RegisterFirebaseAuth();
+		services.RegisterFirebaseAuth();
 
-		return builder;
+		return services;
 	}
 
-	private static MauiAppBuilder RegisterFirebaseAuth(this MauiAppBuilder builder)
+	private static IServiceCollection RegisterFirebaseAuth(this IServiceCollection services)
 	{
-        builder.Services
+        services
             .AddSingleton<IAuthProvider, FirebaseAuthProviderAdapter>()
             .AddTransient<FirebaseAuth>()
             .AddSingleton(new FirebaseConfig("AIzaSyAsyhRQKmYdtXBaH8LOgFe_tgHWGRh6wJQ"));
-        return builder;
+        return services;
     }
 }
