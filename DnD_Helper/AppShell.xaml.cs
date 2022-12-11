@@ -17,13 +17,8 @@ public enum Messages
 public partial class AppShell : Shell
 {
     public static AppShell Singleton { get; private set; }
-
-    public IRaceRepository RaceRepository { get; private set; }
-    public IClassRepository ClassRepository { get; private set; }
-    public IBackgroundRepository BackgroundRepository { get; private set; }
     public Character Character { get; private set; }
     public Abilities Abilities { get; private set; }
-    public DndCompendiumParser Parser { get; private set; }  
 
     private RouteCollection routes;
     //private RouteItem characterSheetRoute;
@@ -74,14 +69,6 @@ public partial class AppShell : Shell
 
     private void InitDomain()
     {
-        Parser = new DndCompendiumParser();
-        var factory = new DndCompendiumFactory(
-            Parser,
-            new XmlLanguageRepository(),
-            new XmlSpellRepository(Parser));
-        RaceRepository = new XmlRaceRepository(factory);
-        ClassRepository = new XmlClassRepository(Parser, factory);
-        BackgroundRepository = new XmlBackgroundRepository(Parser, factory);
         Abilities = new Abilities(8, 8, 8, 8, 8, 8);
     }
 
