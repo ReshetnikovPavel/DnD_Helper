@@ -32,10 +32,10 @@ public partial class AppShell : Shell
     {
         var routesArr = new IHasRoute[]
         {
-            new RouteItem("///", nameof(RaceSelectionModel)),
-            new RouteItem("///", nameof(ClassSelectionModel)),
-            new RouteItem("///", nameof(AbilityScoreSelectionModel)),
-            new RouteItem("///", nameof(BackgroundSelectionModel)),
+            //new RouteItem("///", nameof(RaceSelectionModel)),
+            //new RouteItem("///", nameof(ClassSelectionModel)),
+            //new RouteItem("///", nameof(AbilityScoreSelectionModel)),
+            //new RouteItem("///", nameof(BackgroundSelectionModel)),
         };
         routes = new RouteCollection(routesArr);
     }
@@ -78,7 +78,6 @@ public partial class AppShell : Shell
     {
         routes.GetNextAvailableRoute(currentPage)?.TryGo();
     }
-
 
     protected override bool OnBackButtonPressed()
         => true; // Disables the Android back button 

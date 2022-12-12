@@ -10,5 +10,5 @@ public partial class MenuPage : ContentPage
     private void StartButton_Clicked(object sender, EventArgs e)
     {
 		App.Current.MainPage = new AppShell();
-    }
+	}
 }
