@@ -14,8 +14,7 @@ public partial class AppShell : Shell
     public Abilities Abilities { get; private set; }
 
     private RouteCollection routes;
-    //private RouteItem characterSheetRoute;
-    private Dictionary<string, string> stateManager;
+    private Dictionary<string, object> stateManager;
     
 
     public AppShell()
@@ -23,11 +22,9 @@ public partial class AppShell : Shell
         InitializeComponent();
         Singleton = this;
         MainFlyout.BindingContext = this;
-        stateManager = new Dictionary<string, string>();
+        stateManager = new Dictionary<string, object>();
         InitRoutes();
         InitMessaging();
-        InitDomain();
-
         SubracePage.IsVisible = false;
     }
 
@@ -41,11 +38,6 @@ public partial class AppShell : Shell
             new RouteItem("///", nameof(BackgroundSelectionModel)),
         };
         routes = new RouteCollection(routesArr);
-    }
-
-    private void InitDomain()
-    {
-        Abilities = new Abilities(8, 8, 8, 8, 8, 8);
     }
 
     private void InitMessaging()
@@ -86,28 +78,6 @@ public partial class AppShell : Shell
     {
         routes.GetNextAvailableRoute(currentPage)?.TryGo();
     }
-
-    //private void OnRaceNameSelected(object sender, Selection selection)
-    //{
-    //    SubracePage.IsVisible = CanGoToSubracePage();
-    //    SelectedSubRaceName = null;
-    //}
-
-    //private async void OnTryGoToCharacterSheet(object sender, EventArgs e)
-    //{
-    //    //if (!CanGoToCharacterSheet())
-    //    //{
-    //    //    await DisplayAlert("Невозможно перейти в лист персонажа", "Не все поля заполнены", "Эх");
-    //    //    return;
-    //    //}
-    //    Character = new Character(Abilities);
-    //    Character.Race = RaceRepository.GetRaceByName(stateManager[nameof(Race)], null);
-    //    Character.ApplyRace();
-    //    Character.Class = ClassRepository.GetClass(SelectedClassName);
-    //    Character.ApplyClass();
-    //    Character.Background = BackgroundRepository.GetBackground(SelectedBackgroundName);
-    //    Character.ApplyBackground();
-    //}
 
 
     protected override bool OnBackButtonPressed()

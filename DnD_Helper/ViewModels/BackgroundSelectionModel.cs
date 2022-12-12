@@ -26,7 +26,7 @@ namespace DnD_Helper.ViewModels
 
         private void OnBackgroundSelected(string selectedName)
         {
-            MessageSender.SendAttributeSelected(this, nameof(CharacterBackground), selectedName);
+            MessageSender.SendAttributeSelected(this, nameof(Character.Background), selectedName);
         }
 
         private void OnNameChanged(TextChangedEventArgs e)
