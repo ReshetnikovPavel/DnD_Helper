@@ -39,9 +39,6 @@ public partial class AppShell : Shell
     //public IEnumerable<string> GetSubraceNames()
     //    => RaceRepository.GetSubraceNames(SelectedRaceName);
 
-    public void GoToNextPage(string currentRoute)
-        => routes.GoToNext(currentRoute);
-
     private void InitRoutes()
     {
         //Routing.RegisterRoute(nameof(CharacterSheetPage), typeof(CharacterSheetPage));
@@ -51,12 +48,9 @@ public partial class AppShell : Shell
         var routesArr = new IHasRoute[]
         {
             new RouteItem("///", nameof(RaceSelectionModel)),
-            //new RouteItem("///", nameof(SubraceSelectionPage), CanGoToSubracePage),
             new RouteItem("///", nameof(ClassSelectionModel)),
             new RouteItem("///", nameof(AbilityScoreSelectionModel)),
             new RouteItem("///", nameof(BackgroundSelectionModel)),
-            new RouteItem("///", nameof(RaceSelectionModel))
-            //characterSheetRoute
         };
         routes = new RouteCollection(routesArr);
     }
@@ -114,7 +108,7 @@ public partial class AppShell : Shell
 
     private void OnPageCompleted(object sender, string currentPage)
     {
-        GoToNextPage(currentPage);
+        routes.GetNextAvailableRoute(currentPage)?.TryGo();
     }
 
     //private void OnRaceNameSelected(object sender, Selection selection)

@@ -17,11 +17,13 @@ namespace DnD_Helper.ApplicationClasses
                 .ToDictionary(pair => pair.route, pair => pair.index);
         }
 
-        public void GoToNext(string currentRoute)
+        public IHasRoute GetNextAvailableRoute(string currentRoute)
         {
             var index = IndexOf(currentRoute);
-            routes.Skip(index + 1)
-                .First(pair => pair.Key.TryGo());
+            return routes
+                .Skip(index + 1)
+                .FirstOrDefault(pair => pair.Key.CanGo())
+                .Key;
         }
 
         private int IndexOf(string route)

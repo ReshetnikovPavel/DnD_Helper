@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using DnD_Helper.ApplicationClasses;
+using Domain;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -51,12 +52,9 @@ namespace DnD_Helper.ViewModels
             OnPropertyChanged(nameof(PointsLeft));
         }
 
-        private async void OnGoToNextPage()
+        private void OnGoToNextPage()
         {
-            //MessagingCenter.Send<ContentPage, string>(this, Messages.PageCompleted.ToString(),
-            //    nameof(AbilityScoresSelectionPage));
-            await Application.Current.MainPage.DisplayAlert("Эта кнопка выключена!", 
-                "(Спрашивайте Андрея)", "Что.");
+            MessageSender.SendPageCompleted<AbilityScoreSelectionModel>(this);
         }
     }
 }

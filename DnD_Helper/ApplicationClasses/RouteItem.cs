@@ -10,13 +10,13 @@ namespace DnD_Helper.ApplicationClasses
     {
         private string prefix;
         public string Route { get; }
-        public Func<bool> CheckCondition { get; }
+        public Func<bool> CanGo { get; }
 
-        public RouteItem(string prefix, string route, Func<bool> condition)
+        public RouteItem(string prefix, string route, Func<bool> goCondition)
         {
             Route = route;
             this.prefix = prefix;
-            CheckCondition = condition;
+            CanGo = goCondition;
         }
 
         public RouteItem(string prefix, string route)
@@ -25,7 +25,7 @@ namespace DnD_Helper.ApplicationClasses
         public bool TryGo()
         {
             TriedToGo?.Invoke(this, EventArgs.Empty);
-            if (!CheckCondition())
+            if (!CanGo())
                 return false;
             Go();
             return true;
