@@ -7,13 +7,6 @@ using DnD_Helper.ViewModels;
 
 namespace DnD_Helper;
 
-public enum Messages
-{
-    AttributeSelected,
-    AbilityScoreSelected,
-    PageCompleted
-};
-
 public partial class AppShell : Shell
 {
     public static AppShell Singleton { get; private set; }

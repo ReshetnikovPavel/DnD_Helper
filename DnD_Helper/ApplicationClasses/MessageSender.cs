@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace DnD_Helper.ApplicationClasses
 {
+    public enum Messages
+    {
+        AttributeSelected,
+        AbilityScoreSelected,
+        PageCompleted
+    };
+
     public static class MessageSender
     {
         public static void SendAttributeSelected<TAttribute>(object sender, string selectedName)
