@@ -49,12 +49,12 @@
 
         <ShellContent Title="Характеристики"
         ContentTemplate="{DataTemplate local:AbilityScoresSelectionPage}"
-                      Route="AbilityScoresSelectionPage" >
+                      Route="AbilityScoreSelectionModel" >
         </ShellContent>
 
         <ShellContent Title="Личность и предыстория"
         ContentTemplate="{DataTemplate local:BackgroundSelectionPage}" 
-                      Route="BackgroundSelectionPage" >
+                      Route="BackgroundSelectionModel" >
         </ShellContent>
 
         <ShellContent Title="Снаряжение"

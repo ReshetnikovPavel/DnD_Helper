@@ -27,13 +27,7 @@ namespace DnD_Helper.ViewModels
         private void OnClassSelected(string selectedName)
         {
             MessageSender.SendAttributeSelected<Class>(this, selectedName);
-            SendPageCompletedMessage(); //TODO: Я не знаю почему, но если заменить на точно такой же метод, но в MessageSender, то переход ломается
-        }
-
-        private void SendPageCompletedMessage()
-        {
-            MessagingCenter.Send<BindableObject, string>(this, Messages.PageCompleted.ToString(),
-                nameof(ClassSelectionModel));
+            MessageSender.SendPageCompleted<ClassSelectionModel>(this);
         }
     }
 }

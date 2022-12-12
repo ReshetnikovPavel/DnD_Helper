@@ -10,7 +10,7 @@ public partial class SubraceSelectionPage : ContentPage
 		BindingContext = this;
 
 		UpdateItemSource(this, "");
-		MessagingCenter.Subscribe<RaceSelectionPage, string>(this, Messages.AttributeSelected.ToString(), 
+		MessagingCenter.Subscribe<RaceSelectionPage, string>(this, MessageTypes.AttributeSelected.ToString(), 
 			UpdateItemSource);
 	}
 

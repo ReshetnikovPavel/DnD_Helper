@@ -17,11 +17,23 @@ namespace DnD_Helper.ApplicationClasses
                 .ToDictionary(pair => pair.route, pair => pair.index);
         }
 
-        public void GoToNext(string route)
+        public void GoToNext(string currentRoute)
         {
-            var index = routes.FirstOrDefault(pair => pair.Key.Route == route).Value;
+            var index = IndexOf(currentRoute);
             routes.Skip(index + 1)
-                .FirstOrDefault(pair => pair.Key.TryGo());
+                .First(pair => pair.Key.TryGo());
+        }
+
+        private int IndexOf(string route)
+        {
+            try
+            {
+                return routes.First(pair => pair.Key.Route == route).Value;
+            }
+            catch(InvalidOperationException e)
+            {
+                throw new InvalidOperationException("Given route does not exist", e);
+            }
         }
     }
 }

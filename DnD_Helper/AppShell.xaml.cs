@@ -50,11 +50,12 @@ public partial class AppShell : Shell
 
         var routesArr = new IHasRoute[]
         {
-            new RouteItem("///", nameof(RaceSelectionPage)),
+            new RouteItem("///", nameof(RaceSelectionModel)),
             //new RouteItem("///", nameof(SubraceSelectionPage), CanGoToSubracePage),
             new RouteItem("///", nameof(ClassSelectionModel)),
-            new RouteItem("///", nameof(AbilityScoresSelectionPage)),
-            new RouteItem("///", nameof(BackgroundSelectionPage)),
+            new RouteItem("///", nameof(AbilityScoreSelectionModel)),
+            new RouteItem("///", nameof(BackgroundSelectionModel)),
+            new RouteItem("///", nameof(RaceSelectionModel))
             //characterSheetRoute
         };
         routes = new RouteCollection(routesArr);
@@ -67,16 +68,14 @@ public partial class AppShell : Shell
 
     private void InitMessaging()
     {
-        MessagingCenter.Subscribe<ContentPage, string>(
-            this, Messages.PageCompleted.ToString(), OnPageCompleted);
         MessagingCenter.Subscribe<BindableObject, string>(
-            this, Messages.PageCompleted.ToString(), OnPageCompleted);
+            this, MessageTypes.PageCompleted.ToString(), OnPageCompleted);
         MessagingCenter.Subscribe<RaceSelectionPage, Selection>(
-            this, Messages.AttributeSelected.ToString(), OnAttributeSelected);
+            this, MessageTypes.AttributeSelected.ToString(), OnAttributeSelected);
         MessagingCenter.Subscribe<ClassSelectionModel, Selection>(
-            this, Messages.AttributeSelected.ToString(), OnAttributeSelected);
+            this, MessageTypes.AttributeSelected.ToString(), OnAttributeSelected);
         MessagingCenter.Subscribe<BackgroundSelectionPage, Selection>(
-            this, Messages.AttributeSelected.ToString(), OnAttributeSelected);
+            this, MessageTypes.AttributeSelected.ToString(), OnAttributeSelected);
     }
 
     //private bool CanGoToSubracePage()

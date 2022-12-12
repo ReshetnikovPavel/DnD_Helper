@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DnD_Helper.ApplicationClasses
 {
-    public enum Messages
+    public enum MessageTypes
     {
         AttributeSelected,
         AbilityScoreSelected,
@@ -17,13 +17,13 @@ namespace DnD_Helper.ApplicationClasses
     {
         public static void SendAttributeSelected<TAttribute>(object sender, string selectedName)
         {
-            MessagingCenter.Send(sender, Messages.AttributeSelected.ToString(),
+            MessagingCenter.Send(sender, MessageTypes.AttributeSelected.ToString(),
                 new Selection(nameof(TAttribute), selectedName));
         }
 
         public static void SendPageCompleted<TModel>(BindableObject sender)
         {
-            MessagingCenter.Send<BindableObject, string>(sender, Messages.PageCompleted.ToString(),
+            MessagingCenter.Send<BindableObject, string>(sender, MessageTypes.PageCompleted.ToString(),
                 nameof(TModel));
         }
     }

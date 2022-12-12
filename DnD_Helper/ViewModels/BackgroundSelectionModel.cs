@@ -31,13 +31,13 @@ namespace DnD_Helper.ViewModels
 
         private void OnNameChanged(TextChangedEventArgs e)
         {
-            MessagingCenter.Send<BindableObject, Selection>(this, Messages.AttributeSelected.ToString(),
+            MessagingCenter.Send<BindableObject, Selection>(this, MessageTypes.AttributeSelected.ToString(),
                 new Selection("Name", e.NewTextValue));
         }
 
         private void OnNextButtonClicked()
         {
-            MessagingCenter.Send<BindableObject, string>(this, Messages.PageCompleted.ToString(),
+            MessagingCenter.Send<BindableObject, string>(this, MessageTypes.PageCompleted.ToString(),
                 nameof(BackgroundSelectionPage));
         }
     }
