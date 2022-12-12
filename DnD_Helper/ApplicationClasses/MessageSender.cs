@@ -15,12 +15,6 @@ namespace DnD_Helper.ApplicationClasses
 
     public static class MessageSender
     {
-        public static void SendAttributeSelected<TAttribute>(object sender, string selectedValue)
-        {
-            MessagingCenter.Send(sender, MessageTypes.AttributeSelected.ToString(),
-                new Selection(nameof(TAttribute), selectedValue));
-        }
-
         public static void SendAttributeSelected(object sender, string attribute, string selectedValue)
         {
             MessagingCenter.Send(sender, MessageTypes.AttributeSelected.ToString(),

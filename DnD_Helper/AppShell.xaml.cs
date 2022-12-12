@@ -31,20 +31,8 @@ public partial class AppShell : Shell
         SubracePage.IsVisible = false;
     }
 
-    //public string SelectedSubRaceName { get; set; }
-    //public string SelectedClassName { get; set; }
-    //public string SelectedBackgroundName { get; set; }
-    //public string SelectedName { get; set; }
-
-    //public IEnumerable<string> GetSubraceNames()
-    //    => RaceRepository.GetSubraceNames(SelectedRaceName);
-
     private void InitRoutes()
     {
-        //Routing.RegisterRoute(nameof(CharacterSheetPage), typeof(CharacterSheetPage));
-        //characterSheetRoute = new RouteItem("///", nameof(CharacterSheetPage));
-        //characterSheetRoute.TriedToGo += OnTryGoToCharacterSheet;
-
         var routesArr = new IHasRoute[]
         {
             new RouteItem("///", nameof(RaceSelectionModel)),
@@ -71,18 +59,6 @@ public partial class AppShell : Shell
         MessagingCenter.Subscribe<BackgroundSelectionPage, Selection>(
             this, MessageTypes.AttributeSelected.ToString(), OnAttributeSelected);
     }
-
-    //private bool CanGoToSubracePage()
-    //    => GetSubraceNames().Any();
-
-    //private bool CanGoToCharacterSheet()
-    //{
-    //    return stateManager.ContainsKey(nameof(Race))
-    //    //&& (!CanGoToSubracePage() || SelectedSubRaceName != null)
-    //    && SelectedClassName != null
-    //    && SelectedName != null
-    //    && SelectedBackgroundName != null;
-    //}
 
     private async void BackToMenu_Clicked(object sender, EventArgs e)
     {

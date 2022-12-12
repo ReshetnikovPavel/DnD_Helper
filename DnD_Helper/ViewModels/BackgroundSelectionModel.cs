@@ -26,12 +26,12 @@ namespace DnD_Helper.ViewModels
 
         private void OnBackgroundSelected(string selectedName)
         {
-            MessageSender.SendAttributeSelected<Background>(this, selectedName);
+            MessageSender.SendAttributeSelected(this, nameof(CharacterBackground), selectedName);
         }
 
         private void OnNameChanged(TextChangedEventArgs e)
         {
-            MessageSender.SendAttributeSelected(this, "Name", e.NewTextValue);
+            MessageSender.SendAttributeSelected(this, nameof(Character.Name), e.NewTextValue);
         }
 
         private void OnNextButtonClicked()
