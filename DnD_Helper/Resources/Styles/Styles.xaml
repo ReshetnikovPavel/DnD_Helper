@@ -4,6 +4,10 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
+
+    <Style TargetType="TextCell">
+        <Setter Property="TextColor" Value="{StaticResource PageText}" />
+    </Style>
     
     <Style TargetType="ContentView">
         <Setter Property="VerticalOptions" Value="Center" />
@@ -111,10 +115,10 @@
     </Style>
 
     <Style TargetType="Entry">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
-        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{StaticResource PageText}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource EntryBackground}" />
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
-        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontSize" Value="20" />
         <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
@@ -139,7 +143,12 @@
         <Setter Property="CornerRadius" Value="8" />
     </Style>
 
+    <Style TargetType="Image">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+    </Style>
+
     <Style TargetType="ImageButton">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
         <Setter Property="Opacity" Value="1" />
         <Setter Property="BorderColor" Value="Transparent"/>
         <Setter Property="BorderWidth" Value="0"/>

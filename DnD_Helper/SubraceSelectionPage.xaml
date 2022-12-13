@@ -4,11 +4,11 @@
              x:Class="DnD_Helper.SubraceSelectionPage"
              Title="Выберите подрасу"
              xmlns:local="clr-namespace:DnD_Helper"
-             x:DataType="local:SubraceSelectionPage"
              Style="{StaticResource ContentPage}">
 
     <ListView x:Name="SubraceListView"
-              Margin="10">
+              Margin="10"
+              ItemTapped="ListView_ItemTapped">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>

@@ -1,3 +1,5 @@
+using DnD_Helper.ApplicationClasses;
+using DnD_Helper.ViewModels;
 using Domain;
 using Domain.Repositories;
 
@@ -5,22 +7,10 @@ namespace DnD_Helper;
 
 public partial class RaceSelectionPage : ContentPage
 {
-	public RaceSelectionPage()
+	public RaceSelectionPage(RaceSelectionModel raceSelectionViewModel)
 	{
 		InitializeComponent();
 
-		BindingContext = this;
+        BindingContext = raceSelectionViewModel;
 	}
-
-	public IEnumerable<string> RaceNames
-		=> AppShell.Singleton.RaceRepository.GetNames();
-
-    private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
-    {
-		var raceName = e.Item.ToString();
-		AppShell.Singleton.SelectedRaceName = raceName;
-		AppShell.Singleton.IsRaceSelected = true;
-		MessagingCenter.Send<RaceSelectionPage>(this, "SelectedRaceName");
-		AppShell.Singleton.GoToNextPage(nameof(RaceSelectionPage));
-    }
 }

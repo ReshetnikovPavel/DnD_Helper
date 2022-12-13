@@ -51,6 +51,7 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
             SkillProficiencies = factory.GetSkillProficiencies(xElement),
             InstrumentProfieciencies = factory.GetInstrumentProficiencies(xElement),
             Feats = factory.GetFeats(xElement),
+            Traits = Enumerable.Empty<Trait>(),
             Optionals = CreateRaceOptionals(xElement)
         };
     }

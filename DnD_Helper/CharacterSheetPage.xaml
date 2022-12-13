@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DnD_Helper.CharacterSheetPage"
+             xmlns:local="clr-namespace:DnD_Helper"
+             Style="{StaticResource ContentPage}"
+             Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label x:Name="NameLabel"
+                Text="{Binding NameDisplay}" />
+            <Label x:Name="MainInfoLabel"
+                Text="{Binding MainInfoDisplay}" />
+            <Label x:Name="ArmourClassLabel"
+                Text="{Binding ArmourClassDisplay}" />
+            <Label x:Name="SpeedLabel"
+                Text="{Binding SpeedDisplay}" />
+            <Label x:Name="HpLabel"
+                Text="{Binding HpDisplay}" />
+            <Label x:Name="InitiativeLabel"
+                Text="{Binding InitiativeDisplay}" />
+            <ListView x:Name="AbilitiesList"
+                ItemsSource="{Binding AbilitiesDisplay}"
+                  SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding .}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ListView x:Name="SkillsList"
+                ItemsSource="{Binding SkillsDisplay}"
+                  SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding .}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ListView x:Name="ProfficienciesList"
+                ItemsSource="{Binding ProfficienciesDisplay}"
+                  SelectionMode="None">
+                <ListView.Header>
+                    <Label Text="Владения:" />
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding .}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
