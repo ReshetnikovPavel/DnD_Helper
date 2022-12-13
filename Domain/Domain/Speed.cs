@@ -8,5 +8,11 @@ public class Speed : ValueType<Speed>, IHaveValue, IDndObject
 	{
 		Value = value;
 	}
-	public int Value { get; }
+	public int Value { get; private set; }
+
+    public void Add(Speed value)
+    {
+		Value += value.Value;
+    }
+
 }

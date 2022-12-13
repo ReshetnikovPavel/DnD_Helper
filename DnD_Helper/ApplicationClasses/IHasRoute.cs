@@ -9,8 +9,10 @@ namespace DnD_Helper.ApplicationClasses
     internal interface IHasRoute
     {
         string Route { get; }
-        Func<bool> CheckCondition { get; }
+        Func<bool> CanGo { get; }
 
-        void Go();
+        bool TryGo();
+
+        public event EventHandler TriedToGo;
     }
 }
