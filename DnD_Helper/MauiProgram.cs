@@ -25,7 +25,8 @@ public static class MauiProgram
 		builder.Services
 			.RegisterServices()
 			.RegisterViewModels()
-			.RegisterPages();
+			.RegisterPages()
+			.RegisterShells();
 
 		return builder.Build();
 	}
@@ -42,9 +43,17 @@ public static class MauiProgram
 		return services;
 	}
 
-	private static IServiceCollection RegisterPages(this IServiceCollection services)
+    private static IServiceCollection RegisterShells(this IServiceCollection services)
+    {
+		services
+			.AddTransient<AppShell>();
+        return services;
+    }
+
+    private static IServiceCollection RegisterPages(this IServiceCollection services)
 	{
 		services
+			.AddTransient<MenuPage>()
 			.AddTransient<LoginPage>()
 			.AddTransient<RegisterPage>()
 			.AddTransient<AbilityScoresSelectionPage>()
