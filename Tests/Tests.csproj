@@ -18,7 +18,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\DndHelper.App\DndHelper.App.csproj" />
+    <ProjectReference Include="..\DndHelper.Domain\DndHelper.Domain.csproj" />
+    <ProjectReference Include="..\DndHelper.Firebase\DndHelper.Firebase.csproj" />
+    <ProjectReference Include="..\DndHelper.Infrastructure\DndHelper.Infrastructure.csproj" />
+    <ProjectReference Include="..\DndHelper.Xml\DndHelper.Xml.csproj" />
+    <ProjectReference Include="..\DnD_Helper\DnD_Helper.csproj" />
   </ItemGroup>
 
 </Project>

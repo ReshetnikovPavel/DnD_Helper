@@ -1,9 +1,11 @@
 ﻿using CommunityToolkit.Maui;
 using DnD_Helper.ViewModels;
-using Domain;
-using Domain.Repositories;
-using Firebase.Auth;
-using Infrastructure;
+using DndHelper.App;
+using DndHelper.Domain.Repositories;
+using DndHelper.Domain.Services;
+using DndHelper.Firebase.Adapters;
+using DndHelper.Firebase.Repositories;
+using DndHelper.Xml.Repositories;
 using System.Xml.Linq;
 
 namespace DnD_Helper;
@@ -66,8 +68,6 @@ public static class MauiProgram
 	private static IServiceCollection RegisterFirebaseAuth(this IServiceCollection services)
 	{
 		services
-            .AddSingleton<FirebaseConfig>(new FirebaseConfig("AIzaSyAsyhRQKmYdtXBaH8LOgFe_tgHWGRh6wJQ"))
-            .AddTransient<FirebaseAuthProvider>()
             .AddTransient<IAuthProvider, FirebaseAuthProviderAdapter>();
         return services;
     }
