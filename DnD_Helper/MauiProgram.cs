@@ -33,7 +33,6 @@ public static class MauiProgram
 	private static IServiceCollection RegisterViewModels(this IServiceCollection services)
 	{
 		services
-			.AddTransient<AppShellViewModel>()
 			.AddTransient<LoginViewModel>()
 			.AddTransient<RegisterViewModel>()
 			.AddTransient<AbilityScoreSelectionModel>()
@@ -46,8 +45,6 @@ public static class MauiProgram
 	private static IServiceCollection RegisterPages(this IServiceCollection services)
 	{
 		services
-			.AddTransient<AppShell>()
-			.AddTransient<MenuPage>()
 			.AddTransient<LoginPage>()
 			.AddTransient<RegisterPage>()
 			.AddTransient<AbilityScoresSelectionPage>()
@@ -63,8 +60,7 @@ public static class MauiProgram
 			.RegisterFirebaseAuth()
 			.RegiserRepositories()
 			.AddTransient<DistributorAbilityScore>()
-			.AddTransient<Abilities>()
-			.AddTransient<CreationStateManager>();
+			.AddTransient<Abilities>();
 		return services;
 	}
 
