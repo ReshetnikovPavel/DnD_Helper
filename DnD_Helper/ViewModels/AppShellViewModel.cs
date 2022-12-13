@@ -10,21 +10,14 @@ namespace DnD_Helper.ViewModels
     public class AppShellViewModel : BindableObject
     {
         private RouteCollection routes;
-        private Dictionary<string, object> stateManager;
-
-        public AppShellViewModel()
+        private IStateManager<string, object> stateManager;
+        
+        public AppShellViewModel(IStateManager<string, object> stateManager)
         {
-            stateManager = new Dictionary<string, object>();
+            this.stateManager = stateManager;
             InitRoutes();
-            InitMessaging();
-        }
-
-        private void OnSelectionMade(object sender, Selection selection)
-        {
-            if (!stateManager.ContainsKey(selection.Property))
-                stateManager.Add(selection.Property, selection.Value);
-            else
-                stateManager[selection.Property] = selection.Value;
+            MessagingCenter.Subscribe<BindableObject, string>(
+                this, MessageTypes.PageCompleted.ToString(), OnPageCompleted);
         }
 
         private void InitRoutes()
@@ -39,21 +32,33 @@ namespace DnD_Helper.ViewModels
             routes = new RouteCollection(routesArr);
         }
 
-        private void InitMessaging()
-        {
-            MessagingCenter.Subscribe<BindableObject, string>(
-                this, MessageTypes.PageCompleted.ToString(), OnPageCompleted);
-            MessagingCenter.Subscribe<RaceSelectionPage, Selection>(
-                this, MessageTypes.SelectionMade.ToString(), OnSelectionMade);
-            MessagingCenter.Subscribe<ClassSelectionModel, Selection>(
-                this, MessageTypes.SelectionMade.ToString(), OnSelectionMade);
-            MessagingCenter.Subscribe<BackgroundSelectionPage, Selection>(
-                this, MessageTypes.SelectionMade.ToString(), OnSelectionMade);
-        }
-
         private void OnPageCompleted(object sender, string currentPage)
         {
             routes.GetNextAvailableRoute(currentPage)?.TryGo();
+        }
+
+        private void InitModels()
+        {
+            InitModel<RaceSelectionModel>();
+            InitModel<ClassSelectionModel>();
+            InitModel<AbilityScoreSelectionModel>();
+            InitModel<BackgroundSelectionModel>();
+        }
+
+        private void InitModel<TModel>() where TModel : BindableObject
+        {
+            SubscribeToSelection<TModel>();
+        }
+
+        private void SubscribeToSelection<TModel>() where TModel : BindableObject
+        {
+            MessagingCenter.Subscribe<TModel, Selection>(
+                this, MessageTypes.SelectionMade.ToString(), OnSelectionMade);
+        }
+
+        private void OnSelectionMade(object sender, Selection selection)
+        {
+            stateManager.SetValue(selection.Property, selection.Value);
         }
     }
 }

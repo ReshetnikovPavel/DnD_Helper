@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using DnD_Helper.ApplicationClasses;
 using DnD_Helper.ViewModels;
 using Domain;
 using Domain.Repositories;
@@ -32,6 +33,7 @@ public static class MauiProgram
 	private static IServiceCollection RegisterViewModels(this IServiceCollection services)
 	{
 		services
+			.AddTransient<AppShellViewModel>()
 			.AddTransient<LoginViewModel>()
 			.AddTransient<RegisterViewModel>()
 			.AddTransient<AbilityScoreSelectionModel>()
@@ -44,6 +46,8 @@ public static class MauiProgram
 	private static IServiceCollection RegisterPages(this IServiceCollection services)
 	{
 		services
+			.AddTransient<AppShell>()
+			.AddTransient<MenuPage>()
 			.AddTransient<LoginPage>()
 			.AddTransient<RegisterPage>()
 			.AddTransient<AbilityScoresSelectionPage>()
@@ -59,7 +63,8 @@ public static class MauiProgram
 			.RegisterFirebaseAuth()
 			.RegiserRepositories()
 			.AddTransient<DistributorAbilityScore>()
-			.AddTransient<Abilities>();
+			.AddTransient<Abilities>()
+			.AddTransient<CreationStateManager>();
 		return services;
 	}
 
