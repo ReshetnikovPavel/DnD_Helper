@@ -9,8 +9,8 @@ namespace DnD_Helper.ApplicationClasses
 {
     public interface ICreatesCharacter
     {
-        public void SubscribeToModel<TModel>() where TModel : BindableObject;
-        public bool CanCreate();
+        void SubscribeToModel<TModel>() where TModel : BindableObject;
+        bool CanCreate();
         public Character Create();
     }
 }

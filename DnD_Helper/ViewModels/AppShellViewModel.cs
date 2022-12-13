@@ -9,43 +9,35 @@ namespace DnD_Helper.ViewModels
 {
     public class AppShellViewModel : BindableObject
     {
-        private RouteCollection routes;
-        
+        private ICreatesCharacter creator;
+        private IModelNavigator navigator;
+
         public AppShellViewModel()
         {
-            InitRoutes();
+            creator = new CharacterCreator();
+            navigator = new CharacterCreationNavigator();
             MessagingCenter.Subscribe<BindableObject, string>(
                 this, MessageTypes.PageCompleted.ToString(), OnPageCompleted);
+            AddModels();
         }
 
-        private void InitRoutes()
+        private void AddModels()
         {
-            var routesArr = new IHasRoute[]
-            {
-            new RouteItem("///", nameof(RaceSelectionModel)),
-            new RouteItem("///", nameof(ClassSelectionModel)),
-            new RouteItem("///", nameof(AbilityScoreSelectionModel)),
-            new RouteItem("///", nameof(BackgroundSelectionModel)),
-            };
-            routes = new RouteCollection(routesArr);
+            AddModel<RaceSelectionModel>();
+            AddModel<ClassSelectionModel>();
+            AddModel<AbilityScoreSelectionModel>();
+            AddModel<BackgroundSelectionModel>();
         }
 
-        private void OnPageCompleted(object sender, string currentPage)
+        private void AddModel<TModel>() where TModel : BindableObject
         {
-            routes.GetNextAvailableRoute(currentPage)?.TryGo();
+            creator.SubscribeToModel<TModel>();
+            navigator.AddModel<TModel>();
         }
 
-        private void InitModels()
+        private void OnPageCompleted(object sender, string currentRoute)
         {
-            InitModel<RaceSelectionModel>();
-            InitModel<ClassSelectionModel>();
-            InitModel<AbilityScoreSelectionModel>();
-            InitModel<BackgroundSelectionModel>();
-        }
-
-        private void InitModel<TModel>() where TModel : BindableObject
-        {
-
+            navigator.GoToNextRoute(currentRoute);
         }
     }
 }

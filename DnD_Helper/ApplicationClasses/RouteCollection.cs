@@ -17,6 +17,13 @@ namespace DnD_Helper.ApplicationClasses
                 .ToDictionary(pair => pair.route, pair => pair.index);
         }
 
+        public RouteCollection() : this(Array.Empty<IHasRoute>()) { }
+
+        public void AddRoute(IHasRoute route)
+        {
+            routes.Add(route, routes.Count);
+        }
+
         public IHasRoute GetNextAvailableRoute(string currentRoute)
         {
             var index = IndexOf(currentRoute);

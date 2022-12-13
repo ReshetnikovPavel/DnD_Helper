@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DnD_Helper.ApplicationClasses
 {
-    public class CharacterCreator
+    public class CharacterCreator : ICreatesCharacter
     {
         private IStateManager<string, object> stateManager;
 
