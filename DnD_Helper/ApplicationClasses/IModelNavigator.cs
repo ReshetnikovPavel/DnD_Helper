@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DnD_Helper.ApplicationClasses
 {
-    interface IModelNavigator
+    public interface IModelNavigator
     {
         void AddModel<TModel>() where TModel : BindableObject;
         void GoToNextRoute(string currentRoute);

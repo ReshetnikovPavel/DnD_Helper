@@ -12,10 +12,10 @@ namespace DnD_Helper.ViewModels
         private ICreatesCharacter creator;
         private IModelNavigator navigator;
 
-        public AppShellViewModel()
+        public AppShellViewModel(ICreatesCharacter creator, IModelNavigator navigator)
         {
-            creator = new CharacterCreator();
-            navigator = new CharacterCreationNavigator();
+            this.creator = creator;
+            this.navigator = navigator;
             MessagingCenter.Subscribe<BindableObject, string>(
                 this, MessageTypes.PageCompleted.ToString(), OnPageCompleted);
             AddModels();
