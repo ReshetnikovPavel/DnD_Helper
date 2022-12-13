@@ -67,7 +67,7 @@ public static class MauiProgram
 	{
         services
             .AddSingleton<IAuthProvider, FirebaseAuthProviderAdapter>()
-            .AddTransient<FirebaseAuth>()
+            .AddSingleton<FirebaseAuth>()
             .AddSingleton(new FirebaseConfig("AIzaSyAsyhRQKmYdtXBaH8LOgFe_tgHWGRh6wJQ"));
         return services;
     }

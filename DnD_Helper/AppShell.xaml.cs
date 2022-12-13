@@ -32,11 +32,13 @@ public partial class AppShell : Shell
     {
         var routesArr = new IHasRoute[]
         {
-            //new RouteItem("///", nameof(RaceSelectionModel)),
-            //new RouteItem("///", nameof(ClassSelectionModel)),
-            //new RouteItem("///", nameof(AbilityScoreSelectionModel)),
-            //new RouteItem("///", nameof(BackgroundSelectionModel)),
+            new RouteItem("///", nameof(RaceSelectionModel)),
+            new RouteItem("///", nameof(ClassSelectionModel)),
+            new RouteItem("///", nameof(AbilityScoreSelectionModel)),
+            new RouteItem("///", nameof(BackgroundSelectionModel)),
         };
+        Routing.RegisterRoute(nameof(LoginViewModel), typeof(LoginPage));
+        Routing.RegisterRoute(nameof(RegisterViewModel), typeof(RegisterPage));
         routes = new RouteCollection(routesArr);
     }
 
