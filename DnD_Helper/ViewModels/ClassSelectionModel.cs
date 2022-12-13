@@ -26,7 +26,7 @@ namespace DnD_Helper.ViewModels
 
         private void OnClassSelected(string selectedName)
         {
-            MessageSender.SendAttributeSelected(this, nameof(Character.Class), selectedName);
+            MessageSender.SendSelectionMade(this, nameof(Character.Class), selectedName);
             MessageSender.SendPageCompleted<ClassSelectionModel>(this);
         }
     }

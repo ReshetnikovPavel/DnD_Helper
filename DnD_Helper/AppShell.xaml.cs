@@ -9,18 +9,12 @@ namespace DnD_Helper;
 
 public partial class AppShell : Shell
 {
-    public static AppShell Singleton { get; private set; }
-    public Character Character { get; private set; }
-    public Abilities Abilities { get; private set; }
-
     private RouteCollection routes;
     private Dictionary<string, object> stateManager;
-    
 
     public AppShell()
     {
         InitializeComponent();
-        Singleton = this;
         MainFlyout.BindingContext = this;
         stateManager = new Dictionary<string, object>();
         InitRoutes();
@@ -32,10 +26,10 @@ public partial class AppShell : Shell
     {
         var routesArr = new IHasRoute[]
         {
-            //new RouteItem("///", nameof(RaceSelectionModel)),
-            //new RouteItem("///", nameof(ClassSelectionModel)),
-            //new RouteItem("///", nameof(AbilityScoreSelectionModel)),
-            //new RouteItem("///", nameof(BackgroundSelectionModel)),
+            new RouteItem("///", nameof(RaceSelectionModel)),
+            new RouteItem("///", nameof(ClassSelectionModel)),
+            new RouteItem("///", nameof(AbilityScoreSelectionModel)),
+            new RouteItem("///", nameof(BackgroundSelectionModel)),
         };
         routes = new RouteCollection(routesArr);
     }
@@ -45,11 +39,11 @@ public partial class AppShell : Shell
         MessagingCenter.Subscribe<BindableObject, string>(
             this, MessageTypes.PageCompleted.ToString(), OnPageCompleted);
         MessagingCenter.Subscribe<RaceSelectionPage, Selection>(
-            this, MessageTypes.AttributeSelected.ToString(), OnAttributeSelected);
+            this, MessageTypes.SelectionMade.ToString(), OnSelectionMade);
         MessagingCenter.Subscribe<ClassSelectionModel, Selection>(
-            this, MessageTypes.AttributeSelected.ToString(), OnAttributeSelected);
+            this, MessageTypes.SelectionMade.ToString(), OnSelectionMade);
         MessagingCenter.Subscribe<BackgroundSelectionPage, Selection>(
-            this, MessageTypes.AttributeSelected.ToString(), OnAttributeSelected);
+            this, MessageTypes.SelectionMade.ToString(), OnSelectionMade);
     }
 
     private async void BackToMenu_Clicked(object sender, EventArgs e)
@@ -66,12 +60,12 @@ public partial class AppShell : Shell
     //    Shell.Current.FlyoutIsPresented = false;
     //}
 
-    private void OnAttributeSelected(object sender, Selection selection)
+    private void OnSelectionMade(object sender, Selection selection)
     {
-        if(!stateManager.ContainsKey(selection.Type))
-            stateManager.Add(selection.Type, selection.Value);
+        if(!stateManager.ContainsKey(selection.Property))
+            stateManager.Add(selection.Property, selection.Value);
         else
-            stateManager[selection.Type] = selection.Value;
+            stateManager[selection.Property] = selection.Value;
     }
 
     private void OnPageCompleted(object sender, string currentPage)

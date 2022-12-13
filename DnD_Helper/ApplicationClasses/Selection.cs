@@ -8,12 +8,12 @@ namespace DnD_Helper.ApplicationClasses
 {
     internal class Selection
     {
-        public string Type { get; }
-        public string Value { get; }
+        public string Property { get; }
+        public object Value { get; }
 
-        public Selection(string type, string value)
+        public Selection(string property, object value)
         {
-            Type = type;
+            Property = property;
             Value = value;
         }
     }

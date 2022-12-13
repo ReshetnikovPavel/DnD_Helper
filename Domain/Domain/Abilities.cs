@@ -21,6 +21,11 @@ public class Abilities : ValueType<Abilities>, IDndObject
         Charisma = new AbilityScore(AbilityName.Charisma, charisma);
     }
 
+    public static Abilities CreateDefault()
+    {
+        return new Abilities(8, 8, 8, 8, 8, 8);
+    }
+
     public Dictionary<AbilityName, AbilityScore> GetDictionary()
     {
         var dictionary = new Dictionary<AbilityName, AbilityScore>();

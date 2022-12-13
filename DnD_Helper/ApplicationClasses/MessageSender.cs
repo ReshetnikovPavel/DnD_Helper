@@ -8,22 +8,21 @@ namespace DnD_Helper.ApplicationClasses
 {
     public enum MessageTypes
     {
-        AttributeSelected,
-        AbilityScoreSelected,
+        SelectionMade,
         PageCompleted
     };
 
     public static class MessageSender
     {
-        public static void SendAttributeSelected(object sender, string attribute, string selectedValue)
+        public static void SendSelectionMade(object sender, string property, object value)
         {
-            MessagingCenter.Send(sender, MessageTypes.AttributeSelected.ToString(),
-                new Selection(attribute, selectedValue));
+            MessagingCenter.Send(sender, MessageTypes.SelectionMade.ToString(),
+                new Selection(property, value));
         }
 
         public static void SendPageCompleted<TModel>(BindableObject sender)
         {
-            MessagingCenter.Send<BindableObject, string>(sender, MessageTypes.PageCompleted.ToString(),
+            MessagingCenter.Send(sender, MessageTypes.PageCompleted.ToString(),
                 typeof(TModel).Name);
         }
     }

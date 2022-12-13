@@ -58,8 +58,8 @@ public static class MauiProgram
 		services
 			.RegisterFirebaseAuth()
 			.RegiserRepositories()
-			.AddTransient<DistributorAbilityScore>();
-
+			.AddTransient<DistributorAbilityScore>()
+			.AddTransient<Abilities>();
 		return services;
 	}
 

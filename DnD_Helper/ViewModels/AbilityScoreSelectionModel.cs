@@ -13,11 +13,13 @@ namespace DnD_Helper.ViewModels
     public class AbilityScoreSelectionModel : BindableObject
     {
         private DistributorAbilityScore distributor;
+        private Abilities abilities;
         public ICommand GoToNextPage { get; }
 
         public AbilityScoreSelectionModel(DistributorAbilityScore distributor)
         {
             this.distributor = distributor;
+            abilities = Abilities.CreateDefault();
             distributor.TotalPointsUpdated += OnPointsUpdated;
             GoToNextPage = new Command(OnGoToNextPage);
         }
@@ -29,27 +31,27 @@ namespace DnD_Helper.ViewModels
             => distributor;
 
         public AbilityScore Charisma
-            => AppShell.Singleton.Abilities.Charisma;
+            => abilities.Charisma;
 
         public AbilityScore Constitution
-            => AppShell.Singleton.Abilities.Constitution;
+            => abilities.Constitution;
 
         public AbilityScore Dexterity
-            => AppShell.Singleton.Abilities.Dexterity;
+            => abilities.Dexterity;
 
         public AbilityScore Intelligence
-            => AppShell.Singleton.Abilities.Intelligence;
+            => abilities.Intelligence;
 
         public AbilityScore Strength
-            => AppShell.Singleton.Abilities.Strength;
+            => abilities.Strength;
 
         public AbilityScore Wisdom
-            => AppShell.Singleton.Abilities.Wisdom;
-
+            => abilities.Wisdom;
         
         private void OnPointsUpdated(object sender, EventArgs e)
         {
             OnPropertyChanged(nameof(PointsLeft));
+            MessageSender.SendSelectionMade(this, nameof(Character.Abilities), abilities);
         }
 
         private void OnGoToNextPage()
