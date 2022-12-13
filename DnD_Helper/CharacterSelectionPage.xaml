@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DnD_Helper.CharacterSelectionPage"
+             xmlns:models="clr-namespace:DnD_Helper.ViewModels"
+             x:DataType="models:CharacterSelectionModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Title="Выберите персонажа"
+             Style="{StaticResource ContentPage}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="4*, *, *"
+          Margin="10">
+        <ListView x:Name="CharacterList"
+        ItemsSource="{Binding Arr}"
+              Margin="10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Frame>
+                                <Label Text="{Binding .}" />
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <toolkit:EventToCommandBehavior
+                EventName="ItemTapped"
+                Command="{Binding SelectCharacter}"
+                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
+            </ListView.Behaviors>
+        </ListView>
+        <Button Margin="100, 5"
+            Grid.Row="1"
+            Text="Присоединиться к партии"
+                Command="{Binding JoinParty}"/>
+        <Button Margin="100,10" 
+                Grid.Row="2"
+            Text="Создать партию"
+                Command="{Binding CreateParty}"/>
+    </Grid>
+
+</ContentPage>
