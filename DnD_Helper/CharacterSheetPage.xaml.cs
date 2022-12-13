@@ -1,4 +1,4 @@
-﻿using Domain;
+﻿using DndHelper.Domain.Dnd;
 
 namespace DnD_Helper;
 

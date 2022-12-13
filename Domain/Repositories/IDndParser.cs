@@ -1,6 +1,7 @@
 ﻿using Infrastructure;
+using DndHelper.Domain.Dnd;
 
-namespace Domain.Repositories;
+namespace DndHelper.Domain.Repositories;
 
 public interface IDndParser
 {

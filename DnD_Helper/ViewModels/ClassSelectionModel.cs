@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain;
+using DndHelper.Domain.Repositories;
 using System.Windows.Input;
-using Domain.Repositories;
+using DndHelper.Domain.Dnd;
 
 namespace DnD_Helper.ViewModels
 {

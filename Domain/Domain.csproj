@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
@@ -18,21 +18,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="Repositories\Xmls\Background.xml" />
-	  <None Remove="Repositories\Xmls\Classes.xml" />
-	  <None Remove="Repositories\Xmls\Languages.xml" />
-	  <None Remove="Repositories\Xmls\Races.xml" />
-	  <None Remove="Repositories\Xmls\Spells.xml" />
-	  <None Remove="Repositories\Xmls\Weapons.xml" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Include="Repositories\Xmls\Background.xml" />
-	  <EmbeddedResource Include="Repositories\Xmls\Classes.xml" />
-	  <EmbeddedResource Include="Repositories\Xmls\Languages.xml" />
-	  <EmbeddedResource Include="Repositories\Xmls\Races.xml" />
-	  <EmbeddedResource Include="Repositories\Xmls\Spells.xml" />
-	  <EmbeddedResource Include="Repositories\Xmls\Weapons.xml" />
+	  <Compile Remove="Repositories\Xmls\**" />
+	  <EmbeddedResource Remove="Repositories\Xmls\**" />
+	  <MauiCss Remove="Repositories\Xmls\**" />
+	  <MauiXaml Remove="Repositories\Xmls\**" />
+	  <None Remove="Repositories\Xmls\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -40,7 +30,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+	  <ProjectReference Include="..\Infrastructure\DndHelper.Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>

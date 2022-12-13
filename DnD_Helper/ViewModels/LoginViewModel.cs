@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel;
-using Infrastructure;
+using DndHelper.App;
 
 namespace DnD_Helper.ViewModels
 {

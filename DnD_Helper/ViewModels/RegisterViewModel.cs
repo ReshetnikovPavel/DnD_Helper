@@ -1,4 +1,4 @@
-﻿using Infrastructure;
+﻿using DndHelper.App;
 using System.ComponentModel;
 
 namespace DnD_Helper.ViewModels
