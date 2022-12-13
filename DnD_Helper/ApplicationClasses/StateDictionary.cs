@@ -1,5 +1,4 @@
-﻿using DnD_Helper.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace DnD_Helper.ApplicationClasses
 {
-    public class CreationStateManager : IStateManager<string, object>
+    class StateDictionary<TKey, TValue> : IStateManager<TKey, TValue>
     {
-        private Dictionary<string, object> state = new Dictionary<string, object>();
+        private Dictionary<TKey, TValue> state = new Dictionary<TKey, TValue>();
 
-        public object GetValue(string key)
+        public TValue GetValue(TKey key)
         {
             return state[key];
         }
 
-        public void SetValue(string key, object value)
+        public void SetValue(TKey key, TValue value)
         {
             if (!state.ContainsKey(key))
                 state.Add(key, value);
@@ -24,5 +23,6 @@ namespace DnD_Helper.ApplicationClasses
                 state[key] = value;
         }
     }
+
 }
 
