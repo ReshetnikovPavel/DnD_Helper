@@ -9,10 +9,10 @@ namespace DnD_Helper;
 
 public partial class AppShell : Shell
 {
-    public AppShell(AppShellViewModel viewModel)
+    public AppShell()
     {
         InitializeComponent();
-        BindingContext = viewModel;
+        BindingContext = new AppShellViewModel();
     }
 
     private async void BackToMenu_Clicked(object sender, EventArgs e)

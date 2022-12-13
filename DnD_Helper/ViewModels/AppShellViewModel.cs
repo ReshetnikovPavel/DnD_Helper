@@ -12,9 +12,9 @@ namespace DnD_Helper.ViewModels
         private RouteCollection routes;
         private IStateManager<string, object> stateManager;
         
-        public AppShellViewModel(IStateManager<string, object> stateManager)
+        public AppShellViewModel()
         {
-            this.stateManager = stateManager;
+            this.stateManager = new CreationStateManager();
             InitRoutes();
             MessagingCenter.Subscribe<BindableObject, string>(
                 this, MessageTypes.PageCompleted.ToString(), OnPageCompleted);
