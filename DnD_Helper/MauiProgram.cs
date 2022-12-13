@@ -65,10 +65,10 @@ public static class MauiProgram
 
 	private static IServiceCollection RegisterFirebaseAuth(this IServiceCollection services)
 	{
-        services
-            .AddSingleton<IAuthProvider, FirebaseAuthProviderAdapter>()
-            .AddSingleton<FirebaseAuth>()
-            .AddSingleton(new FirebaseConfig("AIzaSyAsyhRQKmYdtXBaH8LOgFe_tgHWGRh6wJQ"));
+		services
+            .AddSingleton<FirebaseConfig>(new FirebaseConfig("AIzaSyAsyhRQKmYdtXBaH8LOgFe_tgHWGRh6wJQ"))
+            .AddTransient<FirebaseAuthProvider>()
+            .AddTransient<IAuthProvider, FirebaseAuthProviderAdapter>();
         return services;
     }
 

@@ -8,7 +8,6 @@ namespace DnD_Helper.ViewModels
         private string userName;
         private string userPassword;
         private IAuthProvider authProvider;
-        private RegisterPage registerPage;
         
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -34,12 +33,11 @@ namespace DnD_Helper.ViewModels
             }
         }
 
-        public LoginViewModel(RegisterPage registerPage)//INavigation navigation)//, IAuthProvider authProvider)//, RegisterPage registerPage)
+        public LoginViewModel(IAuthProvider authProvider)//, RegisterPage registerPage)
         {
             this.authProvider = authProvider;
             RegisterBtn = new Command(RegisterBtnTappedAsync);
             LoginBtn = new Command(LoginBtnTappedAsync);
-            this.registerPage = registerPage;
         }
 
         private async void LoginBtnTappedAsync(object obj)

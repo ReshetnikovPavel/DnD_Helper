@@ -37,7 +37,7 @@ namespace DnD_Helper.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(v));
         }
 
-        public RegisterViewModel()//INavigation navigation)//, IAuthProvider authProvider)
+        public RegisterViewModel(IAuthProvider authProvider)
         {
             this.authProvider = authProvider;
             RegisterUser = new Command(RegisterUserTappedAsync);
