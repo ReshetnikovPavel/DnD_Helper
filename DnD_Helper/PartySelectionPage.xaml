@@ -14,7 +14,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid RowDefinitions="*, 2*, *, 2*, *"
+    <Grid RowDefinitions="0.7*, 2*, 0.7*, 2*, 0.7*"
           Margin="10">
         <Label Text="Партии, к которым я присоединился:"
                    HorizontalOptions="Start"
@@ -71,13 +71,14 @@
         </ListView>
         <Button Margin="10, 5, 200, 5"
             Grid.Row="4"
-            Text="Собрать новую"
-                Command="{Binding CreateNewParty}"/>
+            LineBreakMode ="WordWrap"
+            Text="Собрать новую партию"
+            Command="{Binding CreateNewParty}"/>
         <Button Margin="200, 5, 10, 5"
             Grid.Row="4"
-            Text="Присоединиться"
-            Text="к другой партии"
-                Command="{Binding JoinNewParty}"/>
+            LineBreakMode ="WordWrap"
+            Text="Присоединиться к другой партии"
+            Command="{Binding JoinNewParty}"/>
     </Grid>
 
 </ContentPage>
