@@ -10,11 +10,10 @@ namespace DnD_Helper.ViewModels
     class CharacterSelectionModel : BindableObject
     {
         public ICommand SelectCharacter { get; }
-        public ICommand JoinParty { get; }
-        public ICommand CreateParty { get; }
+        public ICommand CreateNewCharacter { get; }
 
-        public int[] Arr
-            => new int[] { 0, 1, 2, 3 };
+        public string[] CharacterNames
+            => new string[] {"Люля", "Пельмешек", "Поль Реш", "Синий", "Симонов"};
 
 
     }
