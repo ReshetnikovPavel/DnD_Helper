@@ -1,12 +1,10 @@
-﻿using Infrastructure;
+﻿using DndHelper.App;
 using System.ComponentModel;
 
 namespace DnD_Helper.ViewModels
 {
     public class RegisterViewModel : INotifyPropertyChanged
     {
-
-        private INavigation navigation;
         private IAuthProvider authProvider;
         private string email;
         private string password;
@@ -39,9 +37,8 @@ namespace DnD_Helper.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(v));
         }
 
-        public RegisterViewModel(INavigation navigation, IAuthProvider authProvider)
+        public RegisterViewModel(IAuthProvider authProvider)
         {
-            this.navigation = navigation;
             this.authProvider = authProvider;
             RegisterUser = new Command(RegisterUserTappedAsync);
         }
@@ -49,7 +46,6 @@ namespace DnD_Helper.ViewModels
         private async void RegisterUserTappedAsync(object obj)
         {
             await authProvider.CreateUserWithEmailAndPassword(Email, Password);
-            await navigation.PopAsync();
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using DnD_Helper.ApplicationClasses;
-using Domain.Repositories;
+using DndHelper.Domain.Repositories;
 using System.Diagnostics.Contracts;
 using System.Windows.Input;
-using Domain;
+using DndHelper.Domain.Dnd;
 using DnD_Helper.ViewModels;
 
 namespace DnD_Helper;
@@ -24,5 +24,5 @@ public partial class AppShell : Shell
     }
 
     protected override bool OnBackButtonPressed()
-            => true; // Disables the Android back button 
+            => true; // Disables the Android back button
 }

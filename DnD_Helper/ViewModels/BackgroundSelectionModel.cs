@@ -1,6 +1,6 @@
 ﻿using DnD_Helper.ApplicationClasses;
-using Domain;
-using Domain.Repositories;
+using DndHelper.Domain.Repositories;
+using DndHelper.Domain.Dnd;
 using System.Windows.Input;
 
 namespace DnD_Helper.ViewModels

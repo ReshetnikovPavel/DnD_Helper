@@ -1,5 +1,6 @@
 ﻿using DnD_Helper.ApplicationClasses;
-using Domain;
+using DndHelper.Domain.Dnd;
+using DndHelper.Domain.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

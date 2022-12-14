@@ -1,7 +1,7 @@
-﻿using System.Xml.Linq;
+﻿using DndHelper.Domain.Dnd;
 using Infrastructure;
 
-namespace Domain.Repositories;
+namespace  DndHelper.Domain.Repositories;
 
 public interface IDndFactory<TFrom>
 {
