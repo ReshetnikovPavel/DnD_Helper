@@ -2,6 +2,7 @@
 using DnD_Helper.ApplicationClasses;
 using DnD_Helper.ViewModels;
 using DndHelper.App;
+using DndHelper.Domain.Dnd;
 using DndHelper.Domain.Repositories;
 using DndHelper.Domain.Services;
 using DndHelper.Firebase.Adapters;

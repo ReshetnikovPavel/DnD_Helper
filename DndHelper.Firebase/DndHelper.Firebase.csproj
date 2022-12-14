@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
@@ -25,6 +25,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\DndHelper.App\DndHelper.App.csproj" />
 	  <ProjectReference Include="..\DndHelper.Domain\DndHelper.Domain.csproj" />
+	  <ProjectReference Include="..\DndHelper.Infrastructure\DndHelper.Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>

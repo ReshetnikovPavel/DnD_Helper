@@ -1,5 +1,6 @@
 ﻿using DnD_Helper.ViewModels;
-using Domain;
+using DndHelper.Domain;
+using DndHelper.Domain.Dnd;
 using Microsoft.Maui.Controls;
 using System;
 using System.Collections.Generic;

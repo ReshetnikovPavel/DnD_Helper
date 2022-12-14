@@ -39,6 +39,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\DndHelper.Domain\DndHelper.Domain.csproj" />
+	  <ProjectReference Include="..\DndHelper.Infrastructure\DndHelper.Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>
