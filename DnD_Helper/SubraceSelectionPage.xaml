@@ -4,22 +4,13 @@
              x:Class="DnD_Helper.SubraceSelectionPage"
              Title="Выберите подрасу"
              xmlns:local="clr-namespace:DnD_Helper"
+             xmlns:models="clr-namespace:DnD_Helper.ViewModels"
+             x:DataType="models:SubraceSelectionModel"
              Style="{StaticResource ContentPage}">
 
-    <ListView x:Name="SubraceListView"
-              Margin="10"
-              ItemTapped="ListView_ItemTapped">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <Grid Padding="10">
-                        <Frame>
-                            <Label Text="{Binding .}" />
-                        </Frame>
-                    </Grid>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
-    
+    <VerticalStackLayout HorizontalOptions="Center"
+                         VerticalOptions="Center">
+        <Label Text="{Binding Text}" />
+    </VerticalStackLayout>
+
 </ContentPage>

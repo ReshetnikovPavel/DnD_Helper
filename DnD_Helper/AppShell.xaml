@@ -38,8 +38,7 @@
             <ShellContent x:Name="SubracePage" 
                           Title="Подраса"
                       ContentTemplate="{DataTemplate local:SubraceSelectionPage}"
-                      Route="SubraceSelectionPage" 
-                          IsVisible="False">
+                      Route="SubraceSelectionPage" >
             </ShellContent>
         </Tab>
 
