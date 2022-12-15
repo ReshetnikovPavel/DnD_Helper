@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DndHelper.App.Authentication;
 using DndHelper.Infrastructure;
+using System.Net.Mail;
 
 namespace DndHelper.App
 {
-    public class User : Entity<Guid>
+    public class User<TId> : Entity<TId>
     {
-        public User(Guid id) : base(id)
+        public User(TId id, MailAddress email, AuthenticationToken authenticationToken) : base(id)
         {
+            Email = email;
+            AuthenticationToken = authenticationToken;
         }
+        public MailAddress Email { get; }
+        public AuthenticationToken AuthenticationToken { get; }
     }
 }

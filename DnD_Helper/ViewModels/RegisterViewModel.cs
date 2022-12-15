@@ -1,11 +1,11 @@
-﻿using DndHelper.App;
+﻿using DndHelper.App.Authentication;
 using System.ComponentModel;
 
 namespace DnD_Helper.ViewModels
 {
     public class RegisterViewModel : INotifyPropertyChanged
     {
-        private IAuthProvider authProvider;
+        private IAuthenticationProvider<string> authProvider;
         private string email;
         private string password;
 
@@ -37,7 +37,7 @@ namespace DnD_Helper.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(v));
         }
 
-        public RegisterViewModel(IAuthProvider authProvider)
+        public RegisterViewModel(IAuthenticationProvider<string> authProvider)
         {
             this.authProvider = authProvider;
             RegisterUser = new Command(RegisterUserTappedAsync);
@@ -45,7 +45,7 @@ namespace DnD_Helper.ViewModels
 
         private async void RegisterUserTappedAsync(object obj)
         {
-            await authProvider.CreateUserWithEmailAndPassword(Email, Password);
+            await authProvider.RegisterUserWithEmailAndPassword(Email, Password);
         }
     }
 }

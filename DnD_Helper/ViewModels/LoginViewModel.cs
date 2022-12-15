@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel;
-using DndHelper.App;
+using DndHelper.App.Authentication;
 
 namespace DnD_Helper.ViewModels
 {
@@ -7,7 +7,7 @@ namespace DnD_Helper.ViewModels
     {
         private string userName;
         private string userPassword;
-        private IAuthProvider authProvider;
+        private IAuthenticationProvider<string> authProvider;
         
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -33,7 +33,7 @@ namespace DnD_Helper.ViewModels
             }
         }
 
-        public LoginViewModel(IAuthProvider authProvider)//, RegisterPage registerPage)
+        public LoginViewModel(IAuthenticationProvider<string> authProvider)//, RegisterPage registerPage)
         {
             this.authProvider = authProvider;
             RegisterBtn = new Command(RegisterBtnTappedAsync);
