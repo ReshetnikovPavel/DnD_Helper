@@ -25,9 +25,16 @@ namespace DndHelper.Firebase.Adapters
             return childQuery.OnceSingleAsync<T>();
         }
 
+        public async Task<IEnumerable<T>> GetManyAsync<T>()
+        {
+            return (await childQuery.OnceAsListAsync<T>()).Select(x => x.Object);
+        }
+
         public Task PutAsync<T>(T obj)
         {
             return childQuery.PutAsync(obj);
         }
+
+        public Task 
     }
 }

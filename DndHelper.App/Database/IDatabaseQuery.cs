@@ -11,5 +11,6 @@ namespace DndHelper.App.Database
         IDatabaseQuery Child(string name);
         Task<T> GetAsync<T>();
         Task PutAsync<T>(T obj);
+        Task<IEnumerable<T>> GetManyAsync<T>();
     }
 }

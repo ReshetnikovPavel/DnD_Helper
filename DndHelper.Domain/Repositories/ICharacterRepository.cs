@@ -5,6 +5,7 @@ namespace DndHelper.Domain.Repositories;
 
 public interface ICharacterRepository
 {
-    Task<Character> GetCharacter<TId>(TId id);
+    Task<Character> GetCharacter(Guid id);
     void PutCharacter(Character character);
+    Task<IEnumerable<Character>> GetCharacters();
 }

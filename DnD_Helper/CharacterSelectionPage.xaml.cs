@@ -4,10 +4,10 @@ namespace DnD_Helper;
 
 public partial class CharacterSelectionPage : ContentPage
 {
-	public CharacterSelectionPage()
+	public CharacterSelectionPage(CharacterSelectionModel characterSelectionModel)
 	{
 		InitializeComponent();
 
-		BindingContext = new CharacterSelectionModel();
+		BindingContext = characterSelectionModel;
 	}
 }

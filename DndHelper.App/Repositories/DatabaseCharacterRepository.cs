@@ -1,20 +1,23 @@
 ﻿using DndHelper.Domain.Repositories;
 using DndHelper.Domain.Dnd;
 using DndHelper.App.Database;
+using DndHelper.App.Authentication;
+using System.Collections;
 
 namespace DndHelper.App.Repositories;
 
-public class DatabaseCharacterRepository : ICharacterRepository
+public class DatabaseCharacterRepository<TUserId> : ICharacterRepository
 {
     private readonly IDatabaseClient databaseClient;
-    private readonly User<string> user;
-    public DatabaseCharacterRepository(IDatabaseClient databaseClient, User<string> user)
+    private readonly IAuthenticationProvider<TUserId> authenticationProvider;
+    private User<TUserId> User => authenticationProvider.User;
+    public DatabaseCharacterRepository(IDatabaseClient databaseClient, IAuthenticationProvider<TUserId> authenticationProvider)
     {
         this.databaseClient = databaseClient;
-        this.user = user;
+        this.authenticationProvider = authenticationProvider;
     }
 
-    public async Task<Character> GetCharacter<TId>(TId id)
+    public async Task<Character> GetCharacter(Guid id)
     {
         return await GetCharacterQuery(id).GetAsync<Character>();
     }
@@ -24,17 +27,27 @@ public class DatabaseCharacterRepository : ICharacterRepository
         await GetCharacterQuery(character).PutAsync(character);
     }
 
+    public async Task<IEnumerable<Character>> GetCharacters()
+    {
+        return await GetChractersQuery().GetManyAsync<Character>();
+    }
+
     private IDatabaseQuery GetCharacterQuery(Character character)
     {
         return GetCharacterQuery(character.Id);
     }
 
-    private IDatabaseQuery GetCharacterQuery<TId>(TId id)
+    private IDatabaseQuery GetCharacterQuery(Guid id)
+    {
+        return GetChractersQuery()
+            .Child($"{id}");
+    }
+
+    private IDatabaseQuery GetChractersQuery()
     {
         return databaseClient
             .Child("Users")
-            .Child($"{user.Id}")
-            .Child("Characters")
-            .Child($"{id}");
+            .Child($"{User.Id}")
+            .Child("Characters");
     }
 }
