@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace DnD_Helper.ViewModels
 {
-    class SubraceSelectionModel : BindableObject
+    internal class CharacterSheetViewModel : BindableObject
     {
         public string Text
-            => "Hello, cruel world!"; 
+            => "Hello, cruel world!";
     }
 }
-

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DnD_Helper.ApplicationClasses
 {
-    class CharacterCreationNavigator : IModelNavigator
+    public class CharacterCreationNavigator : IModelNavigator
     {
         private IHasRouteCollection routes;
 
@@ -23,6 +23,12 @@ namespace DnD_Helper.ApplicationClasses
         public void GoToNextRoute(string currentRoute)
         {
             routes.GetNextAvailableRoute(currentRoute)?.TryGo();
+        }
+
+        public async void TryGoToCharacterSheet()
+        {
+            await Shell.Current.DisplayAlert("Не бывать твоим желаниям, друг", "",
+            "Да что же это");
         }
     }
 }

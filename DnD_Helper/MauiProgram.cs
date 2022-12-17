@@ -75,7 +75,7 @@ public static class MauiProgram
 			.AddTransient<DistributorAbilityScore>()
 			.AddTransient<Abilities>()
 			.AddTransient<ICreatesCharacter, CharacterCreator>()
-			.AddTransient<IModelNavigator, CharacterCreationNavigator>()
+			.AddTransient<CharacterCreationNavigator>()
 			.AddTransient<IHasRouteCollection, RouteCollection>();
 		return services;
 	}

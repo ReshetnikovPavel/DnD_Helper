@@ -4,18 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace DnD_Helper.ViewModels
 {
     public class AppShellViewModel : BindableObject
     {
+        public ICommand GoToCharacterSheet { get; }
         private ICreatesCharacter creator;
-        private IModelNavigator navigator;
+        private CharacterCreationNavigator navigator;
 
-        public AppShellViewModel(ICreatesCharacter creator, IModelNavigator navigator)
+        public AppShellViewModel(ICreatesCharacter creator, CharacterCreationNavigator navigator)
         {
             this.creator = creator;
             this.navigator = navigator;
+            GoToCharacterSheet = new Command(navigator.TryGoToCharacterSheet);
             MessagingCenter.Subscribe<BindableObject, string>(
                 this, MessageTypes.PageCompleted.ToString(), OnPageCompleted);
             AddModels();

@@ -1,4 +1,5 @@
-﻿using DndHelper.Domain.Dnd;
+﻿using DnD_Helper.ViewModels;
+using DndHelper.Domain.Dnd;
 
 namespace DnD_Helper;
 
@@ -8,15 +9,16 @@ public partial class CharacterSheetPage : ContentPage
 	{
 		InitializeComponent();
 
-		NameLabel.BindingContext = this;
-		MainInfoLabel.BindingContext = this;
-		ArmourClassLabel.BindingContext = this;
-		SpeedLabel.BindingContext = this;
-		HpLabel.BindingContext = this;
-		InitiativeLabel.BindingContext = this;
-		AbilitiesList.BindingContext = this;
-		ProfficienciesList.BindingContext = this;
-		SkillsList.BindingContext = this;
+		BindingContext = new CharacterSelectionModel();
+		//NameLabel.BindingContext = this;
+		//MainInfoLabel.BindingContext = this;
+		//ArmourClassLabel.BindingContext = this;
+		//SpeedLabel.BindingContext = this;
+		//HpLabel.BindingContext = this;
+		//InitiativeLabel.BindingContext = this;
+		//AbilitiesList.BindingContext = this;
+		//ProfficienciesList.BindingContext = this;
+		//SkillsList.BindingContext = this;
 	}
 
 	//public string NameDisplay

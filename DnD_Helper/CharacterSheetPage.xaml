@@ -6,7 +6,7 @@
              Style="{StaticResource ContentPage}"
              Shell.NavBarIsVisible="False">
 
-    <ScrollView>
+    <!--<ScrollView>
         <VerticalStackLayout>
             <Label x:Name="NameLabel"
                 Text="{Binding NameDisplay}" />
@@ -57,6 +57,11 @@
                 </ListView.ItemTemplate>
             </ListView>
         </VerticalStackLayout>
-    </ScrollView>
+    </ScrollView>-->
+
+    <VerticalStackLayout HorizontalOptions="Center"
+                         VerticalOptions="Center">
+        <Label Text="{Binding Text}" />
+    </VerticalStackLayout>
 
 </ContentPage>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DnD_Helper.ApplicationClasses
 {
-    internal interface IHasRouteCollection
+    public interface IHasRouteCollection
     {
         public void AddRoute(IHasRoute route);
         public IHasRoute GetNextAvailableRoute(string currentRoute);
