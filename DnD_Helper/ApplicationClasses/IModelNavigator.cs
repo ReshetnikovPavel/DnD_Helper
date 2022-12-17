@@ -9,7 +9,7 @@ namespace DnD_Helper.ApplicationClasses
     public interface IModelNavigator
     {
         void AddModel<TModel>() where TModel : BindableObject;
-        void GoToNextRoute(string currentRoute);
+        bool TryGoToNextRoute(string currentRoute);
     }
 }
 

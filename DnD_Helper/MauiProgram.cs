@@ -74,8 +74,9 @@ public static class MauiProgram
 			.RegiserRepositories()
 			.AddTransient<DistributorAbilityScore>()
 			.AddTransient<Abilities>()
-			.AddTransient<ICreatesCharacter, CharacterCreator>()
 			.AddTransient<CharacterCreationNavigator>()
+			.AddSingleton<ICreatesCharacter, CharacterCreator>()
+			.AddTransient<IModelNavigator, RouteCollectionNavigator>()
 			.AddTransient<IHasRouteCollection, RouteCollection>()
 			.AddTransient<IStateManager<string, object>, StateDictionary<string, object>>();
 		return services;

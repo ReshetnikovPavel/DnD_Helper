@@ -1,5 +1,4 @@
 ﻿using DnD_Helper.ViewModels;
-using DndHelper.Domain.Dnd;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,33 +7,55 @@ using System.Threading.Tasks;
 
 namespace DnD_Helper.ApplicationClasses
 {
-    public class CharacterCreationNavigator : IModelNavigator
+    public class CharacterCreationNavigator
     {
-        private IHasRouteCollection routes;
-        private const string CharacterSheetRoute = nameof(CharacterSheetViewModel);
+        private readonly IModelNavigator modelNavigator;
+        private readonly ICreatesCharacter creator;
 
-        public CharacterCreationNavigator(IHasRouteCollection routes)
+        public CharacterCreationNavigator(IModelNavigator modelNavigator, ICreatesCharacter creator) 
         {
-            this.routes = routes;
-            MessagingCenter.Subscribe<BindableObject, string>(
-                this, MessageTypes.PageCompleted.ToString(), 
-                (BindableObject sender, string currentRoute) => GoToNextRoute(currentRoute));
-            
+            this.modelNavigator = modelNavigator;
+            this.creator = creator;
+            InitRouting();
+            SubscribeToMessaging();
+        }
+
+        public CharacterCreationNavigator(ICreatesCharacter creator)
+        {
+            this.creator = creator;
         }
 
         public void AddModel<TModel>() where TModel : BindableObject
         {
-            routes.AddRoute(new RouteItem("///", typeof(TModel).Name));
+            modelNavigator.AddModel<TModel>();
         }
 
-        public void GoToNextRoute(string currentRoute)
+        public async void TryGoToCharacterSheet()
         {
-            routes.GetNextAvailableRoute(currentRoute)?.TryGo();
+            if (!creator.CanCreate())
+            {
+                await Shell.Current.DisplayAlert("Невозможно перейти в лист персонажа",
+                    "Не все поля заполнены", "Эх");
+                return;
+            }
+            await Shell.Current.GoToAsync($"/{nameof(CharacterSheetViewModel)}");
         }
 
-        public async void GoToCharacterSheet(Character character)
+        private void SubscribeToMessaging()
         {
-            await Shell.Current.GoToAsync($"/{CharacterSheetRoute}");
+            MessagingCenter.Subscribe<BindableObject, string>(
+                this, MessageTypes.PageCompleted.ToString(), OnPageCompleted);
+        }
+
+        private void InitRouting()
+        {
+            Routing.RegisterRoute(nameof(CharacterSheetViewModel), typeof(CharacterSheetPage));
+        }
+
+        private void OnPageCompleted(object sender, string currentRoute)
+        {
+            if (!modelNavigator.TryGoToNextRoute(currentRoute))
+                TryGoToCharacterSheet();
         }
     }
 }
