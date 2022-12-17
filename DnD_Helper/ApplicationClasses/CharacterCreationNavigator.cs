@@ -8,11 +8,11 @@ namespace DnD_Helper.ApplicationClasses
 {
     class CharacterCreationNavigator : IModelNavigator
     {
-        private RouteCollection routes;
+        private IHasRouteCollection routes;
 
-        public CharacterCreationNavigator()
+        public CharacterCreationNavigator(IHasRouteCollection routes)
         {
-            routes = new RouteCollection();
+            this.routes = routes;
         }
 
         public void AddModel<TModel>() where TModel : BindableObject

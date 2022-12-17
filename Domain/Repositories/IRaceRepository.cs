@@ -1,7 +1,4 @@
-﻿using DndHelper.Domain.Dnd;
-
-namespace DndHelper.Domain.Repositories;
-
+﻿namespace Domain.Repositories;
 
 public interface IRaceRepository : IRepository
 {
