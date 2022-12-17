@@ -4,7 +4,9 @@
              x:Class="DnD_Helper.CharacterSheetPage"
              xmlns:local="clr-namespace:DnD_Helper"
              Style="{StaticResource ContentPage}"
-             Shell.NavBarIsVisible="False">
+             xmlns:models="clr-namespace:DnD_Helper.ViewModels"
+             x:DataType="models:CharacterSheetViewModel"
+             Shell.NavBarIsVisible="True">
 
     <!--<ScrollView>
         <VerticalStackLayout>

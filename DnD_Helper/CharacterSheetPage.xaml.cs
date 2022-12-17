@@ -9,7 +9,7 @@ public partial class CharacterSheetPage : ContentPage
 	{
 		InitializeComponent();
 
-		BindingContext = new CharacterSelectionModel();
+		BindingContext = new CharacterSheetViewModel();
 		//NameLabel.BindingContext = this;
 		//MainInfoLabel.BindingContext = this;
 		//ArmourClassLabel.BindingContext = this;
