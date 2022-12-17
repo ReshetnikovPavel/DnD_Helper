@@ -76,7 +76,8 @@ public static class MauiProgram
 			.AddTransient<Abilities>()
 			.AddTransient<ICreatesCharacter, CharacterCreator>()
 			.AddTransient<CharacterCreationNavigator>()
-			.AddTransient<IHasRouteCollection, RouteCollection>();
+			.AddTransient<IHasRouteCollection, RouteCollection>()
+			.AddTransient<IStateManager<string, object>, StateDictionary<string, object>>();
 		return services;
 	}
 

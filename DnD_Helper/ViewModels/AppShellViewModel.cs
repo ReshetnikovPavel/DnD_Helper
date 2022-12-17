@@ -18,9 +18,7 @@ namespace DnD_Helper.ViewModels
         {
             this.creator = creator;
             this.navigator = navigator;
-            GoToCharacterSheet = new Command(navigator.TryGoToCharacterSheet);
-            MessagingCenter.Subscribe<BindableObject, string>(
-                this, MessageTypes.PageCompleted.ToString(), OnPageCompleted);
+            GoToCharacterSheet = new Command(TryGoToCharacterSheet);
             AddModels();
         }
 
@@ -38,9 +36,15 @@ namespace DnD_Helper.ViewModels
             navigator.AddModel<TModel>();
         }
 
-        private void OnPageCompleted(object sender, string currentRoute)
+        private async void TryGoToCharacterSheet()
         {
-            navigator.GoToNextRoute(currentRoute);
+            if(!creator.CanCreate())
+            {
+                await Shell.Current.DisplayAlert("Не возможно перейти в лист персонажа", "Не все поля заполнены",
+            "Эх");
+                return;
+            }
+            navigator.GoToCharacterSheet(creator.Create());
         }
     }
 }
