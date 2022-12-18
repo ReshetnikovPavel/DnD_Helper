@@ -9,7 +9,7 @@
     BackgroundColor="{StaticResource ShellBackground}">
 
     <ShellContent
-        ContentTemplate="{DataTemplate local:PartySelectionPage}"
+        ContentTemplate="{DataTemplate local:CharacterPage}"
         Route="menu"/>
 
 </Shell>
