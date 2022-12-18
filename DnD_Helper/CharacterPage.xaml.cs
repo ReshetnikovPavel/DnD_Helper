@@ -6,7 +6,7 @@ public partial class CharacterPage : ContentPage
 {
 	public CharacterPage()
 	{
-		//InitializeComponent();
+		InitializeComponent();
 
 		BindingContext = new CharacterModel();
 	}
