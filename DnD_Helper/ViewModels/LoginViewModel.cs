@@ -43,7 +43,7 @@ namespace DnD_Helper.ViewModels
         private async void LoginBtnTappedAsync(object obj)
         {
             await authProvider.SignInWithEmailAndPassword(UserName, UserPassword);
-            //await Shell.Current.GoToAsync(nameof(MainMenuPage));
+            await Shell.Current.GoToAsync(nameof(CharacterSelectionModel));
         }
 
         private async void RegisterBtnTappedAsync(object obj)

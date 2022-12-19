@@ -8,6 +8,6 @@ public partial class CharacterSelectionPage : ContentPage
 	{
 		InitializeComponent();
 
-		BindingContext = characterSelectionModel;
+        BindingContext = characterSelectionModel;
 	}
 }

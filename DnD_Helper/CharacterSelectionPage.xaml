@@ -14,10 +14,16 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior
+        EventName="Appearing"
+        Command="{Binding FillCharacterNames}" />
+    </ContentPage.Behaviors>
+
     <Grid RowDefinitions="4*, *, *"
           Margin="10">
         <ListView x:Name="CharacterList"
-        ItemsSource="{Binding Arr}"
+        ItemsSource="{Binding CharacterNames}"
               Margin="10">
             <ListView.ItemTemplate>
                 <DataTemplate>

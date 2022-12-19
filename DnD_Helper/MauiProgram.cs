@@ -67,7 +67,8 @@ public static class MauiProgram
 			.AddTransient<AbilityScoresSelectionPage>()
 			.AddTransient<ClassSelectionPage>()
 			.AddTransient<RaceSelectionPage>()
-			.AddTransient<BackgroundSelectionPage>();
+			.AddTransient<BackgroundSelectionPage>()
+			.AddTransientWithShellRoute<CharacterSelectionPage, CharacterSelectionModel>(nameof(CharacterSelectionModel));
 		return services;
 	}
 
@@ -103,7 +104,8 @@ public static class MauiProgram
 			.AddTransient<ISpellRepository, XmlSpellRepository>()
 			.AddTransient<IWeaponRepository, XmlWeaponRepository>()
 			.AddTransient<IDndParser, DndCompendiumParser>()
-			.AddTransient<IDndFactory<XElement>, DndCompendiumFactory>();
+			.AddTransient<IDndFactory<XElement>, DndCompendiumFactory>()
+			.AddTransient<ICharacterRepository, DatabaseCharacterRepository<string>>();
 		
 		return services;
 	}

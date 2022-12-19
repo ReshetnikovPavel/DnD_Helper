@@ -34,7 +34,5 @@ namespace DndHelper.Firebase.Adapters
         {
             return childQuery.PutAsync(obj);
         }
-
-        public Task 
     }
 }
