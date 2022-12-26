@@ -65,7 +65,9 @@
                     Text="{Binding HitPoints}"
                     BackgroundColor = "#d8d7e5"/>
             </Grid>
-            
+
+            <Label Text="Характеристики" FontSize="Large" Margin="10, 10, 10, 0"/>
+
             <Grid>
                 <Grid ColumnDefinitions = "0.8*, *, 0.8*, *" RowDefinitions = "Auto, Auto, Auto, Auto, Auto, Auto" Margin = "10, 5, 10, 5">
                     <Button Margin="10"
@@ -143,6 +145,8 @@
                         Text="{Binding Abilities.Charisma.Value}"/>
                 </Grid>
             </Grid>
+
+            <Label Text="Спасброски и навыки" FontSize="Large" Margin="10, 10, 10, 0"/>
 
             <Grid ColumnDefinitions="Auto, Auto">
 
@@ -398,6 +402,133 @@
                     </Grid>
                 </Grid>
 
+            </Grid>
+
+            <Label Text="Снаряжение" FontSize="Large" Margin="10, 10, 10, 0"/>
+
+            <Grid RowDefinitions="*, *, 2*, 2*">
+                <Button Margin="10, 5, 300, 5"
+                    Grid.Column="0"
+                    LineBreakMode="WordWrap"
+                    Text="{Binding Money}"/>
+                <Button Text = "{Binding Armor}" Margin="5, 5, 5, 5" Grid.Row = "1"/>
+
+                <ListView x:Name="WeaponsList"
+                    ItemsSource="{Binding Weapons}"
+                    Margin="10"
+                    Grid.Row = "2">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Frame>
+                                        <Grid ColumnDefinitions = "Auto, Auto, Auto">
+                                            <Label Text="{Binding .Name}" Grid.Column = "0" Margin = "5, 5, 5, 5"/>
+                                            <!-- <Label Text="{Binding .Damage}" Grid.Column = "1" Margin = "5, 5, 5, 5"/>
+                                            <Label Text="{Binding .DamageType}" Grid.Column = "2" Margin = "5, 5, 5, 5"/> -->
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <ListView x:Name="EquipmentsList"
+                    ItemsSource="{Binding Equipments}"
+                    Margin="10"
+                    Grid.Row = "3">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Frame>
+                                        <Grid >
+                                            <Label Text="{Binding .Name}" Margin = "5, 5, 5, 5"/>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </Grid>
+
+            <Label Text="Владения" FontSize="Large" Margin="10, 10, 10, 0"/>
+
+            <Grid RowDefinitions = "Auto, Auto">
+                <Grid Grid.Row = "0" ColumnDefinitions = "3*, *">
+                    <Label Text="Бонус владения" Margin="10, 10, 0, 0" Grid.Column = "0" LineBreakMode="WordWrap"/>
+                    <Button Text = "{Binding ProficiencyBonus.Value}" Margin="10, 10, 10, 0" Grid.Column = "1"/>
+                </Grid>
+                <Grid Grid.Row = "1" ColumnDefinitions = "*, 3*">
+                    <Label Text="Языки" Margin="10, 10, 10, 0" Grid.Column = "0"/>
+                    <Button LineBreakMode="WordWrap" Text = "{Binding Languages}" Margin="10, 10, 10, 0" Grid.Column = "1"/>
+                </Grid>
+            </Grid>
+            <Label Text="Владение оружием:" FontSize="Large" Margin="10, 10, 10, 0"/>
+            <Grid>
+                <ListView x:Name="WeaponsProficientsList"
+                    ItemsSource="{Binding WeaponsProficiencies}"
+                    Margin="10"
+                    Grid.Row = "2">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Frame>
+                                        <Grid ColumnDefinitions = "Auto, Auto, Auto">
+                                            <Label Text="{Binding .Name}" Grid.Column = "0" Margin = "5, 5, 5, 5"/>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            <Label Text="Владение доспехами:" FontSize="Large" Margin="10, 10, 10, 0"/>
+            <Grid>
+                <ListView x:Name="ArmorProficientsList"
+                    ItemsSource="{Binding ArmorProficiencies}"
+                    Margin="10"
+                    Grid.Row = "2">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Frame>
+                                        <Grid ColumnDefinitions = "Auto, Auto, Auto">
+                                            <Label Text="{Binding .Name}" Grid.Column = "0" Margin = "5, 5, 5, 5"/>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            <Label Text="Владение инструментами:" FontSize="Large" Margin="10, 10, 10, 0"/>
+            <Grid>
+                <ListView x:Name="InstrumentProficientsList"
+                    ItemsSource="{Binding InstrumentProficiencies}"
+                    Margin="10"
+                    Grid.Row = "2">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Frame>
+                                        <Grid ColumnDefinitions = "Auto, Auto, Auto">
+                                            <Label Text="{Binding .Name}" Grid.Column = "0" Margin = "5, 5, 5, 5"/>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </Grid>
         </VerticalStackLayout>
     </ScrollView>
