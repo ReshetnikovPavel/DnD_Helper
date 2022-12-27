@@ -423,9 +423,9 @@
                                 <Grid Padding="10">
                                     <Frame>
                                         <Grid ColumnDefinitions = "Auto, Auto, Auto">
-                                            <Label Text="{Binding .Name}" Grid.Column = "0" Margin = "5, 5, 5, 5"/>
-                                            <!-- <Label Text="{Binding .Damage}" Grid.Column = "1" Margin = "5, 5, 5, 5"/>
-                                            <Label Text="{Binding .DamageType}" Grid.Column = "2" Margin = "5, 5, 5, 5"/> -->
+                                            <Label Text="{Binding Name}" Grid.Column = "0" Margin = "5, 5, 5, 5"/>
+                                            <Label Text="{Binding Damage}" Grid.Column = "1" Margin = "5, 5, 5, 5"/>
+                                            <Label Text="{Binding DamageType}" Grid.Column = "2" Margin = "5, 5, 5, 5"/>
                                         </Grid>
                                     </Frame>
                                 </Grid>
@@ -444,7 +444,7 @@
                                 <Grid Padding="10">
                                     <Frame>
                                         <Grid >
-                                            <Label Text="{Binding .Name}" Margin = "5, 5, 5, 5"/>
+                                            <Label Text="{Binding Name}" Margin = "5, 5, 5, 5"/>
                                         </Grid>
                                     </Frame>
                                 </Grid>
@@ -479,7 +479,7 @@
                                 <Grid Padding="10">
                                     <Frame>
                                         <Grid ColumnDefinitions = "Auto, Auto, Auto">
-                                            <Label Text="{Binding .Name}" Grid.Column = "0" Margin = "5, 5, 5, 5"/>
+                                            <Label Text="{Binding Name}" Grid.Column = "0" Margin = "5, 5, 5, 5"/>
                                         </Grid>
                                     </Frame>
                                 </Grid>
@@ -500,7 +500,7 @@
                                 <Grid Padding="10">
                                     <Frame>
                                         <Grid ColumnDefinitions = "Auto, Auto, Auto">
-                                            <Label Text="{Binding .Name}" Grid.Column = "0" Margin = "5, 5, 5, 5"/>
+                                            <Label Text="{Binding Name}" Grid.Column = "0" Margin = "5, 5, 5, 5"/>
                                         </Grid>
                                     </Frame>
                                 </Grid>
@@ -521,7 +521,7 @@
                                 <Grid Padding="10">
                                     <Frame>
                                         <Grid ColumnDefinitions = "Auto, Auto, Auto">
-                                            <Label Text="{Binding .Name}" Grid.Column = "0" Margin = "5, 5, 5, 5"/>
+                                            <Label Text="{Binding Name}" Grid.Column = "0" Margin = "5, 5, 5, 5"/>
                                         </Grid>
                                     </Frame>
                                 </Grid>
