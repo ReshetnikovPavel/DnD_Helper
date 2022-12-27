@@ -16,6 +16,7 @@ public class Spell : ValueType<Spell>, IDndObject
 	public string Name { get; }
 	public int Level { get; }
 	public IEnumerable<SpellComponent> Components { get; }
+	public string StringComponents => string.Join("", Components.Select(c => c.ToString()[0]));
 	public string School { get; }
 	public string Description { get; }
 	public string Time { get; }

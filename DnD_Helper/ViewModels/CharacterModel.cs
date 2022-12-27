@@ -22,7 +22,7 @@ namespace DnD_Helper.ViewModels
         public int Money => 1000;
         public int HitPoints => 10;
         public int Initiative => 3;
-        public Abilities Abilities => Abilities.CreateDefault();
+        public Abilities AbilityScores => Abilities.CreateDefault();
         public Skills Skills => Skills.CreateDefault();
         public SavingThrows SavingThrows => SavingThrows.CreateDefault();
         public string Armor => "Leather";
@@ -31,6 +31,7 @@ namespace DnD_Helper.ViewModels
         public List<Armor> ArmorProficiencies => new List<Armor> { new Armor("Кождоспех"), new Armor("металлдоспех"), new Armor("словесный доспех") };
         public List<Weapon> Weapons => new List<Weapon> { new Weapon("Dagger", new Dice(1, DiceName.D4), "кол."), new Weapon("Word", new Dice(1, DiceName.D20), "кол."), new Weapon("Sword", new Dice(1, DiceName.D6), "кол.") };
         public List<Equipment> Equipments => new List<Equipment> { new Equipment("Dagg333er"), new Equipment("Wor333d"), new Equipment("Swor333d") };
+        public List<Spell> Spells => new List<Spell> { new Spell("Fireball", 12, new List<SpellComponent>(){SpellComponent.Verbal}, "wolshebnyau", "dohuya", new List<string>(){"Rogue", "Warrior"}), new Spell("Fireball", 12, new List<SpellComponent>(){SpellComponent.Verbal, SpellComponent.Somatic}, "wolshebny", "dohuya", new List<string>(){"Rogue", "Warrior"}), new Spell("Fireball", 12, new List<SpellComponent>(){SpellComponent.Verbal}, "wolshebny", "dohuya", new List<string>(){"Rogue", "Warrior"}) };
         public ProficiencyBonus ProficiencyBonus => new ProficiencyBonus(2);
         public string Languages => "Common, Elvish";
     }
