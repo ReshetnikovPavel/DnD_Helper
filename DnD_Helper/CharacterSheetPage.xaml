@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="utf-8" ?>
+ <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DnD_Helper.CharacterSheetPage"
              xmlns:models="clr-namespace:DnD_Helper.ViewModels"
+             xmlns:domain="clr-namespace:Domain;assembly=Domain"
              x:DataType="models:CharacterModel"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              Title="Персонаж"
@@ -418,7 +419,7 @@
                     Margin="10"
                     Grid.Row = "2">
                     <ListView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="domain:Weapon">
                             <ViewCell>
                                 <Grid Padding="10">
                                     <Frame>
