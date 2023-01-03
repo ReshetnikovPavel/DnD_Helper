@@ -12,11 +12,13 @@ namespace DndHelper.App.ApplicationClasses
 {
     public class CharacterCreator : ICreatesCharacter
     {
-        private IStateManager<string, object> stateManager;
+        private IStateManager<string, object> StateManager { get; }
+        private RepositoryFacade RepositoryFacade { get; }
 
-        public CharacterCreator(IStateManager<string, object> stateManager, IRaceRepository raceRepository)
+        public CharacterCreator(IStateManager<string, object> stateManager, RepositoryFacade repositoryFacade)
         {
-            this.stateManager = stateManager;
+            StateManager = stateManager;
+            RepositoryFacade = repositoryFacade;
             SetDefaultValues();
             SubscribeToMessaging();
         }
@@ -33,26 +35,26 @@ namespace DndHelper.App.ApplicationClasses
 
         public Character Create()
         {
-            var race = stateManager.GetValue(nameof(Character.Race)) as string;
-            var dndClass = stateManager.GetValue(nameof(Character.Class)) as string;
-            var abilities = stateManager.GetValue(nameof(Character.Abilities)) as string;
-            var name = stateManager.GetValue(nameof(Character.Name)) as string;
-            var background = stateManager.GetValue(nameof(Character.Background)) as string;
+            var raceName = StateManager.GetValue(nameof(Character.Race)) as string;
+            var className = StateManager.GetValue(nameof(Character.Class)) as string;
+            var abilities = StateManager.GetValue(nameof(Character.Abilities)) as Abilities;
+            var name = StateManager.GetValue(nameof(Character.Name)) as string;
+            var backgroundName = StateManager.GetValue(nameof(Character.Background)) as string;
             
 
             var character = new Character();
-            character.ApplyRace(race);
-            character.ApplyClass(dndClass);
+            character.ApplyRace(RepositoryFacade.GetRace(raceName, null));
+            character.ApplyClass(RepositoryFacade.GetClass(className));
             character.ApplyAbilities(abilities);
             character.Name = name;
-            character.ApplyBackground(background);
+            character.ApplyBackground(RepositoryFacade.GetBackground(backgroundName));
 
             return character;
         }
 
         private void SetDefaultValues()
         {
-            stateManager.SetValue(nameof(Character.Abilities), Abilities.CreateDefault());
+            StateManager.SetValue(nameof(Character.Abilities), Abilities.CreateDefault());
         }
 
         private void SubscribeToMessaging()
@@ -63,12 +65,12 @@ namespace DndHelper.App.ApplicationClasses
 
         private void OnSelectionMade(object sender, Selection selection)
         {
-            stateManager.SetValue(selection.Property, selection.Value);
+            StateManager.SetValue(selection.Property, selection.Value);
         }
 
         private bool IsSelected(string attributeName)
         {
-            return stateManager.HasKey(attributeName);
+            return StateManager.HasKey(attributeName);
         }
     }
 }

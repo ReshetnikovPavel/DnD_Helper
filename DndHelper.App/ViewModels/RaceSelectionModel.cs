@@ -22,8 +22,7 @@ namespace DndHelper.App.ViewModels
 
         private void OnRaceSelected(string selectedName)
         {
-            MessageSender.SendSelectionMade(this,
-                nameof(Character.Race), selectedName);
+            MessageSender.SendSelectionMade(this, nameof(Character.Race), selectedName);
             MessageSender.SendPageCompleted<RaceSelectionModel>(this);
         }
     }
