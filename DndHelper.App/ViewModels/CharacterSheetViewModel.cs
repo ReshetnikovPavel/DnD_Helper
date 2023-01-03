@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DndHelper.App.ViewModels
+namespace DnD_Helper.ViewModels
 {
-    public class SubraceSelectionModel : BindableObject
+    internal class CharacterSheetViewModel : BindableObject
     {
         public string Text
-            => "Hello, wretched world!";
+            => "Hello, cruel world!";
     }
 }

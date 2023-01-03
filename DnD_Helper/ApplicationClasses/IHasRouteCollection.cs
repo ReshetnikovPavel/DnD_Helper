@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace DnD_Helper.ApplicationClasses
 {
-    public interface IHasRoute
+    public interface IHasRouteCollection
     {
-        string Route { get; }
-        Func<bool> CanGo { get; }
-
-        bool TryGo();
-
-        public event EventHandler TriedToGo;
+        public void AddRoute(IHasRoute route);
+        public IHasRoute GetNextAvailableRoute(string currentRoute);
     }
 }

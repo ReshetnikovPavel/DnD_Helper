@@ -9,10 +9,12 @@
     BackgroundColor="#d8d7e5"
     ForegroundColor="{DynamicResource ShellText}"
     TitleColor="{DynamicResource ShellText}"
-    FlyoutBackgroundColor="{StaticResource FlyoutBackground}" >
+    FlyoutBackgroundColor="{StaticResource FlyoutBackground}"
+    x:DataType="models:AppShellViewModel"
+    xmlns:models="clr-namespace:DnD_Helper.ViewModels">
 
     <Shell.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="Tab">
             <Grid Margin="20, 10">
                 <Label Text="{Binding Title}" FontAttributes="Bold" TextColor="White"></Label>
             </Grid>
@@ -20,9 +22,9 @@
     </Shell.ItemTemplate>
 
     <Shell.MenuItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="MenuItem">
             <Grid Margin="20, 10">
-                <Label Text="{Binding Title}" FontAttributes="Bold" TextColor="White"></Label>
+                <Label Text="{Binding Text}" FontAttributes="Bold" TextColor="White"></Label>
             </Grid>
         </DataTemplate>
     </Shell.MenuItemTemplate>
@@ -33,12 +35,12 @@
              Route="RaceTab">
             <ShellContent Title="Раса"
                       ContentTemplate="{DataTemplate local:RaceSelectionPage}"
-                      Route="RaceSelectionPage" >
+                      Route="RaceSelectionModel" >
             </ShellContent>
             <ShellContent x:Name="SubracePage" 
                           Title="Подраса"
                       ContentTemplate="{DataTemplate local:SubraceSelectionPage}"
-                      Route="SubraceSelectionPage" >
+                      Route="SubraceSelectionModel" >
             </ShellContent>
         </Tab>
 
@@ -57,20 +59,20 @@
                       Route="BackgroundSelectionModel" >
         </ShellContent>
 
-        <ShellContent Title="Снаряжение"
+        <!--<ShellContent Title="Снаряжение"
         ContentTemplate="{DataTemplate local:EquipmentSelectionPage}"
                       Route="EquipmentSelectionPage"
-                      IsVisible="False" />
+                      IsVisible="False" />-->
 
-        <ShellContent Title="Логин???????"
+        <!--<ShellContent Title="Логин???????"
         ContentTemplate="{DataTemplate local:LoginPage}" 
                       Route="LoginViewModel" >
-        </ShellContent>
+        </ShellContent>-->
     </FlyoutItem>
 
-    <!--<MenuItem Text="Лист персонажа"
-              Clicked="CharacterSheet_Clicked" >
-    </MenuItem>-->
+    <MenuItem Text="Лист персонажа"
+              Command="{Binding GoToCharacterSheet}" >
+    </MenuItem>
 
     <MenuItem Text="Выйти в меню"
               Clicked="BackToMenu_Clicked" >
