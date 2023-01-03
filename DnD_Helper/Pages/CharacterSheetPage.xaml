@@ -259,7 +259,7 @@
                     Margin="10"
                     Grid.Row = "2">
                     <ListView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="domain:Weapon">
                             <ViewCell>
                                 <Grid Padding="10">
                                     <Frame>
@@ -281,7 +281,7 @@
                     Margin="10"
                     Grid.Row = "2">
                     <ListView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="domain:Armor">
                             <ViewCell>
                                 <Grid Padding="10">
                                     <Frame>
@@ -303,7 +303,7 @@
                     Margin="10"
                     Grid.Row = "2">
                     <ListView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="domain:Instrument">
                             <ViewCell>
                                 <Grid Padding="10">
                                     <Frame>
