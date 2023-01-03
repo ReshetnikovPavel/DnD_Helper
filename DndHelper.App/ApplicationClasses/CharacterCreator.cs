@@ -16,17 +16,17 @@ namespace DndHelper.App.ApplicationClasses
         public CharacterCreator(IStateManager<string, object> stateManager)
         {
             this.stateManager = stateManager;
+            SubscribeToMessaging();
         }
 
         public void SubscribeToModel<TModel>() where TModel : BindableObject
         {
-            MessagingCenter.Subscribe<TModel, Selection>(
-                this, MessageTypes.SelectionMade.ToString(), OnSelectionMade);
+            throw new NotImplementedException();
         }
 
         public bool CanCreate()
         {
-            return true;
+            return IsSelected(nameof(Race));
         }
 
         public Character Create()
@@ -34,9 +34,20 @@ namespace DndHelper.App.ApplicationClasses
             return null;
         }
 
+        private void SubscribeToMessaging()
+        {
+            MessagingCenter.Subscribe<object, Selection>(this, 
+                MessageTypes.SelectionMade.ToString(), OnSelectionMade);
+        }
+
         private void OnSelectionMade(object sender, Selection selection)
         {
             stateManager.SetValue(selection.Property, selection.Value);
+        }
+
+        private bool IsSelected(string attributeName)
+        {
+            return stateManager.HasKey(attributeName);
         }
     }
 }

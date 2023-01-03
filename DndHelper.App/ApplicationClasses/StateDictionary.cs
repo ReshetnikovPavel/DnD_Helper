@@ -22,6 +22,11 @@ namespace DndHelper.App.ApplicationClasses
             else
                 state[key] = value;
         }
+
+        public bool HasKey(TKey key)
+        {
+            return state.ContainsKey(key);
+        }
     }
 
 }

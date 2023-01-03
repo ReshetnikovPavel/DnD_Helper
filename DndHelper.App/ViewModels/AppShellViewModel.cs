@@ -32,7 +32,6 @@ namespace DndHelper.App.ViewModels
 
         private void AddModel<TModel>() where TModel : BindableObject
         {
-            creator.SubscribeToModel<TModel>();
             navigator.AddModel<TModel>();
         }
     }
