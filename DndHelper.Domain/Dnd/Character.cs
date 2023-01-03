@@ -42,6 +42,7 @@ public class Character : Entity<Guid>, IDndObject
     public SpellSlotsTable SpellSlotsTable { get; set; }
 
     public HitDice HitDice { get; set; }
+    public HitPoints HitPoints { get; set; }
 
     public void ApplyRace()
 	{

@@ -5,7 +5,7 @@
              xmlns:models="clr-namespace:DnD_Helper.ViewModels"
              x:DataType="models:CharacterSelectionModel"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             Title="Выберите персонажа"
+             Title="Мои персонажи"
              Style="{StaticResource ContentPage}">
 
     <ContentPage.Resources>
@@ -14,13 +14,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.Behaviors>
-        <toolkit:EventToCommandBehavior
-        EventName="Appearing"
-        Command="{Binding FillCharacterNames}" />
-    </ContentPage.Behaviors>
-
-    <Grid RowDefinitions="4*, *, *"
+    <Grid RowDefinitions="4*, *"
           Margin="10">
         <ListView x:Name="CharacterList"
         ItemsSource="{Binding CharacterNames}"
@@ -43,14 +37,11 @@
                 EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
             </ListView.Behaviors>
         </ListView>
-        <Button Margin="100, 5"
+        <Button Margin="10, 5"
             Grid.Row="1"
-            Text="Присоединиться к партии"
-                Command="{Binding JoinParty}"/>
-        <Button Margin="100,10" 
-                Grid.Row="2"
-            Text="Создать партию"
-                Command="{Binding CreateParty}"/>
+            LineBreakMode = "WordWrap"
+            Text="Создать нового персонажа"
+                Command="{Binding CreateNewCharacter}"/>
     </Grid>
 
 </ContentPage>
