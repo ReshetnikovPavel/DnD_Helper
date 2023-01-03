@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DnD_Helper.ApplicationClasses
+namespace DndHelper.App.ApplicationClasses
 {
     public class CharacterCreator : ICreatesCharacter
     {

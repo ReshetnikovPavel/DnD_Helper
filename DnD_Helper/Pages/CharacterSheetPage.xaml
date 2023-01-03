@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DnD_Helper.CharacterSheetPage"
+             x:DataType="viewModels:CharacterModel"
+             xmlns:domain="clr-namespace:DndHelper.Domain.Dnd;assembly=DndHelper.Domain"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewModels="clr-namespace:DndHelper.App.ViewModels;assembly=DndHelper.App"
+             Title="Персонаж"
+             Style="{StaticResource ContentPage}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <Grid RowDefinitions = "*, 2*" Margin = "10, 10, 10, 10">
+                <Grid Grid.Row = "0" ColumnDefinitions = "1.2*, 2*, 2*, *">
+                    <Label Margin="10, 10, 10, 10"
+                        Grid.Row="0"
+                        LineBreakMode ="WordWrap"
+                        Text="{Binding Name}" Grid.Column = "1"/>
+                    <Label Margin="10, 10, 10, 10"
+                        Grid.Row="0"
+                        LineBreakMode ="WordWrap"
+                        Text="{Binding Level}" Grid.Column = "3"/>
+                    <Label Margin="10, 10, 10, 10" Text="Имя:" Grid.Row="0" Grid.Column="0"/>
+                    <Label Margin="10, 10, 10, 10" Text="Уровень:" Grid.Row="0" Grid.Column="2"/>
+                </Grid>
+                <Grid Grid.Row = "1" ColumnDefinitions = "*, *, *">
+                    <Label Margin="10, 10, 10, 10"
+                        LineBreakMode ="WordWrap"
+                        Text="{Binding Class}"
+                        Grid.Column = "0"/>
+                    <Label Margin="10, 10, 10, 10"
+                        LineBreakMode ="WordWrap"
+                        Text="{Binding Race}"
+                        Grid.Column ="1"/>
+                    <Label Margin="10, 10, 10, 10"
+                        LineBreakMode ="WordWrap"
+                        Text="{Binding Background}"
+                        Grid.Column="2"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row = "1" ColumnDefinitions="*, *, *, *" RowDefinitions="*, *" Margin = "10, 10, 10, 10">
+                <Label Margin="10, 10, 10, 10"
+                    Grid.Column="1"
+                    Grid.Row = "0"
+                    LineBreakMode="WordWrap"
+                    Text="{Binding ArmourClass}"
+                    BackgroundColor = "#d8d7e5"/>
+                <Label Margin="10, 10, 10, 10"
+                    Grid.Column="0"
+                    Grid.Row = "0"
+                    LineBreakMode="WordWrap"
+                    Text="КЗ"/>
+                <Label Margin="10, 10, 10, 10"
+                    Grid.Column="0"
+                    Grid.Row = "1"
+                    LineBreakMode="WordWrap"
+                    Text="Скор."/>
+                <Label Margin="10, 10, 10, 10"
+                    Grid.Column="1"
+                    Grid.Row = "1"
+                    LineBreakMode="WordWrap"
+                    Text="{Binding Speed}"
+                    BackgroundColor = "#d8d7e5"/>
+                <Label Margin="10, 10, 10, 10"
+                    Grid.Column="2"
+                    Grid.Row = "0"
+                    LineBreakMode="WordWrap"
+                    Text="Иниц."/>
+                <Label Margin="10, 10, 10, 10"
+                    Grid.Column="3"
+                    Grid.Row = "1"
+                    LineBreakMode="WordWrap"
+                    Text="{Binding Initiative}"
+                    BackgroundColor = "#d8d7e5"/>
+                <Label Margin="10, 10, 10, 10"
+                    Grid.Column="2"
+                    Grid.Row = "1"
+                    LineBreakMode="WordWrap"
+                    Text="Хиты"/>
+                <Label Margin="10, 10, 10, 10"
+                    Grid.Column="3"
+                    Grid.Row = "0"
+                    LineBreakMode="WordWrap"
+                    Text="{Binding HitPoints}"
+                    BackgroundColor = "#d8d7e5"/>
+            </Grid>
+
+            <Grid Margin="10, 10, 10, 10" RowDefinitions="Auto, Auto">
+                <Label Text="Характеристики" FontSize="Large" Margin="10, 10, 10, 10"/>
+                <Grid Grid.Row="1" ColumnDefinitions = "2*, 2*, *, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto">
+                    <Label Text="Сила" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "0" Grid.Column="0"/>
+                    <Label Text="Ловкость" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "1" Grid.Column="0"/>
+                    <Label Text="Телосложение" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "2" Grid.Column="0"/>
+                    <Label Text="Интеллект" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "3" Grid.Column="0"/>
+                    <Label Text="Мудрость" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "4" Grid.Column="0"/>
+                    <Label Text="Харизма" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "5" Grid.Column="0"/>
+                    <Label Text="{Binding AbilityScores.Strength.Value}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "0" Grid.Column="1"/>
+                    <Label Text="{Binding AbilityScores.Dexterity.Value}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "1" Grid.Column="1"/>
+                    <Label Text="{Binding AbilityScores.Constitution.Value}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "2" Grid.Column="1"/>
+                    <Label Text="{Binding AbilityScores.Intelligence.Value}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "3" Grid.Column="1"/>
+                    <Label Text="{Binding AbilityScores.Wisdom.Value}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "4" Grid.Column="1"/>
+                    <Label Text="{Binding AbilityScores.Charisma.Value}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "5" Grid.Column="1"/>
+                    <Label Text="Mod" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "0" Grid.Column="2"/>
+                    <Label Text="Mod" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "1" Grid.Column="2"/>
+                    <Label Text="Mod" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "2" Grid.Column="2"/>
+                    <Label Text="Mod" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "3" Grid.Column="2"/>
+                    <Label Text="Mod" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "4" Grid.Column="2"/>
+                    <Label Text="Mod" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "5" Grid.Column="2"/>
+                    <Label Text="{Binding AbilityScores.Strength.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "0" Grid.Column="3"/>
+                    <Label Text="{Binding AbilityScores.Dexterity.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "1" Grid.Column="3"/>
+                    <Label Text="{Binding AbilityScores.Constitution.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "2" Grid.Column="3"/>
+                    <Label Text="{Binding AbilityScores.Intelligence.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "3" Grid.Column="3"/>
+                    <Label Text="{Binding AbilityScores.Wisdom.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "4" Grid.Column="3"/>
+                    <Label Text="{Binding AbilityScores.Charisma.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "5" Grid.Column="3"/>
+                </Grid>
+            </Grid>
+
+            <Grid RowDefinitions = "Auto, Auto, Auto, Auto" Margin = "10, 10, 10, 10">
+
+                <Label Text="Спасброски" FontSize="Large" Margin="10, 10, 10, 10"/>
+                <Grid Grid.Row = "1" ColumnDefinitions = "2*, *" RowDefinitions="*, *, *, *, *, *" Margin = "0, 0, 0, 10">
+                    <Label Text="Сила" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "0"/>
+                    <Label Text="Ловкость" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "1"/>
+                    <Label Text="Телосложение" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "2"/>
+                    <Label Text="Интеллект" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "3"/>
+                    <Label Text="Мудрость" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "4"/>
+                    <Label Text="Харизма" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "5"/>
+                    <Label Text="{Binding SavingThrows.Strength.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "0"/>
+                    <Label Text="{Binding SavingThrows.Dexterity.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "1"/>
+                    <Label Text="{Binding SavingThrows.Constitution.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "2"/>
+                    <Label Text="{Binding SavingThrows.Intelligence.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "3"/>
+                    <Label Text="{Binding SavingThrows.Wisdom.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "4"/>
+                    <Label Text="{Binding SavingThrows.Charisma.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "5"/>
+                </Grid>
+                <Label Text="Навыки" FontSize="Large" Margin="10, 10, 10, 10" Grid.Row="2"/>
+
+                <Grid Grid.Row = "3" ColumnDefinitions = "2*, *" RowDefinitions="*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *">
+                    <Label Text="Акробатика" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "0"/>
+                    <Label Text="Атлетика" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "2"/>
+                    <Label Text="Внимательность" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "3"/>
+                    <Label Text="Выживание" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "4"/>
+                    <Label Text="Выступление" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "5"/>
+                    <Label Text="Запугивание" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "6"/>
+                    <Label Text="История" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "7"/>
+                    <Label Text="Ловкость рук" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "8"/>
+                    <Label Text="Магия" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "9"/>
+                    <Label Text="Медицина" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "10"/>
+                    <Label Text="Обман" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "11"/>
+                    <Label Text="Природа" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "12"/>
+                    <Label Text="Проницательность" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "13"/>
+                    <Label Text="Религия" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "14"/>
+                    <Label Text="Скрытность" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "15"/>
+                    <Label Text="Уход за животными" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "16"/>
+                    <Label Text="Убеждение" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "17"/>
+                    <Label Text="Анализ" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "1"/>
+                    <Label Text="{Binding Skills.Acrobatics.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "0"/>
+                    <Label Text="{Binding Skills.Investigation.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "1"/>
+                    <Label Text="{Binding Skills.Athletics.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "2"/>
+                    <Label Text="{Binding Skills.Perception.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "3"/>
+                    <Label Text="{Binding Skills.Survival.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "4"/>
+                    <Label Text="{Binding Skills.Performance.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "5"/>
+                    <Label Text="{Binding Skills.Intimidation.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "6"/>
+                    <Label Text="{Binding Skills.History.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "7"/>
+                    <Label Text="{Binding Skills.SleightOfHand.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "8"/>
+                    <Label Text="{Binding Skills.Arcana.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "9"/>
+                    <Label Text="{Binding Skills.Medicine.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "10"/>
+                    <Label Text="{Binding Skills.Deception.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "11"/>
+                    <Label Text="{Binding Skills.Nature.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "12"/>
+                    <Label Text="{Binding Skills.Insight.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "13"/>
+                    <Label Text="{Binding Skills.Religion.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "14"/>
+                    <Label Text="{Binding Skills.Stealth.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "15"/>
+                    <Label Text="{Binding Skills.AnimalHandling.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "16"/>
+                    <Label Text="{Binding Skills.Persuasion.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "17"/>
+                </Grid>
+
+            </Grid>
+
+            
+
+            <Grid RowDefinitions="*, 2*, 2*, 2*" Margin="10, 10, 10, 10">
+                <Label Text="Снаряжение" FontSize="Large" Margin="10, 10, 10, 10"/>
+                <Grid ColumnDefinitions="Auto, Auto" RowDefinitions="Auto, Auto" Grid.Row="1">
+                    <Label Text="Кошель:" FontSize="Large" Margin="10, 10, 10, 10" Grid.Row = "0" Grid.Column="0"/>
+                    <Label Margin="10, 10, 10, 10"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        LineBreakMode="WordWrap"
+                        Text="{Binding Money}"/>
+                    <Label Text="Броня:" FontSize="Large" Margin="10, 10, 10, 10" Grid.Row = "1" Grid.Column="0"/>
+                    <Label Text = "{Binding Armor}" Margin="10, 10, 10, 10" Grid.Row = "1" Grid.Column="1"/>
+                </Grid>
+
+                <ListView x:Name="WeaponsList"
+                    ItemsSource="{Binding Weapons}"
+                    Margin="10"
+                    Grid.Row = "2">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="domain:Weapon">
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Frame>
+                                        <Grid ColumnDefinitions = "Auto, Auto, Auto">
+                                            <Label Text="{Binding Name}" Grid.Column = "0" Margin = "5, 5, 5, 5"/>
+                                            <Label Text="{Binding Damage}" Grid.Column = "1" Margin = "5, 5, 5, 5"/>
+                                            <Label Text="{Binding DamageType}" Grid.Column = "2" Margin = "5, 5, 5, 5"/>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <ListView x:Name="EquipmentsList"
+                    ItemsSource="{Binding Equipments}"
+                    Margin="10"
+                    Grid.Row = "3">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Frame>
+                                        <Grid >
+                                            <Label Text="{Binding Name}" Margin = "5, 5, 5, 5"/>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </Grid>
+
+            <Grid RowDefinitions = "Auto, Auto, Auto" Margin="10, 10, 10, 10">
+                <Label Text="Владения" FontSize="Large" Margin="10, 10, 10, 10"/>
+                <Grid Grid.Row = "1" ColumnDefinitions = "Auto, Auto">
+                    <Label Text="Бонус владения:" Margin="10, 10, 0, 0" Grid.Column = "0" LineBreakMode="WordWrap"/>
+                    <Label Text = "{Binding ProficiencyBonus.Value}" Margin="10, 10, 10, 0" Grid.Column = "1"/>
+                </Grid>
+                <Grid Grid.Row = "2" ColumnDefinitions = "Auto, Auto">
+                    <Label Text="Языки:" Margin="10, 10, 10, 0" Grid.Column = "0"/>
+                    <Label LineBreakMode="WordWrap" Text = "{Binding Languages}" Margin="10, 10, 10, 0" Grid.Column = "1"/>
+                </Grid>
+            </Grid>
+            
+            <Grid Margin="10, 10, 10, 10" RowDefinitions = "Auto, Auto">
+                <Label Text="Владение оружием:" FontSize="Large" Margin="10, 10, 10, 10" Grid.Row="0"/>
+                <ListView x:Name="WeaponsProficientsList"
+                    ItemsSource="{Binding WeaponsProficiencies}"
+                    Margin="10"
+                    Grid.Row = "2">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Frame>
+                                        <Grid ColumnDefinitions = "Auto, Auto, Auto">
+                                            <Label Text="{Binding Name}" Grid.Column = "0" Margin = "5, 5, 5, 5"/>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            
+            <Grid Margin="10, 10, 10, 10" RowDefinitions = "Auto, Auto">
+                <Label Text="Владение доспехами:" FontSize="Large" Margin="10, 10, 10, 10" Grid.Row="0"/>
+                <ListView x:Name="ArmorProficientsList"
+                    ItemsSource="{Binding ArmorProficiencies}"
+                    Margin="10"
+                    Grid.Row = "2">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Frame>
+                                        <Grid ColumnDefinitions = "Auto, Auto, Auto">
+                                            <Label Text="{Binding Name}" Grid.Column = "0" Margin = "5, 5, 5, 5"/>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            
+            <Grid Margin="10, 10, 10, 10" RowDefinitions = "Auto, Auto">
+                <Label Text="Владение инструментами:" FontSize="Large" Margin="10, 10, 10, 10" Grid.Row="0"/>
+                <ListView x:Name="InstrumentProficientsList"
+                    ItemsSource="{Binding InstrumentProficiencies}"
+                    Margin="10"
+                    Grid.Row = "2">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Frame>
+                                        <Grid ColumnDefinitions = "Auto, Auto, Auto">
+                                            <Label Text="{Binding Name}" Grid.Column = "0" Margin = "5, 5, 5, 5"/>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            
+            <Grid Margin="10, 10, 10, 10" RowDefinitions = "Auto, Auto">
+                <Label Text="Заклинания:" FontSize="Large" Margin="10, 10, 10, 10" Grid.Row = "0"/>
+                <ListView x:Name="SpellsList"
+                    ItemsSource="{Binding Spells}"
+                    Margin="10"
+                    Grid.Row = "1">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="domain:Spell">
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Frame>
+                                        <Grid ColumnDefinitions = "Auto, Auto, Auto">
+                                            <Label Text="{Binding Name}" Grid.Column = "0" Margin = "5, 5, 5, 5"/>
+                                            <Label Text="{Binding Level}" Grid.Column = "1" Margin = "5, 5, 5, 5"/>
+                                            <Label Text="{Binding StringComponents}" Grid.Column = "2" Margin = "5, 5, 5, 5"/>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

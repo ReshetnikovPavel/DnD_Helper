@@ -84,52 +84,52 @@
 	  <Compile Update="MenuShell.xaml.cs">
 	    <DependentUpon>MenuShell.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="RaceSelectionPage.xaml.cs">
+	  <Compile Update="Pages\RaceSelectionPage.xaml.cs">
 	    <DependentUpon>RaceSelectionPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="AbilityScoresSelectionPage.xaml">
+	  <MauiXaml Update="Pages\AbilityScoresSelectionPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="BackgroundSelectionPage.xaml">
+	  <MauiXaml Update="Pages\BackgroundSelectionPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="CharacterSelectionPage.xaml">
+	  <MauiXaml Update="Pages\CharacterSelectionPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="CharacterSheetPage.xaml">
+	  <MauiXaml Update="Pages\CharacterSheetPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="EquipmentSelectionPage.xaml">
+	  <MauiXaml Update="Pages\EquipmentSelectionPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="LoginPage.xaml">
+	  <MauiXaml Update="Pages\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="MenuShell.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="PersonalitySelectionPage.xaml">
+	  <MauiXaml Update="Pages\PersonalitySelectionPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="RaceSelectionPage.xaml">
+	  <MauiXaml Update="Pages\RaceSelectionPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="ClassSelectionPage.xaml">
+	  <MauiXaml Update="Pages\ClassSelectionPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="MenuPage.xaml">
+	  <MauiXaml Update="Pages\MenuPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="RegisterPage.xaml">
+	  <MauiXaml Update="Pages\RegisterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Controls\AbilityScoreControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="SubraceSelectionPage.xaml">
+	  <MauiXaml Update="Pages\SubraceSelectionPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

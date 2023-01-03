@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DnD_Helper.PartySelectionPage"
+             x:DataType="viewModels:PartySelectionModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewModels="clr-namespace:DndHelper.App.ViewModels;assembly=DndHelper.App"
+             Title="Мои партии"
+             Style="{StaticResource ContentPage}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="0.7*, 2*, 0.7*, 2*, 0.7*"
+          Margin="10">
+        <Label Text="Партии, к которым я присоединился:"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Margin="10" />
+        <ListView x:Name="MyPartyList"
+        ItemsSource="{Binding MyPartyNames}"
+              Margin="10"
+              Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Frame>
+                                <Label Text="{Binding .}" />
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <toolkit:EventToCommandBehavior
+                EventName="ItemTapped"
+                Command="{Binding SelectMyParty}"
+                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
+            </ListView.Behaviors>
+        </ListView>
+        <Label Text="Партии, которые я создал:"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Margin="10" 
+                   Grid.Row="2"/>
+        <ListView x:Name="MyMasterPartyList"
+        ItemsSource="{Binding MyMasterPartyNames}"
+              Margin="10"
+              Grid.Row="3">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Frame>
+                                <Label Text="{Binding .}" />
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <toolkit:EventToCommandBehavior
+                EventName="ItemTapped"
+                Command="{Binding SelectMyMasterParty}"
+                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
+            </ListView.Behaviors>
+        </ListView>
+        <Button Margin="10, 5, 200, 5"
+            Grid.Row="4"
+            LineBreakMode ="WordWrap"
+            Text="Собрать новую партию"
+            Command="{Binding CreateNewParty}"/>
+        <Button Margin="200, 5, 10, 5"
+            Grid.Row="4"
+            LineBreakMode ="WordWrap"
+            Text="Присоединиться к другой партии"
+            Command="{Binding JoinNewParty}"/>
+    </Grid>
+
+</ContentPage>

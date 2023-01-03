@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DnD_Helper.AbilityScoresSelectionPage"
+             xmlns:controls="clr-namespace:DnD_Helper.Resources.Controls"
+             xmlns:viewModels="clr-namespace:DndHelper.App.ViewModels;assembly=DndHelper.App"
+             Title="Распределите характеристики"
+             x:DataType="viewModels:AbilityScoreSelectionModel"
+             Style="{StaticResource ContentPage}">
+    
+    <Grid Margin="15"
+        RowDefinitions="Auto, *, Auto">
+        <Label Text="{Binding PointsLeft}"
+               HorizontalOptions="Center"/>
+        <Grid Grid.Row="1"
+          ColumnSpacing="25"
+        ColumnDefinitions="*, *"
+        RowDefinitions="*, *, *">
+            <controls:AbilityScoreControl Grid.Column="0"
+                                      Grid.Row="0"
+                                      CounterSource="strength_counter.png"
+                                      Ability="{Binding Strength}" 
+                                          Distributor="{Binding Distributor}"/>
+            <controls:AbilityScoreControl Grid.Column="0"
+                                      Grid.Row="1"
+                                      CounterSource="dexterity_counter.png"
+                                      Ability="{Binding Dexterity}" 
+                                          Distributor="{Binding Distributor}"/>
+            <controls:AbilityScoreControl Grid.Column="0"
+                                      Grid.Row="2"
+                                      CounterSource="constitution_counter.png"
+                                      Ability="{Binding Constitution}" 
+                                          Distributor="{Binding Distributor}"/>
+            <controls:AbilityScoreControl Grid.Column="1"
+                                      Grid.Row="0"
+                                      CounterSource="intelligence_counter.png"
+                                      Ability="{Binding Intelligence}" 
+                                          Distributor="{Binding Distributor}"/>
+            <controls:AbilityScoreControl Grid.Column="1"
+                                      Grid.Row="1"
+                                      CounterSource="wisdom_counter.png"
+                                      Ability="{Binding Wisdom}" 
+                                          Distributor="{Binding Distributor}"/>
+            <controls:AbilityScoreControl Grid.Column="1"
+                                      Grid.Row="2"
+                                      CounterSource="charisma_counter.png"
+                                      Ability="{Binding Charisma}" 
+                                          Distributor="{Binding Distributor}"/>
+        </Grid>
+        <ImageButton Grid.Row="2"
+                     HorizontalOptions="EndAndExpand"
+                     Source="forward_button.png"
+                     Aspect="AspectFit"
+                     Command="{Binding GoToNextPage}"
+                     HeightRequest="80"
+                     WidthRequest="80"/>
+    </Grid>
+
+</ContentPage>

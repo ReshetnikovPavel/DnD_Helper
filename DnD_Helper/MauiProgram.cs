@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Maui;
 using DnD_Helper.ApplicationClasses;
-using DnD_Helper.ViewModels;
 using DndHelper.App.Authentication;
 using DndHelper.Domain.Dnd;
 using DndHelper.Domain.Repositories;
@@ -13,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using DndHelper.App.Database;
 using Firebase.Database.Query;
 using Firebase.Auth;
+using DndHelper.App.ViewModels;
 
 namespace DnD_Helper;
 
