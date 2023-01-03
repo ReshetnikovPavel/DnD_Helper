@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace DnD_Helper.ViewModels
 {
-    class CharacterSelectionModel : BindableObject
+    public class CharacterSelectionModel : BindableObject
     {
         public ICommand SelectCharacter { get; }
         public ICommand CreateNewCharacter { get; }
