@@ -17,11 +17,13 @@ namespace DndHelper.App.ViewModels
             SelectRace = new Command<string>(OnRaceSelected);
         }
 
-        public IEnumerable<string> RaceNames => raceRepository.GetNames();
+        public IEnumerable<string> RaceNames => raceRepository.GetNames()
+            .Where(x => !raceRepository.GetSubraceNames(x).Any()); //Пока подрасы не сделаны...
 
         private void OnRaceSelected(string selectedName)
         {
-            MessageSender.SendSelectionMade(this, nameof(Character.Race), selectedName);
+            MessageSender.SendSelectionMade(this,
+                nameof(Character.Race), selectedName);
             MessageSender.SendPageCompleted<RaceSelectionModel>(this);
         }
     }

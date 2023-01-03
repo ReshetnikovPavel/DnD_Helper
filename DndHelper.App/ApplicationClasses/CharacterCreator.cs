@@ -1,5 +1,6 @@
 ﻿using DndHelper.Domain;
 using DndHelper.Domain.Dnd;
+using DndHelper.Domain.Repositories;
 using Microsoft.Maui.Controls;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace DndHelper.App.ApplicationClasses
     {
         private IStateManager<string, object> stateManager;
 
-        public CharacterCreator(IStateManager<string, object> stateManager)
+        public CharacterCreator(IStateManager<string, object> stateManager, IRaceRepository raceRepository)
         {
             this.stateManager = stateManager;
             SetDefaultValues();
@@ -32,11 +33,11 @@ namespace DndHelper.App.ApplicationClasses
 
         public Character Create()
         {
-            var race = stateManager.GetValue(nameof(Character.Race)) as Race;
-            var dndClass = stateManager.GetValue(nameof(Character.Class)) as Class;
-            var abilities = stateManager.GetValue(nameof(Character.Abilities)) as Abilities;
+            var race = stateManager.GetValue(nameof(Character.Race)) as string;
+            var dndClass = stateManager.GetValue(nameof(Character.Class)) as string;
+            var abilities = stateManager.GetValue(nameof(Character.Abilities)) as string;
             var name = stateManager.GetValue(nameof(Character.Name)) as string;
-            var background = stateManager.GetValue(nameof(Character.Background)) as Background;
+            var background = stateManager.GetValue(nameof(Character.Background)) as string;
             
 
             var character = new Character();
