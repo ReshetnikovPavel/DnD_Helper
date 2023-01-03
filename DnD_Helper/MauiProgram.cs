@@ -63,7 +63,7 @@ public static class MauiProgram
         services
             .AddTransient<MenuPage>()
             .AddTransient<LoginPage>()
-            .AddTransient<RegisterPage>()
+            .AddTransientWithShellRoute<RegisterPage, RegisterViewModel>(nameof(RegisterViewModel))
             .AddTransient<AbilityScoresSelectionPage>()
             .AddTransient<ClassSelectionPage>()
             .AddTransient<RaceSelectionPage>()

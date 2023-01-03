@@ -33,7 +33,7 @@ namespace DndHelper.App.ViewModels
             }
         }
 
-        public LoginViewModel(IAuthenticationProvider<string> authProvider)//, RegisterPage registerPage)
+        public LoginViewModel(IAuthenticationProvider<string> authProvider)
         {
             this.authProvider = authProvider;
             RegisterBtn = new Command(RegisterBtnTappedAsync);
@@ -42,11 +42,14 @@ namespace DndHelper.App.ViewModels
 
         private async void LoginBtnTappedAsync(object obj)
         {
-            await authProvider.SignInWithEmailAndPassword(UserName, UserPassword);
-            await Shell.Current.GoToAsync(nameof(CharacterSelectionModel));
+            var result = await authProvider.SignInWithEmailAndPassword(UserName, UserPassword);
+            if (result.IsSuccess)
+                await Shell.Current.GoToAsync(nameof(MenuSelectionModel));
+            else
+                await Shell.Current.DisplayAlert("Не удалось войти", result.Status.ToString(), "Эх");
         }
 
-        private async void RegisterBtnTappedAsync(object obj)
+        private static async void RegisterBtnTappedAsync(object obj)
         {
             await Shell.Current.GoToAsync(nameof(RegisterViewModel));
         }

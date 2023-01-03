@@ -2,7 +2,7 @@
 using DndHelper.App.Authentication;
 using DndHelper.App;
 using System.Net.Mail;
-using System.Security.Cryptography.X509Certificates;
+using DndHelper.Infrastructure;
 
 namespace DndHelper.Firebase.Adapters;
 
@@ -16,14 +16,38 @@ public class FirebaseAuthProviderAdapter : IAuthenticationProvider<string>
     {
         provider = new FirebaseAuthProvider(config);
     }
-    public async Task<User<string>> RegisterUserWithEmailAndPassword(string email, string password)
+
+    public async Task<Result<User<string>, AuthenticationStatus>> RegisterUserWithEmailAndPassword(string email, string password)
+    {
+        try
+        {
+            return await RegisterUserWithEmailAndPasswordThrowsException(email, password);
+        }
+        catch (FirebaseAuthException e)
+        {
+            return Result.CreateFailure<User<string>, AuthenticationStatus>((AuthenticationStatus) e.Reason);
+        }
+    }
+    private async Task<User<string>> RegisterUserWithEmailAndPasswordThrowsException(string email, string password)
     {
         link = await provider.CreateUserWithEmailAndPasswordAsync(email, password);
         User = CreateUserWithEmailAndPassword(link);
         return User;
     }
 
-    public async Task<User<string>> SignInWithEmailAndPassword(string email, string password)
+    public async Task<Result<User<string>, AuthenticationStatus>> SignInWithEmailAndPassword(string email, string password)
+    {
+        try
+        {
+            return await SignInWithEmailAndPasswordThrowsException(email, password);
+        }
+        catch (FirebaseAuthException e)
+        {
+            return Result.CreateFailure<User<string>, AuthenticationStatus>((AuthenticationStatus)e.Reason);
+        }
+    }
+
+    private async Task<User<string>> SignInWithEmailAndPasswordThrowsException(string email, string password)
     {
         link = await provider.SignInWithEmailAndPasswordAsync(email, password);
         User = CreateUserWithEmailAndPassword(link);
