@@ -19,11 +19,6 @@ namespace DndHelper.App.ApplicationClasses
             SubscribeToMessaging();
         }
 
-        public void SubscribeToModel<TModel>() where TModel : BindableObject
-        {
-            throw new NotImplementedException();
-        }
-
         public bool CanCreate()
         {
             return IsSelected(nameof(Race));
