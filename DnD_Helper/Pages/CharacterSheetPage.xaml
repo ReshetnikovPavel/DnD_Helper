@@ -33,15 +33,15 @@
                 <Grid Grid.Row = "1" ColumnDefinitions = "*, *, *">
                     <Label Margin="10, 10, 10, 10"
                         LineBreakMode ="WordWrap"
-                        Text="{Binding Class}"
+                        Text="{Binding Character.Class.Name}"
                         Grid.Column = "0"/>
                     <Label Margin="10, 10, 10, 10"
                         LineBreakMode ="WordWrap"
-                        Text="{Binding Race}"
+                        Text="{Binding Character.Race.Name}"
                         Grid.Column ="1"/>
                     <Label Margin="10, 10, 10, 10"
                         LineBreakMode ="WordWrap"
-                        Text="{Binding Background}"
+                        Text="{Binding Character.Background.Name}"
                         Grid.Column="2"/>
                 </Grid>
             </Grid>

@@ -9,6 +9,7 @@ namespace DndHelper.App.ViewModels
     {
         [ObservableProperty]
         Character character;
+        public string Name => Character.Name;
         public int Level => 1;
         public string Class => "Rogue";
         public string Race => "Human";
