@@ -57,6 +57,7 @@ namespace DndHelper.App.ViewModels
 
         private void OnGoToNextPage()
         {
+            MessageSender.SendSelectionMade(this, nameof(Character.Abilities), abilities);
             MessageSender.SendPageCompleted<AbilityScoreSelectionModel>(this);
         }
     }

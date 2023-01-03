@@ -21,7 +21,12 @@ namespace DndHelper.App.ApplicationClasses
 
         public bool CanCreate()
         {
-            return IsSelected(nameof(Race));
+            return IsSelected(nameof(Character.Race))
+                && IsSelected(nameof(Character.Class))
+                && IsSelected(nameof(Character.Background))
+                && IsSelected(nameof(Character.Abilities))
+                && IsSelected(nameof(Character.Name));
+
         }
 
         public Character Create()
