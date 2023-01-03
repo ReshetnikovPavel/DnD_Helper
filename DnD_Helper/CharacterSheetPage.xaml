@@ -4,7 +4,7 @@
              x:Class="DnD_Helper.CharacterSheetPage"
              xmlns:models="clr-namespace:DnD_Helper.ViewModels"
              x:DataType="models:CharacterModel"
-             xmlns:domain="clr-namespace:Domain;assembly=Domain"
+             xmlns:domain="clr-namespace:DndHelper.Domain.Dnd;assembly=DndHelper.Domain"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              Title="Персонаж"
              Style="{StaticResource ContentPage}">
