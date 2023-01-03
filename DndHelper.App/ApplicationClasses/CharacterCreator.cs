@@ -32,7 +32,21 @@ namespace DndHelper.App.ApplicationClasses
 
         public Character Create()
         {
-            return null;
+            var race = stateManager.GetValue(nameof(Character.Race)) as Race;
+            var dndClass = stateManager.GetValue(nameof(Character.Class)) as Class;
+            var abilities = stateManager.GetValue(nameof(Character.Abilities)) as Abilities;
+            var name = stateManager.GetValue(nameof(Character.Name)) as string;
+            var background = stateManager.GetValue(nameof(Character.Background)) as Background;
+            
+
+            var character = new Character();
+            character.ApplyRace(race);
+            character.ApplyClass(dndClass);
+            character.ApplyAbilities(abilities);
+            character.Name = name;
+            character.ApplyBackground(background);
+
+            return character;
         }
 
         private void SetDefaultValues()

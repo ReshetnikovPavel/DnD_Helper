@@ -4,48 +4,52 @@ namespace DndHelper.Domain.Dnd;
 
 public class Character : Entity<Guid>, IDndObject
 {
-	public Character(Abilities abilities) : base(Guid.NewGuid())
+	public Character() : base(Guid.NewGuid())
     {
         ProficiencyBonus = new ProficiencyBonus(2);
-        Abilities = abilities.GetDictionary();
-        Skills = Skill.CreateFrom(Abilities, ProficiencyBonus);
         Speed = new Speed(0);
-        SavingThrows = SavingThrow.CreateFrom(Abilities, ProficiencyBonus);
     }
 
-	
-	public string Name { get; }
-	//public string PlayerName { get; }
-    public IReadOnlyDictionary<AbilityName, AbilityScore> Abilities { get; }
-    public IReadOnlyDictionary<AbilityName, SavingThrow> SavingThrows { get; }
-    public IReadOnlyDictionary<SkillName, Skill> Skills { get; }
-    public Race Race { get; set; }
-	public Class Class { get; set;  }
-	public Background Background { get; set; }
+	public string Name { get; set; }
+    public IReadOnlyDictionary<AbilityName, AbilityScore> Abilities { get; private set; }
+    public IReadOnlyDictionary<AbilityName, SavingThrow> SavingThrows { get; private set; }
+    public IReadOnlyDictionary<SkillName, Skill> Skills { get; private set; }
+    public Race Race { get; private set; }
+	public Class Class { get; private set;  }
+	public Background Background { get; private set; }
 	public ProficiencyBonus ProficiencyBonus { get; }
-    public Size Size { get; set; }
-    public Speed Speed { get; set; }
-    public HashSet<Language> Languages { get; set; } = new();
-    public HashSet<Weapon> WeaponsProficiencies { get; set; } = new();
-    public HashSet<Instrument> InstrumentProficiencies { get; set; } = new();
-    public List<Equipment> Equipment { get; set; } = new();
+    public Size Size { get; private set; }
+    public Speed Speed { get; private set; }
+    public HashSet<Language> Languages { get; private set; } = new();
+    public HashSet<Weapon> WeaponsProficiencies { get; private set; } = new();
+    public HashSet<Instrument> InstrumentProficiencies { get; private set; } = new();
+    public List<Equipment> Equipment { get; private set; } = new();
 
-    public List<Weapon> Weapons { get; set; } = new();
-    public List<Instrument> Instruments { get; set; } = new();
-    public HashSet<Feat> Feats { get; set; } = new();
-    public HashSet<Trait> Traits { get; set; } = new();
-    public HashSet<Spell> Spells { get; set; } = new();
-    public AbilityName? SpellAbility { get; set; }
+    public List<Weapon> Weapons { get; private set; } = new();
+    public List<Instrument> Instruments { get; private set; } = new();
+    public HashSet<Feat> Feats { get; private set; } = new();
+    public HashSet<Trait> Traits { get; private set; } = new();
+    public HashSet<Spell> Spells { get; private set; } = new();
+    public AbilityName? SpellAbility { get; private set; }
     public int Initiative => Abilities[AbilityName.Dexterity].Modifier;
     public int AC => 10;
 
-    public SpellSlotsTable SpellSlotsTable { get; set; }
+    public SpellSlotsTable SpellSlotsTable { get; private set; }
 
-    public HitDice HitDice { get; set; }
-    public HitPoints HitPoints { get; set; }
+    public HitDice HitDice { get; private set; }
+    public HitPoints HitPoints { get; private set; }
 
-    public void ApplyRace()
+    public void ApplyAbilities(Abilities abilities)
+    {
+        Abilities = abilities.GetDictionary();
+        Skills = Skill.CreateFrom(Abilities, ProficiencyBonus);
+        SavingThrows = SavingThrow.CreateFrom(Abilities, ProficiencyBonus);
+    }
+
+    public void ApplyRace(Race race)
 	{
+        Race = race;
+
         foreach (var bonus in Race.AbilityScoreBonuses)
             Abilities[bonus.Name].AddBonus(bonus);
 
@@ -71,8 +75,10 @@ public class Character : Entity<Guid>, IDndObject
             Skills[skillName].IsProficient = true;
     }
 
-    public void ApplyBackground()
+    public void ApplyBackground(Background background)
     {
+        Background = background;
+
         Equipment.AddRange(Background.Equipment);
 
         InstrumentProficiencies.UnionWith(Background.InstrumentProficiencies);
@@ -83,8 +89,10 @@ public class Character : Entity<Guid>, IDndObject
         Instruments.AddRange(Background.InstrumentProficiencies);
     }
 
-    public void ApplyClass()
+    public void ApplyClass(Class dndClass)
     {
+        Class = dndClass;
+
         HitDice = Class.HitDice;
 
         foreach (var abilityName in Class.AbilityNamesForSavingThrows) 
