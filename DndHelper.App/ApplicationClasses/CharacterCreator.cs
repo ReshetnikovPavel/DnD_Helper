@@ -16,6 +16,7 @@ namespace DndHelper.App.ApplicationClasses
         public CharacterCreator(IStateManager<string, object> stateManager)
         {
             this.stateManager = stateManager;
+            SetDefaultValues();
             SubscribeToMessaging();
         }
 
@@ -32,6 +33,11 @@ namespace DndHelper.App.ApplicationClasses
         public Character Create()
         {
             return null;
+        }
+
+        private void SetDefaultValues()
+        {
+            stateManager.SetValue(nameof(Character.Abilities), Abilities.CreateDefault());
         }
 
         private void SubscribeToMessaging()
