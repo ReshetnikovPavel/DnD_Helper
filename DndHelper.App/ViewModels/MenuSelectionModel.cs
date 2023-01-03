@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace DnD_Helper.ViewModels
+namespace DndHelper.App.ViewModels
 {
     public class MenuSelectionModel : BindableObject
     {

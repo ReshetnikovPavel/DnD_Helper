@@ -13,9 +13,9 @@ namespace DndHelper.App.ApplicationClasses
     {
         private IStateManager<string, object> stateManager;
 
-        public CharacterCreator()
+        public CharacterCreator(IStateManager<string, object> stateManager)
         {
-            stateManager = new StateDictionary<string, object>();
+            this.stateManager = stateManager;
         }
 
         public void SubscribeToModel<TModel>() where TModel : BindableObject
@@ -26,12 +26,12 @@ namespace DndHelper.App.ApplicationClasses
 
         public bool CanCreate()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public Character Create()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         private void OnSelectionMade(object sender, Selection selection)

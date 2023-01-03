@@ -10,8 +10,8 @@
     ForegroundColor="{DynamicResource ShellText}"
     TitleColor="{DynamicResource ShellText}"
     FlyoutBackgroundColor="{StaticResource FlyoutBackground}"
-    x:DataType="models:AppShellViewModel"
-    xmlns:models="clr-namespace:DnD_Helper.ViewModels">
+    x:DataType="viewModels:AppShellViewModel"
+    xmlns:viewModels="clr-namespace:DndHelper.App.ViewModels;assembly=DndHelper.App">
 
     <Shell.ItemTemplate>
         <DataTemplate x:DataType="Tab">

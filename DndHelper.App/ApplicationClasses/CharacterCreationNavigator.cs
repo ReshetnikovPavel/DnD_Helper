@@ -1,28 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DndHelper.App.ViewModels;
+using DndHelper;
 
 namespace DndHelper.App.ApplicationClasses
 {
-    class CharacterCreationNavigator : IModelNavigator
+    public class CharacterCreationNavigator
     {
-        private RouteCollection routes;
+        private readonly IModelNavigator modelNavigator;
+        private readonly ICreatesCharacter creator;
 
-        public CharacterCreationNavigator()
+        public CharacterCreationNavigator(IModelNavigator modelNavigator, ICreatesCharacter creator)
         {
-            routes = new RouteCollection();
+            this.modelNavigator = modelNavigator;
+            this.creator = creator;
+            SubscribeToMessaging();
+        }
+
+        public CharacterCreationNavigator(ICreatesCharacter creator)
+        {
+            this.creator = creator;
         }
 
         public void AddModel<TModel>() where TModel : BindableObject
         {
-            routes.AddRoute(new RouteItem("///", typeof(TModel).Name));
+            modelNavigator.AddModel<TModel>();
         }
 
-        public void GoToNextRoute(string currentRoute)
+        public async void TryGoToCharacterSheet()
         {
-            routes.GetNextAvailableRoute(currentRoute)?.TryGo();
+            if (!creator.CanCreate())
+            {
+                await Shell.Current.DisplayAlert("Невозможно перейти в лист персонажа",
+                    "Не все поля заполнены", "Эх");
+                return;
+            }
+            await Shell.Current.GoToAsync($"/{nameof(CharacterSheetViewModel)}");
+        }
+
+        private void SubscribeToMessaging()
+        {
+            MessagingCenter.Subscribe<BindableObject, string>(
+                this, MessageTypes.PageCompleted.ToString(), OnPageCompleted);
+        }
+        
+        private void OnPageCompleted(object sender, string currentRoute)
+        {
+            if (!modelNavigator.TryGoToNextRoute(currentRoute))
+                TryGoToCharacterSheet();
         }
     }
 }

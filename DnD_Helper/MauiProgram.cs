@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Maui;
-using DnD_Helper.ApplicationClasses;
 using DndHelper.App.Authentication;
 using DndHelper.Domain.Dnd;
 using DndHelper.Domain.Repositories;
@@ -13,6 +12,7 @@ using DndHelper.App.Database;
 using Firebase.Database.Query;
 using Firebase.Auth;
 using DndHelper.App.ViewModels;
+using DndHelper.App.ApplicationClasses;
 
 namespace DnD_Helper;
 
@@ -59,17 +59,20 @@ public static class MauiProgram
     }
 
     private static IServiceCollection RegisterPages(this IServiceCollection services)
-	{
-		services
-			.AddTransient<MenuPage>()
-			.AddTransient<LoginPage>()
-			.AddTransient<RegisterPage>()
-			.AddTransient<AbilityScoresSelectionPage>()
-			.AddTransient<ClassSelectionPage>()
-			.AddTransient<RaceSelectionPage>()
-			.AddTransient<BackgroundSelectionPage>()
-			.AddTransientWithShellRoute<CharacterSelectionPage, CharacterSelectionModel>(nameof(CharacterSelectionModel));
-		return services;
+    {
+        services
+            .AddTransient<MenuPage>()
+            .AddTransient<LoginPage>()
+            .AddTransient<RegisterPage>()
+            .AddTransient<AbilityScoresSelectionPage>()
+            .AddTransient<ClassSelectionPage>()
+            .AddTransient<RaceSelectionPage>()
+            .AddTransient<BackgroundSelectionPage>()
+            .AddTransientWithShellRoute<CharacterSelectionPage, CharacterSelectionModel>(
+                nameof(CharacterSelectionModel))
+            .AddTransientWithShellRoute<CharacterSheetPage, CharacterSheetViewModel>(nameof(CharacterSheetViewModel));
+
+        return services;
 	}
 
 	private static IServiceCollection RegisterServices(this IServiceCollection services)

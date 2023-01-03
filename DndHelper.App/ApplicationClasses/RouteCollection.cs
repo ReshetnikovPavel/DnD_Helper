@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DndHelper.App.ApplicationClasses
 {
-    internal class RouteCollection
+    public class RouteCollection : IHasRouteCollection
     {
         private Dictionary<IHasRoute, int> routes;
 

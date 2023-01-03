@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DnD_Helper.ViewModels
+namespace DndHelper.App.ViewModels
 {
-    internal class CharacterSheetViewModel : BindableObject
+    public class CharacterSheetViewModel : BindableObject
     {
         public string Text
             => "Hello, cruel world!";

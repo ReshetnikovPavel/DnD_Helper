@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DndHelper.App.ApplicationClasses
 {
-    class StateDictionary<TKey, TValue> : IStateManager<TKey, TValue>
+    public class StateDictionary<TKey, TValue> : IStateManager<TKey, TValue>
     {
         private Dictionary<TKey, TValue> state = new Dictionary<TKey, TValue>();
 

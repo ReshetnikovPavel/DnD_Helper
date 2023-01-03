@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DndHelper.App.ApplicationClasses
 {
-    internal interface IHasRoute
+    public interface IHasRoute
     {
         string Route { get; }
         Func<bool> CanGo { get; }
