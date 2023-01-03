@@ -9,45 +9,6 @@ using DndHelper.Domain.Repositories;
 using DndHelper.Domain.Services;
 using DndHelper.Firebase.Adapters;
 using DndHelper.Xml.Repositories;
-
-/* Unmerged change from project 'DnD_Helper (net6.0-android)'
-Before:
-using Firebase.Database.Query;
-using Firebase.Auth;
-using DndHelper.App.ViewModels;
-using DndHelper.App.ApplicationClasses;
-After:
-using Firebase.Auth;
-using Firebase.Database.Query;
-using Microsoft.Extensions.DependencyInjection;
-using System.Xml.Linq;
-*/
-
-/* Unmerged change from project 'DnD_Helper (net6.0-maccatalyst)'
-Before:
-using Firebase.Database.Query;
-using Firebase.Auth;
-using DndHelper.App.ViewModels;
-using DndHelper.App.ApplicationClasses;
-After:
-using Firebase.Auth;
-using Firebase.Database.Query;
-using Microsoft.Extensions.DependencyInjection;
-using System.Xml.Linq;
-*/
-
-/* Unmerged change from project 'DnD_Helper (net6.0-windows10.0.19041.0)'
-Before:
-using Firebase.Database.Query;
-using Firebase.Auth;
-using DndHelper.App.ViewModels;
-using DndHelper.App.ApplicationClasses;
-After:
-using Firebase.Auth;
-using Firebase.Database.Query;
-using Microsoft.Extensions.DependencyInjection;
-using System.Xml.Linq;
-*/
 using Firebase.Auth;
 using System.Xml.Linq;
 
