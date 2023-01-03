@@ -2,7 +2,7 @@
 
 public enum SpellComponent
 {
-	Verbal,
-	Somatic,
-	Material
+    Verbal,
+    Somatic,
+    Material
 }

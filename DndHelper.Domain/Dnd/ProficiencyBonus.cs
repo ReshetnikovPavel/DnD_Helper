@@ -8,5 +8,5 @@ public class ProficiencyBonus : ValueType<ProficiencyBonus>, IHaveValue, IDndObj
     {
         Value = value;
     }
-	public int Value { get; }
+    public int Value { get; }
 }

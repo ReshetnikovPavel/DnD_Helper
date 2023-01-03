@@ -1,8 +1,58 @@
-﻿using Firebase.Database;
+﻿
+/* Unmerged change from project 'DndHelper.Firebase (net6.0)'
+Before:
+using Firebase.Database;
 using DndHelper.App.Database;
 using DndHelper.App;
 using DndHelper.App.Authentication;
+After:
+using DndHelper.App;
+using DndHelper.App.Authentication;
+using DndHelper.App.Database;
 using Firebase.Auth;
+*/
+
+/* Unmerged change from project 'DndHelper.Firebase (net6.0-maccatalyst)'
+Before:
+using Firebase.Database;
+using DndHelper.App.Database;
+using DndHelper.App;
+using DndHelper.App.Authentication;
+After:
+using DndHelper.App;
+using DndHelper.App.Authentication;
+using DndHelper.App.Database;
+using Firebase.Auth;
+*/
+
+/* Unmerged change from project 'DndHelper.Firebase (net6.0-windows10.0.19041.0)'
+Before:
+using Firebase.Database;
+using DndHelper.App.Database;
+using DndHelper.App;
+using DndHelper.App.Authentication;
+After:
+using DndHelper.App;
+using DndHelper.App.Authentication;
+using DndHelper.App.Database;
+using Firebase.Auth;
+*/
+
+/* Unmerged change from project 'DndHelper.Firebase (net6.0-ios)'
+Before:
+using Firebase.Database;
+using DndHelper.App.Database;
+using DndHelper.App;
+using DndHelper.App.Authentication;
+After:
+using DndHelper.App;
+using DndHelper.App.Authentication;
+using DndHelper.App.Database;
+using Firebase.Auth;
+*/
+using DndHelper.App;
+using DndHelper.App.Database;
+using Firebase.Database;
 
 namespace DndHelper.Firebase.Adapters
 {
@@ -28,7 +78,7 @@ namespace DndHelper.Firebase.Adapters
                 new FirebaseOptions()
                 {
                     AuthTokenAsyncFactory = () => GetToken(user)
-                }) ;
+                });
         }
 
         private static Task<string> GetToken<T>(User<T> user)

@@ -2,10 +2,10 @@
 
 public enum AbilityName
 {
-	Strength,
-	Dexterity,
-	Constitution,
-	Intelligence,
-	Wisdom,
-	Charisma
+    Strength,
+    Dexterity,
+    Constitution,
+    Intelligence,
+    Wisdom,
+    Charisma
 }

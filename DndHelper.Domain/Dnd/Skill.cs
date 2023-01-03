@@ -9,7 +9,7 @@ public class Skill : ValueType<Skill>, IBasedOnAbility<SkillName>, IDndObject
 	public SkillName Name { get; }
 	public int Modifier => Ability.Modifier + (IsProficient ? ProficiencyBonus.Value : 0);
 	public ProficiencyBonus ProficiencyBonus { get; }
-	
+
 	public Skill(SkillName name, AbilityScore ability, ProficiencyBonus proficiencyBonus)
 	{
 		Name = name;
@@ -17,14 +17,14 @@ public class Skill : ValueType<Skill>, IBasedOnAbility<SkillName>, IDndObject
 		ProficiencyBonus = proficiencyBonus;
 	}
 
-    public static IReadOnlyDictionary<SkillName, Skill> CreateFrom(IReadOnlyDictionary<AbilityName, AbilityScore> scores, ProficiencyBonus proficiencyBonus)
-    {
+	public static IReadOnlyDictionary<SkillName, Skill> CreateFrom(IReadOnlyDictionary<AbilityName, AbilityScore> scores, ProficiencyBonus proficiencyBonus)
+	{
 		var skills = new Dictionary<SkillName, Skill>();
-        foreach (var skillName in Enum.GetValues<SkillName>())
-        {
-            var abilityName = AbilityScore.GetNameFromSkillName(skillName);
-            skills[skillName] = new Skill(skillName, scores[abilityName], proficiencyBonus);
-        }
+		foreach (var skillName in Enum.GetValues<SkillName>())
+		{
+			var abilityName = AbilityScore.GetNameFromSkillName(skillName);
+			skills[skillName] = new Skill(skillName, scores[abilityName], proficiencyBonus);
+		}
 		return skills;
-    }
+	}
 }

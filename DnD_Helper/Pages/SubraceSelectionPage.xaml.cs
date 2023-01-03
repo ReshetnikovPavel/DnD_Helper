@@ -4,9 +4,9 @@ namespace DnD_Helper;
 
 public partial class SubraceSelectionPage : ContentPage
 {
-	public SubraceSelectionPage()
-	{
-		InitializeComponent();
-		BindingContext = new SubraceSelectionModel();
-	}
+    public SubraceSelectionPage()
+    {
+        InitializeComponent();
+        BindingContext = new SubraceSelectionModel();
+    }
 }

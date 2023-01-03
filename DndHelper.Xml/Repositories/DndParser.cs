@@ -1,112 +1,112 @@
-﻿using System.ComponentModel;
-using DndHelper.Domain.Dnd;
+﻿using DndHelper.Domain.Dnd;
 using DndHelper.Infrastructure;
+using System.ComponentModel;
 
 namespace DndHelper.Xml.Repositories;
 
 public class DndCompendiumParser : IDndParser
 {
     public Domain.Dnd.Size ParseSize(string size)
-	{
-		return size switch
-		{
-			"T" => Domain.Dnd.Size.Tiny,
-			"S" => Domain.Dnd.Size.Small,
-			"M" => Domain.Dnd.Size.Medium,
-			"L" => Domain.Dnd.Size.Large,
-			"H" => Domain.Dnd.Size.Huge,
-			"G" => Domain.Dnd.Size.Gargantuan,
-			_ => throw new InvalidEnumArgumentException("Invalid size")
-		};
-	}
+    {
+        return size switch
+        {
+            "T" => Domain.Dnd.Size.Tiny,
+            "S" => Domain.Dnd.Size.Small,
+            "M" => Domain.Dnd.Size.Medium,
+            "L" => Domain.Dnd.Size.Large,
+            "H" => Domain.Dnd.Size.Huge,
+            "G" => Domain.Dnd.Size.Gargantuan,
+            _ => throw new InvalidEnumArgumentException("Invalid size")
+        };
+    }
 
-	public IEnumerable<string> Split(string text)
-	{
-		return text.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries)
+    public IEnumerable<string> Split(string text)
+    {
+        return text.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries)
             .Select(x => x.Trim());
-	}
+    }
 
-	public Speed ParseSpeed(string speed)
-	{
-		if (speed == null)
-			return null;
-		
-		var speedValue = int.Parse(speed);
-		return new Speed(speedValue);
-	}
+    public Speed ParseSpeed(string speed)
+    {
+        if (speed == null)
+            return null;
 
-	public AbilityScoreBonus ParseAbilityScoreBonus(string abilityScoreBonus)
-	{
+        var speedValue = int.Parse(speed);
+        return new Speed(speedValue);
+    }
+
+    public AbilityScoreBonus ParseAbilityScoreBonus(string abilityScoreBonus)
+    {
         if (abilityScoreBonus == null)
             return null;
 
         var elements = abilityScoreBonus.Split(" ");
-		var abilityName = ParseAbilityName(elements[0]);
-		var bonus = int.Parse(elements[1]);
-		
-		return new AbilityScoreBonus(abilityName, bonus);
-	}
+        var abilityName = ParseAbilityName(elements[0]);
+        var bonus = int.Parse(elements[1]);
 
-	public AbilityName ParseAbilityName(string abilityName)
-	{
-		return abilityName switch
-		{
-			"Str" => AbilityName.Strength,
-			"Dex" => AbilityName.Dexterity,
-			"Con" => AbilityName.Constitution,
-			"Int" => AbilityName.Intelligence,
-			"Wis" => AbilityName.Wisdom,
-			"Cha" => AbilityName.Charisma,
-			_ => throw new InvalidEnumArgumentException("Invalid ability name")
-		};
-	}
+        return new AbilityScoreBonus(abilityName, bonus);
+    }
 
-	public Language ParseLanguage(string language)
-	{
-		return new Language(language);
-	}
+    public AbilityName ParseAbilityName(string abilityName)
+    {
+        return abilityName switch
+        {
+            "Str" => AbilityName.Strength,
+            "Dex" => AbilityName.Dexterity,
+            "Con" => AbilityName.Constitution,
+            "Int" => AbilityName.Intelligence,
+            "Wis" => AbilityName.Wisdom,
+            "Cha" => AbilityName.Charisma,
+            _ => throw new InvalidEnumArgumentException("Invalid ability name")
+        };
+    }
 
-	public (int level, string spell) ParseSpell(string spell)
-	{
-		var elements = spell.Split(": ");
-		var level = int.Parse(elements[0]);
-		var name = elements[1];
+    public Language ParseLanguage(string language)
+    {
+        return new Language(language);
+    }
+
+    public (int level, string spell) ParseSpell(string spell)
+    {
+        var elements = spell.Split(": ");
+        var level = int.Parse(elements[0]);
+        var name = elements[1];
 
         return (level, name);
     }
 
-	public Weapon ParseWeapon(string weapon)
-	{
+    public Weapon ParseWeapon(string weapon)
+    {
         if (weapon == null)
             return null;
         return new Weapon(weapon);
-	}
+    }
 
-	public SkillName ParseSkillName(string skillName)
-	{
-		return skillName switch
-		{
-			"Акробатика" => SkillName.Acrobatics,
-			"Уход за животными" => SkillName.AnimalHandling,
-			"Магия" => SkillName.Arcana,
-			"Атлетика" => SkillName.Athletics,
-			"Обман" => SkillName.Deception,
-			"История" => SkillName.History,
-			"Проницательность" => SkillName.Insight,
-			"Запугивание" => SkillName.Intimidation,
-			"Анализ" => SkillName.Investigation,
-			"Медицина" => SkillName.Medicine,
-			"Природа" => SkillName.Nature,
-			"Внимательность" => SkillName.Perception,
-			"Выступление" => SkillName.Performance,
-			"Убеждение" => SkillName.Persuasion,
-			"Религия" => SkillName.Religion,
-			"Ловкость рук" => SkillName.SleightOfHand,
-			"Скрытность" => SkillName.Stealth,
-			"Выживание" => SkillName.Survival,
-			_ => throw new InvalidEnumArgumentException("Invalid skill name")
-		};
-	}
+    public SkillName ParseSkillName(string skillName)
+    {
+        return skillName switch
+        {
+            "Акробатика" => SkillName.Acrobatics,
+            "Уход за животными" => SkillName.AnimalHandling,
+            "Магия" => SkillName.Arcana,
+            "Атлетика" => SkillName.Athletics,
+            "Обман" => SkillName.Deception,
+            "История" => SkillName.History,
+            "Проницательность" => SkillName.Insight,
+            "Запугивание" => SkillName.Intimidation,
+            "Анализ" => SkillName.Investigation,
+            "Медицина" => SkillName.Medicine,
+            "Природа" => SkillName.Nature,
+            "Внимательность" => SkillName.Perception,
+            "Выступление" => SkillName.Performance,
+            "Убеждение" => SkillName.Persuasion,
+            "Религия" => SkillName.Religion,
+            "Ловкость рук" => SkillName.SleightOfHand,
+            "Скрытность" => SkillName.Stealth,
+            "Выживание" => SkillName.Survival,
+            _ => throw new InvalidEnumArgumentException("Invalid skill name")
+        };
+    }
 
     public string ParseSkillNameBack(SkillName skill)
     {
@@ -149,12 +149,12 @@ public class DndCompendiumParser : IDndParser
     }
 
     public ChooseMany<T> ParseChooseMany<T>(string choiceOption, Func<string, T> parse)
-	{
+    {
         if (choiceOption == null)
             return null;
         var split = choiceOption.Split(": ");
-		var howMany = int.Parse(split[0]);
-		var entries = ParseManyAnyType(split[1], parse);
+        var howMany = int.Parse(split[0]);
+        var entries = ParseManyAnyType(split[1], parse);
 
         return new ChooseMany<T>(entries, howMany);
     }
@@ -163,7 +163,7 @@ public class DndCompendiumParser : IDndParser
     {
         var split = choiceOption.Split(": ");
         var howMany = int.Parse(split[0]);
-		var entry = parse(split[1]);
+        var entry = parse(split[1]);
 
         for (var i = 0; i < howMany; i++)
         {
@@ -176,9 +176,9 @@ public class DndCompendiumParser : IDndParser
     }
 
     public Armor ParseArmor(string armor)
-	{
-		return new Armor(armor);
-	}
+    {
+        return new Armor(armor);
+    }
 
     public ArmorType ParseArmorType(string armorType)
     {
@@ -186,14 +186,14 @@ public class DndCompendiumParser : IDndParser
     }
 
     public Instrument ParseInstrument(string instrument)
-	{
-		return new Instrument(instrument);
-	}
+    {
+        return new Instrument(instrument);
+    }
 
-	public Equipment ParseEquipment(string equipment)
-	{
-		return new Equipment(equipment);
-	}
+    public Equipment ParseEquipment(string equipment)
+    {
+        return new Equipment(equipment);
+    }
 
     public Feat ParseFeat(string feat)
     {
@@ -225,7 +225,7 @@ public class DndCompendiumParser : IDndParser
     {
         return spellComponents
             .ToCharArray()
-			.Select(ParseSpellComponent);
+            .Select(ParseSpellComponent);
     }
 
     public WeaponType ParseWeaponType(string weaponType)

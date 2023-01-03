@@ -2,5 +2,5 @@
 
 public interface ICanBeProficient
 {
-	bool IsProficient { get; }
+    bool IsProficient { get; }
 }

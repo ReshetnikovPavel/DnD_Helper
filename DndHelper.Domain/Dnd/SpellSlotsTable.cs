@@ -3,10 +3,10 @@
 public class SpellSlotsTable : IDndObject
 {
     private readonly int[,] table = new int[10, 20];
-    public int this[int spellLevel,int classLevel]
+    public int this[int spellLevel, int classLevel]
     {
-        get => table[spellLevel, classLevel-1];
-        set => table[spellLevel, classLevel-1] = value;
+        get => table[spellLevel, classLevel - 1];
+        set => table[spellLevel, classLevel - 1] = value;
     }
 
     public IEnumerable<int> GetSpellSlots(int classLevel)

@@ -1,12 +1,6 @@
 ﻿using DndHelper.App.ApplicationClasses;
 using DndHelper.Domain.Dnd;
 using DndHelper.Domain.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace DndHelper.App.ViewModels

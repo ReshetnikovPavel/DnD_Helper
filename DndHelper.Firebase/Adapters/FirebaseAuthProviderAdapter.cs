@@ -1,8 +1,8 @@
-﻿using Firebase.Auth;
+﻿using DndHelper.App;
 using DndHelper.App.Authentication;
-using DndHelper.App;
-using System.Net.Mail;
 using DndHelper.Infrastructure;
+using Firebase.Auth;
+using System.Net.Mail;
 
 namespace DndHelper.Firebase.Adapters;
 
@@ -25,7 +25,7 @@ public class FirebaseAuthProviderAdapter : IAuthenticationProvider<string>
         }
         catch (FirebaseAuthException e)
         {
-            return Result.CreateFailure<User<string>, AuthenticationStatus>((AuthenticationStatus) e.Reason);
+            return Result.CreateFailure<User<string>, AuthenticationStatus>((AuthenticationStatus)e.Reason);
         }
     }
     private async Task<User<string>> RegisterUserWithEmailAndPasswordThrowsException(string email, string password)

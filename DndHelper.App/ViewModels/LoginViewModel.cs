@@ -1,5 +1,5 @@
-﻿using System.ComponentModel;
-using DndHelper.App.Authentication;
+﻿using DndHelper.App.Authentication;
+using System.ComponentModel;
 
 namespace DndHelper.App.ViewModels
 {

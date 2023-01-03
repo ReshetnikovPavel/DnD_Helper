@@ -1,6 +1,6 @@
 ﻿namespace DndHelper.Infrastructure;
 
-public class ChooseMany<T> : ValueType<ChooseMany<T>> 
+public class ChooseMany<T> : ValueType<ChooseMany<T>>
 {
     public IEnumerable<T> Options { get; }
     public int HowManyToChoose { get; }

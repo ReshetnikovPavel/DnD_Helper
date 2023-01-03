@@ -46,7 +46,7 @@ namespace DndHelper.App.ViewModels
         private async void RegisterUserTappedAsync(object obj)
         {
             var result = await authProvider.RegisterUserWithEmailAndPassword(Email, Password);
-            
+
             if (result.IsSuccess)
                 await Shell.Current.GoToAsync(nameof(MenuSelectionModel));
             else

@@ -1,12 +1,10 @@
-﻿using System.Net.Http.Headers;
-
-namespace DndHelper.Infrastructure;
+﻿namespace DndHelper.Infrastructure;
 
 public class Result<TValue, TStatus>
 {
     public TValue Value { get; set; }
     public bool IsSuccess { get; set; }
-    public TStatus Status{ get; set; }
+    public TStatus Status { get; set; }
 
     internal Result()
     {

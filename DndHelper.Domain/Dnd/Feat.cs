@@ -10,5 +10,5 @@ public class Feat : ValueType<Feat>, IDndObject
     }
 
     public string Name { get; }
-	public string Description { get; }
+    public string Description { get; }
 }

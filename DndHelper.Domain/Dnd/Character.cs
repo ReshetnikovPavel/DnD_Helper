@@ -4,7 +4,7 @@ namespace DndHelper.Domain.Dnd;
 
 public class Character : Entity<Guid>, IDndObject
 {
-	public Character(Abilities abilities) : base(Guid.NewGuid())
+    public Character(Abilities abilities) : base(Guid.NewGuid())
     {
         ProficiencyBonus = new ProficiencyBonus(2);
         Abilities = abilities.GetDictionary();
@@ -13,16 +13,16 @@ public class Character : Entity<Guid>, IDndObject
         SavingThrows = SavingThrow.CreateFrom(Abilities, ProficiencyBonus);
     }
 
-	
-	public string Name { get; }
-	//public string PlayerName { get; }
+
+    public string Name { get; }
+    //public string PlayerName { get; }
     public IReadOnlyDictionary<AbilityName, AbilityScore> Abilities { get; }
     public IReadOnlyDictionary<AbilityName, SavingThrow> SavingThrows { get; }
     public IReadOnlyDictionary<SkillName, Skill> Skills { get; }
     public Race Race { get; set; }
-	public Class Class { get; set;  }
-	public Background Background { get; set; }
-	public ProficiencyBonus ProficiencyBonus { get; }
+    public Class Class { get; set; }
+    public Background Background { get; set; }
+    public ProficiencyBonus ProficiencyBonus { get; }
     public Size Size { get; set; }
     public Speed Speed { get; set; }
     public HashSet<Language> Languages { get; set; } = new();
@@ -45,7 +45,7 @@ public class Character : Entity<Guid>, IDndObject
     public HitPoints HitPoints { get; set; }
 
     public void ApplyRace()
-	{
+    {
         foreach (var bonus in Race.AbilityScoreBonuses)
             Abilities[bonus.Name].AddBonus(bonus);
 
@@ -62,12 +62,12 @@ public class Character : Entity<Guid>, IDndObject
         WeaponsProficiencies.UnionWith(Race.WeaponsProficiencies);
 
         Feats.UnionWith(Race.Feats);
-        
+
         Traits.UnionWith(Race.Traits);
 
         InstrumentProficiencies.UnionWith(Race.InstrumentProfieciencies);
 
-        foreach (var skillName in Race.SkillProficiencies) 
+        foreach (var skillName in Race.SkillProficiencies)
             Skills[skillName].IsProficient = true;
     }
 
@@ -87,24 +87,24 @@ public class Character : Entity<Guid>, IDndObject
     {
         HitDice = Class.HitDice;
 
-        foreach (var abilityName in Class.AbilityNamesForSavingThrows) 
+        foreach (var abilityName in Class.AbilityNamesForSavingThrows)
             SavingThrows[abilityName].IsProficient = true;
 
         SpellAbility = Class.SpellAbility;
-        
+
         SpellSlotsTable = Class.SpellSlotsTable;
 
         Class.SpellSlotsTable = SpellSlotsTable;
 
         foreach (var (level, features) in Class.LevelFeatures)
-        foreach (var feature in features)
-            if (level == 1)
-                ApplyFeature(feature);
+            foreach (var feature in features)
+                if (level == 1)
+                    ApplyFeature(feature);
     }
 
     private void ApplyFeature(ClassFeature feature)
     {
         Weapons.AddRange(feature.Weapons);
-        Instruments.AddRange( feature.Instruments);
+        Instruments.AddRange(feature.Instruments);
     }
 }
