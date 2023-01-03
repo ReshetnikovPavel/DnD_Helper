@@ -4,10 +4,13 @@ namespace DndHelper.Domain.Dnd;
 
 public class Character : Entity<Guid>, IDndObject
 {
-	public Character() : base(Guid.NewGuid())
+	public Character(Abilities abilities) : base(Guid.NewGuid())
     {
         ProficiencyBonus = new ProficiencyBonus(2);
         Speed = new Speed(0);
+        Abilities = abilities.GetDictionary();
+        Skills = Skill.CreateFrom(Abilities, ProficiencyBonus);
+        SavingThrows = SavingThrow.CreateFrom(Abilities, ProficiencyBonus);
     }
 
 	public string Name { get; set; }
@@ -38,13 +41,6 @@ public class Character : Entity<Guid>, IDndObject
 
     public HitDice HitDice { get; private set; }
     public HitPoints HitPoints { get; private set; }
-
-    public void ApplyAbilities(Abilities abilities)
-    {
-        Abilities = abilities.GetDictionary();
-        Skills = Skill.CreateFrom(Abilities, ProficiencyBonus);
-        SavingThrows = SavingThrow.CreateFrom(Abilities, ProficiencyBonus);
-    }
 
     public void ApplyRace(Race race)
 	{

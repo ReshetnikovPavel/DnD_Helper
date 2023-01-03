@@ -18,6 +18,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <ProjectReference Include="..\DndHelper.Domain\DndHelper.Domain.csproj" />
 	</ItemGroup>
 

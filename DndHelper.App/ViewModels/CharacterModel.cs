@@ -1,12 +1,14 @@
 using DndHelper.Domain.Dnd;
 using DndHelper.Infrastructure;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace DndHelper.App.ViewModels
 {
-    public class CharacterModel : BindableObject
+    [QueryProperty(nameof(Character), nameof(Character))]
+    public partial class CharacterModel : ObservableObject
     {
-        public static Character Character { get; set; }
-        public string Name => "Anna";
+        [ObservableProperty]
+        Character character;
         public int Level => 1;
         public string Class => "Rogue";
         public string Race => "Human";

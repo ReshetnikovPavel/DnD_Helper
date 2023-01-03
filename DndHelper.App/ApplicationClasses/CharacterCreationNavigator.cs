@@ -33,7 +33,13 @@ namespace DndHelper.App.ApplicationClasses
                     "Не все поля заполнены", "Эх");
                 return;
             }
-            await Shell.Current.GoToAsync($"/{nameof(CharacterSheetViewModel)}");
+            var character = creator.Create();
+            await Shell.Current.GoToAsync($"/{nameof(CharacterSheetViewModel)}?",
+                new Dictionary<string ,object>
+                {
+                    ["Character"] = character
+                }
+                );
         }
 
         private void SubscribeToMessaging()
