@@ -1,47 +1,4 @@
-﻿/* Unmerged change from project 'DnD_Helper (net6.0-android)'
-Before:
-using DndHelper.Domain.Repositories;
-using System.Diagnostics.Contracts;
-using System.Windows.Input;
-using DndHelper.Domain.Dnd;
-using DndHelper.App.ViewModels;
-After:
-using DndHelper.App.ViewModels;
-using DndHelper.Domain.Dnd;
-using DndHelper.Domain.Repositories;
-using System.Diagnostics.Contracts;
-using System.Windows.ViewModels;
-*/
-
-/* Unmerged change from project 'DnD_Helper (net6.0-maccatalyst)'
-Before:
-using DndHelper.Domain.Repositories;
-using System.Diagnostics.Contracts;
-using System.Windows.Input;
-using DndHelper.Domain.Dnd;
-using DndHelper.App.ViewModels;
-After:
-using DndHelper.App.ViewModels;
-using DndHelper.Domain.Dnd;
-using DndHelper.Domain.Repositories;
-using System.Diagnostics.Contracts;
-using System.Windows.ViewModels;
-*/
-
-/* Unmerged change from project 'DnD_Helper (net6.0-windows10.0.19041.0)'
-Before:
-using DndHelper.Domain.Repositories;
-using System.Diagnostics.Contracts;
-using System.Windows.Input;
-using DndHelper.Domain.Dnd;
-using DndHelper.App.ViewModels;
-After:
-using DndHelper.App.ViewModels;
-using DndHelper.Domain.Dnd;
-using DndHelper.Domain.Repositories;
-using System.Diagnostics.Contracts;
-using System.Windows.ViewModels;
-*/
+﻿using DndHelper.App.ViewModels;
 
 namespace DnD_Helper;
 
