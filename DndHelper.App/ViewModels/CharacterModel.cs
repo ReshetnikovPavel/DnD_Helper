@@ -16,19 +16,14 @@ namespace DndHelper.App.ViewModels
             {
                 character = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(Background));
             }
         }
 
-        public string Name => "Anya!";
         public int Level => 1;
-        public string Class => "Rogue";
-        public string Race => "Human";
-        public string Background => "Criminal";
+        public string Background => Character?.Background.Name;
         public int Speed => 30;
-        public int ArmourClass => 10;
         public int Money => 1000;
-        public int HitPoints => 10;
-        public int Initiative => 3;
         public Abilities AbilityScores => Abilities.CreateDefault();
         public Skills Skills => Skills.CreateDefault();
         public SavingThrows SavingThrows => SavingThrows.CreateDefault();
