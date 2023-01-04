@@ -1,17 +1,16 @@
-namespace DnD_Helper;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
 
-public partial class MenuPage : ContentPage
+namespace DnD_Helper.ViewModels
 {
-	AppShell appShell;
-
-	public MenuPage(AppShell appShell)
-	{
-		InitializeComponent();
-		this.appShell = appShell;
-	}
-
-    private void StartButton_Clicked(object sender, EventArgs e)
+    public class MenuModel : BindableObject
     {
-		App.Current.MainPage = appShell;
-	}
+        public ICommand SelectMyCharacter { get; }
+        public ICommand CreateNewCharacter { get; }
+        public ICommand SelectMyParty { get; }
+    }
 }

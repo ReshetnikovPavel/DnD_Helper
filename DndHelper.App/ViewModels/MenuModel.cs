@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace DndHelper.App.ViewModels
 {
-    public class MenuSelectionModel : BindableObject
+    public class MenuModel : BindableObject
     {
         public ICommand SelectMyCharacter { get; }
         public ICommand CreateNewCharacter { get; }
