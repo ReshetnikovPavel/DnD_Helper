@@ -1,14 +1,19 @@
-﻿using DndHelper.App.ViewModels;
+﻿using DndHelper.App.RouteNavigation;
+using DndHelper.App.ViewModels;
 
 namespace DnD_Helper;
 
-public partial class AppShell : Shell
+public partial class CharacterCreationShell : Shell
 {
-    public AppShell(AppShellViewModel viewModel)
+
+    public CharacterCreationShell(CharacterCreationShellViewModel viewModel)
     {
         InitializeComponent();
         BindingContext = viewModel;
     }
+
+    protected override bool OnBackButtonPressed()
+            => true; // Disables the Android back button
 
     private async void BackToMenu_Clicked(object sender, EventArgs e)
     {
@@ -17,7 +22,4 @@ public partial class AppShell : Shell
         if (choice)
             App.Current.MainPage = new MenuShell();
     }
-
-    protected override bool OnBackButtonPressed()
-            => true; // Disables the Android back button
 }

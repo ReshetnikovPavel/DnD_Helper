@@ -81,6 +81,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="CharacterCreationShell.xaml.cs">
+	    <DependentUpon>CharacterCreationShell.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="MenuShell.xaml.cs">
 	    <DependentUpon>MenuShell.xaml</DependentUpon>
 	  </Compile>
@@ -132,6 +135,10 @@
 	  <MauiXaml Update="Pages\SubraceSelectionPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Navigation\" />
 	</ItemGroup>
 
 </Project>

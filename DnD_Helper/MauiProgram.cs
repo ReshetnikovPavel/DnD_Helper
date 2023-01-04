@@ -12,6 +12,7 @@ using DndHelper.Firebase.Adapters;
 using DndHelper.Xml.Repositories;
 using Firebase.Auth;
 using System.Xml.Linq;
+using DnD_Helper.Navigation;
 
 namespace DnD_Helper;
 
@@ -19,6 +20,7 @@ public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
     {
+        AppDomain.CurrentDomain.UnhandledException += ProcessException;
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
@@ -40,20 +42,22 @@ public static class MauiProgram
     private static IServiceCollection RegisterViewModels(this IServiceCollection services)
     {
         services
-            .AddTransient<AppShellViewModel>()
+            .AddTransient<CharacterCreationShellViewModel>()
             .AddTransient<LoginViewModel>()
             .AddTransient<RegisterViewModel>()
             .AddTransient<AbilityScoreSelectionModel>()
             .AddTransient<ClassSelectionModel>()
             .AddTransient<RaceSelectionModel>()
-            .AddTransient<BackgroundSelectionModel>();
+            .AddTransient<BackgroundSelectionModel>()
+            .AddTransient<MenuModel>();
         return services;
     }
 
     private static IServiceCollection RegisterShells(this IServiceCollection services)
     {
         services
-            .AddTransient<AppShell>();
+            .AddTransient<CharacterCreationShell>()
+            .AddTransient<MenuShell>();
         return services;
     }
 
@@ -67,8 +71,7 @@ public static class MauiProgram
             .AddTransient<ClassSelectionPage>()
             .AddTransient<RaceSelectionPage>()
             .AddTransient<BackgroundSelectionPage>()
-            .AddTransientWithShellRoute<CharacterSelectionPage, CharacterSelectionModel>(
-                nameof(CharacterSelectionModel))
+            .AddTransientWithShellRoute<CharacterSelectionPage, CharacterSelectionModel>(nameof(CharacterSelectionModel))
             .AddTransientWithShellRoute<CharacterSheetPage, CharacterSheetViewModel>(nameof(CharacterSheetViewModel))
             .AddTransientWithShellRoute<MenuPage, MenuModel>(nameof(MenuModel));
 
@@ -79,12 +82,13 @@ public static class MauiProgram
 	{
 		services
 			.RegisterFirebase()
-			.RegiserRepositories()
+			.RegisterRepositories()
 			.AddTransient<DistributorAbilityScore>()
 			.AddTransient<Abilities>()
 			.AddTransient<CharacterCreationNavigator>()
 			.AddSingleton<ICreatesCharacter, CharacterCreator>()
-			.AddTransient<IModelNavigator, RouteCollectionNavigator>()
+            .AddSingleton<IShellNavigator, ShellNavigator>()
+            .AddTransient<IModelNavigator, RouteCollectionNavigator>()
 			.AddTransient<IHasRouteCollection, RouteCollection>()
 			.AddTransient<IStateManager<string, object>, StateDictionary<string, object>>()
 			.AddTransient<RepositoryFacade>();
@@ -101,7 +105,7 @@ public static class MauiProgram
         return services;
     }
 
-    private static IServiceCollection RegiserRepositories(this IServiceCollection services)
+    private static IServiceCollection RegisterRepositories(this IServiceCollection services)
     {
         services
             .AddTransient<IClassRepository, XmlClassRepository>()
@@ -115,5 +119,10 @@ public static class MauiProgram
             .AddTransient<ICharacterRepository, DatabaseCharacterRepository<string>>();
 
         return services;
+    }
+
+    private static void ProcessException(object sender, UnhandledExceptionEventArgs args)
+    {
+        Application.Current!.MainPage!.DisplayAlert("Необработанная ошибка!", (args.ExceptionObject as Exception)?.StackTrace, "Эх...");
     }
 }

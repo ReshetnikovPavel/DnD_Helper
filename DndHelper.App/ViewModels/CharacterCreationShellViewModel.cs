@@ -4,17 +4,17 @@ using System.Windows.Input;
 
 namespace DndHelper.App.ViewModels
 {
-    public class AppShellViewModel : BindableObject
+    public class CharacterCreationShellViewModel : BindableObject
     {
         public ICommand GoToCharacterSheet { get; }
         private readonly ICreatesCharacter creator;
-        private readonly CharacterCreationNavigator navigator;
+        private readonly CharacterCreationNavigator characterCreationNavigator;
 
-        public AppShellViewModel(ICreatesCharacter creator, CharacterCreationNavigator navigator)
+        public CharacterCreationShellViewModel(ICreatesCharacter creator, CharacterCreationNavigator characterCreationNavigator)
         {
             this.creator = creator;
-            this.navigator = navigator;
-            GoToCharacterSheet = new Command(navigator.TryGoToCharacterSheet);
+            this.characterCreationNavigator = characterCreationNavigator;
+            GoToCharacterSheet = new Command(characterCreationNavigator.TryGoToCharacterSheet);
             AddModels();
         }
 
@@ -28,7 +28,7 @@ namespace DndHelper.App.ViewModels
 
         private void AddModel<TModel>() where TModel : BindableObject
         {
-            navigator.AddModel<TModel>();
+            characterCreationNavigator.AddModel<TModel>();
         }
     }
 }
