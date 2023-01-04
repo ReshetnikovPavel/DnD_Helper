@@ -1,4 +1,6 @@
-﻿namespace DndHelper.App.ApplicationClasses
+﻿using DndHelper.App.ApplicationClasses;
+
+namespace DndHelper.App.RouteNavigation
 {
     public class RouteCollectionNavigator : IModelNavigator
     {

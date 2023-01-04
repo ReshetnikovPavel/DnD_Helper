@@ -1,4 +1,4 @@
-﻿namespace DndHelper.App.ApplicationClasses
+﻿namespace DndHelper.App.RouteNavigation
 {
     internal class RouteItem : IHasRoute
     {

@@ -1,6 +1,7 @@
-﻿using DndHelper.App.ViewModels;
+﻿using DndHelper.App.ApplicationClasses;
+using DndHelper.App.ViewModels;
 
-namespace DndHelper.App.ApplicationClasses
+namespace DndHelper.App.RouteNavigation
 {
     public class CharacterCreationNavigator
     {
@@ -34,7 +35,7 @@ namespace DndHelper.App.ApplicationClasses
             }
             var character = creator.Create();
             await Shell.Current.GoToAsync($"/{nameof(CharacterSheetViewModel)}?",
-                new Dictionary<string ,object>
+                new Dictionary<string, object>
                 {
                     ["Character"] = character
                 }
