@@ -1,6 +1,6 @@
-﻿using Domain;
-using Domain.Repositories;
-using NUnit.Framework;
+﻿using DndHelper.Domain.Dnd;
+using DndHelper.Domain.Repositories;
+using DndHelper.Xml.Repositories;
 
 namespace Tests;
 

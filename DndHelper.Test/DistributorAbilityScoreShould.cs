@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using DndHelper.Domain.Dnd;
+using DndHelper.Domain.Services;
 
 namespace Tests;
 

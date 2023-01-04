@@ -1,4 +1,4 @@
-﻿using Domain.Repositories;
+﻿using DndHelper.Xml.Repositories;
 
 namespace Tests;
 

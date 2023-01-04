@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,6 +7,10 @@
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="DndHelper.Tests.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="6.8.0" />
@@ -23,7 +27,6 @@
     <ProjectReference Include="..\DndHelper.Firebase\DndHelper.Firebase.csproj" />
     <ProjectReference Include="..\DndHelper.Infrastructure\DndHelper.Infrastructure.csproj" />
     <ProjectReference Include="..\DndHelper.Xml\DndHelper.Xml.csproj" />
-    <ProjectReference Include="..\DnD_Helper\DnD_Helper.csproj" />
   </ItemGroup>
 
 </Project>

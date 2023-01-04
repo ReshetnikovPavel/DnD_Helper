@@ -1,8 +1,6 @@
 ﻿using System.ComponentModel;
-using Domain.Repositories;
-using Domain;
-using FluentAssertions;
-using NUnit.Framework;
+using DndHelper.Domain.Dnd;
+using DndHelper.Xml.Repositories;
 
 namespace Tests;
 
