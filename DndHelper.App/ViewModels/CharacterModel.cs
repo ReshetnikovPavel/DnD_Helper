@@ -17,7 +17,6 @@ namespace DndHelper.App.ViewModels
                 character = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(Background));
-                OnPropertyChanged(nameof(Abilities));
             }
         }
 
