@@ -15,13 +15,4 @@ public class SavingThrow : ValueType<SavingThrow>, IDndObject
         Ability = ability;
         ProficiencyBonus = proficiencyBonus;
     }
-
-    public static IReadOnlyDictionary<AbilityName, SavingThrow> CreateFrom(
-        IReadOnlyDictionary<AbilityName, AbilityScore> abilities, ProficiencyBonus proficiencyBonus)
-    {
-        var savingThrows = new Dictionary<AbilityName, SavingThrow>();
-        foreach (var (abilityName, ability) in abilities)
-            savingThrows[abilityName] = new SavingThrow(ability, proficiencyBonus);
-        return savingThrows;
-    }
 }
