@@ -4,10 +4,10 @@ namespace DnD_Helper;
 
 public partial class PartySelectionPage : ContentPage
 {
-	public PartySelectionPage()
-	{
-		InitializeComponent();
+    public PartySelectionPage()
+    {
+        InitializeComponent();
 
-		BindingContext = new PartySelectionModel();
-	}
+        BindingContext = new PartySelectionModel();
+    }
 }

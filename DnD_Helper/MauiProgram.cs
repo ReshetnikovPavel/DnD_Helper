@@ -1,60 +1,58 @@
 ﻿using CommunityToolkit.Maui;
+using DndHelper.App.ApplicationClasses;
 using DndHelper.App.Authentication;
+using DndHelper.App.Database;
+using DndHelper.App.Repositories;
+using DndHelper.App.ViewModels;
 using DndHelper.Domain.Dnd;
 using DndHelper.Domain.Repositories;
 using DndHelper.Domain.Services;
 using DndHelper.Firebase.Adapters;
-using DndHelper.App.Repositories;
 using DndHelper.Xml.Repositories;
-using System.Xml.Linq;
-using Microsoft.Extensions.DependencyInjection;
-using DndHelper.App.Database;
-using Firebase.Database.Query;
 using Firebase.Auth;
-using DndHelper.App.ViewModels;
-using DndHelper.App.ApplicationClasses;
+using System.Xml.Linq;
 
 namespace DnD_Helper;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
-	{
-		var builder = MauiApp.CreateBuilder();
-		builder
-			.UseMauiApp<App>()
-			.UseMauiCommunityToolkit()
-			.ConfigureFonts(fonts =>
-			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			});
-		builder.Services
-			.RegisterServices()
-			.RegisterViewModels()
-			.RegisterPages()
-			.RegisterShells();
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            .UseMauiCommunityToolkit()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            });
+        builder.Services
+            .RegisterServices()
+            .RegisterViewModels()
+            .RegisterPages()
+            .RegisterShells();
 
-		return builder.Build();
-	}
+        return builder.Build();
+    }
 
-	private static IServiceCollection RegisterViewModels(this IServiceCollection services)
-	{
-		services
-			.AddTransient<AppShellViewModel>()
-			.AddTransient<LoginViewModel>()
-			.AddTransient<RegisterViewModel>()
-			.AddTransient<AbilityScoreSelectionModel>()
-			.AddTransient<ClassSelectionModel>()
-			.AddTransient<RaceSelectionModel>()
-			.AddTransient<BackgroundSelectionModel>();
-		return services;
-	}
+    private static IServiceCollection RegisterViewModels(this IServiceCollection services)
+    {
+        services
+            .AddTransient<AppShellViewModel>()
+            .AddTransient<LoginViewModel>()
+            .AddTransient<RegisterViewModel>()
+            .AddTransient<AbilityScoreSelectionModel>()
+            .AddTransient<ClassSelectionModel>()
+            .AddTransient<RaceSelectionModel>()
+            .AddTransient<BackgroundSelectionModel>();
+        return services;
+    }
 
     private static IServiceCollection RegisterShells(this IServiceCollection services)
     {
-		services
-			.AddTransient<AppShell>();
+        services
+            .AddTransient<AppShell>();
         return services;
     }
 
@@ -63,7 +61,7 @@ public static class MauiProgram
         services
             .AddTransient<MenuPage>()
             .AddTransient<LoginPage>()
-            .AddTransient<RegisterPage>()
+            .AddTransientWithShellRoute<RegisterPage, RegisterViewModel>(nameof(RegisterViewModel))
             .AddTransient<AbilityScoresSelectionPage>()
             .AddTransient<ClassSelectionPage>()
             .AddTransient<RaceSelectionPage>()
@@ -73,7 +71,7 @@ public static class MauiProgram
             .AddTransientWithShellRoute<CharacterSheetPage, CharacterSheetViewModel>(nameof(CharacterSheetViewModel));
 
         return services;
-	}
+    }
 
 	private static IServiceCollection RegisterServices(this IServiceCollection services)
 	{
@@ -91,29 +89,29 @@ public static class MauiProgram
 		return services;
 	}
 
-	private static IServiceCollection RegisterFirebase(this IServiceCollection services)
-	{
-		services
+    private static IServiceCollection RegisterFirebase(this IServiceCollection services)
+    {
+        services
             .AddSingleton<IAuthenticationProvider<string>, FirebaseAuthProviderAdapter>()
-			.AddSingleton<IDatabaseClient, FirebaseClientAdapter>()
-			.AddSingleton(new FirebaseDatabaseUrl("https://dndhelper-e695e-default-rtdb.asia-southeast1.firebasedatabase.app/"))
+            .AddSingleton<IDatabaseClient, FirebaseClientAdapter>()
+            .AddSingleton(new FirebaseDatabaseUrl("https://dndhelper-e695e-default-rtdb.asia-southeast1.firebasedatabase.app/"))
             .AddSingleton(new FirebaseConfig("AIzaSyAsyhRQKmYdtXBaH8LOgFe_tgHWGRh6wJQ"));
         return services;
     }
 
-	private static IServiceCollection RegiserRepositories(this IServiceCollection services)
-	{
-		services
-			.AddTransient<IClassRepository, XmlClassRepository>()
-			.AddTransient<ILanguageRepository, XmlLanguageRepository>()
-			.AddTransient<IRaceRepository, XmlRaceRepository>()
-			.AddTransient<IBackgroundRepository, XmlBackgroundRepository>()
-			.AddTransient<ISpellRepository, XmlSpellRepository>()
-			.AddTransient<IWeaponRepository, XmlWeaponRepository>()
-			.AddTransient<IDndParser, DndCompendiumParser>()
-			.AddTransient<IDndFactory<XElement>, DndCompendiumFactory>()
-			.AddTransient<ICharacterRepository, DatabaseCharacterRepository<string>>();
-		
-		return services;
-	}
+    private static IServiceCollection RegiserRepositories(this IServiceCollection services)
+    {
+        services
+            .AddTransient<IClassRepository, XmlClassRepository>()
+            .AddTransient<ILanguageRepository, XmlLanguageRepository>()
+            .AddTransient<IRaceRepository, XmlRaceRepository>()
+            .AddTransient<IBackgroundRepository, XmlBackgroundRepository>()
+            .AddTransient<ISpellRepository, XmlSpellRepository>()
+            .AddTransient<IWeaponRepository, XmlWeaponRepository>()
+            .AddTransient<IDndParser, DndCompendiumParser>()
+            .AddTransient<IDndFactory<XElement>, DndCompendiumFactory>()
+            .AddTransient<ICharacterRepository, DatabaseCharacterRepository<string>>();
+
+        return services;
+    }
 }

@@ -1,6 +1,33 @@
-﻿using System.Xml.Linq;
+﻿using DndHelper.Domain.Dnd;
 using DndHelper.Infrastructure;
+/* Unmerged change from project 'DndHelper.Xml (net6.0-maccatalyst)'
+Before:
 using DndHelper.Domain.Dnd;
+After:
+using System.Xml.Linq;
+*/
+
+/* Unmerged change from project 'DndHelper.Xml (net6.0-ios)'
+Before:
+using DndHelper.Domain.Dnd;
+After:
+using System.Xml.Linq;
+*/
+
+/* Unmerged change from project 'DndHelper.Xml (net6.0-android)'
+Before:
+using DndHelper.Domain.Dnd;
+After:
+using System.Xml.Linq;
+*/
+
+/* Unmerged change from project 'DndHelper.Xml (net6.0-windows10.0.19041.0)'
+Before:
+using DndHelper.Domain.Dnd;
+After:
+using System.Xml.Linq;
+*/
+
 
 namespace DndHelper.Xml.Repositories;
 

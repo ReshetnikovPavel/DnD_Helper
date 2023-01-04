@@ -1,19 +1,19 @@
-﻿using DndHelper.Infrastructure;
-using DndHelper.Domain.Extensions;
+﻿using DndHelper.Domain.Extensions;
+using DndHelper.Infrastructure;
 
 namespace DndHelper.Domain.Dnd;
 
 public class AbilityScore : ValueType<AbilityScore>, IHaveValue, IDndObject
 {
-	public AbilityName Name { get; }
-	public int Value { get; set; }
-	public int Modifier => (Value - 10).DivideBy(2);
+    public AbilityName Name { get; }
+    public int Value { get; set; }
+    public int Modifier => (Value - 10).DivideBy(2);
 
-	public AbilityScore(AbilityName name, int value)
-	{
-		Name = name;
-		Value = value;
-	}
+    public AbilityScore(AbilityName name, int value)
+    {
+        Name = name;
+        Value = value;
+    }
 
     public void IncreaseValue()
     {

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DndHelper.Domain.Repositories;
-using System.Windows.Input;
-using DndHelper.Domain.Dnd;
+﻿using System.Windows.Input;
 using DndHelper.App.ApplicationClasses;
+using DndHelper.Domain.Dnd;
+using DndHelper.Domain.Repositories;
 
 namespace DndHelper.App.ViewModels
 {

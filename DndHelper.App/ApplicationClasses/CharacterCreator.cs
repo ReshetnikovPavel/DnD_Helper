@@ -40,7 +40,7 @@ namespace DndHelper.App.ApplicationClasses
             var abilities = StateManager.GetValue(nameof(Character.Abilities)) as Abilities;
             var name = StateManager.GetValue(nameof(Character.Name)) as string;
             var backgroundName = StateManager.GetValue(nameof(Character.Background)) as string;
-            
+
 
             var character = new Character(abilities);
             character.ApplyRace(RepositoryFacade.GetRace(raceName, null));
@@ -58,7 +58,7 @@ namespace DndHelper.App.ApplicationClasses
 
         private void SubscribeToMessaging()
         {
-            MessagingCenter.Subscribe<object, Selection>(this, 
+            MessagingCenter.Subscribe<object, Selection>(this,
                 MessageTypes.SelectionMade.ToString(), OnSelectionMade);
         }
 
@@ -73,4 +73,3 @@ namespace DndHelper.App.ApplicationClasses
         }
     }
 }
-

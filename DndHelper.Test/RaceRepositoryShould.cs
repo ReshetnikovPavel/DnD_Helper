@@ -1,9 +1,5 @@
-﻿
-using System.Runtime.CompilerServices;
-using Domain;
-using Domain.Repositories;
-using FluentAssertions;
-using NUnit.Framework;
+﻿using DndHelper.Domain.Dnd;
+using DndHelper.Xml.Repositories;
 
 namespace Tests;
 

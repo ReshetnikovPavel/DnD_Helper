@@ -1,0 +1,30 @@
+﻿namespace DndHelper.App.Authentication;
+
+public enum AuthenticationStatus
+{
+    Undefined,
+    OperationNotAllowed,
+    UserDisabled,
+    UserNotFound,
+    InvalidProviderID,
+    InvalidAccessToken,
+    LoginCredentialsTooOld,
+    MissingRequestURI,
+    SystemError,
+    InvalidEmailAddress,
+    MissingPassword,
+    WeakPassword,
+    EmailExists,
+    MissingEmail,
+    UnknownEmailAddress,
+    WrongPassword,
+    TooManyAttemptsTryLater,
+    MissingRequestType,
+    ResetPasswordExceedLimit,
+    InvalidIDToken,
+    MissingIdentifier,
+    InvalidIdentifier,
+    AlreadyLinked,
+    StaleIDToken,
+    DuplicateCredentialUse,
+}

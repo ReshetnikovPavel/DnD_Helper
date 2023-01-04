@@ -1,5 +1,4 @@
 ﻿using DndHelper.App.ViewModels;
-using DndHelper;
 
 namespace DndHelper.App.ApplicationClasses
 {
@@ -47,7 +46,7 @@ namespace DndHelper.App.ApplicationClasses
             MessagingCenter.Subscribe<BindableObject, string>(
                 this, MessageTypes.PageCompleted.ToString(), OnPageCompleted);
         }
-        
+
         private void OnPageCompleted(object sender, string currentRoute)
         {
             if (!modelNavigator.TryGoToNextRoute(currentRoute))

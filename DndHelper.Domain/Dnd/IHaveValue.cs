@@ -2,5 +2,5 @@
 
 public interface IHaveValue
 {
-	int Value { get; }
+    int Value { get; }
 }

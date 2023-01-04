@@ -4,7 +4,7 @@ namespace DndHelper.Domain.Dnd;
 
 public class Character : Entity<Guid>, IDndObject
 {
-	public Character(Abilities abilities) : base(Guid.NewGuid())
+    public Character(Abilities abilities) : base(Guid.NewGuid())
     {
         ProficiencyBonus = new ProficiencyBonus(2);
         Speed = new Speed(0);
@@ -62,12 +62,12 @@ public class Character : Entity<Guid>, IDndObject
         WeaponsProficiencies.UnionWith(Race.WeaponsProficiencies);
 
         Feats.UnionWith(Race.Feats);
-        
+
         Traits.UnionWith(Race.Traits);
 
         InstrumentProficiencies.UnionWith(Race.InstrumentProfieciencies);
 
-        foreach (var skillName in Race.SkillProficiencies) 
+        foreach (var skillName in Race.SkillProficiencies)
             Skills[skillName].IsProficient = true;
     }
 
@@ -91,24 +91,24 @@ public class Character : Entity<Guid>, IDndObject
 
         HitDice = Class.HitDice;
 
-        foreach (var abilityName in Class.AbilityNamesForSavingThrows) 
+        foreach (var abilityName in Class.AbilityNamesForSavingThrows)
             SavingThrows[abilityName].IsProficient = true;
 
         SpellAbility = Class.SpellAbility;
-        
+
         SpellSlotsTable = Class.SpellSlotsTable;
 
         Class.SpellSlotsTable = SpellSlotsTable;
 
         foreach (var (level, features) in Class.LevelFeatures)
-        foreach (var feature in features)
-            if (level == 1)
-                ApplyFeature(feature);
+            foreach (var feature in features)
+                if (level == 1)
+                    ApplyFeature(feature);
     }
 
     private void ApplyFeature(ClassFeature feature)
     {
         Weapons.AddRange(feature.Weapons);
-        Instruments.AddRange( feature.Instruments);
+        Instruments.AddRange(feature.Instruments);
     }
 }

@@ -1,7 +1,8 @@
 
 using System.Xml.Linq;
-using Domain;
-using Domain.Repositories;
+using DndHelper.Domain.Dnd;
+using DndHelper.Domain.Repositories;
+using DndHelper.Xml.Repositories;
 using NUnit.Framework;
 
 namespace Tests;

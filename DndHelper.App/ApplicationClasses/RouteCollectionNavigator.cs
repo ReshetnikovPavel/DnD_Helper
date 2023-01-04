@@ -1,11 +1,4 @@
-﻿using DndHelper.Domain.Dnd;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DndHelper.App.ApplicationClasses
+﻿namespace DndHelper.App.ApplicationClasses
 {
     public class RouteCollectionNavigator : IModelNavigator
     {

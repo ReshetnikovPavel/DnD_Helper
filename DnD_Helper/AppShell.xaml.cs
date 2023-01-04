@@ -1,8 +1,4 @@
-﻿using DndHelper.Domain.Repositories;
-using System.Diagnostics.Contracts;
-using System.Windows.Input;
-using DndHelper.Domain.Dnd;
-using DndHelper.App.ViewModels;
+﻿using DndHelper.App.ViewModels;
 
 namespace DnD_Helper;
 

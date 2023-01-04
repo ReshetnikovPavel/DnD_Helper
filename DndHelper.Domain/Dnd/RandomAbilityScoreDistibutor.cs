@@ -1,6 +1,4 @@
-﻿using DndHelper.Infrastructure;
-
-namespace DndHelper.Domain.Dnd;
+﻿namespace DndHelper.Domain.Dnd;
 public class RandomAbilityScoreDistibutor
 {
     public IEnumerable<int> GetRandomAbilityScoresValues()

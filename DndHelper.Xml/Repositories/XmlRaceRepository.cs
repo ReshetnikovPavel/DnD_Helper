@@ -1,7 +1,7 @@
-﻿using System.Xml.Linq;
+﻿using DndHelper.Domain.Dnd;
 using DndHelper.Domain.Repositories;
 using DndHelper.Xml.Extensions;
-using DndHelper.Domain.Dnd;
+using System.Xml.Linq;
 
 
 namespace DndHelper.Xml.Repositories;
@@ -15,7 +15,7 @@ public class XmlRaceRepository : XmlRepository, IRaceRepository
         this.factory = factory;
     }
 
-	public Race GetRaceByName(string raceName, string subraceName)
+    public Race GetRaceByName(string raceName, string subraceName)
     {
         var raceElement = Compendium.Elements("race").GetElementWithName(raceName);
         var subraceElement = raceElement?.Elements("subrace").GetElementWithName(subraceName);

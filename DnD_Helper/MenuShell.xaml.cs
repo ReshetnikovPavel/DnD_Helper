@@ -2,8 +2,8 @@
 
 public partial class MenuShell : Shell
 {
-	public MenuShell()
-	{
-		InitializeComponent();
-	}
+    public MenuShell()
+    {
+        InitializeComponent();
+    }
 }

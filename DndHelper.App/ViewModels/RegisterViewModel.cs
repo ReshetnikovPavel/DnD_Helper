@@ -17,7 +17,7 @@ namespace DndHelper.App.ViewModels
             set
             {
                 email = value;
-                RaisePropertyChanged("Email");
+                RaisePropertyChanged(nameof(Email));
             }
         }
 
@@ -26,7 +26,7 @@ namespace DndHelper.App.ViewModels
             get => password; set
             {
                 password = value;
-                RaisePropertyChanged("Password");
+                RaisePropertyChanged(nameof(Password));
             }
         }
 
@@ -45,7 +45,12 @@ namespace DndHelper.App.ViewModels
 
         private async void RegisterUserTappedAsync(object obj)
         {
-            await authProvider.RegisterUserWithEmailAndPassword(Email, Password);
+            var result = await authProvider.RegisterUserWithEmailAndPassword(Email, Password);
+
+            if (result.IsSuccess)
+                await Shell.Current.GoToAsync(nameof(MenuSelectionModel));
+            else
+                await Shell.Current.DisplayAlert("Не удалось зарегистрироваться", result.Status.ToString(), "Эх");
         }
     }
 }

@@ -2,5 +2,5 @@
 
 public interface IRepository
 {
-	public IEnumerable<string> GetNames();
+    public IEnumerable<string> GetNames();
 }

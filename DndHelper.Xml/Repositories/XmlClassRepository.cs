@@ -1,7 +1,7 @@
-﻿using System.Xml.Linq;
+﻿using DndHelper.Domain.Dnd;
 using DndHelper.Domain.Repositories;
-using DndHelper.Domain.Dnd;
 using DndHelper.Xml.Extensions;
+using System.Xml.Linq;
 
 namespace DndHelper.Xml.Repositories;
 
@@ -35,7 +35,7 @@ public class XmlClassRepository : XmlRepository, IClassRepository
     private HitDice GetHitDice(XElement xElement)
     {
         var hitDieNumber = int.Parse(xElement.GetElementContentWithName("hd"));
-        var hitDie = new HitDice(new Dice(1, (DiceName) hitDieNumber));
+        var hitDie = new HitDice(new Dice(1, (DiceName)hitDieNumber));
         return hitDie;
     }
 
