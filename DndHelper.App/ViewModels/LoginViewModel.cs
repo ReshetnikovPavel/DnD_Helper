@@ -44,7 +44,7 @@ namespace DndHelper.App.ViewModels
         {
             var result = await authProvider.SignInWithEmailAndPassword(UserName, UserPassword);
             if (result.IsSuccess)
-                await Shell.Current.GoToAsync(nameof(MenuSelectionModel));
+                await Shell.Current.GoToAsync(nameof(MenuModel));
             else
                 await Shell.Current.DisplayAlert("Не удалось войти", result.Status.ToString(), "Эх");
         }

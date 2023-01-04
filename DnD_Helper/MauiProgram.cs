@@ -68,7 +68,8 @@ public static class MauiProgram
             .AddTransient<BackgroundSelectionPage>()
             .AddTransientWithShellRoute<CharacterSelectionPage, CharacterSelectionModel>(
                 nameof(CharacterSelectionModel))
-            .AddTransientWithShellRoute<CharacterSheetPage, CharacterSheetViewModel>(nameof(CharacterSheetViewModel));
+            .AddTransientWithShellRoute<CharacterSheetPage, CharacterSheetViewModel>(nameof(CharacterSheetViewModel))
+            .AddTransientWithShellRoute<MenuPage, MenuModel>(nameof(MenuModel));
 
         return services;
     }

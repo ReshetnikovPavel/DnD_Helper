@@ -41,7 +41,7 @@
                         Grid.Column ="1"/>
                     <Label Margin="10, 10, 10, 10"
                         LineBreakMode ="WordWrap"
-                        Text="{Binding Character.Background.Name}"
+                        Text="{Binding Background}"
                         Grid.Column="2"/>
                 </Grid>
             </Grid>
