@@ -133,12 +133,12 @@
                     <Label Text="Интеллект" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "3"/>
                     <Label Text="Мудрость" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "4"/>
                     <Label Text="Харизма" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "5"/>
-                    <Label Text="{Binding SavingThrows.Strength.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "0"/>
-                    <Label Text="{Binding SavingThrows.Dexterity.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "1"/>
-                    <Label Text="{Binding SavingThrows.Constitution.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "2"/>
-                    <Label Text="{Binding SavingThrows.Intelligence.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "3"/>
-                    <Label Text="{Binding SavingThrows.Wisdom.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "4"/>
-                    <Label Text="{Binding SavingThrows.Charisma.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "5"/>
+                    <Label Text="{Binding Character.SavingThrows.Strength.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "0"/>
+                    <Label Text="{Binding Character.SavingThrows.Dexterity.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "1"/>
+                    <Label Text="{Binding Character.SavingThrows.Constitution.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "2"/>
+                    <Label Text="{Binding Character.SavingThrows.Intelligence.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "3"/>
+                    <Label Text="{Binding Character.SavingThrows.Wisdom.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "4"/>
+                    <Label Text="{Binding Character.SavingThrows.Charisma.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "5"/>
                 </Grid>
                 <Label Text="Навыки" FontSize="Large" Margin="10, 10, 10, 10" Grid.Row="2"/>
 
