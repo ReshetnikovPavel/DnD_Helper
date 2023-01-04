@@ -34,7 +34,7 @@ namespace DndHelper.App.ApplicationClasses
                 return;
             }
             var character = creator.Create();
-            await Shell.Current.GoToAsync($"/{nameof(CharacterSheetViewModel)}?",
+            await Shell.Current.GoToAsync($"/{nameof(CharacterSheetViewModel)}",
                 new Dictionary<string ,object>
                 {
                     ["Character"] = character

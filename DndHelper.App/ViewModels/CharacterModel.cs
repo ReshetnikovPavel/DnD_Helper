@@ -5,11 +5,21 @@ using CommunityToolkit.Mvvm.ComponentModel;
 namespace DndHelper.App.ViewModels
 {
     [QueryProperty(nameof(Character), nameof(Character))]
-    public partial class CharacterModel : ObservableObject
+    public partial class CharacterModel : BindableObject
     {
-        [ObservableProperty]
         Character character;
-        public string Name => Character.Name;
+
+        public Character Character
+        {
+            get => character;
+            set
+            {
+                character = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Name => "Anya!";
         public int Level => 1;
         public string Class => "Rogue";
         public string Race => "Human";
