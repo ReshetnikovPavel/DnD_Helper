@@ -7,7 +7,7 @@ namespace DndHelper.App.ViewModels
     {
         private string userName;
         private string userPassword;
-        private IAuthenticationProvider<string> authProvider;
+        private readonly IAuthenticationProvider<string> authProvider;
 
 
         public event PropertyChangedEventHandler PropertyChanged;

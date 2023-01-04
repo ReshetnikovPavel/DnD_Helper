@@ -12,6 +12,7 @@ public class FirebaseAuthProviderAdapter : IAuthenticationProvider<string>
     private FirebaseAuthLink link;
     public AuthenticationToken AuthenticationToken => new(link.FirebaseToken);
     public User<string> User { get; private set; }
+    public bool IsAuthenticated => User != null;
     public FirebaseAuthProviderAdapter(FirebaseConfig config)
     {
         provider = new FirebaseAuthProvider(config);

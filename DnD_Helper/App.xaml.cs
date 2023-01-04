@@ -1,4 +1,6 @@
-﻿namespace DnD_Helper;
+﻿using DndHelper.App.ViewModels;
+
+namespace DnD_Helper;
 
 public partial class App : Application
 {

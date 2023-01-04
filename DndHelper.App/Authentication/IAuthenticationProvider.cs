@@ -8,4 +8,5 @@ public interface IAuthenticationProvider<TId>
     Task<Result<User<string>, AuthenticationStatus>> SignInWithEmailAndPassword(string email, string password);
     AuthenticationToken AuthenticationToken { get; }
     User<TId> User { get; }
+    bool IsAuthenticated { get; }
 }

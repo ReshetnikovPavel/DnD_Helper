@@ -65,13 +65,14 @@ public static class MauiProgram
     {
         services
             .AddTransient<MenuPage>()
-            .AddTransient<LoginPage>()
+            .AddTransientWithShellRoute<LoginPage, LoginViewModel>(nameof(LoginViewModel))
             .AddTransientWithShellRoute<RegisterPage, RegisterViewModel>(nameof(RegisterViewModel))
             .AddTransient<AbilityScoresSelectionPage>()
             .AddTransient<ClassSelectionPage>()
             .AddTransient<RaceSelectionPage>()
             .AddTransient<BackgroundSelectionPage>()
             .AddTransientWithShellRoute<CharacterSelectionPage, CharacterSelectionModel>(nameof(CharacterSelectionModel))
+            .AddTransientWithShellRoute<PartySelectionPage, PartySelectionModel>(nameof(PartySelectionModel))
             .AddTransientWithShellRoute<CharacterSheetPage, CharacterSheetViewModel>(nameof(CharacterSheetViewModel))
             .AddTransientWithShellRoute<MenuPage, MenuModel>(nameof(MenuModel));
 
