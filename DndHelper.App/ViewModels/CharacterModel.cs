@@ -17,6 +17,7 @@ namespace DndHelper.App.ViewModels
                 character = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(Background));
+                OnPropertyChanged(nameof(Abilities));
             }
         }
 
@@ -24,7 +25,6 @@ namespace DndHelper.App.ViewModels
         public string Background => Character?.Background.Name;
         public int Speed => 30;
         public int Money => 1000;
-        public Abilities AbilityScores => Abilities.CreateDefault();
         public Skills Skills => Skills.CreateDefault();
         public SavingThrows SavingThrows => SavingThrows.CreateDefault();
         public string Armor => "Leather";
