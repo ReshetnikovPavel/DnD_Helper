@@ -1,7 +1,10 @@
 ﻿using System.Net;
 using System.Windows.Input;
+using DndHelper.App.Authentication;
 using DndHelper.App.RouteNavigation;
+using DndHelper.Domain.Dnd;
 using DndHelper.Domain.Repositories;
+using DndHelper.Infrastructure;
 
 namespace DndHelper.App.ViewModels
 {
@@ -29,8 +32,19 @@ namespace DndHelper.App.ViewModels
 
         public async void LoadCharacterNames()
         {
-            var result = await characterRepository.GetCharacters();
+            (await characterRepository.GetCharacters())
+                .OnSuccess(result => LoadCharacterNames(result.Value))
+                .OnFailure(DisplayCannotLoadCharactersAlert);
+        }
 
+        private void LoadCharacterNames(IEnumerable<Character> characters)
+        {
+            CharacterNames = characters.Select(c => c.Name);
+        }
+
+        private static async void DisplayCannotLoadCharactersAlert(INoValueResult<HttpStatusCode> result)
+        {
+            await Shell.Current.DisplayAlert("Не удалось загрузить персонажей", result.Status.ToString(), "Эх");
         }
     }
 }
