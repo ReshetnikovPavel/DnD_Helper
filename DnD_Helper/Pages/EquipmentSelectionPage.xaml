@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DnD_Helper.EquipmentSelectionPage"
+             x:DataType="viewModels:EquipmentSelectionModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewModels="clr-namespace:DndHelper.App.ViewModels;assembly=DndHelper.App"
+             Title="Выбор снаряжения"
+             Style="{StaticResource ContentPage}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+<ScrollView>
+<VerticalStackLayout>
+    <Grid RowDefinitions = "Auto, Auto">
+        <Grid ColumnDefinitions="Auto, Auto, Auto">
+            <Label Text="Выберите"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Margin="10" />
+            <Label Text="{Binding NumberOfEquipmentWeapons}"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Margin="10"
+                   Grid.Column="1" />
+            <Label Text="оружие(я)"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Margin="10"
+                   Grid.Column="2" />
+        </Grid>
+
+        <Grid Grid.Row = "1">
+            <ListView x:Name="EquipmentWeaponsList"
+                ItemsSource="{Binding EquipmentWeapons}"
+                Margin="10"
+                Grid.Row="1"
+                SelectionMode="Single"> 
+                <!-- Multiple not working :(  -->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Frame>
+                                    <Label Text="{Binding .}" />
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <toolkit:EventToCommandBehavior
+                EventName="ItemTapped"
+                Command="{Binding SelectEquipmentWeapons}"
+                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
+            </ListView.Behaviors>
+        </ListView>
+        </Grid>
+    </Grid>
+
+        <Grid RowDefinitions = "Auto, Auto">
+        <Grid ColumnDefinitions="Auto, Auto, Auto">
+            <Label Text="Выберите"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Margin="10" />
+            <Label Text="{Binding NumberOfEquipmentAddWeapons}"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Margin="10"
+                   Grid.Column="1" />
+            <Label Text="оружие(я)"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Margin="10"
+                   Grid.Column="2" />
+        </Grid>
+
+        <Grid Grid.Row = "1">
+            <ListView x:Name="EquipmentAddWeaponsList"
+                ItemsSource="{Binding EquipmentAddWeapons}"
+                Margin="10"
+                Grid.Row="1"
+                SelectionMode="Single"> 
+                <!-- Multiple not working :(  -->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Frame>
+                                    <Label Text="{Binding .}" />
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <toolkit:EventToCommandBehavior
+                EventName="ItemTapped"
+                Command="{Binding SelectEquipmentAddWeapons}"
+                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
+            </ListView.Behaviors>
+        </ListView>
+        </Grid>
+    </Grid>
+
+        <Grid RowDefinitions = "Auto, Auto">
+        <Grid>
+            <Label Text="Выберите броню"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Margin="10" />
+        </Grid>
+
+        <Grid Grid.Row = "1">
+            <ListView x:Name="EquipmentArmorList"
+                ItemsSource="{Binding EquipmentArmor}"
+                Margin="10"
+                Grid.Row="1"
+                SelectionMode="Single"> 
+                <!-- Multiple not working :(  -->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Frame>
+                                    <Label Text="{Binding .}" />
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <toolkit:EventToCommandBehavior
+                EventName="ItemTapped"
+                Command="{Binding SelectEquipmentArmor}"
+                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
+            </ListView.Behaviors>
+        </ListView>
+        </Grid>
+    </Grid>
+
+        <Grid RowDefinitions = "Auto, Auto">
+        <Grid>
+            <Label Text="Выберите инструменты"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Margin="10" />
+        </Grid>
+
+        <Grid Grid.Row = "1">
+            <ListView x:Name="EquipmentInstrumentList"
+                ItemsSource="{Binding EquipmentInstrument}"
+                Margin="10"
+                Grid.Row="1"
+                SelectionMode="Single"> 
+                <!-- Multiple not working :(  -->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Frame>
+                                    <Label Text="{Binding .}" />
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <toolkit:EventToCommandBehavior
+                EventName="ItemTapped"
+                Command="{Binding SelectEquipmentInstrument}"
+                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
+            </ListView.Behaviors>
+        </ListView>
+        </Grid>
+    </Grid>
+
+        <Grid RowDefinitions = "Auto, Auto">
+        <Grid>
+            <Label Text="Выберите музыкальный инструмент"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Margin="10" />
+        </Grid>
+
+        <Grid Grid.Row = "1">
+            <ListView x:Name="EquipmentMusicInstrumentList"
+                ItemsSource="{Binding EquipmentMusicInstrument}"
+                Margin="10"
+                Grid.Row="1"
+                SelectionMode="Single"> 
+                <!-- Multiple not working :(  -->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Frame>
+                                    <Label Text="{Binding .}" />
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <toolkit:EventToCommandBehavior
+                EventName="ItemTapped"
+                Command="{Binding SelectEquipmentMusicInstrument}"
+                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
+            </ListView.Behaviors>
+        </ListView>
+        </Grid>
+    </Grid>
+
+        <Grid RowDefinitions = "Auto, Auto">
+        <Grid>
+            <Label Text="Выберите"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Margin="10" />
+        </Grid>
+
+        <Grid Grid.Row = "1">
+            <ListView x:Name="EquipmentArcanaComponentList"
+                ItemsSource="{Binding EquipmentArcanaComponent}"
+                Margin="10"
+                Grid.Row="1"
+                SelectionMode="Single"> 
+                <!-- Multiple not working :(  -->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Frame>
+                                    <Label Text="{Binding .}" />
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <toolkit:EventToCommandBehavior
+                EventName="ItemTapped"
+                Command="{Binding SelectEquipmentArcanaComponent}"
+                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
+            </ListView.Behaviors>
+        </ListView>
+        </Grid>
+    </Grid>
+</VerticalStackLayout>
+</ScrollView>
+</ContentPage>
