@@ -1,6 +1,6 @@
 ﻿namespace DndHelper.Infrastructure;
 
-public class Result<TValue, TStatus>
+public class Result<TValue, TStatus> : INoValueResult<TStatus>
 {
     public TValue Value { get; set; }
     public bool IsSuccess { get; set; }
@@ -27,5 +27,33 @@ public class Result<TValue, TStatus>
     public static implicit operator Result<TValue, TStatus>(TValue value)
     {
         return Result.CreateSuccess<TValue, TStatus>(value);
+    }
+
+    public Result<TValue, TStatus> OnFailure(Action doOnFailure)
+    {
+        if (!IsSuccess)
+            doOnFailure();
+        return this;
+    }
+
+    public Result<TValue, TStatus> OnSuccess(Action doOnSuccess)
+    {
+        if (IsSuccess)
+            doOnSuccess();
+        return this;
+    }
+
+    public Result<TValue, TStatus> OnFailure(Action<Result<TValue, TStatus>> doOnFailure)
+    {
+        if (!IsSuccess)
+            doOnFailure(this);
+        return this;
+    }
+
+    public Result<TValue, TStatus> OnSuccess(Action<Result<TValue, TStatus>> doOnSuccess)
+    {
+        if (IsSuccess)
+            doOnSuccess(this);
+        return this;
     }
 }

@@ -14,6 +14,7 @@ using System.Xml.Linq;
 using DnD_Helper.Navigation;
 using DndHelper.Firebase.Repositories;
 using Firebase.Database;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DnD_Helper;
 
@@ -103,7 +104,7 @@ public static class MauiProgram
             .AddSingleton<IAuthenticationProvider<string>, FirebaseAuthProviderAdapter>()
             .AddSingleton(new FirebaseDatabaseUrl("https://dndhelper-e695e-default-rtdb.asia-southeast1.firebasedatabase.app/"))
             .AddSingleton(new FirebaseConfig("AIzaSyAsyhRQKmYdtXBaH8LOgFe_tgHWGRh6wJQ"))
-            .AddSingleton(serviceProvider => new FirebaseClient((string)serviceProvider.GetService(typeof(FirebaseDatabaseUrl))));
+            .AddSingleton(serviceProvider => new FirebaseClient(((FirebaseDatabaseUrl)serviceProvider.GetService(typeof(FirebaseDatabaseUrl)))?.Url));
         return services;
     }
 

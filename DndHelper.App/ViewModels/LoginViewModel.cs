@@ -1,5 +1,6 @@
 ﻿using DndHelper.App.Authentication;
 using System.ComponentModel;
+using DndHelper.Infrastructure;
 
 namespace DndHelper.App.ViewModels
 {
@@ -42,11 +43,19 @@ namespace DndHelper.App.ViewModels
 
         private async void LoginBtnTappedAsync(object obj)
         {
-            var result = await authProvider.SignInWithEmailAndPassword(UserName, UserPassword);
-            if (result.IsSuccess)
-                await Shell.Current.GoToAsync(nameof(MenuModel));
-            else
-                await Shell.Current.DisplayAlert("Не удалось войти", result.Status.ToString(), "Эх");
+            (await authProvider.SignInWithEmailAndPassword(UserName, UserPassword))
+                .OnSuccess(GoToMenuPage)
+                .OnFailure(DisplayLogInAlert);
+        }
+
+
+        private static async void GoToMenuPage()
+        {
+            await Shell.Current.GoToAsync(nameof(MenuModel));
+        }
+        private static async void DisplayLogInAlert(Result<User<string>, AuthenticationStatus> result)
+        {
+            await Shell.Current.DisplayAlert("Не удалось войти", result.Status.ToString(), "Эх");
         }
 
         private static async void RegisterBtnTappedAsync(object obj)
