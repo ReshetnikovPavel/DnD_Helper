@@ -21,6 +21,16 @@ public static class Result
         };
     }
 
+    public static Result<TValue, TStatus> CreateFailure<TValue, TStatus>(TStatus status, Exception exception)
+    {
+        return new Result<TValue, TStatus>
+        {
+            IsSuccess = false,
+            Status = status,
+            Exception = exception
+        };
+    }
+
     public static Result<TStatus> CreateSuccess<TStatus>()
     {
         return new Result<TStatus>
@@ -35,6 +45,16 @@ public static class Result
         {
             IsSuccess = false,
             Status = status
+        };
+    }
+
+    public static Result<TStatus> CreateFailure<TStatus>(TStatus status, Exception exception)
+    {
+        return new Result<TStatus>
+        {
+            IsSuccess = false,
+            Status = status,
+            Exception = exception
         };
     }
 }

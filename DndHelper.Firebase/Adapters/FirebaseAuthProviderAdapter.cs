@@ -2,6 +2,7 @@
 using DndHelper.App.Authentication;
 using DndHelper.Infrastructure;
 using Firebase.Auth;
+using Microsoft.Maui.ApplicationModel.Communication;
 using System.Net.Mail;
 
 namespace DndHelper.Firebase.Adapters;
@@ -18,16 +19,9 @@ public class FirebaseAuthProviderAdapter : IAuthenticationProvider<string>
         provider = new FirebaseAuthProvider(config);
     }
 
-    public async Task<Result<User<string>, AuthenticationStatus>> RegisterUserWithEmailAndPassword(string email, string password)
-    {
-        try
-        {
-            return await RegisterUserWithEmailAndPasswordThrowsException(email, password);
-        }
-        catch (FirebaseAuthException e)
-        {
-            return Result.CreateFailure<User<string>, AuthenticationStatus>((AuthenticationStatus)e.Reason);
-        }
+    public Task<Result<User<string>, AuthenticationStatus>> RegisterUserWithEmailAndPassword(string email, string password)
+    { 
+        return HandleError( async () => await RegisterUserWithEmailAndPasswordThrowsException(email, password));
     }
     private async Task<User<string>> RegisterUserWithEmailAndPasswordThrowsException(string email, string password)
     {
@@ -36,16 +30,9 @@ public class FirebaseAuthProviderAdapter : IAuthenticationProvider<string>
         return User;
     }
 
-    public async Task<Result<User<string>, AuthenticationStatus>> SignInWithEmailAndPassword(string email, string password)
+    public Task<Result<User<string>, AuthenticationStatus>> SignInWithEmailAndPassword(string email, string password)
     {
-        try
-        {
-            return await SignInWithEmailAndPasswordThrowsException(email, password);
-        }
-        catch (FirebaseAuthException e)
-        {
-            return Result.CreateFailure<User<string>, AuthenticationStatus>((AuthenticationStatus)e.Reason);
-        }
+        return HandleError(async () => await SignInWithEmailAndPasswordThrowsException(email, password));
     }
 
     private async Task<User<string>> SignInWithEmailAndPasswordThrowsException(string email, string password)
@@ -62,5 +49,16 @@ public class FirebaseAuthProviderAdapter : IAuthenticationProvider<string>
         var token = new AuthenticationToken(link.FirebaseToken);
 
         return new User<string>(id, email, token);
+    }
+    private static async Task<Result<T, AuthenticationStatus>> HandleError<T>(Func<Task<T>> interactWithFirebase)
+    {
+        try
+        {
+            return await interactWithFirebase();
+        }
+        catch (FirebaseAuthException e)
+        {
+            return Result.CreateFailure<T, AuthenticationStatus>((AuthenticationStatus)e.Reason, e);
+        }
     }
 }

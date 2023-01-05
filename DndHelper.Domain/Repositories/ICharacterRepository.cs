@@ -1,11 +1,13 @@
-﻿using DndHelper.Domain.Dnd;
+﻿using System.Net;
+using DndHelper.Domain.Dnd;
+using DndHelper.Infrastructure;
 
 
 namespace DndHelper.Domain.Repositories;
 
-public interface ICharacterRepository
+public interface ICharacterRepository<TErrorStatus>
 {
-    Task<Character> GetCharacter(Guid id);
-    void PutCharacter(Character character);
-    Task<IEnumerable<Character>> GetCharacters();
+    Task<Result<Character, TErrorStatus>> GetCharacter(Guid id);
+    Task<Result<TErrorStatus>> PutCharacter(Character character);
+    Task<Result<IEnumerable<Character>, HttpStatusCode>> GetCharacters();
 }
