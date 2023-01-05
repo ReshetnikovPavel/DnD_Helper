@@ -1,6 +1,6 @@
 ﻿namespace DndHelper.Infrastructure;
 
-public class Result<TStatus>
+public class Result<TStatus> : INoValueResult<TStatus>
 {
     public bool IsSuccess { get; set; }
     public TStatus Status { get; set; }
@@ -9,5 +9,33 @@ public class Result<TStatus>
     internal Result()
     {
 
+    }
+
+    public Result<TStatus> OnFailure(Action doOnFailure)
+    {
+        if (!IsSuccess)
+            doOnFailure();
+        return this;
+    }
+
+    public Result<TStatus> OnSuccess(Action doOnSuccess)
+    {
+        if (IsSuccess)
+            doOnSuccess();
+        return this;
+    }
+
+    public Result<TStatus> OnFailure(Action<Result<TStatus>> doOnFailure)
+    {
+        if (!IsSuccess)
+            doOnFailure(this);
+        return this;
+    }
+
+    public Result<TStatus> OnSuccess(Action<Result<TStatus>> doOnSuccess)
+    {
+        if (IsSuccess)
+            doOnSuccess(this);
+        return this;
     }
 }

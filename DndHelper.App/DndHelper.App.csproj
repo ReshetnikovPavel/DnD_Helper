@@ -25,4 +25,9 @@
 	  <ProjectReference Include="..\DndHelper.Domain\DndHelper.Domain.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Extensions\" />
+	  <Folder Include="Repositories\" />
+	</ItemGroup>
+
 </Project>
