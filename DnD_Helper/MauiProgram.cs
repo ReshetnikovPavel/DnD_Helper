@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Maui;
+﻿using System.Net;
+using CommunityToolkit.Maui;
 using DndHelper.App.ApplicationClasses;
 using DndHelper.App.Authentication;
 using DndHelper.App.Database;
@@ -13,6 +14,8 @@ using DndHelper.Xml.Repositories;
 using Firebase.Auth;
 using System.Xml.Linq;
 using DnD_Helper.Navigation;
+using DndHelper.Firebase.Repositories;
+using Firebase.Database;
 
 namespace DnD_Helper;
 
@@ -100,9 +103,9 @@ public static class MauiProgram
     {
         services
             .AddSingleton<IAuthenticationProvider<string>, FirebaseAuthProviderAdapter>()
-            .AddSingleton<IDatabaseClient, FirebaseClientAdapter>()
             .AddSingleton(new FirebaseDatabaseUrl("https://dndhelper-e695e-default-rtdb.asia-southeast1.firebasedatabase.app/"))
-            .AddSingleton(new FirebaseConfig("AIzaSyAsyhRQKmYdtXBaH8LOgFe_tgHWGRh6wJQ"));
+            .AddSingleton(new FirebaseConfig("AIzaSyAsyhRQKmYdtXBaH8LOgFe_tgHWGRh6wJQ"))
+            .AddSingleton(serviceProvider => new FirebaseClient((string)serviceProvider.GetService(typeof(FirebaseDatabaseUrl))));
         return services;
     }
 
@@ -117,7 +120,7 @@ public static class MauiProgram
             .AddTransient<IWeaponRepository, XmlWeaponRepository>()
             .AddTransient<IDndParser, DndCompendiumParser>()
             .AddTransient<IDndFactory<XElement>, DndCompendiumFactory>()
-            .AddTransient<ICharacterRepository, DatabaseCharacterRepository<string>>();
+            .AddTransient<ICharacterRepository<HttpStatusCode>, FirebaseCharacterRepository>();
 
         return services;
     }

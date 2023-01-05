@@ -5,6 +5,7 @@ public class Result<TValue, TStatus>
     public TValue Value { get; set; }
     public bool IsSuccess { get; set; }
     public TStatus Status { get; set; }
+    public Exception Exception { get; set; }
 
     internal Result()
     {
