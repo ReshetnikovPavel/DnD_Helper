@@ -2,8 +2,6 @@
 using CommunityToolkit.Maui;
 using DndHelper.App.ApplicationClasses;
 using DndHelper.App.Authentication;
-using DndHelper.App.Database;
-using DndHelper.App.Repositories;
 using DndHelper.App.RouteNavigation;
 using DndHelper.App.ViewModels;
 using DndHelper.Domain.Dnd;
