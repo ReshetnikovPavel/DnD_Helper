@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DnD_Helper.LanguageSelectionPage"
+             x:DataType="viewModels:LanguageSelectionModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewModels="clr-namespace:DndHelper.App.ViewModels;assembly=DndHelper.App"
+             Title="Выбор языка"
+             Style="{StaticResource ContentPage}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions = "Auto, Auto">
+        <Grid ColumnDefinitions="Auto, Auto, Auto">
+            <Label Text="Выберите"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Margin="10" />
+            <Label Text="{Binding NumberOfLanguages}"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Margin="10"
+                   Grid.Column="1" />
+            <Label Text="язык(а):"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Margin="10"
+                   Grid.Column="2" />
+        </Grid>
+
+        <Grid Grid.Row = "1">
+            <ListView x:Name="LanguageList"
+                ItemsSource="{Binding Languages}"
+                Margin="10"
+                Grid.Row="1"
+                SelectionMode="Single"> 
+                <!-- Multiple not working :(  -->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Frame>
+                                    <Label Text="{Binding .}" />
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <toolkit:EventToCommandBehavior
+                EventName="ItemTapped"
+                Command="{Binding SelectLanguages}"
+                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
+            </ListView.Behaviors>
+        </ListView>
+        </Grid>
+    </Grid>
+</ContentPage>
