@@ -5,21 +5,25 @@ using CommunityToolkit.Mvvm.ComponentModel;
 namespace DndHelper.App.ViewModels
 {
     [QueryProperty(nameof(Character), nameof(Character))]
-    public partial class CharacterModel : ObservableObject
+    public partial class CharacterModel : BindableObject
     {
-        [ObservableProperty]
         Character character;
-        public string Name => Character.Name;
+
+        public Character Character
+        {
+            get => character;
+            set
+            {
+                character = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(Background));
+            }
+        }
+
         public int Level => 1;
-        public string Class => "Rogue";
-        public string Race => "Human";
-        public string Background => "Criminal";
+        public string Background => Character?.Background.Name;
         public int Speed => 30;
-        public int ArmourClass => 10;
         public int Money => 1000;
-        public int HitPoints => 10;
-        public int Initiative => 3;
-        public Abilities AbilityScores => Abilities.CreateDefault();
         public Skills Skills => Skills.CreateDefault();
         public SavingThrows SavingThrows => SavingThrows.CreateDefault();
         public string Armor => "Leather";

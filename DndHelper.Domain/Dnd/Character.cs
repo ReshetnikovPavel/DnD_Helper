@@ -8,15 +8,15 @@ public class Character : Entity<Guid>, IDndObject
     {
         ProficiencyBonus = new ProficiencyBonus(2);
         Speed = new Speed(0);
-        Abilities = abilities.GetDictionary();
-        Skills = Skill.CreateFrom(Abilities, ProficiencyBonus);
-        SavingThrows = SavingThrow.CreateFrom(Abilities, ProficiencyBonus);
+        Abilities = abilities;
+        Skills = new Skills(abilities, ProficiencyBonus);
+        SavingThrows = new SavingThrows(abilities, ProficiencyBonus);
     }
 
 	public string Name { get; set; }
-    public IReadOnlyDictionary<AbilityName, AbilityScore> Abilities { get; private set; }
-    public IReadOnlyDictionary<AbilityName, SavingThrow> SavingThrows { get; private set; }
-    public IReadOnlyDictionary<SkillName, Skill> Skills { get; private set; }
+    public Abilities Abilities { get;  }
+    public SavingThrows SavingThrows { get; }
+    public Skills Skills { get; }
     public Race Race { get; private set; }
 	public Class Class { get; private set;  }
 	public Background Background { get; private set; }
@@ -34,7 +34,7 @@ public class Character : Entity<Guid>, IDndObject
     public HashSet<Trait> Traits { get; private set; } = new();
     public HashSet<Spell> Spells { get; private set; } = new();
     public AbilityName? SpellAbility { get; private set; }
-    public int Initiative => Abilities[AbilityName.Dexterity].Modifier;
+    public int Initiative => Abilities.Dexterity.Modifier;
     public int AC => 10;
 
     public SpellSlotsTable SpellSlotsTable { get; private set; }
