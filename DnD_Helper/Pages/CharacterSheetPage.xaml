@@ -51,7 +51,7 @@
                     Grid.Column="1"
                     Grid.Row = "0"
                     LineBreakMode="WordWrap"
-                    Text="{Binding ArmourClass}"
+                    Text="{Binding Character.AC}"
                     BackgroundColor = "#d8d7e5"/>
                 <Label Margin="10, 10, 10, 10"
                     Grid.Column="0"
@@ -67,7 +67,7 @@
                     Grid.Column="1"
                     Grid.Row = "1"
                     LineBreakMode="WordWrap"
-                    Text="{Binding Speed}"
+                    Text="{Binding Character.Speed.Value}"
                     BackgroundColor = "#d8d7e5"/>
                 <Label Margin="10, 10, 10, 10"
                     Grid.Column="2"
@@ -78,7 +78,7 @@
                     Grid.Column="3"
                     Grid.Row = "1"
                     LineBreakMode="WordWrap"
-                    Text="{Binding Initiative}"
+                    Text="{Binding Character.Initiative}"
                     BackgroundColor = "#d8d7e5"/>
                 <Label Margin="10, 10, 10, 10"
                     Grid.Column="2"
@@ -89,7 +89,7 @@
                     Grid.Column="3"
                     Grid.Row = "0"
                     LineBreakMode="WordWrap"
-                    Text="{Binding HitPoints}"
+                    Text="{Binding Character.HitPoints}"
                     BackgroundColor = "#d8d7e5"/>
             </Grid>
 
@@ -102,24 +102,24 @@
                     <Label Text="Интеллект" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "3" Grid.Column="0"/>
                     <Label Text="Мудрость" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "4" Grid.Column="0"/>
                     <Label Text="Харизма" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "5" Grid.Column="0"/>
-                    <Label Text="{Binding AbilityScores.Strength.Value}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "0" Grid.Column="1"/>
-                    <Label Text="{Binding AbilityScores.Dexterity.Value}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "1" Grid.Column="1"/>
-                    <Label Text="{Binding AbilityScores.Constitution.Value}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "2" Grid.Column="1"/>
-                    <Label Text="{Binding AbilityScores.Intelligence.Value}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "3" Grid.Column="1"/>
-                    <Label Text="{Binding AbilityScores.Wisdom.Value}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "4" Grid.Column="1"/>
-                    <Label Text="{Binding AbilityScores.Charisma.Value}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "5" Grid.Column="1"/>
+                    <Label Text="{Binding Character.Abilities.Strength.Value}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "0" Grid.Column="1"/>
+                    <Label Text="{Binding Character.Abilities.Dexterity.Value}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "1" Grid.Column="1"/>
+                    <Label Text="{Binding Character.Abilities.Constitution.Value}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "2" Grid.Column="1"/>
+                    <Label Text="{Binding Character.Abilities.Intelligence.Value}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "3" Grid.Column="1"/>
+                    <Label Text="{Binding Character.Abilities.Wisdom.Value}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "4" Grid.Column="1"/>
+                    <Label Text="{Binding Character.Abilities.Charisma.Value}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "5" Grid.Column="1"/>
                     <Label Text="Mod" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "0" Grid.Column="2"/>
                     <Label Text="Mod" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "1" Grid.Column="2"/>
                     <Label Text="Mod" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "2" Grid.Column="2"/>
                     <Label Text="Mod" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "3" Grid.Column="2"/>
                     <Label Text="Mod" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "4" Grid.Column="2"/>
                     <Label Text="Mod" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "5" Grid.Column="2"/>
-                    <Label Text="{Binding AbilityScores.Strength.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "0" Grid.Column="3"/>
-                    <Label Text="{Binding AbilityScores.Dexterity.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "1" Grid.Column="3"/>
-                    <Label Text="{Binding AbilityScores.Constitution.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "2" Grid.Column="3"/>
-                    <Label Text="{Binding AbilityScores.Intelligence.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "3" Grid.Column="3"/>
-                    <Label Text="{Binding AbilityScores.Wisdom.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "4" Grid.Column="3"/>
-                    <Label Text="{Binding AbilityScores.Charisma.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "5" Grid.Column="3"/>
+                    <Label Text="{Binding Character.Abilities.Strength.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "0" Grid.Column="3"/>
+                    <Label Text="{Binding Character.Abilities.Dexterity.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "1" Grid.Column="3"/>
+                    <Label Text="{Binding Character.Abilities.Constitution.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "2" Grid.Column="3"/>
+                    <Label Text="{Binding Character.Abilities.Intelligence.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "3" Grid.Column="3"/>
+                    <Label Text="{Binding Character.Abilities.Wisdom.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "4" Grid.Column="3"/>
+                    <Label Text="{Binding Character.Abilities.Charisma.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Row = "5" Grid.Column="3"/>
                 </Grid>
             </Grid>
 
@@ -133,12 +133,12 @@
                     <Label Text="Интеллект" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "3"/>
                     <Label Text="Мудрость" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "4"/>
                     <Label Text="Харизма" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "5"/>
-                    <Label Text="{Binding SavingThrows.Strength.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "0"/>
-                    <Label Text="{Binding SavingThrows.Dexterity.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "1"/>
-                    <Label Text="{Binding SavingThrows.Constitution.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "2"/>
-                    <Label Text="{Binding SavingThrows.Intelligence.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "3"/>
-                    <Label Text="{Binding SavingThrows.Wisdom.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "4"/>
-                    <Label Text="{Binding SavingThrows.Charisma.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "5"/>
+                    <Label Text="{Binding Character.SavingThrows.Strength.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "0"/>
+                    <Label Text="{Binding Character.SavingThrows.Dexterity.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "1"/>
+                    <Label Text="{Binding Character.SavingThrows.Constitution.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "2"/>
+                    <Label Text="{Binding Character.SavingThrows.Intelligence.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "3"/>
+                    <Label Text="{Binding Character.SavingThrows.Wisdom.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "4"/>
+                    <Label Text="{Binding Character.SavingThrows.Charisma.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "5"/>
                 </Grid>
                 <Label Text="Навыки" FontSize="Large" Margin="10, 10, 10, 10" Grid.Row="2"/>
 
@@ -161,24 +161,24 @@
                     <Label Text="Уход за животными" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "16"/>
                     <Label Text="Убеждение" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "17"/>
                     <Label Text="Анализ" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "0" Grid.Row = "1"/>
-                    <Label Text="{Binding Skills.Acrobatics.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "0"/>
-                    <Label Text="{Binding Skills.Investigation.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "1"/>
-                    <Label Text="{Binding Skills.Athletics.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "2"/>
-                    <Label Text="{Binding Skills.Perception.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "3"/>
-                    <Label Text="{Binding Skills.Survival.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "4"/>
-                    <Label Text="{Binding Skills.Performance.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "5"/>
-                    <Label Text="{Binding Skills.Intimidation.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "6"/>
-                    <Label Text="{Binding Skills.History.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "7"/>
-                    <Label Text="{Binding Skills.SleightOfHand.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "8"/>
-                    <Label Text="{Binding Skills.Arcana.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "9"/>
-                    <Label Text="{Binding Skills.Medicine.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "10"/>
-                    <Label Text="{Binding Skills.Deception.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "11"/>
-                    <Label Text="{Binding Skills.Nature.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "12"/>
-                    <Label Text="{Binding Skills.Insight.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "13"/>
-                    <Label Text="{Binding Skills.Religion.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "14"/>
-                    <Label Text="{Binding Skills.Stealth.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "15"/>
-                    <Label Text="{Binding Skills.AnimalHandling.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "16"/>
-                    <Label Text="{Binding Skills.Persuasion.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "17"/>
+                    <Label Text="{Binding Character.Skills.Acrobatics.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "0"/>
+                    <Label Text="{Binding Character.Skills.Investigation.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "1"/>
+                    <Label Text="{Binding Character.Skills.Athletics.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "2"/>
+                    <Label Text="{Binding Character.Skills.Perception.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "3"/>
+                    <Label Text="{Binding Character.Skills.Survival.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "4"/>
+                    <Label Text="{Binding Character.Skills.Performance.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "5"/>
+                    <Label Text="{Binding Character.Skills.Intimidation.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "6"/>
+                    <Label Text="{Binding Character.Skills.History.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "7"/>
+                    <Label Text="{Binding Character.Skills.SleightOfHand.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "8"/>
+                    <Label Text="{Binding Character.Skills.Arcana.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "9"/>
+                    <Label Text="{Binding Character.Skills.Medicine.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "10"/>
+                    <Label Text="{Binding Character.Skills.Deception.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "11"/>
+                    <Label Text="{Binding Character.Skills.Nature.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "12"/>
+                    <Label Text="{Binding Character.Skills.Insight.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "13"/>
+                    <Label Text="{Binding Character.Skills.Religion.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "14"/>
+                    <Label Text="{Binding Character.Skills.Stealth.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "15"/>
+                    <Label Text="{Binding Character.Skills.AnimalHandling.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "16"/>
+                    <Label Text="{Binding Character.Skills.Persuasion.Modifier}" FontSize="Medium" Margin="10, 10, 10, 10" Grid.Column = "1" Grid.Row = "17"/>
                 </Grid>
 
             </Grid>
