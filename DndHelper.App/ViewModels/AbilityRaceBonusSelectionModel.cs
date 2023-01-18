@@ -16,8 +16,6 @@ namespace DndHelper.App.ViewModels
             return;
         }
 
-
-
         public int NumberOfAbilityRaceBonuses => 2;
 
         public string[] Abilities
