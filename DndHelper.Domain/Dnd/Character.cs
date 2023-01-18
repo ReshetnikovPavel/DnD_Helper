@@ -9,8 +9,8 @@ public class Character : Entity<Guid>, IDndObject
         ProficiencyBonus = new ProficiencyBonus(2);
         Speed = new Speed(0);
         Abilities = abilities;
-        Skills = new Skills(abilities, ProficiencyBonus);
-        SavingThrows = new SavingThrows(abilities, ProficiencyBonus);
+        Skills = Skills.Create(abilities, ProficiencyBonus);
+        SavingThrows = SavingThrows.Create(abilities, ProficiencyBonus);
     }
 
 	public string Name { get; set; }
@@ -100,10 +100,14 @@ public class Character : Entity<Guid>, IDndObject
 
         Class.SpellSlotsTable = SpellSlotsTable;
 
-        foreach (var (level, features) in Class.LevelFeatures)
+        for (var index = 0; index < Class.LevelFeatures.Count; index++)
+        {
+            var level = index + 1;
+            var features = Class.LevelFeatures[index];
             foreach (var feature in features)
                 if (level == 1)
                     ApplyFeature(feature);
+        }
     }
 
     private void ApplyFeature(ClassFeature feature)

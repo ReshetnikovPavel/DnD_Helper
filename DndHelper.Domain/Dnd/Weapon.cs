@@ -1,4 +1,5 @@
-﻿using DndHelper.Infrastructure;
+﻿using System.Text.Json.Serialization;
+using DndHelper.Infrastructure;
 
 namespace DndHelper.Domain.Dnd;
 
@@ -16,7 +17,13 @@ public class Weapon : ValueType<Weapon>, IDndObject
         Damage = new Dice(1, DiceName.D4);
         DamageType = "Bludgeoning";
     }
-    public string Name { get; }
+
+    public Weapon()
+    {
+
+    }
+
+    public string Name { get; set; }
 
     public Dice Damage { get; set; }
 

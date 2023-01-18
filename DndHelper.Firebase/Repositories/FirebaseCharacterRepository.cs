@@ -6,6 +6,7 @@ using DndHelper.Domain.Repositories;
 using DndHelper.Domain.Dnd;
 using DndHelper.App.Authentication;
 using DndHelper.Infrastructure;
+using Newtonsoft.Json;
 
 
 namespace DndHelper.Firebase.Repositories;
@@ -29,7 +30,8 @@ public class FirebaseCharacterRepository : ICharacterRepository<HttpStatusCode>
 
     public Task<Result<HttpStatusCode>> PutCharacter(Character character)
     {
-        async void PutCharacterAction() => await GetCharacterQuery(character).PutAsync(character);
+        var json = JsonConvert.SerializeObject(character);
+        async void PutCharacterAction() => await GetCharacterQuery(character).PutAsync(json);
 
         return Task.FromResult(HandleError(PutCharacterAction));
     }
