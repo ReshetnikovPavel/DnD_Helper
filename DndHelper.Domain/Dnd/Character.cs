@@ -11,6 +11,8 @@ public class Character : Entity<Guid>, IDndObject
         Abilities = abilities;
         Skills = new Skills(abilities, ProficiencyBonus);
         SavingThrows = new SavingThrows(abilities, ProficiencyBonus);
+        Level = 1;
+        Money = 1000;
     }
 
 	public string Name { get; set; }
@@ -36,7 +38,9 @@ public class Character : Entity<Guid>, IDndObject
     public HashSet<Spell> Spells { get; private set; } = new();
     public AbilityName? SpellAbility { get; private set; }
     public int Initiative => Abilities.Dexterity.Modifier;
-    public int AC => 10;
+    public int AC => 10 + Abilities.Dexterity.Modifier;
+    public int Level { get; private set; }
+    public int Money { get; private set; }
 
     public SpellSlotsTable SpellSlotsTable { get; private set; }
 

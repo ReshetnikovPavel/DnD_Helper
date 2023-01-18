@@ -26,7 +26,7 @@
                     <Label Margin="10, 10, 10, 10"
                         Grid.Row="0"
                         LineBreakMode ="WordWrap"
-                        Text="{Binding Level}" Grid.Column = "3"/>
+                        Text="{Binding Character.Level}" Grid.Column = "3"/>
                     <Label Margin="10, 10, 10, 10" Text="Имя:" Grid.Row="0" Grid.Column="0"/>
                     <Label Margin="10, 10, 10, 10" Text="Уровень:" Grid.Row="0" Grid.Column="2"/>
                 </Grid>
@@ -193,7 +193,7 @@
                         Grid.Column="1"
                         Grid.Row="0"
                         LineBreakMode="WordWrap"
-                        Text="{Binding Money}"/>
+                        Text="{Binding Character.Money}"/>
                     <Label Text="Броня:" FontSize="Large" Margin="10, 10, 10, 10" Grid.Row = "1" Grid.Column="0"/>
                     <Label Text = "{Binding Armor}" Margin="10, 10, 10, 10" Grid.Row = "1" Grid.Column="1"/>
                 </Grid>
