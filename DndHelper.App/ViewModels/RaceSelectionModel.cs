@@ -17,8 +17,8 @@ namespace DndHelper.App.ViewModels
             SelectRace = new Command<string>(OnRaceSelected);
         }
 
-        public IEnumerable<string> RaceNames => raceRepository.GetNames()
-            .Where(x => !raceRepository.GetSubraceNames(x).Any()); //Пока подрасы не сделаны...
+        public IEnumerable<string> RaceNames => raceRepository.GetNames();
+            /*.Where(x => !raceRepository.GetSubraceNames(x).Any());*/ //Пока подрасы не сделаны...
 
         private void OnRaceSelected(string selectedName)
         {

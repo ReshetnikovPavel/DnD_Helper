@@ -18,17 +18,6 @@ namespace DndHelper.App.ApplicationClasses
         private readonly ICharacterRepository<HttpStatusCode> characterRepository;
         private RepositoryFacade RepositoryFacade { get; }
 
-        public Dictionary<CharacterAttributes, Func<bool>> attributes
-            = new Dictionary<CharacterAttributes, Func<bool>>
-            {
-                [CharacterAttributes.Race] = () => { return true; },
-                [CharacterAttributes.Class] = () => { return true; },
-                [CharacterAttributes.Abilities] = () => { return true; },
-                [CharacterAttributes.Name] = () => { return true; },
-                [CharacterAttributes.Background] = () => { return true; },
-                [CharacterAttributes.Subrace] = () => { return true; }
-            };
-
         public CharacterCreator(IStateManager<CharacterAttributes, object> stateManager, RepositoryFacade repositoryFacade, ICharacterRepository<HttpStatusCode> characterRepository)
         {
             this.characterRepository = characterRepository;
@@ -40,8 +29,9 @@ namespace DndHelper.App.ApplicationClasses
 
         public bool CanCreate()
         {
-            return !attributes.Any(pair => MustSelect(pair.Key));
-
+            return Enum.GetValues(typeof(CharacterAttributes))
+                .Cast<CharacterAttributes>()
+                .Any(MustSelect);
         }
 
         public bool MustSelect(CharacterAttributes attribute)
@@ -86,7 +76,13 @@ namespace DndHelper.App.ApplicationClasses
 
         public bool CanSelect(CharacterAttributes attribute)
         {
-            return attributes[attribute]();
+            switch(attribute)
+            {
+                case CharacterAttributes.Subrace:
+                    return HasSubRaces();
+                default:
+                    return true;
+            }
         }
 
         private bool IsSelected(CharacterAttributes attribute)
