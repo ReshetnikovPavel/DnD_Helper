@@ -46,10 +46,11 @@ namespace DndHelper.App.ApplicationClasses
             var abilities = StateManager.GetValue(CharacterAttributes.Abilities) as Abilities;
             var name = StateManager.GetValue(CharacterAttributes.Name) as string;
             var backgroundName = StateManager.GetValue(CharacterAttributes.Background) as string;
-
+            var subRaceName = IsSelected(CharacterAttributes.Subrace) ?
+                StateManager.GetValue(CharacterAttributes.Subrace) as string : null;
 
             var character = Character.CreateNew(abilities);
-            character.ApplyRace(RepositoryFacade.GetRace(raceName, null));
+            character.ApplyRace(RepositoryFacade.GetRace(raceName, subRaceName));
             character.ApplyClass(RepositoryFacade.GetClass(className));
             character.Name = name;
             character.ApplyBackground(RepositoryFacade.GetBackground(backgroundName));
