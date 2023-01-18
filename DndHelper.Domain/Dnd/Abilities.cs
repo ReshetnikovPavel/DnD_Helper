@@ -25,6 +25,11 @@ public class Abilities : ValueType<Abilities>, IDndObject
         };
     }
 
+    public Abilities(Dictionary<AbilityName, AbilityScore> dictionary)
+    {
+        Dictionary = dictionary;
+    }
+
     public static Abilities CreateDefault()
     {
         return new Abilities(8, 8, 8, 8, 8, 8);
