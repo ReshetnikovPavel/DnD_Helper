@@ -10,7 +10,7 @@ public class Character : Entity<Guid>, IDndObject
         var proficiencyBonus = new ProficiencyBonus(2);
         return new Character(Guid.NewGuid(), null, abilities, SavingThrows.Create(abilities, proficiencyBonus),
             Skills.Create(abilities, proficiencyBonus),
-            null, null, null, proficiencyBonus, Size.Medium, new Speed(0), new HashSet<Language>(),
+            null, null, null, proficiencyBonus, Size.Medium, new Speed(0), new List<string>(),
             new HashSet<Weapon>(), 
             new HashSet<Instrument>(), new List<Equipment>(), new List<Weapon>(), new List<Instrument>(), new HashSet<Feat>(), new HashSet<Trait>(), new HashSet<Spell>(),
             null, null, null, null);
