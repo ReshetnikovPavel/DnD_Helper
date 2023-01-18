@@ -26,6 +26,11 @@ public class FirebaseCharacterRepository : ICharacterRepository<HttpStatusCode>
         return HandleError(async () => await GetCharacterQuery(id).OnceSingleAsync<Character>());
     }
 
+    public Task<Result<Character, HttpStatusCode>> GetCharacter(string userId, Guid characterId)
+    {
+        return HandleError(async () => await GetCharacterQuery(userId, characterId).OnceSingleAsync<Character>());
+    }
+
     public Task<Result<HttpStatusCode>> PutCharacter(Character character)
     {
         var json = JsonConvert.SerializeObject(character);
@@ -61,18 +66,29 @@ public class FirebaseCharacterRepository : ICharacterRepository<HttpStatusCode>
         return GetCharacterQuery(character.Id);
     }
 
-    private ChildQuery GetCharacterQuery<TId>(TId id)
+    private ChildQuery GetCharacterQuery(Guid id)
     {
         return GetUserQuery()
             .Child("Characters")
             .Child($"{id}");
     }
 
-    private ChildQuery GetUserQuery()
+    private ChildQuery GetCharacterQuery(string userId, Guid id)
+    {
+        return GetUserQuery(userId)
+            .Child("Characters")
+            .Child($"{id}");
+    }
+
+    private ChildQuery GetUserQuery(string id)
     {
         return firebaseClient
             .Child("Users")
-            .Child($"{User.Id}");
+            .Child($"{id}");
+    }
+    private ChildQuery GetUserQuery()
+    {
+        return GetUserQuery(User.Id);
     }
     private static async Task<Result<T, HttpStatusCode>> HandleError<T>(Func<Task<T>> interactWithFirebase)
     {

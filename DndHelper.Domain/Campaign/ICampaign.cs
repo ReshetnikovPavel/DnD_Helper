@@ -1,11 +1,17 @@
 ﻿using DndHelper.Domain.Dnd;
+using DndHelper.Infrastructure;
+using System.Net;
 
 namespace DndHelper.Domain.Campaign;
 
-public interface ICampaign<out TId>
+public interface ICampaign<out TId, TStatus>
 {
-    public TId Id { get; }
-    public IEnumerable<Character> Characters { get; set; }
-    public GameMaster GameMaster { get; set; }
-    public string Name { get; set; }
+    TId Id { get; }
+    IDictionary<(string UserId, Guid CharacterId), string> CharacterNames { get; }
+    IDictionary<Guid, string> UserIds { get; }
+    GameMaster GameMaster { get; }
+    string Name { get; }
+
+    Task<Result<TStatus>> Join(User<string> user, Character character);
+    Task<Result<Character, TStatus>> GetCharacter(Guid characterGuid);
 }
