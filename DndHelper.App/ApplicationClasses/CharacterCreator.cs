@@ -17,23 +17,32 @@ namespace DndHelper.App.ApplicationClasses
         private IStateManager<string, object> StateManager { get; }
         private RepositoryFacade RepositoryFacade { get; }
 
-        public CharacterCreator(IStateManager<string, object> stateManager, RepositoryFacade repositoryFacade, ICharacterRepository<HttpStatusCode> characterRepository)
+        private Dictionary<string, Func<bool>> attributes;
+
+    public CharacterCreator(IStateManager<string, object> stateManager, RepositoryFacade repositoryFacade, ICharacterRepository<HttpStatusCode> characterRepository)
         {
             this.characterRepository = characterRepository;
             StateManager = stateManager;
             RepositoryFacade = repositoryFacade;
             SetDefaultValues();
             SubscribeToMessaging();
+            attributes = new Dictionary<string, Func<bool>>();
         }
 
         public bool CanCreate()
         {
-            return IsSelected(nameof(Character.Race))
-                && IsSelected(nameof(Character.Class))
-                && IsSelected(nameof(Character.Background))
-                && IsSelected(nameof(Character.Abilities))
-                && IsSelected(nameof(Character.Name));
+            return !attributes.Any(pair => MustSelect(pair.Key));
 
+        }
+
+        public bool MustSelect(string attribute)
+        {
+            return CanSelect(attribute) && !IsSelected(attribute);
+        }
+
+        public void AddAttribute(string attribute, Func<bool> canSelect)
+        {
+            attributes.Add(attribute, canSelect);
         }
 
         public Character Create()
@@ -71,9 +80,19 @@ namespace DndHelper.App.ApplicationClasses
             StateManager.SetValue(selection.Property, selection.Value);
         }
 
+        private bool CanSelect(string attributeName)
+        {
+            return attributes[attributeName]();
+        }
+
         private bool IsSelected(string attributeName)
         {
             return StateManager.HasKey(attributeName);
+        }
+
+        public bool MustSelect(KeyValuePair<string, Func<bool>> attribute)
+        {
+            throw new NotImplementedException();
         }
     }
 }

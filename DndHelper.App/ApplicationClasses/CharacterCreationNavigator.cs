@@ -21,15 +21,15 @@ namespace DndHelper.App.RouteNavigation
             this.Creator = creator;
         }
 
-        public void AddModel<TModel>() where TModel : BindableObject
+        public void AddModel<TModel>(IEnumerable<string> attributes, 
+            Func<bool> goCondition) where TModel : BindableObject
         {
-            modelNavigator.AddModel<TModel>();
+            modelNavigator.AddModel<TModel>(goCondition);
+            foreach(var attribute in attributes)
+            {
+                Creator.AddAttribute(attribute, goCondition);
+            }
         }
-
-        //public void AddModel<TModel>(Func<bool> goCondition) where TModel : BindableObject
-        //{
-        //    modelNavigator.AddModel<TModel>(goCondition);
-        //}
 
         public async void TryGoToCharacterSheet()
         {

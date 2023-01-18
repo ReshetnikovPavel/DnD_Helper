@@ -1,5 +1,6 @@
 ﻿using DndHelper.App.ApplicationClasses;
 using DndHelper.App.RouteNavigation;
+using DndHelper.Domain.Dnd;
 using System.Windows.Input;
 
 namespace DndHelper.App.ViewModels
@@ -7,26 +8,27 @@ namespace DndHelper.App.ViewModels
     public class CharacterCreationShellViewModel : BindableObject
     {
         public ICommand GoToCharacterSheet { get; }
-        private readonly CharacterCreationNavigator characterCreationNavigator;
+        private readonly CharacterCreationNavigator navigator;
 
         public CharacterCreationShellViewModel(IModelNavigator modelNavigator, ICreatesCharacter creator)
         {
-            characterCreationNavigator = new CharacterCreationNavigator(modelNavigator, creator);
-            GoToCharacterSheet = new Command(characterCreationNavigator.TryGoToCharacterSheet);
+            navigator = new CharacterCreationNavigator(modelNavigator, creator);
+            GoToCharacterSheet = new Command(navigator.TryGoToCharacterSheet);
             AddModels();
         }
 
         private void AddModels()
         {
-            AddModel<RaceSelectionModel>();
-            AddModel<ClassSelectionModel>();
-            AddModel<AbilityScoreSelectionModel>();
-            AddModel<BackgroundSelectionModel>();
+            AddModel<RaceSelectionModel>(new[] { nameof(Character.Race) });
+            AddModel<ClassSelectionModel>(new[] { nameof(Character.Class) });
+            AddModel<AbilityScoreSelectionModel>(new[] { nameof(Character.Abilities) });
+            AddModel<BackgroundSelectionModel>(new[] { nameof(Character.Name), nameof(Character.Background) });
         }
 
-        private void AddModel<TModel>() where TModel : BindableObject
+        private void AddModel<TModel>(IEnumerable<string> attributes)
+            where TModel : BindableObject
         {
-            characterCreationNavigator.AddModel<TModel>();
+            navigator.AddModel<TModel>(attributes, () => { return true; });
         }
     }
 }
