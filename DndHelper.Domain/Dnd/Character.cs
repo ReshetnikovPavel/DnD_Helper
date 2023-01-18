@@ -1,28 +1,70 @@
-﻿using DndHelper.Infrastructure;
+﻿using System.Text.Json.Serialization;
+using DndHelper.Infrastructure;
 
 namespace DndHelper.Domain.Dnd;
 
 public class Character : Entity<Guid>, IDndObject
 {
-    public Character(Abilities abilities) : base(Guid.NewGuid())
+    public static Character CreateNew(Abilities abilities)
     {
-        ProficiencyBonus = new ProficiencyBonus(2);
-        Speed = new Speed(0);
-        Abilities = abilities;
-        Skills = new Skills(abilities, ProficiencyBonus);
-        SavingThrows = new SavingThrows(abilities, ProficiencyBonus);
-        Level = 1;
-        Money = 1000;
+        var proficiencyBonus = new ProficiencyBonus(2);
+        return new Character(Guid.NewGuid())
+        {
+            ProficiencyBonus = proficiencyBonus,
+            Abilities = abilities,
+            Skills = Skills.Create(abilities, proficiencyBonus),
+            SavingThrows = SavingThrows.Create(abilities, proficiencyBonus),
+            Speed = new Speed(0),
+            Level = 1,
+            Money = 1000
+        };
     }
 
-	public string Name { get; set; }
-    public Abilities Abilities { get;  }
-    public SavingThrows SavingThrows { get; }
-    public Skills Skills { get; }
+    public Character(Guid id) : base(id)
+    {
+    }
+
+    public Character(Guid id, string name, Abilities abilities, SavingThrows savingThrows,
+                Skills skills, Race race, Class personClass, Background background, ProficiencyBonus proficiencyBonus,
+                Size size, Speed speed, HashSet<Language> languages, HashSet<Weapon> weaponsProficiencies,
+                HashSet<Instrument> instrumentProficiencies, List<Equipment> equipment, List<Weapon> weapons,
+                List<Instrument> instruments, HashSet<Feat> feats, HashSet<Trait> traits, HashSet<Spell> spells,
+                AbilityName? spellAbility, SpellSlotsTable spellSlotsTable, HitDice hitDice, HitPoints hitPoints) : base(id)
+    {
+        Name = name;
+        Abilities = abilities;
+        SavingThrows = savingThrows;
+        Skills = skills;
+        Race = race;
+        Class = personClass;
+        Background = background;
+        ProficiencyBonus = proficiencyBonus;
+        Size = size;
+        Speed = speed;
+        Languages = languages;
+        WeaponsProficiencies = weaponsProficiencies;
+        InstrumentProficiencies = instrumentProficiencies;
+        Equipment = equipment;
+        Weapons = weapons;
+        Instruments = instruments;
+        Feats = feats;
+        Traits = traits;
+        Spells = spells;
+        SpellAbility = spellAbility;
+        SpellSlotsTable = spellSlotsTable;
+        HitDice = hitDice;
+        HitPoints = hitPoints;
+    }
+
+
+    public string Name { get; set; }
+    public Abilities Abilities { get; set; }
+    public SavingThrows SavingThrows { get; set; }
+    public Skills Skills { get; set; }
     public Race Race { get; private set; }
 	public Class Class { get; private set;  }
 	public Background Background { get; private set; }
-	public ProficiencyBonus ProficiencyBonus { get; }
+	public ProficiencyBonus ProficiencyBonus { get; set; }
     public Size Size { get; private set; }
     public Speed Speed { get; private set; }
     public List<string> Languages { get; private set; } = new();
@@ -109,10 +151,14 @@ public class Character : Entity<Guid>, IDndObject
 
         Class.SpellSlotsTable = SpellSlotsTable;
 
-        foreach (var (level, features) in Class.LevelFeatures)
+        for (var index = 0; index < Class.LevelFeatures.Count; index++)
+        {
+            var level = index + 1;
+            var features = Class.LevelFeatures[index];
             foreach (var feature in features)
                 if (level == 1)
                     ApplyFeature(feature);
+        }
     }
 
     private void ApplyFeature(ClassFeature feature)

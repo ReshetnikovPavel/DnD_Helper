@@ -16,16 +16,30 @@ namespace DndHelper.Domain.Dnd
         public SavingThrow Wisdom { get => Dictionary[AbilityName.Wisdom]; }
         public SavingThrow Charisma { get => Dictionary[AbilityName.Charisma]; }
 
-        public SavingThrows(Abilities abilities, ProficiencyBonus proficiencyBonus)
+        public SavingThrows(SavingThrow strength, SavingThrow dexterity, SavingThrow constitution, SavingThrow intelligence, SavingThrow wisdom, SavingThrow charisma)
         {
-            Dictionary = new Dictionary<AbilityName, SavingThrow>();
-            foreach (var (abilityName, ability) in abilities.Dictionary)
-                Dictionary[abilityName] = new SavingThrow(ability, proficiencyBonus);
+            Dictionary = new Dictionary<AbilityName, SavingThrow>
+            {
+                { AbilityName.Strength, strength },
+                { AbilityName.Dexterity, dexterity },
+                { AbilityName.Constitution, constitution },
+                { AbilityName.Intelligence, intelligence },
+                { AbilityName.Wisdom, wisdom },
+                { AbilityName.Charisma, charisma }
+            };
         }
 
         public SavingThrow this[AbilityName name]
         {
             get => Dictionary[name];
+        }
+
+        public static SavingThrows Create(Abilities abilities, ProficiencyBonus proficiencyBonus)
+        {
+            var dictionary = new Dictionary<AbilityName, SavingThrow>();
+            foreach (var (abilityName, ability) in abilities.Dictionary)
+                dictionary[abilityName] = new SavingThrow(ability, proficiencyBonus);
+            return new SavingThrows(dictionary[AbilityName.Strength], dictionary[AbilityName.Dexterity], dictionary[AbilityName.Constitution], dictionary[AbilityName.Intelligence], dictionary[AbilityName.Wisdom], dictionary[AbilityName.Charisma]);
         }
     }
 }

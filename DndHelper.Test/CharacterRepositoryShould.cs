@@ -1,10 +1,13 @@
 ﻿using DndHelper.App.RouteNavigation;
 using DndHelper.App.ViewModels;
+using DndHelper.Domain.Dnd;
 using DndHelper.Firebase.Adapters;
 using DndHelper.Firebase.Repositories;
 using Firebase.Auth;
 using Firebase.Database;
 using Moq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Tests;
 
@@ -28,7 +31,7 @@ public class CharacterRepositoryShould
     public async Task ShouldLoadCharacter()
     {
         await auth.SignInWithEmailAndPassword("pasha.keyzet@yandex.ru", "Sin2x=2SinxCosx");
-        var characters = await characterRepository.GetCharacter(Guid.Parse("04fa3fff-09ec-418b-a96e-f879576c247c"));
+        var characters = await characterRepository.GetCharacter(Guid.Parse("6844fc89-3540-462e-9431-a3b800b3dc8e"));
        characters.Value.Should().NotBeNull();
     }
 }
