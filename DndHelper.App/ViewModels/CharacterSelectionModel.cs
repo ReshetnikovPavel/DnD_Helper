@@ -14,8 +14,17 @@ namespace DndHelper.App.ViewModels
         private readonly IShellNavigator shellNavigator;
         public ICommand SelectCharacter { get; }
         public ICommand CreateNewCharacter => new Command(OnCreateNewCharacter);
-
-        public IEnumerable<string> CharacterNames { get; private set; }
+        
+        private IEnumerable<string> characterNames;
+        public IEnumerable<string> CharacterNames
+        {
+            get => characterNames;
+            set
+            {
+                characterNames = value;
+                OnPropertyChanged();
+            }
+        }
 
         private string[] mockNames = { "Люля", "Пельмешек", "Поль Реш", "Синий", "Симонов" };
 
