@@ -7,13 +7,11 @@ namespace DndHelper.App.ViewModels
     public class CharacterCreationShellViewModel : BindableObject
     {
         public ICommand GoToCharacterSheet { get; }
-        private readonly ICreatesCharacter creator;
         private readonly CharacterCreationNavigator characterCreationNavigator;
 
-        public CharacterCreationShellViewModel(ICreatesCharacter creator, CharacterCreationNavigator characterCreationNavigator)
+        public CharacterCreationShellViewModel(IModelNavigator modelNavigator, ICreatesCharacter creator)
         {
-            this.creator = creator;
-            this.characterCreationNavigator = characterCreationNavigator;
+            characterCreationNavigator = new CharacterCreationNavigator(modelNavigator, creator);
             GoToCharacterSheet = new Command(characterCreationNavigator.TryGoToCharacterSheet);
             AddModels();
         }

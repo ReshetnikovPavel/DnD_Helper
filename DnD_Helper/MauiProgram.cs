@@ -44,7 +44,7 @@ public static class MauiProgram
     private static IServiceCollection RegisterViewModels(this IServiceCollection services)
     {
         services
-            .AddTransient<CharacterCreationShellViewModel>()
+            .AddSingleton<CharacterCreationShellViewModel>()
             .AddTransient<LoginViewModel>()
             .AddTransient<RegisterViewModel>()
             .AddTransient<AbilityScoreSelectionModel>()
@@ -89,8 +89,8 @@ public static class MauiProgram
 			.AddTransient<DistributorAbilityScore>()
 			.AddTransient<Abilities>()
 			.AddTransient<CharacterCreationNavigator>()
-			.AddSingleton<ICreatesCharacter, CharacterCreator>()
-            .AddSingleton<IShellNavigator, ShellNavigator>()
+			.AddTransient<ICreatesCharacter, CharacterCreator>()
+            .AddTransient<IShellNavigator, ShellNavigator>()
             .AddTransient<IModelNavigator, RouteCollectionNavigator>()
 			.AddTransient<IHasRouteCollection, RouteCollection>()
 			.AddTransient<IStateManager<string, object>, StateDictionary<string, object>>()

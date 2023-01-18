@@ -5,6 +5,7 @@ using Microsoft.Maui.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,11 +13,13 @@ namespace DndHelper.App.ApplicationClasses
 {
     public class CharacterCreator : ICreatesCharacter
     {
+        private readonly ICharacterRepository<HttpStatusCode> characterRepository;
         private IStateManager<string, object> StateManager { get; }
         private RepositoryFacade RepositoryFacade { get; }
 
-        public CharacterCreator(IStateManager<string, object> stateManager, RepositoryFacade repositoryFacade)
+        public CharacterCreator(IStateManager<string, object> stateManager, RepositoryFacade repositoryFacade, ICharacterRepository<HttpStatusCode> characterRepository)
         {
+            this.characterRepository = characterRepository;
             StateManager = stateManager;
             RepositoryFacade = repositoryFacade;
             SetDefaultValues();
@@ -48,6 +51,7 @@ namespace DndHelper.App.ApplicationClasses
             character.Name = name;
             character.ApplyBackground(RepositoryFacade.GetBackground(backgroundName));
 
+            characterRepository.PutCharacter(character);
             return character;
         }
 
