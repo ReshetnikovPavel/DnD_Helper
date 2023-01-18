@@ -1,8 +1,7 @@
-﻿using DndHelper.App.Authentication;
-using DndHelper.Infrastructure;
+﻿using DndHelper.Infrastructure.Authentication;
 using System.Net.Mail;
 
-namespace DndHelper.App
+namespace DndHelper.Infrastructure
 {
     public class User<TId> : Entity<TId>
     {

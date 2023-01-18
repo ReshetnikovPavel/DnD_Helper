@@ -1,4 +1,4 @@
-﻿namespace DndHelper.App.Authentication;
+﻿namespace DndHelper.Infrastructure.Authentication;
 
 public enum AuthenticationStatus
 {

@@ -1,6 +1,6 @@
-﻿using DndHelper.App.Authentication;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using DndHelper.Infrastructure;
+using DndHelper.Infrastructure.Authentication;
 
 namespace DndHelper.App.ViewModels
 {

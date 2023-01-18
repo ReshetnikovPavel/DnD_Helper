@@ -1,13 +1,11 @@
 ﻿using System.Net;
-using DndHelper.App;
 using Firebase.Database;
 using Firebase.Database.Query;
 using DndHelper.Domain.Repositories;
 using DndHelper.Domain.Dnd;
-using DndHelper.App.Authentication;
 using DndHelper.Infrastructure;
 using Newtonsoft.Json;
-
+using DndHelper.Infrastructure.Authentication;
 
 namespace DndHelper.Firebase.Repositories;
 
