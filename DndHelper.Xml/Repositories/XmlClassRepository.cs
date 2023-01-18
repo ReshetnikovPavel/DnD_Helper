@@ -25,8 +25,7 @@ public class XmlClassRepository : XmlRepository, IClassRepository
             HitDice = GetHitDice(xElement),
             AbilityNamesForSavingThrows = GetAbilityNamesForSavingThrows(xElement),
             SpellAbility = GetSpellAbilityName(xElement),
-            SpellSlotsTable = GetSpellSlotsTable(xElement),
-            LevelFeatures = new List<IList<ClassFeature>>(20)
+            SpellSlotsTable = GetSpellSlotsTable(xElement)
         };
         dndClass.LevelFeatures[0] = GetFeatures(name, 1);
         return dndClass;
