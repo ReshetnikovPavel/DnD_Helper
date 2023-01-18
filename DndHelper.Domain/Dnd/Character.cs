@@ -11,12 +11,12 @@ public class Character : Entity<Guid>, IDndObject
         return new Character(Guid.NewGuid())
         {
             ProficiencyBonus = proficiencyBonus,
-            Abilities =  abilities,
+            Abilities = abilities,
             Skills = Skills.Create(abilities, proficiencyBonus),
             SavingThrows = SavingThrows.Create(abilities, proficiencyBonus),
-            Speed = new Speed(0)
-            Level = 1;
-            Money = 1000;
+            Speed = new Speed(0),
+            Level = 1,
+            Money = 1000
         };
     }
 
