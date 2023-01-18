@@ -26,9 +26,9 @@ public class XmlClassRepository : XmlRepository, IClassRepository
             AbilityNamesForSavingThrows = GetAbilityNamesForSavingThrows(xElement),
             SpellAbility = GetSpellAbilityName(xElement),
             SpellSlotsTable = GetSpellSlotsTable(xElement),
-            LevelFeatures = new Dictionary<int, IEnumerable<ClassFeature>>()
+            LevelFeatures = new List<IList<ClassFeature>>(20)
         };
-        dndClass.LevelFeatures[1] = GetFeatures(name, 1);
+        dndClass.LevelFeatures[0] = GetFeatures(name, 1);
         return dndClass;
     }
 
@@ -73,19 +73,23 @@ public class XmlClassRepository : XmlRepository, IClassRepository
         spellSlotsTable.FillClassLevelRow(classLevel, spellSlots);
     }
 
-    public IEnumerable<ClassFeature> GetFeatures(string className, int level)
+    public IList<ClassFeature> GetFeatures(string className, int level)
     {
         var xElement = Compendium.Elements("class").GetElementWithName(className);
         return GetFeatures(xElement, level);
     }
 
-    private IEnumerable<ClassFeature> GetFeatures(XElement classXElement, int level)
+    private IList<ClassFeature> GetFeatures(XElement classXElement, int level)
     {
+        var result = new List<ClassFeature>();
+
         var featureXElements = classXElement.Elements("autolevel")
             .Where(x => x.HasElement("feature") && int.Parse(x.GetAttributeContentWithName("level")) == level);
 
         foreach (var featureXElement in featureXElements)
-            yield return CreateFeature(featureXElement.Element("feature"));
+            result.Add(CreateFeature(featureXElement.Element("feature")));
+
+        return result;
     }
 
     private ClassFeature CreateFeature(XElement featureXElement)

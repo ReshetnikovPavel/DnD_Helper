@@ -45,7 +45,7 @@ namespace DndHelper.App.ApplicationClasses
             var backgroundName = StateManager.GetValue(nameof(Character.Background)) as string;
 
 
-            var character = new Character(abilities);
+            var character = Character.CreateNew(abilities);
             character.ApplyRace(RepositoryFacade.GetRace(raceName, null));
             character.ApplyClass(RepositoryFacade.GetClass(className));
             character.Name = name;

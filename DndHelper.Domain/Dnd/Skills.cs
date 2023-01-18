@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,19 +30,43 @@ namespace DndHelper.Domain.Dnd
         public Skill Stealth { get => Dictionary[SkillName.Stealth]; }
         public Skill Survival { get => Dictionary[SkillName.Acrobatics]; }
 
-        public Skills(Abilities abilities, ProficiencyBonus proficiencyBonus)
+        public Skills(Skill acrobatics, Skill animalHandling, Skill arcana, Skill athletics, Skill deception, Skill history, Skill insight, Skill intimidation, Skill investigation, Skill medicine, Skill nature, Skill perception, Skill performance, Skill persuasion, Skill religion, Skill sleightOfHand, Skill stealth, Skill survival)
         {
             Dictionary = new Dictionary<SkillName, Skill>();
-            foreach (var skillName in Enum.GetValues<SkillName>())
-            {
-                var abilityName = AbilityScore.GetNameFromSkillName(skillName);
-                Dictionary[skillName] = new Skill(skillName, abilities[abilityName], proficiencyBonus);
-            }
+            Dictionary[SkillName.Acrobatics] = acrobatics;
+            Dictionary[SkillName.AnimalHandling] = animalHandling;
+            Dictionary[SkillName.Arcana] = arcana;
+            Dictionary[SkillName.Athletics] = athletics;
+            Dictionary[SkillName.Deception] = deception;
+            Dictionary[SkillName.History] = history;
+            Dictionary[SkillName.Insight] = insight;
+            Dictionary[SkillName.Intimidation] = intimidation;
+            Dictionary[SkillName.Investigation] = investigation;
+            Dictionary[SkillName.Medicine] = medicine;
+            Dictionary[SkillName.Nature] = nature;
+            Dictionary[SkillName.Perception] = perception;
+            Dictionary[SkillName.Performance] = performance;
+            Dictionary[SkillName.Persuasion] = persuasion;
+            Dictionary[SkillName.Religion] = religion;
+            Dictionary[SkillName.SleightOfHand] = sleightOfHand;
+            Dictionary[SkillName.Stealth] = stealth;
+            Dictionary[SkillName.Survival] = survival;
         }
 
         public Skill this[SkillName skillName]
         {
             get => Dictionary[skillName];
+        }
+
+        public static Skills Create(Abilities abilities, ProficiencyBonus proficiencyBonus)
+        {
+            var dictionary = new Dictionary<SkillName, Skill>();
+            foreach (var skillName in Enum.GetValues<SkillName>())
+            {
+                var abilityName = AbilityScore.GetNameFromSkillName(skillName);
+                dictionary[skillName] = new Skill(skillName, abilities[abilityName], proficiencyBonus);
+            }
+            return new Skills(dictionary[SkillName.Acrobatics], dictionary[SkillName.AnimalHandling], dictionary[SkillName.Arcana], dictionary[SkillName.Athletics], dictionary[SkillName.Deception], dictionary[SkillName.History], dictionary[SkillName.Insight], dictionary[SkillName.Intimidation], dictionary[SkillName.Investigation], dictionary[SkillName.Medicine], dictionary[SkillName.Nature], dictionary[SkillName.Perception], dictionary[SkillName.Performance], dictionary[SkillName.Persuasion], dictionary[SkillName.Religion], dictionary[SkillName.SleightOfHand], dictionary[SkillName.Stealth], dictionary[SkillName.Survival]);
         }
     }
 }
