@@ -49,7 +49,7 @@
             Text="Поиск партии"
             TextColor="#5c79a1" />
         <Entry
-            Grid.Row="3"
+            Grid.Row="1"
             HorizontalOptions="FillAndExpand"
             IsPassword="True"
             Placeholder="Введите код партии"
@@ -58,6 +58,29 @@
             Text="{Binding Id}"
             VerticalOptions="FillAndExpand"
             BackgroundColor = "#d8d7e5" />
+        <Label
+            Grid.Row="2"
+            FontAttributes="Bold"
+            FontSize="20"
+            HorizontalOptions="CenterAndExpand"
+            Text="Выберите персонажа для партии"
+            TextColor="#5c79a1" />
+        <Grid Grid.Row = "3">
+            <CollectionView x:Name="ChatactersList"
+                ItemsSource="{Binding characters}"
+                Margin="10"
+                Grid.Row="1"
+                SelectionChangedCommand="{Binding SelectCharacter}"
+                SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                            <Grid Padding="10">
+                                    <Label Text="{Binding .}" Margin="10"/>
+                            </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
         <Button
             Grid.Row="4"
             BackgroundColor="#5c79a1"
