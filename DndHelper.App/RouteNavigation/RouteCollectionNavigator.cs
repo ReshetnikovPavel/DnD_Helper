@@ -11,9 +11,9 @@ namespace DndHelper.App.RouteNavigation
             this.routes = routes;
         }
 
-        public void AddModel<TModel>(Func<bool> goCondition) where TModel : BindableObject
+        public void AddModel<TModel>(string prefix, Func<bool> goCondition) where TModel : BindableObject
         {
-            routes.AddRoute(new RouteItem("///", typeof(TModel).Name, goCondition));
+            routes.AddRoute(new RouteItem(prefix, typeof(TModel).Name, goCondition));
         }
 
         public bool TryGoToNextRoute(string currentRoute)

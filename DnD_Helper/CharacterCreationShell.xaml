@@ -31,7 +31,7 @@
 
     <FlyoutItem x:Name="MainFlyout"
         FlyoutDisplayOptions="AsMultipleItems">
-        <Tab Title="Раса"
+        <!--<Tab Title="Раса"
              Route="RaceTab">
             <ShellContent Title="Раса"
                       ContentTemplate="{DataTemplate local:RaceSelectionPage}"
@@ -42,7 +42,12 @@
                       ContentTemplate="{DataTemplate local:SubraceSelectionPage}"
                       Route="SubraceSelectionModel" >
             </ShellContent>
-        </Tab>
+        </Tab>-->
+
+        <ShellContent Title="Раса"
+                      ContentTemplate="{DataTemplate local:RaceSelectionPage}"
+                      Route="RaceSelectionModel" >
+        </ShellContent>
 
         <ShellContent Title="Класс"
         ContentTemplate="{DataTemplate local:ClassSelectionPage}" 

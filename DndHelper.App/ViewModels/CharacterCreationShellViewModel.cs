@@ -19,20 +19,20 @@ namespace DndHelper.App.ViewModels
 
         private void AddModels()
         {
-            AddModel<RaceSelectionModel>(new[] { CharacterAttributes.Race });
-            AddModel<SubraceSelectionModel>(new[] { CharacterAttributes.Subrace });
-            AddModel<ClassSelectionModel>(new[] { CharacterAttributes.Class });
-            AddModel<AbilityScoreSelectionModel>(new[] { CharacterAttributes.Abilities });
-            AddModel<BackgroundSelectionModel>(new[] { 
+            AddModel<RaceSelectionModel>("///", new[] { CharacterAttributes.Race });
+            AddModel<SubraceSelectionModel>("/", new[] { CharacterAttributes.Subrace });
+            AddModel<ClassSelectionModel>("///", new[] { CharacterAttributes.Class });
+            AddModel<AbilityScoreSelectionModel>("///", new[] { CharacterAttributes.Abilities });
+            AddModel<BackgroundSelectionModel>("///", new[] { 
                 CharacterAttributes.Name, 
                 CharacterAttributes.Background 
             });
         }
 
-        private void AddModel<TModel>(IEnumerable<CharacterAttributes> attributes)
+        private void AddModel<TModel>(string prefix, IEnumerable<CharacterAttributes> attributes)
             where TModel : BindableObject
         {
-            navigator.AddModel<TModel>(attributes);
+            navigator.AddModel<TModel>(prefix, attributes);
         }
     }
 }
