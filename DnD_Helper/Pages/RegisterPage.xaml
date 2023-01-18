@@ -3,7 +3,8 @@
     x:Class="DnD_Helper.RegisterPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    NavigationPage.HasNavigationBar="False">
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor = "#d8d7e5">
     <!--<Grid
         BackgroundColor="#1C375C"
         HorizontalOptions="FillAndExpand"
@@ -45,34 +46,39 @@
             FontAttributes="Bold"
             FontSize="24"
             HorizontalOptions="CenterAndExpand"
-            Text="Registration"
-            TextColor="#1C375C" />
+            Text="Регистрация"
+            TextColor="#5c79a1" />
         <Label
             Grid.Row="1"
             Margin="0,-15,0,0"
             HorizontalOptions="CenterAndExpand"
-            Text="Register With Email"
-            TextColor="#1C375C" />
+            Text="Регистрация через email"
+            TextColor="#5c79a1" />
         <Entry
             Grid.Row="2"
             Margin="0,20,0,0"
             HorizontalOptions="FillAndExpand"
             Placeholder="Email"
+            PlaceholderColor = "#a9a8be"
+            TextColor = "#5c79a1"
+            BackgroundColor = "#d8d7e5"
             Text="{Binding Email}"
             VerticalOptions="FillAndExpand" />
         <Entry
             Grid.Row="3"
             HorizontalOptions="FillAndExpand"
             IsPassword="True"
-            Placeholder="Password"
+            Placeholder="Пароль"
+            PlaceholderColor = "#a9a8be"
+            TextColor = "#5c79a1"
             Text="{Binding Password}"
-            VerticalOptions="FillAndExpand" />
+            VerticalOptions="FillAndExpand"
+            BackgroundColor = "#d8d7e5" />
         <Button
             Grid.Row="4"
-            BackgroundColor="#1C375C"
+            BackgroundColor="#5c79a1"
             Command="{Binding RegisterUser}"
-            CornerRadius="20"
-            Text="Register" />
+            Text="Зарегистрироваться" />
     </Grid>
     <!--</Frame>
     </Grid>-->

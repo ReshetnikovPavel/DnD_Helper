@@ -33,30 +33,20 @@
         </Grid>
 
         <Grid Grid.Row = "1">
-            <ListView x:Name="LanguageList"
+            <CollectionView x:Name="LanguageList"
                 ItemsSource="{Binding Languages}"
                 Margin="10"
                 Grid.Row="1"
-                SelectionMode="Single"> 
-                <!-- Multiple not working :(  -->
-                <ListView.ItemTemplate>
+                SelectionChangedCommand="{Binding SelectLanguages}"
+                SelectionMode="Multiple">
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
                             <Grid Padding="10">
-                                <Frame>
-                                    <Label Text="{Binding .}" />
-                                </Frame>
+                                    <Label Text="{Binding .}" Margin="10"/>
                             </Grid>
-                        </ViewCell>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            <ListView.Behaviors>
-                <toolkit:EventToCommandBehavior
-                EventName="ItemTapped"
-                Command="{Binding SelectLanguages}"
-                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
-            </ListView.Behaviors>
-        </ListView>
+                </CollectionView.ItemTemplate>
+        </CollectionView>
         </Grid>
     </Grid>
 </ContentPage>
