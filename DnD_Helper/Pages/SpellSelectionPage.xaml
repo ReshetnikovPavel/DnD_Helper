@@ -37,7 +37,7 @@
                 ItemsSource="{Binding Spells}"
                 Margin="10"
                 Grid.Row="1"
-                SelectionChangedCommand="{Binding SelectSpells}"
+                SelectionChangedCommand="{Binding SelectSpell}"
                 SelectionMode="Multiple">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
