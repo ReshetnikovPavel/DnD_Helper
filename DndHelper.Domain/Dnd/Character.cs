@@ -22,6 +22,38 @@ public class Character : Entity<Guid>, IDndObject
     {
     }
 
+    public Character(Guid id, string name, Abilities abilities, SavingThrows savingThrows, 
+                Skills skills, Race race, Class personClass, Background background, ProficiencyBonus proficiencyBonus, 
+                Size size, Speed speed, HashSet<Language> languages, HashSet<Weapon> weaponsProficiencies,
+                HashSet<Instrument> instrumentProficiencies, List<Equipment> equipment, List<Weapon> weapons,
+                List<Instrument> instruments, HashSet<Feat> feats, HashSet<Trait> traits, HashSet<Spell> spells,
+                AbilityName? spellAbility, SpellSlotsTable spellSlotsTable, HitDice hitDice, HitPoints hitPoints) : base(id)
+    {
+        Name = name;
+        Abilities = abilities;
+        SavingThrows = savingThrows;
+        Skills = skills;
+        Race = race;
+        Class = personClass;
+        Background = background;
+        ProficiencyBonus = proficiencyBonus;
+        Size = size;
+        Speed = speed;
+        Languages = languages;
+        WeaponsProficiencies = weaponsProficiencies;
+        InstrumentProficiencies = instrumentProficiencies;
+        Equipment = equipment;
+        Weapons = weapons;
+        Instruments = instruments;
+        Feats = feats;
+        Traits = traits;
+        Spells = spells;
+        SpellAbility = spellAbility;
+        SpellSlotsTable = spellSlotsTable;
+        HitDice = hitDice;
+        HitPoints = hitPoints;
+    }
+
 
     public string Name { get; set; }
     public Abilities Abilities { get; set; }
