@@ -46,7 +46,7 @@ namespace DndHelper.App.ViewModels
         private void OnPointsUpdated(object sender, EventArgs e)
         {
             OnPropertyChanged(nameof(PointsLeft));
-            MessageSender.SendSelectionMade(this, nameof(Character.Abilities), abilities);
+            MessageSender.SendSelectionMade(this, CharacterAttributes.Abilities, abilities);
         }
 
         private void OnGoToNextPage()

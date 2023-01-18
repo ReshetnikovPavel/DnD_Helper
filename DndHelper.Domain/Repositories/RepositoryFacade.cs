@@ -26,6 +26,11 @@ namespace DndHelper.Domain.Repositories
             return RaceRepository.GetRaceByName(raceName, subraceName);
         }
 
+        public IEnumerable<string> GetSubraceNames(string raceName)
+        {
+            return RaceRepository.GetSubraceNames(raceName);
+        }
+
         public Class GetClass(string className)
         {
             return ClassRepository.GetClass(className);

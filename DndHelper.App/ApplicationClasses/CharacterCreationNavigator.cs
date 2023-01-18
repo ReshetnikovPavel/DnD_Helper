@@ -25,10 +25,6 @@ namespace DndHelper.App.RouteNavigation
             Func<bool> goCondition) where TModel : BindableObject
         {
             modelNavigator.AddModel<TModel>(goCondition);
-            foreach(var attribute in attributes)
-            {
-                Creator.AddAttribute(attribute, goCondition);
-            }
         }
 
         public async void TryGoToCharacterSheet()

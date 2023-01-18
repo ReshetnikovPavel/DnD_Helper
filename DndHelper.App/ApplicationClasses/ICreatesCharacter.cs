@@ -2,11 +2,27 @@
 
 namespace DndHelper.App.ApplicationClasses
 {
+    public enum CharacterAttributes
+    {
+        Race,
+        Subrace,
+        RaceAbilityBonus,
+        Languages,
+        Class,
+        Subclass,
+        Spells,
+        Skills,
+        Abilities,
+        Name,
+        Background,
+        ToolProficiencies,
+        Equipment
+    };
+
     public interface ICreatesCharacter
     {
         bool CanCreate();
-        bool MustSelect(string attribute);
-        void AddAttribute(string attribute, Func<bool> canSelect);
+        bool MustSelect(CharacterAttributes attribute);
         public Character Create();
     }
 }

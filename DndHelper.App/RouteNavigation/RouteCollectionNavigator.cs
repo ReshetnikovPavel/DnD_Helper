@@ -11,11 +11,6 @@ namespace DndHelper.App.RouteNavigation
             this.routes = routes;
         }
 
-        public void AddModel<TModel>() where TModel : BindableObject
-        {
-            routes.AddRoute(new RouteItem("///", typeof(TModel).Name));
-        }
-
         public void AddModel<TModel>(Func<bool> goCondition) where TModel : BindableObject
         {
             routes.AddRoute(new RouteItem("///", typeof(TModel).Name, goCondition));

@@ -8,10 +8,10 @@
 
     public static class MessageSender
     {
-        public static void SendSelectionMade(object sender, string property, object value)
+        public static void SendSelectionMade(object sender, CharacterAttributes attribute, object value)
         {
             MessagingCenter.Send(sender, MessageTypes.SelectionMade.ToString(),
-                new Selection(property, value));
+                new AttributeSelection(attribute, value));
         }
 
         public static void SendPageCompleted<TModel>(BindableObject sender)

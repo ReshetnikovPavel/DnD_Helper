@@ -95,7 +95,7 @@ public static class MauiProgram
             .AddTransient<IShellNavigator, ShellNavigator>()
             .AddTransient<IModelNavigator, RouteCollectionNavigator>()
 			.AddTransient<IHasRouteCollection, RouteCollection>()
-			.AddTransient<IStateManager<string, object>, StateDictionary<string, object>>()
+			.AddTransient<IStateManager<CharacterAttributes, object>, StateDictionary<CharacterAttributes, object>>()
 			.AddTransient<RepositoryFacade>();
 		return services;
 	}

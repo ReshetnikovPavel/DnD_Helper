@@ -13,20 +13,29 @@ namespace DndHelper.App.ApplicationClasses
 {
     public class CharacterCreator : ICreatesCharacter
     {
+        private IStateManager<CharacterAttributes, object> StateManager { get; }
+
         private readonly ICharacterRepository<HttpStatusCode> characterRepository;
-        private IStateManager<string, object> StateManager { get; }
         private RepositoryFacade RepositoryFacade { get; }
 
-        private Dictionary<string, Func<bool>> attributes;
+        private Dictionary<CharacterAttributes, Func<bool>> attributes
+            = new Dictionary<CharacterAttributes, Func<bool>>
+            {
+                [CharacterAttributes.Race] = () => { return true; },
+                [CharacterAttributes.Class] = () => { return true; },
+                [CharacterAttributes.Abilities] = () => { return true; },
+                [CharacterAttributes.Name] = () => { return true; },
+                [CharacterAttributes.Background] = () => { return true; },
+                [CharacterAttributes.Subrace] = () => { return false; }
+            };
 
-    public CharacterCreator(IStateManager<string, object> stateManager, RepositoryFacade repositoryFacade, ICharacterRepository<HttpStatusCode> characterRepository)
+        public CharacterCreator(IStateManager<CharacterAttributes, object> stateManager, RepositoryFacade repositoryFacade, ICharacterRepository<HttpStatusCode> characterRepository)
         {
             this.characterRepository = characterRepository;
             StateManager = stateManager;
             RepositoryFacade = repositoryFacade;
             SetDefaultValues();
             SubscribeToMessaging();
-            attributes = new Dictionary<string, Func<bool>>();
         }
 
         public bool CanCreate()
@@ -35,23 +44,18 @@ namespace DndHelper.App.ApplicationClasses
 
         }
 
-        public bool MustSelect(string attribute)
+        public bool MustSelect(CharacterAttributes attribute)
         {
             return CanSelect(attribute) && !IsSelected(attribute);
         }
 
-        public void AddAttribute(string attribute, Func<bool> canSelect)
-        {
-            attributes.Add(attribute, canSelect);
-        }
-
         public Character Create()
         {
-            var raceName = StateManager.GetValue(nameof(Character.Race)) as string;
-            var className = StateManager.GetValue(nameof(Character.Class)) as string;
-            var abilities = StateManager.GetValue(nameof(Character.Abilities)) as Abilities;
-            var name = StateManager.GetValue(nameof(Character.Name)) as string;
-            var backgroundName = StateManager.GetValue(nameof(Character.Background)) as string;
+            var raceName = StateManager.GetValue(CharacterAttributes.Race) as string;
+            var className = StateManager.GetValue(CharacterAttributes.Class) as string;
+            var abilities = StateManager.GetValue(CharacterAttributes.Abilities) as Abilities;
+            var name = StateManager.GetValue(CharacterAttributes.Name) as string;
+            var backgroundName = StateManager.GetValue(CharacterAttributes.Background) as string;
 
 
             var character = Character.CreateNew(abilities);
@@ -66,33 +70,36 @@ namespace DndHelper.App.ApplicationClasses
 
         private void SetDefaultValues()
         {
-            StateManager.SetValue(nameof(Character.Abilities), Abilities.CreateDefault());
+            StateManager.SetValue(CharacterAttributes.Abilities, Abilities.CreateDefault());
         }
 
         private void SubscribeToMessaging()
         {
-            MessagingCenter.Subscribe<object, Selection>(this,
+            MessagingCenter.Subscribe<object, AttributeSelection>(this,
                 MessageTypes.SelectionMade.ToString(), OnSelectionMade);
         }
 
-        private void OnSelectionMade(object sender, Selection selection)
+        private void OnSelectionMade(object sender, AttributeSelection selection)
         {
-            StateManager.SetValue(selection.Property, selection.Value);
+            StateManager.SetValue(selection.Attribute, selection.Value);
         }
 
-        private bool CanSelect(string attributeName)
+        private bool CanSelect(CharacterAttributes attribute)
         {
-            return attributes[attributeName]();
+            return attributes[attribute]();
         }
 
-        private bool IsSelected(string attributeName)
+        private bool IsSelected(CharacterAttributes attribute)
         {
-            return StateManager.HasKey(attributeName);
+            return StateManager.HasKey(attribute);
         }
 
-        public bool MustSelect(KeyValuePair<string, Func<bool>> attribute)
+        public bool HasSubRaces()
         {
-            throw new NotImplementedException();
+            if (!IsSelected(CharacterAttributes.Race))
+                return false;
+            var race = StateManager.GetValue(CharacterAttributes.Race);
+            return RepositoryFacade.GetSubraceNames(race.ToString()).Any();
         }
     }
 }
