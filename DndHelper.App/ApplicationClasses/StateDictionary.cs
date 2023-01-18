@@ -1,4 +1,6 @@
-﻿namespace DndHelper.App.ApplicationClasses
+﻿using System;
+
+namespace DndHelper.App.ApplicationClasses
 {
     public class StateDictionary<TKey, TValue> : IStateManager<TKey, TValue>
     {

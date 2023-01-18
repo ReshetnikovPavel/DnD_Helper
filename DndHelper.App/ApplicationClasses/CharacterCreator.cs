@@ -4,6 +4,7 @@ using DndHelper.Domain.Repositories;
 using Microsoft.Maui.Controls;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -29,9 +30,12 @@ namespace DndHelper.App.ApplicationClasses
 
         public bool CanCreate()
         {
-            return Enum.GetValues(typeof(CharacterAttributes))
-                .Cast<CharacterAttributes>()
-                .Any(MustSelect);
+            foreach(var attribute in Enum.GetValues(typeof(CharacterAttributes)).Cast<CharacterAttributes>())
+            {
+                if (MustSelect(attribute))
+                    return false;
+            }
+            return true;
         }
 
         public bool MustSelect(CharacterAttributes attribute)
@@ -46,8 +50,7 @@ namespace DndHelper.App.ApplicationClasses
             var abilities = StateManager.GetValue(CharacterAttributes.Abilities) as Abilities;
             var name = StateManager.GetValue(CharacterAttributes.Name) as string;
             var backgroundName = StateManager.GetValue(CharacterAttributes.Background) as string;
-            var subRaceName = IsSelected(CharacterAttributes.Subrace) ?
-                StateManager.GetValue(CharacterAttributes.Subrace) as string : null;
+            var subRaceName = GetSubrace();
 
             var character = Character.CreateNew(abilities);
             character.ApplyRace(RepositoryFacade.GetRace(raceName, subRaceName));
@@ -86,10 +89,22 @@ namespace DndHelper.App.ApplicationClasses
         {
             switch(attribute)
             {
+                case CharacterAttributes.Race:
+                    return true;
+                case CharacterAttributes.Class:
+                    return true;
+                case CharacterAttributes.Abilities:
+                    return true;
+                case CharacterAttributes.Name:
+                    return true;
+                case CharacterAttributes.Background: 
+                    return true;
                 case CharacterAttributes.Subrace:
                     return HasSubRaces();
+                case CharacterAttributes.Languages:
+                    return HasLanguages();
                 default:
-                    return true;
+                    return false;
             }
         }
 
@@ -104,6 +119,22 @@ namespace DndHelper.App.ApplicationClasses
                 return false;
             var race = StateManager.GetValue(CharacterAttributes.Race);
             return RepositoryFacade.GetSubraceNames(race.ToString()).Any();
+        }
+
+        public bool HasLanguages()
+        {
+            if(!IsSelected(CharacterAttributes.Race) || !IsSelected(CharacterAttributes.Subrace))
+                return false;
+            var raceName = StateManager.GetValue(CharacterAttributes.Race).ToString();
+            var subraceName = GetSubrace();
+            var race = RepositoryFacade.GetRace(raceName, subraceName);
+            return race.Optionals.Languages is not null;
+        }
+
+        private string GetSubrace()
+        {
+            return IsSelected(CharacterAttributes.Subrace) ?
+                StateManager.GetValue(CharacterAttributes.Subrace) as string : null;
         }
     }
 }

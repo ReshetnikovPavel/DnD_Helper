@@ -1,4 +1,4 @@
-using DndHelper.App.Authentication;
+using DndHelper.Infrastructure.Authentication;
 using System.ComponentModel;
 using DndHelper.Infrastructure;
 using System.Net;

@@ -21,11 +21,12 @@ namespace DndHelper.App.ViewModels
         {
             AddModel<RaceSelectionModel>("///", new[] { CharacterAttributes.Race });
             AddModel<SubraceSelectionModel>("/", new[] { CharacterAttributes.Subrace });
+            AddModel<LanguageSelectionModel>("/", new[] {CharacterAttributes.Languages});
             AddModel<ClassSelectionModel>("///", new[] { CharacterAttributes.Class });
             AddModel<AbilityScoreSelectionModel>("///", new[] { CharacterAttributes.Abilities });
             AddModel<BackgroundSelectionModel>("///", new[] { 
                 CharacterAttributes.Name, 
-                CharacterAttributes.Background 
+                CharacterAttributes.Background
             });
         }
 
