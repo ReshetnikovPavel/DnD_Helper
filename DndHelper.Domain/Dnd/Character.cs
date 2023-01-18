@@ -23,7 +23,8 @@ public class Character : Entity<Guid>, IDndObject
 	public ProficiencyBonus ProficiencyBonus { get; }
     public Size Size { get; private set; }
     public Speed Speed { get; private set; }
-    public HashSet<Language> Languages { get; private set; } = new();
+    public List<string> Languages { get; private set; } = new();
+    public string LanguageNames { get => string.Join(", ", Languages); }
     public HashSet<Weapon> WeaponsProficiencies { get; private set; } = new();
     public HashSet<Instrument> InstrumentProficiencies { get; private set; } = new();
     public List<Equipment> Equipment { get; private set; } = new();
@@ -53,7 +54,10 @@ public class Character : Entity<Guid>, IDndObject
 
         Size = Race.Size;
 
-        Languages.UnionWith(Race.Languages);
+        foreach(var language in race.Languages)
+        {
+            Languages.Add(language.Name);
+        }
 
         foreach (var (level, spell) in Race.Spells)
             if (level == 1)

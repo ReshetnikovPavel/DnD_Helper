@@ -199,7 +199,7 @@
                 </Grid>
 
                 <ListView x:Name="WeaponsList"
-                    ItemsSource="{Binding Weapons}"
+                    ItemsSource="{Binding Character.Weapons}"
                     Margin="10"
                     Grid.Row = "2">
                     <ListView.ItemTemplate>
@@ -220,7 +220,7 @@
                 </ListView>
 
                 <ListView x:Name="EquipmentsList"
-                    ItemsSource="{Binding Equipments}"
+                    ItemsSource="{Binding Character.Equipment}"
                     Margin="10"
                     Grid.Row = "3">
                     <ListView.ItemTemplate>
@@ -244,18 +244,18 @@
                 <Label Text="Владения" FontSize="Large" Margin="10, 10, 10, 10"/>
                 <Grid Grid.Row = "1" ColumnDefinitions = "Auto, Auto">
                     <Label Text="Бонус владения:" Margin="10, 10, 0, 0" Grid.Column = "0" LineBreakMode="WordWrap"/>
-                    <Label Text = "{Binding ProficiencyBonus.Value}" Margin="10, 10, 10, 0" Grid.Column = "1"/>
+                    <Label Text = "{Binding Character.ProficiencyBonus.Value}" Margin="10, 10, 10, 0" Grid.Column = "1"/>
                 </Grid>
                 <Grid Grid.Row = "2" ColumnDefinitions = "Auto, Auto">
                     <Label Text="Языки:" Margin="10, 10, 10, 0" Grid.Column = "0"/>
-                    <Label LineBreakMode="WordWrap" Text = "{Binding Languages}" Margin="10, 10, 10, 0" Grid.Column = "1"/>
+                    <Label LineBreakMode="WordWrap" Text = "{Binding Character.LanguageNames}" Margin="10, 10, 10, 0" Grid.Column = "1"/>
                 </Grid>
             </Grid>
             
             <Grid Margin="10, 10, 10, 10" RowDefinitions = "Auto, Auto">
                 <Label Text="Владение оружием:" FontSize="Large" Margin="10, 10, 10, 10" Grid.Row="0"/>
                 <ListView x:Name="WeaponsProficientsList"
-                    ItemsSource="{Binding WeaponsProficiencies}"
+                    ItemsSource="{Binding Character.WeaponsProficiencies}"
                     Margin="10"
                     Grid.Row = "2">
                     <ListView.ItemTemplate>
@@ -299,7 +299,7 @@
             <Grid Margin="10, 10, 10, 10" RowDefinitions = "Auto, Auto">
                 <Label Text="Владение инструментами:" FontSize="Large" Margin="10, 10, 10, 10" Grid.Row="0"/>
                 <ListView x:Name="InstrumentProficientsList"
-                    ItemsSource="{Binding InstrumentProficiencies}"
+                    ItemsSource="{Binding Character.InstrumentProficiencies}"
                     Margin="10"
                     Grid.Row = "2">
                     <ListView.ItemTemplate>
@@ -321,7 +321,7 @@
             <Grid Margin="10, 10, 10, 10" RowDefinitions = "Auto, Auto">
                 <Label Text="Заклинания:" FontSize="Large" Margin="10, 10, 10, 10" Grid.Row = "0"/>
                 <ListView x:Name="SpellsList"
-                    ItemsSource="{Binding Spells}"
+                    ItemsSource="{Binding Character.Spells}"
                     Margin="10"
                     Grid.Row = "1">
                     <ListView.ItemTemplate>
