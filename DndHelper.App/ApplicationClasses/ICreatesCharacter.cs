@@ -22,7 +22,7 @@ namespace DndHelper.App.ApplicationClasses
     public interface ICreatesCharacter
     {
         bool CanCreate();
-        bool MustSelect(CharacterAttributes attribute);
+        bool CanSelect(CharacterAttributes attribute);
         public Character Create();
     }
 }

@@ -18,7 +18,7 @@ namespace DndHelper.App.ApplicationClasses
         private readonly ICharacterRepository<HttpStatusCode> characterRepository;
         private RepositoryFacade RepositoryFacade { get; }
 
-        private Dictionary<CharacterAttributes, Func<bool>> attributes
+        public Dictionary<CharacterAttributes, Func<bool>> attributes
             = new Dictionary<CharacterAttributes, Func<bool>>
             {
                 [CharacterAttributes.Race] = () => { return true; },
@@ -26,7 +26,7 @@ namespace DndHelper.App.ApplicationClasses
                 [CharacterAttributes.Abilities] = () => { return true; },
                 [CharacterAttributes.Name] = () => { return true; },
                 [CharacterAttributes.Background] = () => { return true; },
-                [CharacterAttributes.Subrace] = () => { return false; }
+                [CharacterAttributes.Subrace] = () => { return true; }
             };
 
         public CharacterCreator(IStateManager<CharacterAttributes, object> stateManager, RepositoryFacade repositoryFacade, ICharacterRepository<HttpStatusCode> characterRepository)
@@ -84,7 +84,7 @@ namespace DndHelper.App.ApplicationClasses
             StateManager.SetValue(selection.Attribute, selection.Value);
         }
 
-        private bool CanSelect(CharacterAttributes attribute)
+        public bool CanSelect(CharacterAttributes attribute)
         {
             return attributes[attribute]();
         }

@@ -21,10 +21,10 @@ namespace DndHelper.App.RouteNavigation
             this.Creator = creator;
         }
 
-        public void AddModel<TModel>(IEnumerable<string> attributes, 
-            Func<bool> goCondition) where TModel : BindableObject
+        public void AddModel<TModel>(IEnumerable<CharacterAttributes> attributes) 
+            where TModel : BindableObject
         {
-            modelNavigator.AddModel<TModel>(goCondition);
+            modelNavigator.AddModel<TModel>(() => { return attributes.Any(Creator.CanSelect); });
         }
 
         public async void TryGoToCharacterSheet()

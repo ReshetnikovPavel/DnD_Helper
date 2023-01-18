@@ -19,23 +19,20 @@ namespace DndHelper.App.ViewModels
 
         private void AddModels()
         {
-            AddModel<RaceSelectionModel>(new[] { nameof(Character.Race) });
-            AddModel<SubraceSelectionModel>(new[] { "Subrace" }, () => { return false; });
-            AddModel<ClassSelectionModel>(new[] { nameof(Character.Class) });
-            AddModel<AbilityScoreSelectionModel>(new[] { nameof(Character.Abilities) });
-            AddModel<BackgroundSelectionModel>(new[] { nameof(Character.Name), nameof(Character.Background) });
+            AddModel<RaceSelectionModel>(new[] { CharacterAttributes.Race });
+            AddModel<SubraceSelectionModel>(new[] { CharacterAttributes.Subrace });
+            AddModel<ClassSelectionModel>(new[] { CharacterAttributes.Class });
+            AddModel<AbilityScoreSelectionModel>(new[] { CharacterAttributes.Abilities });
+            AddModel<BackgroundSelectionModel>(new[] { 
+                CharacterAttributes.Name, 
+                CharacterAttributes.Background 
+            });
         }
 
-        private void AddModel<TModel>(IEnumerable<string> attributes)
+        private void AddModel<TModel>(IEnumerable<CharacterAttributes> attributes)
             where TModel : BindableObject
         {
-            navigator.AddModel<TModel>(attributes, () => { return true; });
-        }
-
-        private void AddModel<TModel>(IEnumerable<string> attributes, Func<bool> goCondition)
-            where TModel : BindableObject
-        {
-            navigator.AddModel<TModel>(attributes, goCondition);
+            navigator.AddModel<TModel>(attributes);
         }
     }
 }
