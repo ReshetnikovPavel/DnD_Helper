@@ -14,7 +14,10 @@ public class FirebaseDndCampaignFactory : ICampaignFactory<Guid, HttpStatusCode>
 
     public async Task<Result<ICampaign<Guid>, HttpStatusCode>> CreateNew(string name, GameMaster gameMaster)
     {
-        var campaign = (ICampaign<Guid>) new FirebaseDndCampaign(Guid.NewGuid(), name, gameMaster, new List<Character>(), firebaseClient);
+        var campaign = (ICampaign<Guid>) new FirebaseDndCampaign(Guid.NewGuid(), name, gameMaster, new List<Character>())
+        {
+            FirebaseClient = firebaseClient
+        };
 
         try
         {

@@ -43,7 +43,16 @@ public class CharacterRepositoryShould
     public async Task ShouldPostCampaign()
     {
         await auth.SignInWithEmailAndPassword("pasha.keyzet@yandex.ru", "Sin2x=2SinxCosx");
-        var result = await campaignFactory.CreateNew("Праздность", new GameMaster(auth.User));
+        var result = await campaignFactory.CreateNew("Праздность", new GameMaster(auth.User.Id));
+        result.IsSuccess.Should().BeTrue();
+        result.Value.Should().NotBeNull();
+    }
+
+    [Test]
+    public async Task ShouldGetCampaign()
+    {
+        await auth.SignInWithEmailAndPassword("pasha.keyzet@yandex.ru", "Sin2x=2SinxCosx");
+        var result = await campaignFactory.GetExisting(Guid.Parse("4f4cd5db-3f4d-4f4d-b276-be842bc02f1c"));
         result.IsSuccess.Should().BeTrue();
         result.Value.Should().NotBeNull();
     }

@@ -4,9 +4,8 @@ namespace DndHelper.Domain.Campaign;
 
 public class GameMaster : Entity<string>
 {
-    private readonly User<string> user;
-    public GameMaster(User<string> user) : base(user.Id)
+    public GameMaster(string id) : base(id)
     {
-        this.user = user;
     }
+
 }
