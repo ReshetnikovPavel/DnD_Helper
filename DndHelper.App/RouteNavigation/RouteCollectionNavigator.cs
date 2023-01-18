@@ -16,6 +16,11 @@ namespace DndHelper.App.RouteNavigation
             routes.AddRoute(new RouteItem("///", typeof(TModel).Name));
         }
 
+        public void AddModel<TModel>(Func<bool> goCondition) where TModel : BindableObject
+        {
+            routes.AddRoute(new RouteItem("///", typeof(TModel).Name, goCondition));
+        }
+
         public bool TryGoToNextRoute(string currentRoute)
         {
             var nextRoute = routes.GetNextAvailableRoute(currentRoute);

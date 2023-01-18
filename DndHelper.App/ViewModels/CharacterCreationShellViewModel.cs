@@ -19,6 +19,7 @@ namespace DndHelper.App.ViewModels
         private void AddModels()
         {
             AddModel<RaceSelectionModel>();
+            AddModel<SubraceSelectionModel>();
             AddModel<ClassSelectionModel>();
             AddModel<AbilityScoreSelectionModel>();
             AddModel<BackgroundSelectionModel>();

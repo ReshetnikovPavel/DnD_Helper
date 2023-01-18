@@ -5,19 +5,20 @@ namespace DndHelper.App.RouteNavigation
 {
     public class CharacterCreationNavigator
     {
+        public ICreatesCharacter Creator { get; }
         private readonly IModelNavigator modelNavigator;
-        private readonly ICreatesCharacter creator;
+        
 
         public CharacterCreationNavigator(IModelNavigator modelNavigator, ICreatesCharacter creator)
         {
             this.modelNavigator = modelNavigator;
-            this.creator = creator;
+            Creator = creator;
             SubscribeToMessaging();
         }
 
         public CharacterCreationNavigator(ICreatesCharacter creator)
         {
-            this.creator = creator;
+            this.Creator = creator;
         }
 
         public void AddModel<TModel>() where TModel : BindableObject
@@ -25,15 +26,20 @@ namespace DndHelper.App.RouteNavigation
             modelNavigator.AddModel<TModel>();
         }
 
+        //public void AddModel<TModel>(Func<bool> goCondition) where TModel : BindableObject
+        //{
+        //    modelNavigator.AddModel<TModel>(goCondition);
+        //}
+
         public async void TryGoToCharacterSheet()
         {
-            if (!creator.CanCreate())
+            if (!Creator.CanCreate())
             {
                 await Shell.Current.DisplayAlert("Невозможно перейти в лист персонажа",
                     "Не все поля заполнены", "Эх");
                 return;
             }
-            var character = creator.Create();
+            var character = Creator.Create();
             await Shell.Current.GoToAsync($"/{nameof(CharacterSheetViewModel)}",
                 new Dictionary<string ,object>
                 {
