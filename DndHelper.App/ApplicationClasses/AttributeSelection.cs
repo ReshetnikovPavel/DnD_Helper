@@ -1,6 +1,6 @@
 ﻿namespace DndHelper.App.ApplicationClasses
 {
-    internal class AttributeSelection
+    public class AttributeSelection
 
     {
         public CharacterAttributes Attribute { get; }

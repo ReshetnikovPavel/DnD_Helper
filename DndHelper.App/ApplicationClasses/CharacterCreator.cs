@@ -67,11 +67,18 @@ namespace DndHelper.App.ApplicationClasses
         {
             MessagingCenter.Subscribe<object, AttributeSelection>(this,
                 MessageTypes.SelectionMade.ToString(), OnSelectionMade);
+            MessagingCenter.Subscribe<object, CharacterAttributes>(this,
+                MessageTypes.AttributeRequested.ToString(), OnAttributeRequested);
         }
 
         private void OnSelectionMade(object sender, AttributeSelection selection)
         {
             StateManager.SetValue(selection.Attribute, selection.Value);
+        }
+
+        private void OnAttributeRequested(object sender, CharacterAttributes attribute)
+        {
+            MessageSender.SendSelectionMade(this, attribute, StateManager.GetValue(attribute));
         }
 
         public bool CanSelect(CharacterAttributes attribute)

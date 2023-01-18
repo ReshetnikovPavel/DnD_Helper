@@ -3,7 +3,8 @@
     public enum MessageTypes
     {
         SelectionMade,
-        PageCompleted
+        PageCompleted,
+        AttributeRequested
     };
 
     public static class MessageSender
@@ -12,6 +13,11 @@
         {
             MessagingCenter.Send(sender, MessageTypes.SelectionMade.ToString(),
                 new AttributeSelection(attribute, value));
+        }
+
+        public static void SendAttributeRequested(object sender, CharacterAttributes attribute)
+        {
+            MessagingCenter.Send(sender, MessageTypes.AttributeRequested.ToString(), attribute);
         }
 
         public static void SendPageCompleted<TModel>(BindableObject sender)
