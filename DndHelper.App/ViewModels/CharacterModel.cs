@@ -25,6 +25,5 @@ namespace DndHelper.App.ViewModels
         public int Money => 1000;
         public string Armor => "Leather";
         public List<Armor> ArmorProficiencies => new List<Armor> { new Armor("Кождоспех"), new Armor("металлдоспех"), new Armor("словесный доспех") };
-        //public string Languages => Character?.LanguageList;
     }
 }

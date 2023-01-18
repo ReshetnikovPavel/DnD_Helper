@@ -94,6 +94,7 @@ public class Character : Entity<Guid>, IDndObject
         Class = dndClass;
 
         HitDice = Class.HitDice;
+        HitPoints = new HitPoints(HitDice.Total.Quantity);
 
         foreach (var abilityName in Class.AbilityNamesForSavingThrows)
             SavingThrows[abilityName].IsProficient = true;

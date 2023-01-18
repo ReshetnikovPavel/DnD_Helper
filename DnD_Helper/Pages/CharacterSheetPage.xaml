@@ -78,7 +78,7 @@
                     Grid.Column="3"
                     Grid.Row = "1"
                     LineBreakMode="WordWrap"
-                    Text="{Binding Character.Initiative}"
+                    Text="{Binding Character.HitPoints.Current}"
                     BackgroundColor = "#d8d7e5"/>
                 <Label Margin="10, 10, 10, 10"
                     Grid.Column="2"
@@ -89,7 +89,7 @@
                     Grid.Column="3"
                     Grid.Row = "0"
                     LineBreakMode="WordWrap"
-                    Text="{Binding Character.HitPoints}"
+                    Text="{Binding Character.Initiative}"
                     BackgroundColor = "#d8d7e5"/>
             </Grid>
 
