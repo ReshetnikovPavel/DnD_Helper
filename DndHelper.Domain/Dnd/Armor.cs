@@ -7,4 +7,5 @@ public class Armor : IDndObject
         Name = name;
     }
     public string Name { get; }
+
 }

@@ -11,6 +11,8 @@ public class Character : Entity<Guid>, IDndObject
         Abilities = abilities;
         Skills = new Skills(abilities, ProficiencyBonus);
         SavingThrows = new SavingThrows(abilities, ProficiencyBonus);
+        Level = 1;
+        Money = 1000;
     }
 
 	public string Name { get; set; }
@@ -23,7 +25,8 @@ public class Character : Entity<Guid>, IDndObject
 	public ProficiencyBonus ProficiencyBonus { get; }
     public Size Size { get; private set; }
     public Speed Speed { get; private set; }
-    public HashSet<Language> Languages { get; private set; } = new();
+    public List<string> Languages { get; private set; } = new();
+    public string LanguageNames { get => string.Join(", ", Languages); }
     public HashSet<Weapon> WeaponsProficiencies { get; private set; } = new();
     public HashSet<Instrument> InstrumentProficiencies { get; private set; } = new();
     public List<Equipment> Equipment { get; private set; } = new();
@@ -35,7 +38,9 @@ public class Character : Entity<Guid>, IDndObject
     public HashSet<Spell> Spells { get; private set; } = new();
     public AbilityName? SpellAbility { get; private set; }
     public int Initiative => Abilities.Dexterity.Modifier;
-    public int AC => 10;
+    public int AC => 10 + Abilities.Dexterity.Modifier;
+    public int Level { get; private set; }
+    public int Money { get; private set; }
 
     public SpellSlotsTable SpellSlotsTable { get; private set; }
 
@@ -53,7 +58,10 @@ public class Character : Entity<Guid>, IDndObject
 
         Size = Race.Size;
 
-        Languages.UnionWith(Race.Languages);
+        foreach(var language in race.Languages)
+        {
+            Languages.Add(language.Name);
+        }
 
         foreach (var (level, spell) in Race.Spells)
             if (level == 1)
@@ -90,6 +98,7 @@ public class Character : Entity<Guid>, IDndObject
         Class = dndClass;
 
         HitDice = Class.HitDice;
+        HitPoints = new HitPoints(HitDice.Total.Quantity);
 
         foreach (var abilityName in Class.AbilityNamesForSavingThrows)
             SavingThrows[abilityName].IsProficient = true;
