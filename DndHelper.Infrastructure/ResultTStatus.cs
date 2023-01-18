@@ -11,6 +11,17 @@ public class Result<TStatus> : INoValueResult<TStatus>
 
     }
 
+    public Result<TValue, TStatus> ToResultWithValue<TValue>(TValue value)
+    {
+        return new Result<TValue, TStatus>()
+        {
+            IsSuccess = IsSuccess,
+            Status = Status,
+            Exception = Exception,
+            Value = value
+        };
+    }
+
     public Result<TStatus> OnFailure(Action doOnFailure)
     {
         if (!IsSuccess)

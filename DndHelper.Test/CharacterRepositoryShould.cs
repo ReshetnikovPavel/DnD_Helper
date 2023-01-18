@@ -1,7 +1,9 @@
 ﻿using DndHelper.App.RouteNavigation;
 using DndHelper.App.ViewModels;
+using DndHelper.Domain.Campaign;
 using DndHelper.Domain.Dnd;
 using DndHelper.Firebase.Adapters;
+using DndHelper.Firebase.Campaign;
 using DndHelper.Firebase.Repositories;
 using Firebase.Auth;
 using Firebase.Database;
@@ -15,6 +17,7 @@ namespace Tests;
 public class CharacterRepositoryShould
 {
     private FirebaseCharacterRepository characterRepository;
+    private FirebaseDndCampaignFactory campaignFactory;
     private FirebaseAuthProviderAdapter auth;
     [SetUp]
     public void SetUp()
@@ -24,6 +27,7 @@ public class CharacterRepositoryShould
         var firebaseClient =
             new FirebaseClient("https://dndhelper-e695e-default-rtdb.asia-southeast1.firebasedatabase.app/");
         characterRepository = new FirebaseCharacterRepository(firebaseClient, auth);
+        campaignFactory = new FirebaseDndCampaignFactory(firebaseClient);
     }
 
 
@@ -33,5 +37,14 @@ public class CharacterRepositoryShould
         await auth.SignInWithEmailAndPassword("pasha.keyzet@yandex.ru", "Sin2x=2SinxCosx");
         var characters = await characterRepository.GetCharacter(Guid.Parse("6844fc89-3540-462e-9431-a3b800b3dc8e"));
        characters.Value.Should().NotBeNull();
+    }
+
+    [Test]
+    public async Task ShouldPostCampaign()
+    {
+        await auth.SignInWithEmailAndPassword("pasha.keyzet@yandex.ru", "Sin2x=2SinxCosx");
+        var result = await campaignFactory.CreateNew("Праздность", new GameMaster(auth.User));
+        result.IsSuccess.Should().BeTrue();
+        result.Value.Should().NotBeNull();
     }
 }

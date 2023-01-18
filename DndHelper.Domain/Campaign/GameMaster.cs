@@ -1,6 +1,6 @@
 ﻿using DndHelper.Infrastructure;
 
-namespace DndHelper.Domain.Party;
+namespace DndHelper.Domain.Campaign;
 
 public class GameMaster : Entity<string>
 {

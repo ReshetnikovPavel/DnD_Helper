@@ -1,6 +1,5 @@
 ﻿using System.Net;
 using System.Windows.Input;
-using DndHelper.App.Authentication;
 using DndHelper.App.RouteNavigation;
 using DndHelper.Domain.Dnd;
 using DndHelper.Domain.Repositories;
