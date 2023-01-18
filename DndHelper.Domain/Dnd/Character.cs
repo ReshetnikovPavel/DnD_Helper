@@ -13,7 +13,7 @@ public class Character : Entity<Guid>, IDndObject
             null, null, null, proficiencyBonus, Size.Medium, new Speed(0), new List<string>(),
             new HashSet<Weapon>(), 
             new HashSet<Instrument>(), new List<Equipment>(), new List<Weapon>(), new List<Instrument>(), new HashSet<Feat>(), new HashSet<Trait>(), new HashSet<Spell>(),
-            null, null, null, null);
+            null, null, null, null, 1, 50);
     }
 
     public Character(Guid id, string name, Abilities abilities, SavingThrows savingThrows,
@@ -21,7 +21,7 @@ public class Character : Entity<Guid>, IDndObject
                 Size size, Speed speed, List<string> languages, HashSet<Weapon> weaponsProficiencies,
                 HashSet<Instrument> instrumentProficiencies, List<Equipment> equipment, List<Weapon> weapons,
                 List<Instrument> instruments, HashSet<Feat> feats, HashSet<Trait> traits, HashSet<Spell> spells,
-                AbilityName? spellAbility, SpellSlotsTable spellSlotsTable, HitDice hitDice, HitPoints hitPoints) : base(id)
+                AbilityName? spellAbility, SpellSlotsTable spellSlotsTable, HitDice hitDice, HitPoints hitPoints, int level, int money) : base(id)
     {
         Name = name;
         Abilities = abilities;
@@ -46,6 +46,8 @@ public class Character : Entity<Guid>, IDndObject
         SpellSlotsTable = spellSlotsTable;
         HitDice = hitDice;
         HitPoints = hitPoints;
+        Level = level;
+        Money = money;
     }
 
 

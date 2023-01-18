@@ -39,20 +39,23 @@ public class FirebaseCharacterRepository : ICharacterRepository<HttpStatusCode>
     public async Task<Result<IEnumerable<Character>, HttpStatusCode>> GetCharacters()
     {
         var characters = new List<Character>();
-        var ids = await HandleError(async () =>
-            (await GetUserQuery().Child("Characters").OnceSingleAsync<Dictionary<string,Character>>())
-            .Select(x => x.Key));
-        foreach (var id in ids.Value)
+        var res = await HandleError(async () =>
+            (await GetUserQuery().Child("Characters").OnceSingleAsync<Dictionary<string,Character>>()));
+        if (res.TryGetValue(out var dictionary))
         {
-            var characterResult = await GetCharacter(Guid.Parse(id));
+            var ids = dictionary.Keys;
+            foreach (var id in ids)
+            {
+                var characterResult = await GetCharacter(Guid.Parse(id));
 
-            if (characterResult.TryGetValue(out var character)) 
-                characters.Add(character);
+                if (characterResult.TryGetValue(out var character))
+                    characters.Add(character);
+            }
+
+            if (characters.Any())
+                return Result.CreateSuccess<IEnumerable<Character>, HttpStatusCode>(characters);
         }
-
-        if (characters.Any())
-            return Result.CreateSuccess<IEnumerable<Character>, HttpStatusCode>(characters);
-        return Result.CreateFailure<IEnumerable<Character>, HttpStatusCode>(ids.Status);
+        return Result.CreateFailure<IEnumerable<Character>, HttpStatusCode>(res.Status);
     }
 
     private ChildQuery GetCharacterQuery(Character character)
