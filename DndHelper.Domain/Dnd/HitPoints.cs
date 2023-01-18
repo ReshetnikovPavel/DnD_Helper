@@ -14,4 +14,9 @@ public class HitPoints : ValueType<HitDice>, IDndObject
         Current = maximum;
         Temporary = 0;
     }
+
+    public static HitPoints Create(HitDice hitDice, Abilities abilities)
+    {
+        return new HitPoints((int) hitDice.Total.Sides + abilities.Constitution.Modifier);
+    }
 }

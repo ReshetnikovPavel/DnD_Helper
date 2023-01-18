@@ -12,16 +12,16 @@ namespace DndHelper.App.ViewModels
     {
         private readonly ICharacterRepository<HttpStatusCode> characterRepository;
         private readonly IShellNavigator shellNavigator;
-        public ICommand SelectCharacter { get; }
+        public ICommand SelectCharacter => new Command<Character>(GoToCharacterSheet);
         public ICommand CreateNewCharacter => new Command(OnCreateNewCharacter);
         
-        private IEnumerable<string> characterNames;
-        public IEnumerable<string> CharacterNames
+        private IEnumerable<Character> characters;
+        public IEnumerable<Character> Characters
         {
-            get => characterNames;
+            get => characters;
             set
             {
-                characterNames = value;
+                characters = value;
                 OnPropertyChanged();
             }
         }
@@ -39,6 +39,16 @@ namespace DndHelper.App.ViewModels
             shellNavigator.GoToCharacterCreation();
         }
 
+        public async void GoToCharacterSheet(Character character)
+        {
+            await Shell.Current.GoToAsync($"/{nameof(CharacterSheetViewModel)}",
+                new Dictionary<string, object>
+                {
+                    ["Character"] = character
+                }
+            );
+        }
+
         public async void LoadCharacterNames()
         {
             (await characterRepository.GetCharacters())
@@ -48,7 +58,7 @@ namespace DndHelper.App.ViewModels
 
         private void LoadCharacterNames(IEnumerable<Character> characters)
         {
-            CharacterNames = characters.Select(c => c.Name);
+            Characters = characters;
         }
 
         private static async void DisplayCannotLoadCharactersAlert(INoValueResult<HttpStatusCode> result)
