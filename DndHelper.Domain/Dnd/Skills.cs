@@ -30,16 +30,6 @@ namespace DndHelper.Domain.Dnd
         public Skill Stealth { get => Dictionary[SkillName.Stealth]; }
         public Skill Survival { get => Dictionary[SkillName.Acrobatics]; }
 
-        private Skills(Abilities abilities, ProficiencyBonus proficiencyBonus)
-        {
-            Dictionary = new Dictionary<SkillName, Skill>();
-            foreach (var skillName in Enum.GetValues<SkillName>())
-            {
-                var abilityName = AbilityScore.GetNameFromSkillName(skillName);
-                Dictionary[skillName] = new Skill(skillName, abilities[abilityName], proficiencyBonus);
-            }
-        }
-
         public Skills(Skill acrobatics, Skill animalHandling, Skill arcana, Skill athletics, Skill deception, Skill history, Skill insight, Skill intimidation, Skill investigation, Skill medicine, Skill nature, Skill perception, Skill performance, Skill persuasion, Skill religion, Skill sleightOfHand, Skill stealth, Skill survival)
         {
             Dictionary = new Dictionary<SkillName, Skill>();
@@ -70,7 +60,13 @@ namespace DndHelper.Domain.Dnd
 
         public static Skills Create(Abilities abilities, ProficiencyBonus proficiencyBonus)
         {
-            return new Skills(abilities, proficiencyBonus);
+            var dictionary = new Dictionary<SkillName, Skill>();
+            foreach (var skillName in Enum.GetValues<SkillName>())
+            {
+                var abilityName = AbilityScore.GetNameFromSkillName(skillName);
+                dictionary[skillName] = new Skill(skillName, abilities[abilityName], proficiencyBonus);
+            }
+            return new Skills(dictionary[SkillName.Acrobatics], dictionary[SkillName.AnimalHandling], dictionary[SkillName.Arcana], dictionary[SkillName.Athletics], dictionary[SkillName.Deception], dictionary[SkillName.History], dictionary[SkillName.Insight], dictionary[SkillName.Intimidation], dictionary[SkillName.Investigation], dictionary[SkillName.Medicine], dictionary[SkillName.Nature], dictionary[SkillName.Perception], dictionary[SkillName.Performance], dictionary[SkillName.Persuasion], dictionary[SkillName.Religion], dictionary[SkillName.SleightOfHand], dictionary[SkillName.Stealth], dictionary[SkillName.Survival]);
         }
     }
 }

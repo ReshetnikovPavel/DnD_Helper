@@ -1,26 +1,36 @@
-﻿using DndHelper.Infrastructure;
+﻿using System.Text.Json.Serialization;
+using DndHelper.Infrastructure;
 
 namespace DndHelper.Domain.Dnd;
 
 public class Character : Entity<Guid>, IDndObject
 {
-    public Character(Abilities abilities) : base(Guid.NewGuid())
+    public static Character CreateNew(Abilities abilities)
     {
-        ProficiencyBonus = new ProficiencyBonus(2);
-        Speed = new Speed(0);
-        Abilities = abilities;
-        Skills = Skills.Create(abilities, ProficiencyBonus);
-        SavingThrows = SavingThrows.Create(abilities, ProficiencyBonus);
+        var proficiencyBonus = new ProficiencyBonus(2);
+        return new Character(Guid.NewGuid())
+        {
+            ProficiencyBonus = proficiencyBonus,
+            Abilities =  abilities,
+            Skills = Skills.Create(abilities, proficiencyBonus),
+            SavingThrows = SavingThrows.Create(abilities, proficiencyBonus),
+            Speed = new Speed(0)
+        };
     }
 
-	public string Name { get; set; }
-    public Abilities Abilities { get;  }
-    public SavingThrows SavingThrows { get; }
-    public Skills Skills { get; }
+    public Character(Guid id) : base(id)
+    {
+    }
+
+
+    public string Name { get; set; }
+    public Abilities Abilities { get; set; }
+    public SavingThrows SavingThrows { get; set; }
+    public Skills Skills { get; set; }
     public Race Race { get; private set; }
 	public Class Class { get; private set;  }
 	public Background Background { get; private set; }
-	public ProficiencyBonus ProficiencyBonus { get; }
+	public ProficiencyBonus ProficiencyBonus { get; set; }
     public Size Size { get; private set; }
     public Speed Speed { get; private set; }
     public HashSet<Language> Languages { get; private set; } = new();

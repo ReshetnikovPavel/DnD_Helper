@@ -38,9 +38,10 @@ public class FirebaseCharacterRepository : ICharacterRepository<HttpStatusCode>
 
     public async Task<Result<IEnumerable<Character>, HttpStatusCode>> GetCharacters()
     {
-        return await HandleError(async () => 
-            (await GetUserQuery().OnceAsListAsync<Character>())
-            .Select(x => x.Object));
+        var result = await HandleError(async () =>
+            (await GetUserQuery().OnceSingleAsync<Dictionary<string, Character>>())
+            .Select(x => x.Value));
+        return result;
     }
 
     private ChildQuery GetCharacterQuery(Character character)
