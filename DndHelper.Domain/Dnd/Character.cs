@@ -8,18 +8,12 @@ public class Character : Entity<Guid>, IDndObject
     public static Character CreateNew(Abilities abilities)
     {
         var proficiencyBonus = new ProficiencyBonus(2);
-        return new Character(Guid.NewGuid())
-        {
-            ProficiencyBonus = proficiencyBonus,
-            Abilities =  abilities,
-            Skills = Skills.Create(abilities, proficiencyBonus),
-            SavingThrows = SavingThrows.Create(abilities, proficiencyBonus),
-            Speed = new Speed(0)
-        };
-    }
-
-    public Character(Guid id) : base(id)
-    {
+        return new Character(Guid.NewGuid(), null, abilities, SavingThrows.Create(abilities, proficiencyBonus),
+            Skills.Create(abilities, proficiencyBonus),
+            null, null, null, proficiencyBonus, Size.Medium, new Speed(0), null, 
+            null, 
+            null, null, null, null, null, null, null, 
+            null, null, null, null);
     }
 
     public Character(Guid id, string name, Abilities abilities, SavingThrows savingThrows, 
