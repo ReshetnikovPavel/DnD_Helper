@@ -35,30 +35,20 @@
         </Grid>
 
         <Grid Grid.Row = "1">
-            <ListView x:Name="EquipmentWeaponsList"
+            <CollectionView x:Name="EquipmentWeaponsList"
                 ItemsSource="{Binding EquipmentWeapons}"
                 Margin="10"
                 Grid.Row="1"
-                SelectionMode="Single"> 
-                <!-- Multiple not working :(  -->
-                <ListView.ItemTemplate>
+                SelectionChangedCommand="{Binding SelectEquipmentWeapons}"
+                SelectionMode="Multiple"> 
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
                             <Grid Padding="10">
-                                <Frame>
-                                    <Label Text="{Binding .}" />
-                                </Frame>
+                                    <Label Text="{Binding .}" Margin="10"/>
                             </Grid>
-                        </ViewCell>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            <ListView.Behaviors>
-                <toolkit:EventToCommandBehavior
-                EventName="ItemTapped"
-                Command="{Binding SelectEquipmentWeapons}"
-                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
-            </ListView.Behaviors>
-        </ListView>
+                </CollectionView.ItemTemplate>
+        </CollectionView>
         </Grid>
     </Grid>
 
@@ -81,30 +71,20 @@
         </Grid>
 
         <Grid Grid.Row = "1">
-            <ListView x:Name="EquipmentAddWeaponsList"
+            <CollectionView x:Name="EquipmentAddWeaponsList"
                 ItemsSource="{Binding EquipmentAddWeapons}"
                 Margin="10"
                 Grid.Row="1"
-                SelectionMode="Single"> 
-                <!-- Multiple not working :(  -->
-                <ListView.ItemTemplate>
+                SelectionChangedCommand="{Binding SelectEquipmentAddWeapons}"
+                SelectionMode="Multiple"> 
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
                             <Grid Padding="10">
-                                <Frame>
-                                    <Label Text="{Binding .}" />
-                                </Frame>
+                                    <Label Text="{Binding .}" Margin="10" />
                             </Grid>
-                        </ViewCell>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            <ListView.Behaviors>
-                <toolkit:EventToCommandBehavior
-                EventName="ItemTapped"
-                Command="{Binding SelectEquipmentAddWeapons}"
-                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
-            </ListView.Behaviors>
-        </ListView>
+                </CollectionView.ItemTemplate>
+        </CollectionView>
         </Grid>
     </Grid>
 
@@ -117,30 +97,22 @@
         </Grid>
 
         <Grid Grid.Row = "1">
-            <ListView x:Name="EquipmentArmorList"
+            <CollectionView x:Name="EquipmentArmorList"
                 ItemsSource="{Binding EquipmentArmor}"
                 Margin="10"
                 Grid.Row="1"
-                SelectionMode="Single"> 
-                <!-- Multiple not working :(  -->
-                <ListView.ItemTemplate>
+                SelectionChangedCommand="{Binding SelectEquipmentArmor}"
+                SelectionMode="Multiple"> 
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
                             <Grid Padding="10">
-                                <Frame>
-                                    <Label Text="{Binding .}" />
-                                </Frame>
+
+                                    <Label Text="{Binding .}" Margin="10" />
+
                             </Grid>
-                        </ViewCell>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            <ListView.Behaviors>
-                <toolkit:EventToCommandBehavior
-                EventName="ItemTapped"
-                Command="{Binding SelectEquipmentArmor}"
-                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
-            </ListView.Behaviors>
-        </ListView>
+                </CollectionView.ItemTemplate>
+        </CollectionView>
         </Grid>
     </Grid>
 
@@ -153,30 +125,22 @@
         </Grid>
 
         <Grid Grid.Row = "1">
-            <ListView x:Name="EquipmentInstrumentList"
+            <CollectionView x:Name="EquipmentInstrumentList"
                 ItemsSource="{Binding EquipmentInstrument}"
                 Margin="10"
                 Grid.Row="1"
-                SelectionMode="Single"> 
-                <!-- Multiple not working :(  -->
-                <ListView.ItemTemplate>
+                SelectionChangedCommand="{Binding SelectEquipmentInstrument}"
+                SelectionMode="Multiple">
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
                             <Grid Padding="10">
-                                <Frame>
-                                    <Label Text="{Binding .}" />
-                                </Frame>
+
+                                    <Label Text="{Binding .}" Margin="10"/>
+
                             </Grid>
-                        </ViewCell>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            <ListView.Behaviors>
-                <toolkit:EventToCommandBehavior
-                EventName="ItemTapped"
-                Command="{Binding SelectEquipmentInstrument}"
-                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
-            </ListView.Behaviors>
-        </ListView>
+                </CollectionView.ItemTemplate>
+        </CollectionView>
         </Grid>
     </Grid>
 
@@ -189,30 +153,22 @@
         </Grid>
 
         <Grid Grid.Row = "1">
-            <ListView x:Name="EquipmentMusicInstrumentList"
+            <CollectionView x:Name="EquipmentMusicInstrumentList"
                 ItemsSource="{Binding EquipmentMusicInstrument}"
                 Margin="10"
                 Grid.Row="1"
-                SelectionMode="Single"> 
-                <!-- Multiple not working :(  -->
-                <ListView.ItemTemplate>
+                SelectionChangedCommand="{Binding SelectEquipmentMusicInstrument}"
+                SelectionMode="Multiple">
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
                             <Grid Padding="10">
-                                <Frame>
-                                    <Label Text="{Binding .}" />
-                                </Frame>
+
+                                    <Label Text="{Binding .}" Margin="10"/>
+
                             </Grid>
-                        </ViewCell>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            <ListView.Behaviors>
-                <toolkit:EventToCommandBehavior
-                EventName="ItemTapped"
-                Command="{Binding SelectEquipmentMusicInstrument}"
-                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
-            </ListView.Behaviors>
-        </ListView>
+                </CollectionView.ItemTemplate>
+        </CollectionView>
         </Grid>
     </Grid>
 
@@ -225,30 +181,20 @@
         </Grid>
 
         <Grid Grid.Row = "1">
-            <ListView x:Name="EquipmentArcanaComponentList"
+            <CollectionView x:Name="EquipmentArcanaComponentList"
                 ItemsSource="{Binding EquipmentArcanaComponent}"
                 Margin="10"
                 Grid.Row="1"
-                SelectionMode="Single"> 
-                <!-- Multiple not working :(  -->
-                <ListView.ItemTemplate>
+                SelectionChangedCommand="{Binding SelectEquipmentArcanaComponent}"
+                SelectionMode="Multiple"> 
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
                             <Grid Padding="10">
-                                <Frame>
-                                    <Label Text="{Binding .}" />
-                                </Frame>
+                                    <Label Text="{Binding .}" Margin="10" />
                             </Grid>
-                        </ViewCell>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            <ListView.Behaviors>
-                <toolkit:EventToCommandBehavior
-                EventName="ItemTapped"
-                Command="{Binding SelectEquipmentArcanaComponent}"
-                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
-            </ListView.Behaviors>
-        </ListView>
+                </CollectionView.ItemTemplate>
+        </CollectionView>
         </Grid>
     </Grid>
 </VerticalStackLayout>

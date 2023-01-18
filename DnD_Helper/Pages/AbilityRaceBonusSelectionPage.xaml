@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DnD_Helper.AbilityRaceBonusSelectionPage"
+             
              x:DataType="viewModels:AbilityRaceBonusSelectionModel"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewModels="clr-namespace:DndHelper.App.ViewModels;assembly=DndHelper.App"
@@ -41,30 +42,26 @@
 
 
         <Grid Grid.Row = "2">
-            <ListView x:Name="AbilitiesList"
+            <CollectionView x:Name="AbilitiesList"
                 ItemsSource="{Binding Abilities}"
-                Margin="10"
                 Grid.Row="1"
-                SelectionMode="Single"> 
-                <!-- Multiple not working :(  -->
-                <ListView.ItemTemplate>
+                SelectionChangedCommand="{Binding SelectAbilityRaceBonus}"
+                SelectionMode="Multiple"> 
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid Padding="10">
-                                <Frame>
-                                    <Label Text="{Binding .}" />
-                                </Frame>
-                            </Grid>
-                        </ViewCell>
+                        <Grid Padding="10">
+                            
+                            <Label Text="{Binding .}" Margin="10"/>
+                        </Grid>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            <ListView.Behaviors>
+                </CollectionView.ItemTemplate>
+            <!-- <CollectionView.Behaviors>
                 <toolkit:EventToCommandBehavior
                 EventName="ItemTapped"
                 Command="{Binding SelectAbilityRaceBonus}"
                 EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
-            </ListView.Behaviors>
-        </ListView>
+            </CollectionView.Behaviors> -->
+        </CollectionView>
         </Grid>
     </Grid>
 </ContentPage>
