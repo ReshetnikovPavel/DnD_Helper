@@ -1,6 +1,5 @@
-﻿using DndHelper.App;
-using DndHelper.App.Authentication;
-using DndHelper.Infrastructure;
+﻿using DndHelper.Infrastructure;
+using DndHelper.Infrastructure.Authentication;
 using Firebase.Auth;
 using Microsoft.Maui.ApplicationModel.Communication;
 using System.Net.Mail;

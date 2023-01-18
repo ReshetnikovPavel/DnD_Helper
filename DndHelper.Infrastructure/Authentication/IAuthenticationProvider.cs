@@ -1,6 +1,4 @@
-﻿using DndHelper.Infrastructure;
-
-namespace DndHelper.App.Authentication;
+﻿namespace DndHelper.Infrastructure.Authentication;
 
 public interface IAuthenticationProvider<TId>
 {

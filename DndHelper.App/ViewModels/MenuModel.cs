@@ -1,7 +1,7 @@
 using System.Windows.Input;
-using DndHelper.App.Authentication;
 using DndHelper.App.RouteNavigation;
 using DndHelper.App.ViewModels;
+using DndHelper.Infrastructure.Authentication;
 
 namespace DndHelper.App.ViewModels
 {

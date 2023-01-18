@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DnD_Helper.CharacterSelectionPage"
+             xmlns:domain="clr-namespace:DndHelper.Domain.Dnd;assembly=DndHelper.Domain"
              x:DataType="viewModels:CharacterSelectionModel"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewModels="clr-namespace:DndHelper.App.ViewModels;assembly=DndHelper.App"
@@ -17,14 +18,14 @@
     <Grid RowDefinitions="4*, *"
           Margin="10">
         <ListView x:Name="CharacterList"
-        ItemsSource="{Binding CharacterNames}"
+        ItemsSource="{Binding Characters}"
               Margin="10">
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="domain:Character">
                     <ViewCell>
                         <Grid Padding="10">
                             <Frame>
-                                <Label Text="{Binding .}" />
+                                <Label Text="{Binding Name}" />
                             </Frame>
                         </Grid>
                     </ViewCell>

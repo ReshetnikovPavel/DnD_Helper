@@ -15,12 +15,18 @@ public class Result<TValue, TStatus> : INoValueResult<TStatus>
     public bool TryGetValue(out TValue value)
     {
         value = Value;
+
+        if (value == null)
+            return false;
         return IsSuccess;
     }
     public bool TryGetValue(out TValue value, out TStatus status)
     {
         value = Value;
         status = Status;
+
+        if (value == null)
+            return false;
         return IsSuccess;
     }
 

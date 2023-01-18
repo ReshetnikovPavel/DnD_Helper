@@ -1,13 +1,11 @@
 ﻿using System.Net;
-using DndHelper.App;
 using Firebase.Database;
 using Firebase.Database.Query;
 using DndHelper.Domain.Repositories;
 using DndHelper.Domain.Dnd;
-using DndHelper.App.Authentication;
 using DndHelper.Infrastructure;
 using Newtonsoft.Json;
-
+using DndHelper.Infrastructure.Authentication;
 
 namespace DndHelper.Firebase.Repositories;
 
@@ -28,6 +26,11 @@ public class FirebaseCharacterRepository : ICharacterRepository<HttpStatusCode>
         return HandleError(async () => await GetCharacterQuery(id).OnceSingleAsync<Character>());
     }
 
+    public Task<Result<Character, HttpStatusCode>> GetCharacter(string userId, Guid characterId)
+    {
+        return HandleError(async () => await GetCharacterQuery(userId, characterId).OnceSingleAsync<Character>());
+    }
+
     public Task<Result<HttpStatusCode>> PutCharacter(Character character)
     {
         var json = JsonConvert.SerializeObject(character);
@@ -39,20 +42,23 @@ public class FirebaseCharacterRepository : ICharacterRepository<HttpStatusCode>
     public async Task<Result<IEnumerable<Character>, HttpStatusCode>> GetCharacters()
     {
         var characters = new List<Character>();
-        var ids = await HandleError(async () =>
-            (await GetUserQuery().Child("Characters").OnceSingleAsync<Dictionary<string,Character>>())
-            .Select(x => x.Key));
-        foreach (var id in ids.Value)
+        var res = await HandleError(async () =>
+            (await GetUserQuery().Child("Characters").OnceSingleAsync<Dictionary<string,Character>>()));
+        if (res.TryGetValue(out var dictionary))
         {
-            var characterResult = await GetCharacter(Guid.Parse(id));
+            var ids = dictionary.Keys;
+            foreach (var id in ids)
+            {
+                var characterResult = await GetCharacter(Guid.Parse(id));
 
-            if (characterResult.TryGetValue(out var character)) 
-                characters.Add(character);
+                if (characterResult.TryGetValue(out var character))
+                    characters.Add(character);
+            }
+
+            if (characters.Any())
+                return Result.CreateSuccess<IEnumerable<Character>, HttpStatusCode>(characters);
         }
-
-        if (characters.Any())
-            return Result.CreateSuccess<IEnumerable<Character>, HttpStatusCode>(characters);
-        return Result.CreateFailure<IEnumerable<Character>, HttpStatusCode>(ids.Status);
+        return Result.CreateFailure<IEnumerable<Character>, HttpStatusCode>(res.Status);
     }
 
     private ChildQuery GetCharacterQuery(Character character)
@@ -60,18 +66,29 @@ public class FirebaseCharacterRepository : ICharacterRepository<HttpStatusCode>
         return GetCharacterQuery(character.Id);
     }
 
-    private ChildQuery GetCharacterQuery<TId>(TId id)
+    private ChildQuery GetCharacterQuery(Guid id)
     {
         return GetUserQuery()
             .Child("Characters")
             .Child($"{id}");
     }
 
-    private ChildQuery GetUserQuery()
+    private ChildQuery GetCharacterQuery(string userId, Guid id)
+    {
+        return GetUserQuery(userId)
+            .Child("Characters")
+            .Child($"{id}");
+    }
+
+    private ChildQuery GetUserQuery(string id)
     {
         return firebaseClient
             .Child("Users")
-            .Child($"{User.Id}");
+            .Child($"{id}");
+    }
+    private ChildQuery GetUserQuery()
+    {
+        return GetUserQuery(User.Id);
     }
     private static async Task<Result<T, HttpStatusCode>> HandleError<T>(Func<Task<T>> interactWithFirebase)
     {
