@@ -50,6 +50,7 @@ public static class MauiProgram
             .AddTransient<AbilityScoreSelectionModel>()
             .AddTransient<ClassSelectionModel>()
             .AddTransient<RaceSelectionModel>()
+            .AddTransient<SubraceSelectionModel>()
             .AddTransient<BackgroundSelectionModel>()
             .AddTransient<MenuModel>();
         return services;
@@ -73,6 +74,7 @@ public static class MauiProgram
             .AddTransient<ClassSelectionPage>()
             .AddTransient<RaceSelectionPage>()
             .AddTransient<BackgroundSelectionPage>()
+            .AddTransient<SubraceSelectionPage>()
             .AddTransientWithShellRoute<CharacterSelectionPage, CharacterSelectionModel>(nameof(CharacterSelectionModel))
             .AddTransientWithShellRoute<PartySelectionPage, PartySelectionModel>(nameof(PartySelectionModel))
             .AddTransientWithShellRoute<CharacterSheetPage, CharacterSheetViewModel>(nameof(CharacterSheetViewModel))
