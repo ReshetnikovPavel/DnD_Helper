@@ -101,8 +101,12 @@ namespace DndHelper.App.ApplicationClasses
                     return true;
                 case CharacterAttributes.Subrace:
                     return HasSubRaces();
-                case CharacterAttributes.Languages:
-                    return HasLanguages();
+                case CharacterAttributes.Skills:
+                    return true;
+                //case CharacterAttributes.RaceAbilityBonus:
+                //    return HasAbilityBonus();
+                //case CharacterAttributes.Languages:
+                //    return HasLanguages();
                 default:
                     return false;
             }
@@ -123,12 +127,22 @@ namespace DndHelper.App.ApplicationClasses
 
         public bool HasLanguages()
         {
-            if(!IsSelected(CharacterAttributes.Race) || !IsSelected(CharacterAttributes.Subrace))
+            if(!IsSelected(CharacterAttributes.Race) || MustSelect(CharacterAttributes.Subrace))
                 return false;
             var raceName = StateManager.GetValue(CharacterAttributes.Race).ToString();
             var subraceName = GetSubrace();
             var race = RepositoryFacade.GetRace(raceName, subraceName);
             return race.Optionals.Languages is not null;
+        }
+
+        public bool HasAbilityBonus()
+        {
+            if (!IsSelected(CharacterAttributes.Race) || MustSelect(CharacterAttributes.Subrace))
+                return false;
+            var raceName = StateManager.GetValue(CharacterAttributes.Race).ToString();
+            var subraceName = GetSubrace();
+            var race = RepositoryFacade.GetRace(raceName, subraceName);
+            return race.Optionals.AbilityScoreBonuses is not null;
         }
 
         private string GetSubrace()

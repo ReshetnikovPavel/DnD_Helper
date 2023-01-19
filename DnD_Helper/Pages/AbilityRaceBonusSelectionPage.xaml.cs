@@ -8,6 +8,6 @@ public partial class AbilityRaceBonusSelectionPage : ContentPage
     {
         InitializeComponent();
 
-        BindingContext = new AbilityRaceBonusSelectionModel();
+        BindingContext = this;
     }
 }
