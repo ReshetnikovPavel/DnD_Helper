@@ -101,8 +101,8 @@ namespace DndHelper.App.ApplicationClasses
                     return true;
                 case CharacterAttributes.Subrace:
                     return HasSubRaces();
-                case CharacterAttributes.Skills:
-                    return true;
+                //case CharacterAttributes.Skills:
+                //    return true;
                 //case CharacterAttributes.RaceAbilityBonus:
                 //    return HasAbilityBonus();
                 //case CharacterAttributes.Languages:

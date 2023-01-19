@@ -23,7 +23,7 @@ namespace DndHelper.App.ViewModels
             AddModel<SubraceSelectionModel>("/", new[] { CharacterAttributes.Subrace });
             //AddModel<AbilityRaceBonusSelectionModel>("/", new[] { CharacterAttributes.RaceAbilityBonus });
             //AddModel<LanguageSelectionModel>("/", new[] {CharacterAttributes.Languages});
-            AddModel<SkillsSelectionModel>("/", new[] {CharacterAttributes.Skills });
+            //AddModel<SkillsSelectionModel>("/", new[] {CharacterAttributes.Skills });
             AddModel<ClassSelectionModel>("///", new[] { CharacterAttributes.Class });
             AddModel<AbilityScoreSelectionModel>("///", new[] { CharacterAttributes.Abilities });
             AddModel<BackgroundSelectionModel>("///", new[] { 
