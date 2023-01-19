@@ -12,9 +12,9 @@ namespace DndHelper.App.ViewModels
     [QueryProperty(nameof(Party), nameof(Party))]
     public partial class ModelParty : BindableObject
     {
-        private ICampaign<Guid, HttpStatusCode> party;
+        private ICampaign party;
 
-        public ICampaign<Guid, HttpStatusCode> Party
+        public ICampaign Party
         {
             get => party;
             set
