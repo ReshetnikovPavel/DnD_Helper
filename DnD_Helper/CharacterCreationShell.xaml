@@ -14,7 +14,7 @@
     xmlns:viewModels="clr-namespace:DndHelper.App.ViewModels;assembly=DndHelper.App">
 
     <Shell.ItemTemplate>
-        <DataTemplate x:DataType="Tab">
+        <DataTemplate x:DataType="ShellContent">
             <Grid Margin="20, 10">
                 <Label Text="{Binding Title}" FontAttributes="Bold" TextColor="White"></Label>
             </Grid>
