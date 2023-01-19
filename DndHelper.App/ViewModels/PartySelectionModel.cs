@@ -58,17 +58,13 @@ namespace DndHelper.App.ViewModels
 
         }
 
-        private async void OnPartySelected(ICampaign partyName)
+        private async void OnPartySelected(ICampaign party)
         {
             var guid = party.Id;
             await Shell.Current.GoToAsync($"/{nameof(ModelParty)}",
                 new Dictionary<string, object>
                 {
-<<<<<<< Updated upstream
-                    ["Party"] = null //TODO: вставить сюда партию
-=======
                     ["PartyId"] = guid
->>>>>>> Stashed changes
                 }
                 );
         }
