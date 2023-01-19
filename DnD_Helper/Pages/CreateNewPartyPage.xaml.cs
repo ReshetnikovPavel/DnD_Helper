@@ -4,9 +4,11 @@ namespace DnD_Helper
 {
     public partial class CreateNewPartyPage : ContentPage
     {
-        public CreateNewPartyPage()
+        public CreateNewPartyPage(CreateNewPartyModel createNewPartyModel)
         {
             InitializeComponent();
+
+            BindingContext = createNewPartyModel;
         }
     }
 }
