@@ -53,7 +53,7 @@ public class FirebaseDndCampaignFactory : ICampaignFactory<Guid, HttpStatusCode>
         return await GetCampaignsList(ids);
     }
 
-    private async Task<Result<IEnumerable<ICampaign<Guid, HttpStatusCode>>, HttpStatusCode>> GetCampaignsList(IReadOnlyCollection<FirebaseObject<string> ids)
+    private async Task<Result<IEnumerable<ICampaign<Guid, HttpStatusCode>>, HttpStatusCode>> GetCampaignsList(IReadOnlyCollection<FirebaseObject<string>> ids)
     {
         var list = new List<ICampaign<Guid, HttpStatusCode>>();
         foreach (var firebaseObject in ids)
