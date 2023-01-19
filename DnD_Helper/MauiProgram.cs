@@ -87,6 +87,7 @@ public static class MauiProgram
             .AddTransientWithShellRoute<CharacterSheetPage, CharacterSheetViewModel>(nameof(CharacterSheetViewModel))
             .AddTransientWithShellRoute<PageParty, ModelParty>(nameof(ModelParty))
             .AddTransientWithShellRoute<JoinNewPartyPage, JoinNewPartyModel>(nameof(JoinNewPartyModel))
+            .AddTransientWithShellRoute<CreateNewPartyPage, CreateNewPartyModel>(nameof(CreateNewPartyModel))
             .AddTransientWithShellRoute<MenuPage, MenuModel>(nameof(MenuModel));
 
         return services;

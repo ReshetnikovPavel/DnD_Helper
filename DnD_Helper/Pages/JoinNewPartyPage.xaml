@@ -3,6 +3,8 @@
     x:Class="DnD_Helper.JoinNewPartyPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:DndHelper.App.ViewModels;assembly=DndHelper.App"
+    xmlns:campaigns="clr-namespace:DndHelper.Domain.Campaign;assembly=DndHelper.Domain"
     NavigationPage.HasNavigationBar="False"
     BackgroundColor = "#d8d7e5">
     <!--<Grid
@@ -49,6 +51,7 @@
             Text="Поиск партии"
             TextColor="#5c79a1" />
         <Entry
+            x:DataType="viewModels:JoinNewPartyModel"
             Grid.Row="1"
             HorizontalOptions="FillAndExpand"
             IsPassword="True"
@@ -66,8 +69,9 @@
             Text="Выберите персонажа для партии"
             TextColor="#5c79a1" />
         <Grid Grid.Row = "3">
-            <CollectionView x:Name="ChatactersList"
-                ItemsSource="{Binding characters}"
+            <CollectionView x:Name="Characters"
+                            x:DataType="viewModels:JoinNewPartyModel"
+                ItemsSource="{Binding Characters}"
                 Margin="10"
                 Grid.Row="1"
                 SelectionChangedCommand="{Binding SelectCharacter}"
@@ -82,6 +86,7 @@
             </CollectionView>
         </Grid>
         <Button
+            x:DataType="viewModels:JoinNewPartyModel"
             Grid.Row="4"
             BackgroundColor="#5c79a1"
             Command="{Binding JoinNewParty}"
