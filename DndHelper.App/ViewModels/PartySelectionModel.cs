@@ -1,9 +1,18 @@
+using System.Net;
 using System.Windows.Input;
+using DndHelper.Domain.Campaign;
 
 namespace DndHelper.App.ViewModels
 {
     public class PartySelectionModel : BindableObject
     {
+        private readonly ICampaignFactory<Guid, HttpStatusCode> campaignFactory;
+
+        public PartySelectionModel(ICampaignFactory<Guid, HttpStatusCode> campaignFactory)
+        {
+            this.campaignFactory = campaignFactory;
+        }
+
         public ICommand SelectMyParty { get; }
 
         public ICommand SelectMyMasterParty { get; }
@@ -11,12 +20,39 @@ namespace DndHelper.App.ViewModels
         public ICommand CreateNewParty { get; }
         public ICommand JoinNewParty { get; }
 
-        public string[] MyPartyNames
-            => new string[] { "Дикие пингвины", "Пельмешковые воины", "Культ водоисточающей лампы" };
+        private IEnumerable<ICampaign> myParties;
+        public IEnumerable<ICampaign> MyParties
+        {
+            get => myParties;
+            set
+            {
+                myParties = value;
+                OnPropertyChanged();
+            }
+        }
 
-        public string[] MyMasterPartyNames
-            => new string[] { "Культ любви к Соне Мельковой", "Петряшовские мелодрамы", "Филлипа не добавляем!!" };
+        private IEnumerable<ICampaign> myMasterParties;
+        public IEnumerable<ICampaign> MyMasterParties
+        {
+            get => myMasterParties;
+            set
+            {
+                myMasterParties = value;
+                OnPropertyChanged();
+            }
+        }
 
+        public async void LoadParties()
+        {
+            if ((await campaignFactory.GetMyCampaignsWhereIAmGameMaster()).TryGetValue(out var campaigns1))
+            {
+                MyMasterParties = campaigns1;
+            };
 
+            if ((await campaignFactory.GetMyCampaignsWhereIAmPlayer()).TryGetValue(out var campaigns2))
+            {
+                MyMasterParties = campaigns2;
+            };
+        }
     }
 }

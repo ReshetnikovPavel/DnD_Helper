@@ -15,5 +15,6 @@ namespace DndHelper.App.ViewModels
         public string name => "XAXAAA";
         public string dm => "Gogulk";
         public string[] characters => new string[3]{"AA", "aaaa", "AAAAAAAAAA"};
+        
     }
 }

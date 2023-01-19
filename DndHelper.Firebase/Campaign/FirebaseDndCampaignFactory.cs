@@ -16,9 +16,9 @@ public class FirebaseDndCampaignFactory : ICampaignFactory<Guid, HttpStatusCode>
     private readonly ICharacterRepository<HttpStatusCode> characterRepository;
     private readonly IAuthenticationProvider<string> authenticationProvider;
 
-    public async Task<Result<ICampaign<Guid, HttpStatusCode>, HttpStatusCode>> CreateNew(string name, GameMaster gameMaster)
+    public async Task<Result<ICampaign, HttpStatusCode>> CreateNew(string name, GameMaster gameMaster)
     {
-        var campaign = (ICampaign<Guid, HttpStatusCode>) new FirebaseDndCampaign(Guid.NewGuid(), name, gameMaster, new Dictionary<(string, Guid), string>(), new Dictionary<Guid, string>())
+        var campaign = (ICampaign) new FirebaseDndCampaign(Guid.NewGuid(), name, gameMaster, new Dictionary<(string, Guid), string>(), new Dictionary<Guid, string>())
         {
             FirebaseClient = firebaseClient,
             CharacterRepository = characterRepository
@@ -28,34 +28,34 @@ public class FirebaseDndCampaignFactory : ICampaignFactory<Guid, HttpStatusCode>
         {
             await GetCampaignQuery(campaign.Id).PutAsync(campaign);
             await GetAsGameMasterCampaignsQuery(authenticationProvider.User.Id).PutAsync(campaign.Id);
-            return Result.CreateSuccess<ICampaign<Guid, HttpStatusCode>, HttpStatusCode>(campaign);
+            return Result.CreateSuccess<ICampaign, HttpStatusCode>(campaign);
         }
         catch (FirebaseException e)
         {
-            return Result.CreateFailure<ICampaign<Guid, HttpStatusCode>, HttpStatusCode>(e.StatusCode, e);
+            return Result.CreateFailure<ICampaign, HttpStatusCode>(e.StatusCode, e);
         }
     }
 
-    public Task<Result<ICampaign<Guid, HttpStatusCode>, HttpStatusCode>> GetExisting(Guid id)
+    public Task<Result<ICampaign, HttpStatusCode>> GetExisting(Guid id)
     {
-        return HandleError(async () => (ICampaign<Guid, HttpStatusCode>)await GetCampaignQuery(id).OnceSingleAsync<FirebaseDndCampaign>());
+        return HandleError(async () => (ICampaign)await GetCampaignQuery(id).OnceSingleAsync<FirebaseDndCampaign>());
     }
 
-    public async Task<Result<IEnumerable<ICampaign<Guid, HttpStatusCode>>, HttpStatusCode>> GetMyCampaignsWhereIAmPlayer()
+    public async Task<Result<IEnumerable<ICampaign>, HttpStatusCode>> GetMyCampaignsWhereIAmPlayer()
     {
         var ids = await GetAsPlayerCampaignsQuery(authenticationProvider.User.Id).OnceAsync<string>();
         return await GetCampaignsList(ids);
     }
 
-    public async Task<Result<IEnumerable<ICampaign<Guid, HttpStatusCode>>, HttpStatusCode>> GetMyCampaignsWhereIAmGameMaster()
+    public async Task<Result<IEnumerable<ICampaign>, HttpStatusCode>> GetMyCampaignsWhereIAmGameMaster()
     {
         var ids = await GetAsGameMasterCampaignsQuery(authenticationProvider.User.Id).OnceAsync<string>();
         return await GetCampaignsList(ids);
     }
 
-    private async Task<Result<IEnumerable<ICampaign<Guid, HttpStatusCode>>, HttpStatusCode>> GetCampaignsList(IReadOnlyCollection<FirebaseObject<string> ids)
+    private async Task<Result<IEnumerable<ICampaign>, HttpStatusCode>> GetCampaignsList(IReadOnlyCollection<FirebaseObject<string>> ids)
     {
-        var list = new List<ICampaign<Guid, HttpStatusCode>>();
+        var list = new List<ICampaign>();
         foreach (var firebaseObject in ids)
         {
             var id = Guid.Parse(firebaseObject.Key);

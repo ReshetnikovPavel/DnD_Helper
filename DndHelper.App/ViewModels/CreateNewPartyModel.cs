@@ -53,7 +53,7 @@ namespace DndHelper.App.ViewModels
             //TODO
         }
 
-        private static async void DisplayCannotCreatePartyAlert(Result<ICampaign<Guid, HttpStatusCode>, HttpStatusCode> result)
+        private static async void DisplayCannotCreatePartyAlert(Result<ICampaign, HttpStatusCode> result)
         {
             await Shell.Current.DisplayAlert("�� ������� ������� ������", result.Status.ToString(), "��");
         }

@@ -10,7 +10,7 @@ using Firebase.Database.Query;
 
 namespace DndHelper.Firebase.Campaign;
 
-public class FirebaseDndCampaign : Entity<Guid>, ICampaign<Guid, HttpStatusCode>
+public class FirebaseDndCampaign : Entity<Guid>, ICampaign
 {
     internal FirebaseClient FirebaseClient { get; set; }
     internal ICharacterRepository<HttpStatusCode> CharacterRepository { get; set; }

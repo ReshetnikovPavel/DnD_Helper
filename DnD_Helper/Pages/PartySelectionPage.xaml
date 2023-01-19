@@ -5,6 +5,7 @@
              x:DataType="viewModels:PartySelectionModel"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewModels="clr-namespace:DndHelper.App.ViewModels;assembly=DndHelper.App"
+             xmlns:campaigns="clr-namespace:DndHelper.Domain.Campaign;assembly=DndHelper.Domain"
              Title="Мои партии"
              Style="{StaticResource ContentPage}">
 
@@ -21,15 +22,15 @@
                    VerticalOptions="Center"
                    Margin="10" />
         <ListView x:Name="MyPartyList"
-        ItemsSource="{Binding MyPartyNames}"
+        ItemsSource="{Binding MyParties}"
               Margin="10"
               Grid.Row="1">
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="campaigns:ICampaign">
                     <ViewCell>
                         <Grid Padding="10">
                             <Frame>
-                                <Label Text="{Binding .}" />
+                                <Label Text="{Binding Name}" />
                             </Frame>
                         </Grid>
                     </ViewCell>
@@ -48,15 +49,15 @@
                    Margin="10" 
                    Grid.Row="2"/>
         <ListView x:Name="MyMasterPartyList"
-        ItemsSource="{Binding MyMasterPartyNames}"
+        ItemsSource="{Binding MyMasterParties}"
               Margin="10"
               Grid.Row="3">
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="campaigns:ICampaign">
                     <ViewCell>
                         <Grid Padding="10">
                             <Frame>
-                                <Label Text="{Binding .}" />
+                                <Label Text="{Binding Name}" />
                             </Frame>
                         </Grid>
                     </ViewCell>

@@ -121,7 +121,7 @@ public static class MauiProgram
     private static IServiceCollection RegisterCampaignServices(this IServiceCollection services)
     {
         services
-            .AddTransient<ICampaign<Guid, HttpStatusCode>, FirebaseDndCampaign>()
+            .AddTransient<ICampaign, FirebaseDndCampaign>()
             .AddTransient<ICampaignFactory<Guid, HttpStatusCode>, FirebaseDndCampaignFactory>();
         return services;
     }

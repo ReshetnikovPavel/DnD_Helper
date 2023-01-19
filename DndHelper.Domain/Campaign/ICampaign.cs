@@ -4,14 +4,14 @@ using System.Net;
 
 namespace DndHelper.Domain.Campaign;
 
-public interface ICampaign<out TId, TStatus>
+public interface ICampaign
 {
-    TId Id { get; }
+    Guid Id { get; }
     IDictionary<(string UserId, Guid CharacterId), string> CharacterNames { get; }
     IDictionary<Guid, string> UserIds { get; }
     GameMaster GameMaster { get; }
     string Name { get; }
 
-    Task<Result<TStatus>> Join(User<string> user, Character character);
-    Task<Result<Character, TStatus>> GetCharacter(Guid characterGuid);
+    Task<Result<HttpStatusCode>> Join(User<string> user, Character character);
+    Task<Result<Character, HttpStatusCode>> GetCharacter(Guid characterGuid);
 }

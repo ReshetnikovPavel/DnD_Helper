@@ -4,10 +4,16 @@ namespace DnD_Helper;
 
 public partial class PartySelectionPage : ContentPage
 {
-    public PartySelectionPage()
+    private readonly PartySelectionModel partySelectionModel;
+    public PartySelectionPage(PartySelectionModel partySelectionModel)
     {
         InitializeComponent();
+        this.partySelectionModel = partySelectionModel;
+        BindingContext = partySelectionModel;
+    }
 
-        BindingContext = new PartySelectionModel();
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+        partySelectionModel.LoadParties();
     }
 }
