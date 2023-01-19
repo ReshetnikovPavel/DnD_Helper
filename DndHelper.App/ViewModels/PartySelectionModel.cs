@@ -11,6 +11,8 @@ namespace DndHelper.App.ViewModels
         public PartySelectionModel(ICampaignFactory<Guid, HttpStatusCode> campaignFactory)
         {
             this.campaignFactory = campaignFactory;
+            SelectMyParty = new Command<ICampaign>(OnPartySelected);
+            SelectMyMasterParty = new Command<ICampaign>(OnPartySelected);
         }
 
         public ICommand SelectMyParty { get; }
@@ -56,7 +58,7 @@ namespace DndHelper.App.ViewModels
 
         }
 
-        private async void OnPartySelected(string partyName)
+        private async void OnPartySelected(ICampaign partyName)
         {
             await Shell.Current.GoToAsync($"/{nameof(ModelParty)}",
                 new Dictionary<string, object>
