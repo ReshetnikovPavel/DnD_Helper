@@ -35,6 +35,7 @@ public class FirebaseDndCampaign : Entity<Guid>, ICampaign<Guid, HttpStatusCode>
             await GetCharacterIdsQuery(Id).PutAsync(character.Id);
             CharacterNames[(user.Id, character.Id)] = character.Name;
             UserIds[character.Id] = user.Id;
+            await GetUserCampaignsQuery(user.Id).PutAsync(Id);
             return Result.CreateSuccess<HttpStatusCode>();
         }
         catch (FirebaseException e)
@@ -54,5 +55,13 @@ public class FirebaseDndCampaign : Entity<Guid>, ICampaign<Guid, HttpStatusCode>
             .Child("Campaigns")
             .Child($"{id}")
             .Child("CharacterIds");
+    }
+
+    private ChildQuery GetUserCampaignsQuery(string id)
+    {
+        return FirebaseClient
+            .Child("Users")
+            .Child($"{id}")
+            .Child("CampaignsAsPlayer");
     }
 }

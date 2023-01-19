@@ -6,6 +6,7 @@ using Firebase.Database;
 using Firebase.Database.Query;
 using System.Net;
 using DndHelper.Domain.Repositories;
+using DndHelper.Infrastructure.Authentication;
 
 namespace DndHelper.Firebase.Campaign;
 
@@ -13,6 +14,7 @@ public class FirebaseDndCampaignFactory : ICampaignFactory<Guid, HttpStatusCode>
 {
     private readonly FirebaseClient firebaseClient;
     private readonly ICharacterRepository<HttpStatusCode> characterRepository;
+    private readonly IAuthenticationProvider<string> authenticationProvider;
 
     public async Task<Result<ICampaign<Guid, HttpStatusCode>, HttpStatusCode>> CreateNew(string name, GameMaster gameMaster)
     {
@@ -25,6 +27,7 @@ public class FirebaseDndCampaignFactory : ICampaignFactory<Guid, HttpStatusCode>
         try
         {
             await GetCampaignQuery(campaign.Id).PutAsync(campaign);
+            await GetAsGameMasterCampaignsQuery(authenticationProvider.User.Id).PutAsync(campaign.Id);
             return Result.CreateSuccess<ICampaign<Guid, HttpStatusCode>, HttpStatusCode>(campaign);
         }
         catch (FirebaseException e)
@@ -38,6 +41,30 @@ public class FirebaseDndCampaignFactory : ICampaignFactory<Guid, HttpStatusCode>
         return HandleError(async () => (ICampaign<Guid, HttpStatusCode>)await GetCampaignQuery(id).OnceSingleAsync<FirebaseDndCampaign>());
     }
 
+    public async Task<Result<IEnumerable<ICampaign<Guid, HttpStatusCode>>, HttpStatusCode>> GetMyCampaignsWhereIAmPlayer()
+    {
+        var ids = await GetAsPlayerCampaignsQuery(authenticationProvider.User.Id).OnceAsync<string>();
+        return await GetCampaignsList(ids);
+    }
+
+    public async Task<Result<IEnumerable<ICampaign<Guid, HttpStatusCode>>, HttpStatusCode>> GetMyCampaignsWhereIAmGameMaster()
+    {
+        var ids = await GetAsGameMasterCampaignsQuery(authenticationProvider.User.Id).OnceAsync<string>();
+        return await GetCampaignsList(ids);
+    }
+
+    private async Task<Result<IEnumerable<ICampaign<Guid, HttpStatusCode>>, HttpStatusCode>> GetCampaignsList(IReadOnlyCollection<FirebaseObject<string> ids)
+    {
+        var list = new List<ICampaign<Guid, HttpStatusCode>>();
+        foreach (var firebaseObject in ids)
+        {
+            var id = Guid.Parse(firebaseObject.Key);
+            if ((await GetExisting(id)).TryGetValue(out var campaign))
+                list.Add(campaign);
+        }
+        return list;
+    }
+
 
     private ChildQuery GetCampaignQuery(Guid id)
     {
@@ -46,10 +73,11 @@ public class FirebaseDndCampaignFactory : ICampaignFactory<Guid, HttpStatusCode>
             .Child($"{id}");
     }
 
-    public FirebaseDndCampaignFactory(FirebaseClient firebaseClient, ICharacterRepository<HttpStatusCode> characterRepository)
+    public FirebaseDndCampaignFactory(FirebaseClient firebaseClient, ICharacterRepository<HttpStatusCode> characterRepository, IAuthenticationProvider<string> authenticationProvider)
     {
         this.firebaseClient = firebaseClient;
         this.characterRepository = characterRepository;
+        this.authenticationProvider = authenticationProvider;
     }
 
     private static async Task<Result<T, HttpStatusCode>> HandleError<T>(Func<Task<T>> interactWithFirebase)
@@ -75,5 +103,21 @@ public class FirebaseDndCampaignFactory : ICampaignFactory<Guid, HttpStatusCode>
         {
             return Result.CreateFailure(e.StatusCode, e);
         }
+    }
+
+    private ChildQuery GetAsPlayerCampaignsQuery(string id)
+    {
+        return firebaseClient
+            .Child("Users")
+            .Child($"{id}")
+            .Child("CampaignsAsPlayer");
+    }
+
+    private ChildQuery GetAsGameMasterCampaignsQuery(string id)
+    {
+        return firebaseClient
+            .Child("Users")
+            .Child($"{id}")
+            .Child("CampaignsAsGameMaster");
     }
 }

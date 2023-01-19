@@ -11,6 +11,8 @@ using DndHelper.Xml.Repositories;
 using Firebase.Auth;
 using System.Xml.Linq;
 using DnD_Helper.Navigation;
+using DndHelper.Domain.Campaign;
+using DndHelper.Firebase.Campaign;
 using DndHelper.Firebase.Repositories;
 using Firebase.Database;
 using Microsoft.Extensions.DependencyInjection;
@@ -93,6 +95,7 @@ public static class MauiProgram
 		services
 			.RegisterFirebase()
 			.RegisterRepositories()
+            .RegisterCampaignServices()
 			.AddTransient<DistributorAbilityScore>()
 			.AddTransient<Abilities>()
 			.AddTransient<CharacterCreationNavigator>()
@@ -112,6 +115,14 @@ public static class MauiProgram
             .AddSingleton(new FirebaseDatabaseUrl("https://dndhelper-e695e-default-rtdb.asia-southeast1.firebasedatabase.app/"))
             .AddSingleton(new FirebaseConfig("AIzaSyAsyhRQKmYdtXBaH8LOgFe_tgHWGRh6wJQ"))
             .AddSingleton(serviceProvider => new FirebaseClient(((FirebaseDatabaseUrl)serviceProvider.GetService(typeof(FirebaseDatabaseUrl)))?.Url));
+        return services;
+    }
+
+    private static IServiceCollection RegisterCampaignServices(this IServiceCollection services)
+    {
+        services
+            .AddTransient<ICampaign<Guid, HttpStatusCode>, FirebaseDndCampaign>()
+            .AddTransient<ICampaignFactory<Guid, HttpStatusCode>, FirebaseDndCampaignFactory>();
         return services;
     }
 
