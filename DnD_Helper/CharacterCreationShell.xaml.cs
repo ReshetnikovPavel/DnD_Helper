@@ -15,7 +15,7 @@ public partial class CharacterCreationShell : Shell
     protected override bool OnBackButtonPressed()
             => true; // Disables the Android back button
 
-    private async void BackToMenu_Clicked(object sender, EventArgs e)
+    private async void BackToMenu_Clicked(object sender, EventArgs e)   
     {
         //var choice = await DisplayAlert("Вернуться в меню?",
         //    "Весь прогресс будет утерян", "Да", "Нет");

@@ -19,7 +19,7 @@
         ItemsSource="{Binding SubraceNames}"
               Margin="10">
         <ListView.ItemTemplate>
-            <DataTemplate>
+            <DataTemplate x:DataType="x:String">
                 <ViewCell>
                     <Grid Padding="10">
                         <Frame>
