@@ -20,7 +20,7 @@ namespace DndHelper.App.ViewModels
         public ICommand SelectMyMasterParty { get; }
 
         public ICommand CreateNewParty { get; }
-        public ICommand JoinNewParty { get; }
+        public ICommand JoinNewParty => new Command(OnJoinNewParty);
 
         private IEnumerable<ICampaign> myParties;
         public IEnumerable<ICampaign> MyParties
@@ -66,6 +66,11 @@ namespace DndHelper.App.ViewModels
                     ["Party"] = party
                 }
                 );
+        }
+
+        private async void OnJoinNewParty()
+        {
+            await Shell.Current.GoToAsync($"/{nameof(JoinNewPartyModel)}");
         }
     }
 }
