@@ -34,19 +34,19 @@
                    Margin="10"
                    Grid.Column="0"
                    Grid.Row="2"/>
-            <Label Text="{Binding name}"
+            <Label Text="{Binding Party.Name}"
                    HorizontalOptions="Start"
                    VerticalOptions="Center"
                    Grid.Column="1"
                    Grid.Row="0"
                    Margin="10"/>
-            <Label Text="{Binding dm}"
+            <Label Text="{Binding Party.GameMaster}"
                    HorizontalOptions="Start"
                    VerticalOptions="Center"
                    Grid.Column="1"
                    Grid.Row="1"
                    Margin="10"/>
-            <Label Text="{Binding id}"
+            <Label Text="{Binding IdDisplay}"
                     Grid.Row = "2"
                    HorizontalOptions="Start"
                    VerticalOptions="Center"
@@ -56,7 +56,7 @@
 
         <Grid Grid.Row = "1">
             <CollectionView x:Name="ChatactersList"
-                ItemsSource="{Binding characters}"
+                ItemsSource="{Binding Party.CharacterNames}"
                 Margin="10"
                 Grid.Row="1"
                 SelectionChangedCommand="{Binding OpenCharacter}"

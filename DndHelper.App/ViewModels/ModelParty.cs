@@ -5,16 +5,28 @@ using DndHelper.App.RouteNavigation;
 using DndHelper.Domain.Dnd;
 using DndHelper.Domain.Repositories;
 using DndHelper.Infrastructure;
+using DndHelper.Domain.Campaign;
 
 namespace DndHelper.App.ViewModels
 {
-    public class ModelParty : BindableObject
+    [QueryProperty(nameof(Party), nameof(Party))]
+    public partial class ModelParty : BindableObject
     {
+        private ICampaign<Guid, HttpStatusCode> party;
+
+        public ICampaign<Guid, HttpStatusCode> Party
+        {
+            get => party;
+            set
+            {
+                party = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(IdDisplay));
+            }
+        }
+
         public ICommand OpenCharacter {get; }
-        public int id => 123456;
-        public string name => "XAXAAA";
-        public string dm => "Gogulk";
-        public string[] characters => new string[3]{"AA", "aaaa", "AAAAAAAAAA"};
-        
+
+        public string IdDisplay => Party?.Id.ToString();
     }
 }

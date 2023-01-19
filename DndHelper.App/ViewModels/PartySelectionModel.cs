@@ -53,6 +53,14 @@ namespace DndHelper.App.ViewModels
             {
                 MyMasterParties = campaigns2;
             };
+        private async void OnPartySelected(string partyName)
+        {
+            await Shell.Current.GoToAsync($"/{nameof(ModelParty)}",
+                new Dictionary<string, object>
+                {
+                    ["Party"] = null //TODO: вставить сюда партию
+                }
+                );
         }
     }
 }
