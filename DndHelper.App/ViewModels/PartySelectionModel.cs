@@ -56,12 +56,12 @@ namespace DndHelper.App.ViewModels
 
         }
 
-        private async void OnPartySelected(string partyName)
+        private async void OnPartySelected(ICampaign party)
         {
             await Shell.Current.GoToAsync($"/{nameof(ModelParty)}",
                 new Dictionary<string, object>
                 {
-                    ["Party"] = null //TODO: вставить сюда партию
+                    ["Party"] = party
                 }
                 );
         }
