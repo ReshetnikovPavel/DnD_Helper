@@ -24,5 +24,6 @@ namespace DndHelper.App.ApplicationClasses
         bool CanCreate();
         bool CanSelect(CharacterAttributes attribute);
         public Character Create();
+        public bool TryCreate(out Character character);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DndHelper.App.ApplicationClasses;
 using DndHelper.App.ViewModels;
+using DndHelper.Domain.Dnd;
 
 namespace DndHelper.App.RouteNavigation
 {
@@ -24,27 +25,32 @@ namespace DndHelper.App.RouteNavigation
         public void AddModel<TModel>(string prefix, IEnumerable<CharacterAttributes> attributes) 
             where TModel : BindableObject
         {
-            modelNavigator.AddModel<TModel>(prefix,() => 
-            { 
-                return attributes.Any(Creator.CanSelect); 
-            });
+            modelNavigator.AddModel<TModel>(prefix,() => attributes.Any(Creator.CanSelect));
         }
 
         public async void TryGoToCharacterSheet()
         {
-            if (!Creator.CanCreate())
-            {
-                await Shell.Current.DisplayAlert("Невозможно перейти в лист персонажа",
-                    "Не все поля заполнены", "Эх");
-                return;
-            }
-            var character = Creator.Create();
+            if (Creator.TryCreate(out var character))
+                await GoToCharacterSheet(character);
+            else
+                await DisplayCannotGoToCharacterSheetAlert();
+
+        }
+
+        private static async Task DisplayCannotGoToCharacterSheetAlert()
+        {
+            await Shell.Current.DisplayAlert("Невозможно перейти в лист персонажа",
+                "Не все поля заполнены", "Эх");
+        }
+
+        private static async Task GoToCharacterSheet(Character character)
+        {
             await Shell.Current.GoToAsync($"/{nameof(CharacterSheetViewModel)}",
-                new Dictionary<string ,object>
+                new Dictionary<string, object>
                 {
                     ["Character"] = character
                 }
-                );
+            );
         }
 
         private void SubscribeToMessaging()

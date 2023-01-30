@@ -62,6 +62,17 @@ namespace DndHelper.App.ApplicationClasses
             return character;
         }
 
+        public bool TryCreate(out Character character)
+        {
+            character = null;
+
+            if (!CanCreate())
+                return false;
+
+            character = Create();
+            return true;
+        }
+
         private void SetDefaultValues()
         {
             StateManager.SetValue(CharacterAttributes.Abilities, Abilities.CreateDefault());
