@@ -12,13 +12,13 @@ namespace DndHelper.Firebase.Repositories;
 public class FirebaseCharacterRepository : ICharacterRepository<HttpStatusCode>
 {
     private readonly FirebaseClient firebaseClient;
-    private readonly IAuthenticationProvider<string> authenticationProvider;
-    private User<string> User => authenticationProvider.User;
+    private readonly IUserProvider<string> userProvider;
+    private User<string> User => userProvider.User;
 
-    public FirebaseCharacterRepository(FirebaseClient firebaseClient, IAuthenticationProvider<string> authenticationProvider)
+    public FirebaseCharacterRepository(FirebaseClient firebaseClient, IUserProvider<string> authenticationProvider)
     {
         this.firebaseClient = firebaseClient;
-        this.authenticationProvider = authenticationProvider;
+        this.userProvider = authenticationProvider;
     }
 
     public Task<Result<Character, HttpStatusCode>> GetCharacter(Guid id)

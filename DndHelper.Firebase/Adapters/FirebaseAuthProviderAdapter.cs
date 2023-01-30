@@ -6,7 +6,7 @@ using System.Net.Mail;
 
 namespace DndHelper.Firebase.Adapters;
 
-public class FirebaseAuthProviderAdapter : IAuthenticationProvider<string>
+public class FirebaseAuthProviderAdapter : IAuthenticationProvider<string>, IUserProvider<string>
 {
     private readonly FirebaseAuthProvider provider;
     private FirebaseAuthLink link;

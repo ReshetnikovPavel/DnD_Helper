@@ -94,21 +94,22 @@ public static class MauiProgram
     }
 
 	private static IServiceCollection RegisterServices(this IServiceCollection services)
-	{
-		services
-			.RegisterFirebase()
-			.RegisterRepositories()
+    {
+        services
+            .RegisterFirebase()
+            .RegisterRepositories()
             .RegisterCampaignServices()
-			.AddTransient<DistributorAbilityScore>()
-			.AddTransient<Abilities>()
-			.AddTransient<CharacterCreationNavigator>()
-			.AddTransient<ICreatesCharacter, CharacterCreator>()
+            .AddTransient<DistributorAbilityScore>()
+            .AddTransient<Abilities>()
+            .AddTransient<CharacterCreationNavigator>()
+            .AddTransient<ICreatesCharacter, CharacterCreator>()
             .AddTransient<IShellNavigator, ShellNavigator>()
             .AddTransient<IModelNavigator, RouteCollectionNavigator>()
-			.AddTransient<IHasRouteCollection, RouteCollection>()
-			.AddTransient<IStateManager<CharacterAttributes, object>, StateDictionary<CharacterAttributes, object>>()
-			.AddTransient<RepositoryFacade>();
-		return services;
+            .AddTransient<IHasRouteCollection, RouteCollection>()
+            .AddTransient<IStateManager<CharacterAttributes, object>, StateDictionary<CharacterAttributes, object>>()
+            .AddTransient<RepositoryFacade>()
+            .AddSingleton(serviceProvider => (IUserProvider<string>)serviceProvider.GetService(typeof(IAuthenticationProvider<string>)));
+        return services;
 	}
 
     private static IServiceCollection RegisterFirebase(this IServiceCollection services)

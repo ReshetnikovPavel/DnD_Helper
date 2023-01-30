@@ -10,15 +10,13 @@ namespace DndHelper.App.ViewModels
     public class CreateNewPartyModel : INotifyPropertyChanged
     {
         private readonly ICampaignFactory<Guid, HttpStatusCode> campaignFactory;
-        private readonly IAuthenticationProvider<string> authenticationProvider;
+        private readonly IUserProvider<string> userProvider;
 
-        public CreateNewPartyModel(ICampaignFactory<Guid, HttpStatusCode> campaignFactory, IAuthenticationProvider<string> authenticationProvider)
+        public CreateNewPartyModel(ICampaignFactory<Guid, HttpStatusCode> campaignFactory, IUserProvider<string> userProvider)
         {
             this.campaignFactory = campaignFactory;
-            this.authenticationProvider = authenticationProvider;
+            this.userProvider = userProvider;
         }
-
-        private IAuthenticationProvider<string> authProvider;
         private string name;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -41,7 +39,8 @@ namespace DndHelper.App.ViewModels
 
         private async void OnCreateNewParty()
         {
-            var gameMaster = new GameMaster(authenticationProvider.User.Id);
+            var user = userProvider.User;
+            var gameMaster = new GameMaster(user.Id);
             var result = (await campaignFactory.CreateNew(Name, gameMaster))
                 .OnSuccess(GoToPartyPage)
                 .OnFailure(DisplayCannotCreatePartyAlert);
