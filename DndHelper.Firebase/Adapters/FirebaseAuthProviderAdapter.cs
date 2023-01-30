@@ -41,19 +41,7 @@ public class FirebaseAuthProviderAdapter : IAuthenticationProvider<string>, IUse
         if (result.TryGetValue(out var firebaseUser)) 
             User = CreateUserWithEmailAndPassword(firebaseUser, token);
     }
-
-    private async void SetUserIfAuthenticationTokenStillWorks()
-    {
-        var token = Preferences.Get(nameof(AuthenticationToken), null);
-        if (token == null) 
-            return;
-
-        var firebaseUser = await provider.GetUserAsync(token);
-        if (firebaseUser == null)
-            return;
-
-        User = CreateUserWithEmailAndPassword(firebaseUser, token);
-    }
+    
 
     public Task<Result<User<string>, AuthenticationStatus>> RegisterUserWithEmailAndPassword(string email, string password)
     { 
