@@ -69,10 +69,10 @@
                       Route="EquipmentSelectionPage"
                       IsVisible="False" />-->
 
-        <ShellContent Title="Логин???????"
+        <!--<ShellContent Title="Логин???????"
         ContentTemplate="{DataTemplate local:LoginPage}" 
                       Route="LoginViewModel" >
-        </ShellContent>
+        </ShellContent>-->
     </FlyoutItem>
 
     <MenuItem Text="Лист персонажа"
