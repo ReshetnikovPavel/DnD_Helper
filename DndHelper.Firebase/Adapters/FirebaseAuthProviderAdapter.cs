@@ -11,11 +11,35 @@ public class FirebaseAuthProviderAdapter : IAuthenticationProvider<string>, IUse
     private readonly FirebaseAuthProvider provider;
     private FirebaseAuthLink link;
     public AuthenticationToken AuthenticationToken => new(link.FirebaseToken);
-    public User<string> User { get; private set; }
+
+    private User<string> user;
+    public User<string> User
+    {
+        get => user;
+        private set
+        {
+            user = value;
+            Preferences.Set(nameof(AuthenticationToken), user.AuthenticationToken.Token);
+        }
+    }
+
     public bool IsAuthenticated => User != null;
     public FirebaseAuthProviderAdapter(FirebaseConfig config)
     {
         provider = new FirebaseAuthProvider(config);
+        SetUserIfAuthenticationTokenStillWorks();
+    }
+
+    private async void SetUserIfAuthenticationTokenStillWorks()
+    {
+        var token = Preferences.Get(nameof(AuthenticationToken), null);
+        if (token == null) 
+            return;
+
+        var result = await HandleError(async () =>  await provider.GetUserAsync(token));
+
+        if (result.TryGetValue(out var firebaseUser)) 
+            User = CreateUserWithEmailAndPassword(firebaseUser, token);
     }
 
     public Task<Result<User<string>, AuthenticationStatus>> RegisterUserWithEmailAndPassword(string email, string password)
@@ -43,12 +67,18 @@ public class FirebaseAuthProviderAdapter : IAuthenticationProvider<string>, IUse
 
     private static User<string> CreateUserWithEmailAndPassword(FirebaseAuthLink link)
     {
-        var id = link.User.LocalId;
-        var email = new MailAddress(link.User.Email);
-        var token = new AuthenticationToken(link.FirebaseToken);
+        return CreateUserWithEmailAndPassword(link.User, link.FirebaseToken);
+    }
+
+    private static User<string> CreateUserWithEmailAndPassword(User firebaseUser, string firebaseToken)
+    {
+        var id = firebaseUser.LocalId;
+        var email = new MailAddress(firebaseUser.Email);
+        var token = new AuthenticationToken(firebaseToken);
 
         return new User<string>(id, email, token);
     }
+
     private static async Task<Result<T, AuthenticationStatus>> HandleError<T>(Func<Task<T>> interactWithFirebase)
     {
         try
