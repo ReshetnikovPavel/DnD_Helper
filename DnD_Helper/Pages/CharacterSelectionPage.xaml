@@ -23,6 +23,11 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="domain:Character">
                     <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Удалить"
+                                      Command="{Binding Source={x:Reference CharacterList}, Path=BindingContext.DeleteCharacter}"
+                                      CommandParameter="{Binding}" />
+                        </ViewCell.ContextActions>
                         <Grid Padding="10">
                             <Frame>
                                 <Label Text="{Binding Name}" />

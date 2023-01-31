@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Collections.ObjectModel;
+using System.Net;
 using System.Windows.Input;
 using DndHelper.App.RouteNavigation;
 using DndHelper.Domain.Dnd;
@@ -13,9 +14,10 @@ namespace DndHelper.App.ViewModels
         private readonly IShellNavigator shellNavigator;
         public ICommand SelectCharacter => new Command<Character>(GoToCharacterSheet);
         public ICommand CreateNewCharacter => new Command(OnCreateNewCharacter);
-        
-        private IEnumerable<Character> characters;
-        public IEnumerable<Character> Characters
+        public ICommand DeleteCharacter => new Command<Character>(OnDeleteCharacter);
+
+        private ObservableCollection<Character> characters;
+        public ObservableCollection<Character> Characters
         {
             get => characters;
             set
@@ -24,8 +26,6 @@ namespace DndHelper.App.ViewModels
                 OnPropertyChanged();
             }
         }
-
-        private string[] mockNames = { "Люля", "Пельмешек", "Поль Реш", "Синий", "Симонов" };
 
         public CharacterSelectionModel(ICharacterRepository<HttpStatusCode> characterRepository, IShellNavigator shellNavigator)
         {
@@ -38,6 +38,13 @@ namespace DndHelper.App.ViewModels
             shellNavigator.GoToCharacterCreation();
         }
 
+        private async void OnDeleteCharacter(Character character)
+        {
+            (await characterRepository.DeleteCharacter(character))
+                .OnSuccess(() => Characters.Remove(character))
+                .OnFailure(DisplayCannotDeleteCharacterAlert);
+        }
+
         public async void GoToCharacterSheet(Character character)
         {
             await Shell.Current.GoToAsync($"/{nameof(CharacterSheetViewModel)}",
@@ -48,21 +55,26 @@ namespace DndHelper.App.ViewModels
             );
         }
 
-        public async void LoadCharacterNames()
+        public async void LoadCharacters()
         {
             (await characterRepository.GetCharacters())
-                .OnSuccess(result => LoadCharacterNames(result.Value))
+                .OnSuccess(result => LoadCharacters(result.Value))
                 .OnFailure(DisplayCannotLoadCharactersAlert);
         }
 
-        private void LoadCharacterNames(IEnumerable<Character> characters)
+        private void LoadCharacters(IEnumerable<Character> characters)
         {
-            Characters = characters;
+            Characters = new ObservableCollection<Character>(characters);
         }
 
         private static async void DisplayCannotLoadCharactersAlert(INoValueResult<HttpStatusCode> result)
         {
             await Shell.Current.DisplayAlert("Не удалось загрузить персонажей", result.Status.ToString(), "Эх");
+        }
+
+        private static async void DisplayCannotDeleteCharacterAlert(INoValueResult<HttpStatusCode> result)
+        {
+            await Shell.Current.DisplayAlert("Не удалось удалить персонажа", result.Status.ToString(), "Эх");
         }
     }
 }

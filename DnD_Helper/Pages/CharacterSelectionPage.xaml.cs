@@ -14,6 +14,11 @@ public partial class CharacterSelectionPage : ContentPage
 
     protected override void OnNavigatedTo(NavigatedToEventArgs args)
     {
-        characterSelectionModel.LoadCharacterNames();
+        characterSelectionModel.LoadCharacters();
+    }
+
+    private void MenuItem_OnClicked(object sender, EventArgs e)
+    {
+        throw new NotImplementedException();
     }
 }

@@ -15,10 +15,10 @@ public class FirebaseCharacterRepository : ICharacterRepository<HttpStatusCode>
     private readonly IUserProvider<string> userProvider;
     private User<string> User => userProvider.User;
 
-    public FirebaseCharacterRepository(FirebaseClient firebaseClient, IUserProvider<string> authenticationProvider)
+    public FirebaseCharacterRepository(FirebaseClient firebaseClient, IUserProvider<string> userProvider)
     {
         this.firebaseClient = firebaseClient;
-        this.userProvider = authenticationProvider;
+        this.userProvider = userProvider;
     }
 
     public Task<Result<Character, HttpStatusCode>> GetCharacter(Guid id)
@@ -49,6 +49,17 @@ public class FirebaseCharacterRepository : ICharacterRepository<HttpStatusCode>
         if (result.TryGetValue(out var idToCharacter))
             return idToCharacter.Values;
         return Result.CreateFailure<IEnumerable<Character>, HttpStatusCode>(result.Status);
+    }
+
+    public async Task<Result<HttpStatusCode>> DeleteCharacter(Character character)
+    {
+        return await DeleteCharacter(character.Id);
+    }
+
+    public async Task<Result<HttpStatusCode>> DeleteCharacter(Guid id)
+    {
+        var query = GetCharacterQuery(id);
+        return HandleError(async () => await query.DeleteAsync());
     }
 
     private ChildQuery GetCharacterQuery(Character character)

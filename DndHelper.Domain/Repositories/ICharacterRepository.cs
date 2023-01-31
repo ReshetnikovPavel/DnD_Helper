@@ -11,4 +11,7 @@ public interface ICharacterRepository<TErrorStatus>
     Task<Result<Character, TErrorStatus>> GetCharacter(string userId, Guid characterId);
     Task<Result<TErrorStatus>> PutCharacter(Character character);
     Task<Result<IEnumerable<Character>, HttpStatusCode>> GetCharacters();
+
+    Task<Result<TErrorStatus>> DeleteCharacter(Character character);
+    Task<Result<TErrorStatus>> DeleteCharacter(Guid id);
 }
