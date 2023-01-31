@@ -17,6 +17,7 @@ namespace DndHelper.App.ViewModels
         public ICommand DeleteCharacter => new Command<Character>(OnDeleteCharacter);
 
         private ObservableCollection<Character> characters;
+
         public ObservableCollection<Character> Characters
         {
             get => characters;
@@ -27,7 +28,8 @@ namespace DndHelper.App.ViewModels
             }
         }
 
-        public CharacterSelectionModel(ICharacterRepository<HttpStatusCode> characterRepository, IShellNavigator shellNavigator)
+        public CharacterSelectionModel(ICharacterRepository<HttpStatusCode> characterRepository,
+            IShellNavigator shellNavigator)
         {
             this.characterRepository = characterRepository;
             this.shellNavigator = shellNavigator;
@@ -38,19 +40,30 @@ namespace DndHelper.App.ViewModels
             shellNavigator.GoToCharacterCreation();
         }
 
-        private async void OnDeleteCharacter(Character character)
+        private async void OnDeleteCharacter(Character selected)
         {
-            (await characterRepository.DeleteCharacter(character))
-                .OnSuccess(() => Characters.Remove(character))
-                .OnFailure(DisplayCannotDeleteCharacterAlert);
+            var wantToDelete = await DoesUserWantToDeleteTheirCharacter(selected);
+
+            if (wantToDelete)
+                (await characterRepository.DeleteCharacter(selected))
+                    .OnSuccess(() => Characters.Remove(selected))
+                    .OnFailure(DisplayCannotDeleteCharacterAlert);
         }
 
-        public async void GoToCharacterSheet(Character character)
+        private static async Task<bool> DoesUserWantToDeleteTheirCharacter(Character selected)
+        {
+            return await Shell.Current.DisplayAlert(
+                "Это действие невозможно обратить!",
+                "Вы действительно хотите удалить персонажа?", 
+                "Да", "Нет");
+        }
+
+        public async void GoToCharacterSheet(Character selected)
         {
             await Shell.Current.GoToAsync($"/{nameof(CharacterSheetViewModel)}",
                 new Dictionary<string, object>
                 {
-                    ["Character"] = character
+                    ["Character"] = selected
                 }
             );
         }
