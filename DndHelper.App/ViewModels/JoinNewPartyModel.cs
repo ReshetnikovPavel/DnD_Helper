@@ -52,7 +52,7 @@ namespace DndHelper.App.ViewModels
         public async void LoadCharacterNames()
         {
             (await characterRepository.GetCharacters())
-                .OnSuccess(result => LoadCharacterNames(result.Value))
+                .OnSuccess(characters => LoadCharacterNames(characters))
                 .OnFailure(DisplayCannotLoadCharactersAlert);
         }
 

@@ -51,9 +51,11 @@ namespace DndHelper.App.ViewModels
         public string IdDisplay => Party?.Id.ToString();
         public string Test => "AHHHHHHHH, pain :)";
 
-        private void UpdateParty()
+        private async void UpdateParty()
         {
-            Party = campaignFactory.GetExisting(PartyId).Result.Value;
+            var result = await campaignFactory.GetExisting(PartyId);
+            if (result.TryGetValue(out var existingParty)) 
+                Party = existingParty;
         }
     }
 }

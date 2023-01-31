@@ -42,11 +42,4 @@ public class Result<TStatus> : INoValueResult<TStatus>
             doOnFailure(this);
         return this;
     }
-
-    public Result<TStatus> OnSuccess(Action<Result<TStatus>> doOnSuccess)
-    {
-        if (IsSuccess)
-            doOnSuccess(this);
-        return this;
-    }
 }

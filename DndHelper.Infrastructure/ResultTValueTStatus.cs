@@ -2,7 +2,7 @@
 
 public class Result<TValue, TStatus> : INoValueResult<TStatus>
 {
-    public TValue Value { get; set; }
+    internal TValue Value { get; set; }
     public bool IsSuccess { get; set; }
     public TStatus Status { get; set; }
     public Exception Exception { get; set; }
@@ -56,10 +56,10 @@ public class Result<TValue, TStatus> : INoValueResult<TStatus>
         return this;
     }
 
-    public Result<TValue, TStatus> OnSuccess(Action<Result<TValue, TStatus>> doOnSuccess)
+    public Result<TValue, TStatus> OnSuccess(Action<TValue> doOnSuccess)
     {
         if (IsSuccess)
-            doOnSuccess(this);
+            doOnSuccess(Value);
         return this;
     }
 }
